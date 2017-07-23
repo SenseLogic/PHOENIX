@@ -168,12 +168,12 @@ Most of the PHP syntax is kept unchanged, except that :
 * `local` declares local variables.
 * `attribute` declares class attributes.
 * `method` declares a class method.
-* `constructor` is the name of the constructor functions.
-* `destructor` is the name of the destructor functions.
+* `constructor` declares a class constructor.
+* `destructor` declares a class destructor.
 * `include` includes a file with a relative path.
-* `include?` includes a file with a relative path if it exists.
+* `include?` includes a file with a relative path, if it exists.
 * `import` includes a file once with a relative path.
-* `import?` includes a file once with a relative path if it exists.
+* `import?` includes a file once with a relative path, if it exists.
 * `<?` `?>` wraps Phoenix statements.
 * `<%` `%>` wraps an expression to output.
 * `<#` `#>` wraps an escaped expression to output.
