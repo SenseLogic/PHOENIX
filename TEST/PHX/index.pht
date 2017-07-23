@@ -1,0 +1,140 @@
+<html>
+    <head>
+         <meta charset="utf8"/>
+    </head>
+    <body>
+        <?
+            local
+                hello,
+                hobbit,
+                hobbit_count,
+                message,
+                escaped_message,
+                dwarf_name_array;
+                
+            import 'imported.php';
+            include 'included.php';
+            include 'included.php';
+            
+            import? 'notfound.php';
+            include? 'notfound.php';
+
+            hello = 'Hello';
+
+            function GetMessage(
+                string first_name,
+                string last_name
+                )
+            {
+                global
+                    hello;
+                static local
+                    dear = 'dear';
+                local
+                    message;
+
+                message = hello .. ' ' .. dear .. ' ' .. first_name .. ' ' .. last_name .. ' !';
+
+                return message;
+            }
+
+            class HOBBIT
+            {
+                attribute
+                    FirstName = '',
+                    LastName = '',
+                    RingCount = 0;
+
+                static attribute
+                    HobbitCount = 0;
+
+                method constructor(
+                    string first_name,
+                    string last_name,
+                    int ring_count
+                    )
+                {
+                    .FirstName = first_name;
+                    .LastName = last_name;
+                    .RingCount = ring_count;
+
+                    self::AddHobbit();
+                }
+
+                method destructor()
+                {
+                    .RemoveRings( .RingCount );
+
+                    self::RemoveHobbit();
+                }
+
+                method AddRings(
+                    int ring_count
+                    )
+                {
+                    .RingCount += ring_count;
+                }
+
+                method RemoveRings(
+                    int ring_count
+                    )
+                {
+                    .RingCount -= ring_count;
+                }
+
+                static method AddHobbit()
+                {
+                    self::HobbitCount++;
+                }
+
+                static method RemoveHobbit()
+                {
+                    self::HobbitCount--;
+                }
+
+                static method GetHobbitCount()
+                {
+                    return self::HobbitCount;
+                }
+            }
+
+            hobbit = new HOBBIT( 'Froddo', 'Baggins', 0 );
+
+            hobbit.FirstName = 'Bilbo';
+            hobbit.AddRings( 1 );
+
+            hobbit_count = HOBBIT::GetHobbitCount();
+
+            message = GetMessage( hobbit.FirstName, hobbit.LastName );
+            echo '<p>' .. message .. '</p>';
+
+            escaped_message = '<escaped></message>';
+
+            dwarf_name_array = array( 'Balin', 'Dwalin', 'Oin', 'Gloin' );
+        ?>
+
+        <p>
+            There is <% hobbit_count %> hobbit.
+        </p>
+        <p>
+            <% hobbit.FirstName .. ' ' .. hobbit.LastName %> has <% hobbit.RingCount %> ring.
+        </p>
+        <p>
+            <% message %>
+        </p>
+        <p>
+            <# escaped_message #>
+        </p>
+        <p>
+            There are <% count( dwarf_name_array ) %> dwarves :
+        </p>
+
+        <ul>
+            <? foreach ( var dwarf_name; dwarf_name_array ) { ?>
+                <li>
+                    <% dwarf_name %>
+                </li>
+            <? } ?>
+        </ul>
+    </body>
+</html>
