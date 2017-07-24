@@ -157,7 +157,7 @@ Lightweight PHP preprocessor.
 
 
 Most of the PHP syntax is kept unchanged, except that :
-* `.phx` files contain Phoenix code;
+* `.phx` files contain Phoenix code.
 * `.pht` files contain a mix of HTML and Phoenix code.
 * `$` is implicit when using class attributes and declared variables.
 * `#` is used to forbid the dollar insertion for not uppercase constants.
