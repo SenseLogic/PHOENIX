@@ -14,7 +14,7 @@ BLOG | count 5
         Email : STRING | capacity 45
         Pseudonym : STRING | capacity 45
         Password : STRING | capacity 45
-        ItIsAdministrator : BOOL | aqlname IsAdmin
+        ItIsAdministrator : BOOL
 
     ARTICLE | count 15
 
