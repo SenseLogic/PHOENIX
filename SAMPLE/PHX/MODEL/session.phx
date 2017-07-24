@@ -2,6 +2,7 @@ class SESSION
 {
     attribute
         Path = "",
+        Message = "",
         User = null,
         UserIsConnected = false,
         UserHasSubscribed = false;
@@ -14,6 +15,11 @@ class SESSION
         if ( isset( _SESSION[ 'Path' ] ) )
         {
             .Path = _SESSION[ 'Path' ];
+        }
+        
+        if ( isset( _SESSION[ 'Message' ] ) )
+        {
+            .Message = _SESSION[ 'Message' ];
         }
         
         if ( isset( _SESSION[ 'User' ] ) )
@@ -38,6 +44,7 @@ class SESSION
         )
     {
         _SESSION[ 'Path' ] = .Path;
+        _SESSION[ 'Message' ] = .Message;
         _SESSION[ 'User' ] = .User;
         _SESSION[ 'UserIsConnected' ] = .UserIsConnected;
         _SESSION[ 'UserHasSubscribed' ] = .UserHasSubscribed;

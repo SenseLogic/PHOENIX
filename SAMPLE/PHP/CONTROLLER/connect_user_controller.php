@@ -15,16 +15,17 @@ class CONNECT_USER_CONTROLLER extends CONTROLLER
 
         if ( is_null( $user ) )
         {
-            Reload( $this->Session->Path . '?message=-1' );
+            $this->Session->Message = 'Invalid pseudonym or password.';
         }
         else
         {
             $this->Session->User = $user;
             $this->Session->UserIsConnected = true;
-            $this->Session->Update();
-
-            Reload( $this->Session->Path );
         }
+
+        $this->Session->Update();
+
+        Reload( $this->Session->Path );
     }
 }
 

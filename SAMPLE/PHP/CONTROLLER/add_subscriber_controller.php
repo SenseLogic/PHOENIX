@@ -14,9 +14,10 @@ class ADD_SUBSCRIBER_CONTROLLER extends CONTROLLER
         AddSubscriber( GetPostValue( 'email' ) );
 
         $this->Session->UserHasSubscribed = true;
+        $this->Session->Message = 'Thanks for your subscription.';
         $this->Session->Update();
 
-        Reload( $this->Session->Path . '?message=1' );
+        Reload( $this->Session->Path );
     }
 }
 

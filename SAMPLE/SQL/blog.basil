@@ -32,7 +32,7 @@ BLOG | count 5
         ArticleId : ARTICLE REF
         UserId : USER REF
         Text : STRING | english 2 4 5 7
-        Date : DATE
+        Date : DATETIME
 
     SUBSCRIBER
 

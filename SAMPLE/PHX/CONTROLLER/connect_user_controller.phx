@@ -15,16 +15,17 @@ class CONNECT_USER_CONTROLLER extends CONTROLLER
         
         if ( is_null( user ) )
         {
-            Reload( .Session.Path .. '?message=-1' );
+            .Session.Message = 'Invalid pseudonym or password.';
         }
         else
         {
             .Session.User = user;
             .Session.UserIsConnected = true;
-            .Session.Update();
-            
-            Reload( .Session.Path );
         }
+        
+        .Session.Update();
+        
+        Reload( .Session.Path );
     }
 }
 

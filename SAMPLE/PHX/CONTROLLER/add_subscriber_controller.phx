@@ -14,9 +14,10 @@ class ADD_SUBSCRIBER_CONTROLLER extends CONTROLLER
         AddSubscriber( GetPostValue( 'email' ) );
         
         .Session.UserHasSubscribed = true;
+        .Session.Message = 'Thanks for your subscription.';
         .Session.Update();
 
-        Reload( .Session.Path .. '?message=1' );
+        Reload( .Session.Path );
     }
 }
 

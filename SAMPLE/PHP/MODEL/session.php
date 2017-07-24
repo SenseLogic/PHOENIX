@@ -2,6 +2,7 @@
 {
     public
         $Path = "",
+        $Message = "",
         $User = null,
         $UserIsConnected = false,
         $UserHasSubscribed = false;
@@ -14,6 +15,11 @@
         if ( isset( $_SESSION[ 'Path' ] ) )
         {
             $this->Path = $_SESSION[ 'Path' ];
+        }
+
+        if ( isset( $_SESSION[ 'Message' ] ) )
+        {
+            $this->Message = $_SESSION[ 'Message' ];
         }
 
         if ( isset( $_SESSION[ 'User' ] ) )
@@ -38,6 +44,7 @@
         )
     {
         $_SESSION[ 'Path' ] = $this->Path;
+        $_SESSION[ 'Message' ] = $this->Message;
         $_SESSION[ 'User' ] = $this->User;
         $_SESSION[ 'UserIsConnected' ] = $this->UserIsConnected;
         $_SESSION[ 'UserHasSubscribed' ] = $this->UserHasSubscribed;

@@ -8,9 +8,9 @@
     {
         $path = explode( '?', $_SERVER[ 'REQUEST_URI' ] )[ 0 ];
 
-        if ( substr( $path, -1 ) != '/' )
+        if ( $path == '' )
         {
-            $path = $path . '/';
+            $path = '/';
         }
     }
 

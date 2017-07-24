@@ -91,10 +91,15 @@
                 function()
                 {
                     $( 'select' ).material_select();
+                    <?php
+                    if ( $this->Session->Message != '' )
+                    {
+                        echo 'Materialize.toast( "' . $this->Session->Message . '", 3000 );';
 
-                    <?php if ( HasQueryValue( 'message' ) ) { ?>
-                        Materialize.toast( '<?php echo $this->GetMessage( GetQueryValue( 'message' ) ); ?>', 3000 );
-                    <?php } ?>
+                        $this->Session->Message = '';
+                        $this->Session->Update();
+                    }
+                    ?>
                 }
                 );
         </script>

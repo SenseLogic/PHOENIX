@@ -91,10 +91,15 @@
                 function() 
                 {
                     $( 'select' ).material_select();
-                    
-                    <? if ( HasQueryValue( 'message' ) ) { ?>
-                        Materialize.toast( '<% .GetMessage( GetQueryValue( 'message' ) ) %>', 3000 );
-                    <? } ?>
+                    <? 
+                    if ( .Session.Message != '' ) 
+                    {
+                        echo 'Materialize.toast( "' .. .Session.Message .. '", 3000 );';
+                        
+                        .Session.Message = '';
+                        .Session.Update();
+                    } 
+                    ?>
                 }
                 );
         </script>

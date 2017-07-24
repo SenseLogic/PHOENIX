@@ -17,7 +17,10 @@ class ADD_COMMENT_CONTROLLER extends CONTROLLER
         $this->Article = GetArticleById( $article_id );
         AddComment( $text, $article_id, $this->Session->User->Id );
 
-        Reload( $this->Session->Path . '?message=2' );
+        $this->Session->Message = 'Your comment has been added.';
+        $this->Session->Update();
+
+        Reload( $this->Session->Path );
     }
 }
 
