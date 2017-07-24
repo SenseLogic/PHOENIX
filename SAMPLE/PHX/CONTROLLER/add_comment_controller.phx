@@ -1,0 +1,26 @@
+import 'controller.php';
+import '../MODEL/article.php';
+import '../MODEL/comment.php';
+import '../MODEL/session.php';
+
+// ~~
+
+class ADD_COMMENT_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        int article_id
+        )
+    {
+        parent::constructor();
+        
+        var text = GetPostValue( 'text' );
+        .Article = GetArticleById( article_id );
+        AddComment( text, article_id, .Session.User.Id );
+
+        Reload( .Session.Path .. '?message=2' );
+    }
+}
+
+// ~~
+
+var add_comment_controller = new ADD_COMMENT_CONTROLLER( var article_id );

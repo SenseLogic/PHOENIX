@@ -1473,7 +1473,15 @@ class CODE
                                     && TokenArray[ token_index + 1 ].Text != "(" )
                                     && !token.IsConstant() ) )
                 {
-                    token.Text = "$" ~ token.Text;
+                    if ( token_index > 0
+                         && TokenArray[ token_index - 1 ].Text == "#" )
+                    {
+                        TokenArray[ token_index - 1 ].Text = "";
+                    }
+                    else
+                    {
+                        token.Text = "$" ~ token.Text;
+                    }
                 }
             }
             else if ( token.Type == TOKEN_TYPE.Operator )

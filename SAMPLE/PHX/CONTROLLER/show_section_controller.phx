@@ -1,0 +1,39 @@
+import 'controller.php';
+import '../MODEL/article.php';
+import '../MODEL/section.php';
+import '../MODEL/user.php';
+
+// ~~
+
+class SHOW_SECTION_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        int section_id
+        )
+    {
+        parent::constructor();
+        
+        .Session.Path = GetPath();
+        .Session.Update();
+        
+        .SectionArray = GetSectionArray();
+        
+        if ( section_id <= 0 )
+        {
+            section_id = .SectionArray[ 0 ].Id;
+        }
+
+        .Section = GetSectionById( section_id );
+        .ArticleArray = GetArticleArrayBySectionId( section_id ); 
+                           
+        .Section.ImageIndex = section_id % 20;
+        InflateArticleArray( .ArticleArray );
+
+        import '../VIEW/show_section_view.php';
+        import '../VIEW/show_page_view.php';
+    }
+}
+
+// ~~
+
+var show_section_controller = new SHOW_SECTION_CONTROLLER( var section_id );

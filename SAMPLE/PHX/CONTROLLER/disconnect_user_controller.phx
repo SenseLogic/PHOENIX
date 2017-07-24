@@ -1,0 +1,22 @@
+import 'controller.php';
+import '../MODEL/session.php';
+
+// ~~
+
+class DISCONNECT_USER_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        )
+    {
+        parent::constructor();
+        
+        .Session.UserIsConnected = false;
+        .Session.Update();
+
+        Reload( .Session.Path );
+    }
+}
+
+// ~~
+
+var disconnect_user_controller = new DISCONNECT_USER_CONTROLLER();

@@ -1,0 +1,41 @@
+<? ob_start(); ?>
+    <h2>
+        <a href="/show_section/<% .Section.Id %>">
+            <% .Section.Name %>
+        </a>
+    </h2>
+    <h4>
+        <a href="/show_article/<% .Article.Id %>">
+            <% .Article.Title %>
+        </a>
+    </h4>
+    <h5>
+        <% .Article.User.Pseudonym %> - <% .Article.Date %>
+    </h5>
+    <img class="responsive-img" src="/static/img/<% .Article.ImageIndex %>.jpg"/>
+    <p>
+        <% .Article.Text %>
+    </p>
+    <hr/>
+    <? if ( .Session.UserIsConnected ) { ?>
+        <h4>
+            Comment
+        </h4>
+        <form action="/add_comment/<% .Article.Id %>/" method="post">
+            <label for="text">
+                Text :
+            </label>
+            <textarea id="text" name="text"/></textarea>
+            <input type="submit" value="Send">
+        </form>
+    <? } ?>
+    <br/>
+    <? foreach ( var comment; .CommentArray ) { ?>
+        <h5>
+            <% comment.User.Pseudonym %> - <% comment.Date %>
+        </h5>
+        <p>
+            <% comment.Text %>
+        </p>
+    <? } ?>
+<? .MainContent = ob_get_clean(); ?>

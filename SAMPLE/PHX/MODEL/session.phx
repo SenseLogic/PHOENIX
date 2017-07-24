@@ -1,0 +1,45 @@
+class SESSION
+{
+    attribute
+        Path = "",
+        User = null,
+        UserIsConnected = false,
+        UserHasSubscribed = false;
+        
+    // ~~
+        
+    method constructor(
+        )
+    {
+        if ( isset( _SESSION[ 'Path' ] ) )
+        {
+            .Path = _SESSION[ 'Path' ];
+        }
+        
+        if ( isset( _SESSION[ 'User' ] ) )
+        {
+            .User = _SESSION[ 'User' ];
+        }
+        
+        if ( isset( _SESSION[ 'UserIsConnected' ] ) )
+        {
+            .UserIsConnected = _SESSION[ 'UserIsConnected' ];
+        }
+        
+        if ( isset( _SESSION[ 'UserHasSubscribed' ] ) )
+        {
+            .UserHasSubscribed = _SESSION[ 'UserHasSubscribed' ];
+        }
+    }
+    
+    // ~~
+
+    method Update(
+        )
+    {
+        _SESSION[ 'Path' ] = .Path;
+        _SESSION[ 'User' ] = .User;
+        _SESSION[ 'UserIsConnected' ] = .UserIsConnected;
+        _SESSION[ 'UserHasSubscribed' ] = .UserHasSubscribed;
+    }
+}

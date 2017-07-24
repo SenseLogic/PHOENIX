@@ -1,0 +1,33 @@
+import 'controller.php';
+import '../MODEL/session.php';
+import '../MODEL/user.php';
+
+// ~~
+
+class CONNECT_USER_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        )
+    {
+        parent::constructor();
+        
+        var user= GetUserByPseudonymAndPassword( GetPostValue( 'pseudonym' ), GetPostValue( 'password' ) );
+        
+        if ( is_null( user ) )
+        {
+            Reload( .Session.Path .. '?message=-1' );
+        }
+        else
+        {
+            .Session.User = user;
+            .Session.UserIsConnected = true;
+            .Session.Update();
+            
+            Reload( .Session.Path );
+        }
+    }
+}
+
+// ~~
+
+var connect_user_controller = new CONNECT_USER_CONTROLLER();

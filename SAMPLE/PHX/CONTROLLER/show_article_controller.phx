@@ -1,0 +1,37 @@
+import 'controller.php';
+import '../MODEL/article.php';
+import '../MODEL/comment.php';
+import '../MODEL/section.php';
+import '../MODEL/session.php';
+import '../MODEL/user.php';
+
+// ~~
+
+class SHOW_ARTICLE_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        int article_id
+        )
+    {
+        parent::constructor();
+        
+        .Session.Path = GetPath();
+        .Session.Update();
+        
+        .SectionArray = GetSectionArray();
+        .Article = GetArticleById( article_id );
+        .Section = GetSectionById( .Article.SectionId );
+        .CommentArray = GetCommentArrayByArticleId( article_id );
+        
+        .Article.ImageIndex = .Article.Id % 20;
+        InflateArticle( .Article );
+        InflateCommentArray( .CommentArray );
+
+        import '../VIEW/show_article_view.php';
+        import '../VIEW/show_page_view.php';
+    }
+}
+
+// ~~
+
+var show_article_controller = new SHOW_ARTICLE_CONTROLLER( var article_id );
