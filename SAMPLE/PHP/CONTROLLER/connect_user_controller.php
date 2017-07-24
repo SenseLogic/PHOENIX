@@ -23,7 +23,7 @@ class CONNECT_USER_CONTROLLER extends CONTROLLER
             $this->Session->UserIsConnected = true;
         }
 
-        $this->Session->Update();
+        $this->Session->Store();
 
         Reload( $this->Session->Path );
     }

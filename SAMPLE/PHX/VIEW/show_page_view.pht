@@ -97,7 +97,7 @@
                         echo 'Materialize.toast( "' .. .Session.Message .. '", 3000 );';
                         
                         .Session.Message = '';
-                        .Session.Update();
+                        .Session.Store();
                     } 
                     ?>
                 }

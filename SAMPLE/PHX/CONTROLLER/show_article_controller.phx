@@ -16,7 +16,7 @@ class SHOW_ARTICLE_CONTROLLER extends CONTROLLER
         parent::constructor();
         
         .Session.Path = GetPath();
-        .Session.Update();
+        .Session.Store();
         
         .SectionArray = GetSectionArray();
         .Article = GetArticleById( article_id );

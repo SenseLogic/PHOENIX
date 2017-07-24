@@ -11,7 +11,7 @@ class DISCONNECT_USER_CONTROLLER extends CONTROLLER
         parent::__construct();
 
         $this->Session->UserIsConnected = false;
-        $this->Session->Update();
+        $this->Session->Store();
 
         Reload( $this->Session->Path );
     }

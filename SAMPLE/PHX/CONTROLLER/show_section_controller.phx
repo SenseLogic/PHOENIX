@@ -14,7 +14,7 @@ class SHOW_SECTION_CONTROLLER extends CONTROLLER
         parent::constructor();
         
         .Session.Path = GetPath();
-        .Session.Update();
+        .Session.Store();
         
         .SectionArray = GetSectionArray();
         

@@ -23,7 +23,7 @@ class CONNECT_USER_CONTROLLER extends CONTROLLER
             .Session.UserIsConnected = true;
         }
         
-        .Session.Update();
+        .Session.Store();
         
         Reload( .Session.Path );
     }

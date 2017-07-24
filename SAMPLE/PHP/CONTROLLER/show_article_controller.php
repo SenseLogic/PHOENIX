@@ -16,7 +16,7 @@ class SHOW_ARTICLE_CONTROLLER extends CONTROLLER
         parent::__construct();
 
         $this->Session->Path = GetPath();
-        $this->Session->Update();
+        $this->Session->Store();
 
         $this->SectionArray = GetSectionArray();
         $this->Article = GetArticleById( $article_id );

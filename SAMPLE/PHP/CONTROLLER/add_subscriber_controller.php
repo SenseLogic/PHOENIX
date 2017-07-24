@@ -15,7 +15,7 @@ class ADD_SUBSCRIBER_CONTROLLER extends CONTROLLER
 
         $this->Session->UserHasSubscribed = true;
         $this->Session->Message = 'Thanks for your subscription.';
-        $this->Session->Update();
+        $this->Session->Store();
 
         Reload( $this->Session->Path );
     }

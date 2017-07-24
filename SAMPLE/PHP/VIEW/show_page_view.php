@@ -97,7 +97,7 @@
                         echo 'Materialize.toast( "' . $this->Session->Message . '", 3000 );';
 
                         $this->Session->Message = '';
-                        $this->Session->Update();
+                        $this->Session->Store();
                     }
                     ?>
                 }

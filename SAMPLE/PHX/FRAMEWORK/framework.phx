@@ -74,6 +74,33 @@ function GetPostValue(
 
 // ~~
 
+function SetSessionValue(
+    name,
+    value
+    )
+{
+    _SESSION[ name ] = value;
+}
+
+// ~~
+
+function GetSessionValue(
+    name,
+    default_value
+    )
+{
+    if ( isset( _SESSION[ name ] ) )
+    {
+        return _SESSION[ name ];
+    }
+    else
+    {
+        return default_value;
+    }
+}
+
+// ~~
+
 function Reload(
     string path
     )

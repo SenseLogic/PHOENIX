@@ -1,52 +1,24 @@
 class SESSION
 {
-    attribute
-        Path = "",
-        Message = "",
-        User = null,
-        UserIsConnected = false,
-        UserHasSubscribed = false;
-        
-    // ~~
-        
     method constructor(
         )
     {
-        if ( isset( _SESSION[ 'Path' ] ) )
-        {
-            .Path = _SESSION[ 'Path' ];
-        }
-        
-        if ( isset( _SESSION[ 'Message' ] ) )
-        {
-            .Message = _SESSION[ 'Message' ];
-        }
-        
-        if ( isset( _SESSION[ 'User' ] ) )
-        {
-            .User = _SESSION[ 'User' ];
-        }
-        
-        if ( isset( _SESSION[ 'UserIsConnected' ] ) )
-        {
-            .UserIsConnected = _SESSION[ 'UserIsConnected' ];
-        }
-        
-        if ( isset( _SESSION[ 'UserHasSubscribed' ] ) )
-        {
-            .UserHasSubscribed = _SESSION[ 'UserHasSubscribed' ];
-        }
+        .Path = GetSessionValue( 'Path', '' );
+        .Message = GetSessionValue( 'Message', '' );
+        .User = GetSessionValue( 'User', null );
+        .UserIsConnected = GetSessionValue( 'UserIsConnected', false );
+        .UserHasSubscribed = GetSessionValue( 'UserHasSubscribed', false );
     }
     
     // ~~
 
-    method Update(
+    method Store(
         )
     {
-        _SESSION[ 'Path' ] = .Path;
-        _SESSION[ 'Message' ] = .Message;
-        _SESSION[ 'User' ] = .User;
-        _SESSION[ 'UserIsConnected' ] = .UserIsConnected;
-        _SESSION[ 'UserHasSubscribed' ] = .UserHasSubscribed;
+        SetSessionValue( 'Path', .Path );
+        SetSessionValue( 'Message', .Message );
+        SetSessionValue( 'User', .User );
+        SetSessionValue( 'UserIsConnected', .UserIsConnected );
+        SetSessionValue( 'UserHasSubscribed', .UserHasSubscribed );
     }
 }

@@ -18,7 +18,7 @@ class ADD_COMMENT_CONTROLLER extends CONTROLLER
         AddComment( text, article_id, .Session.User.Id );
 
         .Session.Message = 'Your comment has been added.';
-        .Session.Update();
+        .Session.Store();
         
         Reload( .Session.Path );
     }
