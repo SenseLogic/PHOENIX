@@ -1,6 +1,6 @@
 # Phoenix
 
-Lightweight PHP.
+Lightweight PHP-like language preprocessor.
 
 ## Features
 
