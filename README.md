@@ -164,13 +164,13 @@ Most of the PHP syntax is kept unchanged, except that :
 * `this` is implicit when accessing class attributes and methods.
 * `$` is implicit when using class attributes and declared variables.
 * `#` prevents the dollar insertion for camel case constants.
-* `foreach ( $value; $array )` is the foreach loop syntax. 
 * `var` declares a local variable at first use.
 * `local` declares local variables.
 * `attribute` declares class attributes.
 * `method` declares a class method.
 * `constructor` declares a class constructor.
 * `destructor` declares a class destructor.
+* `foreach ( $value; $array )` is the foreach loop syntax. 
 * `include` includes a file with a relative path.
 * `include?` includes a file with a relative path, if it exists.
 * `import` includes a file once with a relative path.
