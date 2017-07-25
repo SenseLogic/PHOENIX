@@ -1,6 +1,6 @@
 # Phoenix
 
-Lightweight language over PHP.
+Lightweight PHP.
 
 ## Features
 
