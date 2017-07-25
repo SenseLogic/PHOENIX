@@ -1,6 +1,6 @@
 # Phoenix
 
-Lightweight PHP preprocessor.
+Lightweight language that compiles to PHP.
 
 ## Features
 
@@ -230,7 +230,7 @@ Converts the Phoenix files of the input folder into matching PHP files in the ou
 
 ## Version
 
-0.1
+1.0
 
 ## Author
 

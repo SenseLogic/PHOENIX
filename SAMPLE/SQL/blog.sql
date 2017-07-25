@@ -39,7 +39,7 @@ create table if not exists `BLOG`.`ARTICLE`(
   `Title` TEXT NULL,
   `Text` TEXT NULL,
   `Image` VARCHAR( 45 ) NULL,
-  `Date` DATETIME NULL,
+  `Date` DATE NULL,
   primary key( `Id` ),
   index `fk_article_section_1_idx`( `SectionId` ASC ),
   index `fk_article_user_2_idx`( `UserId` ASC ),

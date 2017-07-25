@@ -24,7 +24,7 @@ BLOG | count 5
         Title : STRING
         Text : STRING
         Image : STRING | capacity 45
-        Date : DATETIME
+        Date : DATE
 
     COMMENT | count 30
 
