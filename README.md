@@ -163,7 +163,7 @@ Most of the PHP syntax is kept unchanged, except that :
 * `.` is used to access class members.
 * `this` is implicit when accessing class attributes and methods.
 * `$` is implicit when using class attributes and declared variables.
-* `#` prevents the dollar insertion for camel case constants.
+* `#` prevents the dollar insertion.
 * `var` declares a local variable at first use.
 * `local` declares local variables.
 * `attribute` declares class attributes.
