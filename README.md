@@ -1,6 +1,6 @@
 # Phoenix
 
-Lightweight PHP syntax preprocessor.
+Lightweight syntax for PHP.
 
 ## Features
 
