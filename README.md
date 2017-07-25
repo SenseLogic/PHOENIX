@@ -159,11 +159,11 @@ Lightweight language over PHP.
 Most of the PHP syntax is kept unchanged, except that :
 * `.phx` files contain Phoenix code.
 * `.pht` files contain a mix of HTML and Phoenix code.
-* `$` is implicit when using class attributes and declared variables.
-* `#` is used to forbid the dollar insertion for not uppercase constants.
-* `this` is implicit when accessing class attributes and methods.
 * `..` is used to concatenate strings.
 * `.` is used to access class members.
+* `this` is implicit when accessing class attributes and methods.
+* `$` is implicit when using class attributes and declared variables.
+* `#` prevents the dollar insertion for camel case constants.
 * `foreach ( $value; $array )` is the foreach loop syntax. 
 * `var` declares a local variable at first use.
 * `local` declares local variables.
