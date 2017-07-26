@@ -84,7 +84,7 @@ replace into `BLOG`.`USER`
     (
         "2",
         "maureene.sherow@live.com",
-        "faizalhelpline",
+        "faizalhesine",
         "vinar.w5iKx",
         "1"
     );

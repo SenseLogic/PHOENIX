@@ -3,11 +3,11 @@
     function __construct(
         )
     {
-        $this->Path = GetSessionValue( 'Path', '' );
-        $this->Message = GetSessionValue( 'Message', '' );
-        $this->User = GetSessionValue( 'User', null );
-        $this->UserIsConnected = GetSessionValue( 'UserIsConnected', false );
-        $this->UserHasSubscribed = GetSessionValue( 'UserHasSubscribed', false );
+        $this->Path = FindSessionValue( 'Path', '' );
+        $this->Message = FindSessionValue( 'Message', '' );
+        $this->User = FindSessionValue( 'User', null );
+        $this->UserIsConnected = FindSessionValue( 'UserIsConnected', false );
+        $this->UserHasSubscribed = FindSessionValue( 'UserHasSubscribed', false );
     }
 
     // ~~

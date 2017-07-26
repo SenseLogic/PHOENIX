@@ -74,6 +74,24 @@ function GetPostValue(
 
 // ~~
 
+function HasSessionValue(
+    string $name
+    )
+{
+    return isset( $_SESSION[ $name ] );
+}
+
+// ~~
+
+function GetSessionValue(
+    string $name
+    )
+{
+    return $_SESSION[ $name ];
+}
+
+// ~~
+
 function SetSessionValue(
     $name,
     $value
@@ -84,8 +102,20 @@ function SetSessionValue(
 
 // ~~
 
-function GetSessionValue(
-    $name,
+function IsSessionValue(
+    string $name,
+    $value
+    )
+{
+    return
+        isset( $_SESSION[ $name ] )
+        && $_SESSION[ $name ] == $value;
+}
+
+// ~~
+
+function FindSessionValue(
+    string $name,
     $default_value
     )
 {
@@ -101,11 +131,41 @@ function GetSessionValue(
 
 // ~~
 
+function HasCookieValue(
+    string $name
+    )
+{
+    return isset( $_COOKIE[ $name ] );
+}
+
+// ~~
+
+function GetCookieValue(
+    string $name
+    )
+{
+    return $_COOKIE[ $name ];
+}
+
+// ~~
+
 function Reload(
     string $path
     )
 {
     header( 'Location: ' . $path );
+}
+
+// ~~
+
+function IsId(
+    $value
+    )
+{
+    return
+        is_numeric( $value )
+        && $value == ( int ) $value
+        && $value > 0;
 }
 
 // ~~

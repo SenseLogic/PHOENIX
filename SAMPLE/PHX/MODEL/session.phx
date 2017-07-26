@@ -3,11 +3,11 @@ class SESSION
     method constructor(
         )
     {
-        .Path = GetSessionValue( 'Path', '' );
-        .Message = GetSessionValue( 'Message', '' );
-        .User = GetSessionValue( 'User', null );
-        .UserIsConnected = GetSessionValue( 'UserIsConnected', false );
-        .UserHasSubscribed = GetSessionValue( 'UserHasSubscribed', false );
+        .Path = FindSessionValue( 'Path', '' );
+        .Message = FindSessionValue( 'Message', '' );
+        .User = FindSessionValue( 'User', null );
+        .UserIsConnected = FindSessionValue( 'UserIsConnected', false );
+        .UserHasSubscribed = FindSessionValue( 'UserHasSubscribed', false );
     }
     
     // ~~

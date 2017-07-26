@@ -11,19 +11,23 @@ function Route(
     var controller_name = path_value_array[ 0 ];
 
     if ( controller_name == 'show_section' 
-         && path_value_count == 2 )
+         && path_value_count == 2
+         && IsId( path_value_array[ 1 ] ) )
     {
         var section_id = path_value_array[ 1 ];
         import 'CONTROLLER/show_section_controller.php';
     }
     else if ( controller_name == 'show_article' 
-              && path_value_count == 2 )
+              && path_value_count == 2
+              && IsId( path_value_array[ 1 ] ) )
     {
         var article_id = path_value_array[ 1 ];
         import 'CONTROLLER/show_article_controller.php';
     }
     else if ( controller_name == 'add_comment' 
-              && path_value_count == 2 )
+              && path_value_count == 2
+              && IsId( path_value_array[ 1 ] )
+              && IsSessionValue( "UserIsConnected", true ) )
     {
         var article_id = path_value_array[ 1 ];
         import 'CONTROLLER/add_comment_controller.php';
