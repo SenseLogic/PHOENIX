@@ -1,3 +1,3 @@
 #!/bin/sh
 set -x
-dmd -m64 phpenix.d
+dmd -m64 phoenix.d
