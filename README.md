@@ -155,7 +155,6 @@ Lightweight language that compiles to PHP.
 
 ## Syntax
 
-
 Most of the PHP syntax is kept unchanged, except that :
 * `.phx` files contain Phoenix code.
 * `.pht` files contain a mix of HTML and Phoenix code.
