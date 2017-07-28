@@ -34,7 +34,7 @@
                 <h1>
                     Blog
                 </h1>
-                <% .MainContent %>
+                <# .MainContent #>
             </div>
             <div class="col m3">
                 <? if ( .Session.UserIsConnected ) { ?>

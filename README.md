@@ -176,8 +176,8 @@ Most of the PHP syntax is kept unchanged, except that :
 * `import` includes a file once with a relative path.
 * `import?` includes a file once with a relative path, if it exists.
 * `<?` `?>` wraps Phoenix statements.
-* `<%` `%>` wraps an expression to output.
-* `<#` `#>` wraps an escaped expression to output.
+* `<%` `%>` wraps an escaped expression to output.
+* `<#` `#>` wraps an unescaped expression to output.
 
 ## Limitations
 

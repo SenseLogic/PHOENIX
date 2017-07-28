@@ -1535,6 +1535,10 @@ class CODE
                 }
                 else if ( token.Text == "<%" )
                 {
+                    token.Text = "<?php echo htmlspecialchars(";
+                }
+                else if ( token.Text == "<#" )
+                {
                     token.Text = "<?php echo";
 
                     if ( token_index + 1 < TokenArray.length
@@ -1543,22 +1547,18 @@ class CODE
                         TokenArray[ token_index + 1 ].PriorSpaceCount = 1;
                     }
                 }
-                else if ( token.Text == "<#" )
-                {
-                    token.Text = "<?php echo htmlspecialchars(";
-                }
 
             }
             else if ( token.Type == TOKEN_TYPE.EndDeclaration )
             {
                 if ( token.Text == "%>" )
                 {
-                    token.Text = "; ?>";
-                    token.PriorSpaceCount = 0;
+                    token.Text = "); ?>";
                 }
                 else if ( token.Text == "#>" )
                 {
-                    token.Text = "); ?>";
+                    token.Text = "; ?>";
+                    token.PriorSpaceCount = 0;
                 }
             }
         }

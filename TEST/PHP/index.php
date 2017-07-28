@@ -108,31 +108,31 @@
             $message = GetMessage( $hobbit->FirstName, $hobbit->LastName );
             echo '<p>' . $message . '</p>';
 
-            $escaped_message = '<escaped></message>';
+            $bold = '<b>bold</b>';
 
             $dwarf_name_array = array( 'Balin', 'Dwalin', 'Oin', 'Gloin' );
         ?>
 
         <p>
-            There is <?php echo $hobbit_count; ?> hobbit.
+            There is <?php echo htmlspecialchars( $hobbit_count ); ?> hobbit.
         </p>
         <p>
-            <?php echo $hobbit->FirstName . ' ' . $hobbit->LastName; ?> has <?php echo $hobbit->RingCount; ?> ring.
+            <?php echo htmlspecialchars( $hobbit->FirstName . ' ' . $hobbit->LastName ); ?> has <?php echo htmlspecialchars( $hobbit->RingCount ); ?> ring.
         </p>
         <p>
-            <?php echo $message; ?>
+            <?php echo htmlspecialchars( $message ); ?>
         </p>
         <p>
-            <?php echo htmlspecialchars( $escaped_message ); ?>
+            <?php echo $bold; ?>
         </p>
         <p>
-            There are <?php echo count( $dwarf_name_array ); ?> dwarves :
+            There are <?php echo htmlspecialchars( count( $dwarf_name_array ) ); ?> dwarves :
         </p>
 
         <ul>
             <?php foreach ( $dwarf_name_array as  $dwarf_name ) { ?>
                 <li>
-                    <?php echo $dwarf_name; ?>
+                    <?php echo htmlspecialchars( $dwarf_name ); ?>
                 </li>
             <?php } ?>
         </ul>

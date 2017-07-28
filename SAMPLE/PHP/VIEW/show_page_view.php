@@ -21,8 +21,8 @@
                     <?php } ?>
                     <?php foreach ( $this->SectionArray as  $section ) { ?>
                         <li>
-                            <a href="/show_section/<?php echo $section->Id; ?>">
-                                <?php echo $section->Name; ?>
+                            <a href="/show_section/<?php echo htmlspecialchars( $section->Id ); ?>">
+                                <?php echo htmlspecialchars( $section->Name ); ?>
                             </a>
                         </li>
                     <?php } ?>
@@ -41,7 +41,7 @@
                     <div class="card">
                         <div class="card-content">
                             <form action="/disconnect_user" method="post">
-                                <input id="path" name="path" type="hidden" value="<?php echo GetPath(); ?>"/>
+                                <input id="path" name="path" type="hidden" value="<?php echo htmlspecialchars( GetPath() ); ?>"/>
                                 <input class="btn" type="submit" value="Log Out"/>
                             </form>
                         </div>
