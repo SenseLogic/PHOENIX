@@ -22,7 +22,7 @@ Lightweight language that compiles to PHP.
                 hobbit,
                 hobbit_count,
                 message,
-                escaped_message,
+                bold,
                 dwarf_name_array;
                 
             import 'imported.php';
@@ -121,7 +121,7 @@ Lightweight language that compiles to PHP.
             message = GetMessage( hobbit.FirstName, hobbit.LastName );
             echo '<p>' .. message .. '</p>';
 
-            escaped_message = '<escaped></message>';
+            bold = '<b>bold</b>';
 
             dwarf_name_array = array( 'Balin', 'Dwalin', 'Oin', 'Gloin' );
         ?>
@@ -136,7 +136,7 @@ Lightweight language that compiles to PHP.
             <% message %>
         </p>
         <p>
-            <# escaped_message #>
+            <# bold #>
         </p>
         <p>
             There are <% count( dwarf_name_array ) %> dwarves :
