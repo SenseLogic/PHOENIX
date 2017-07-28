@@ -301,7 +301,7 @@ class CODE
     // -- ATTRIBUTES
 
     bool
-        ItIsWrapped;
+        ItIsTemplate;
     long
         LineCharacterIndex,
         CharacterIndex,
@@ -327,10 +327,10 @@ class CODE
     // -- CONSTRUCTORS
 
     this(
-        bool it_is_wrapped
+        bool it_is_template
         )
     {
-        ItIsWrapped = it_is_wrapped;
+        ItIsTemplate = it_is_template;
         LineCharacterIndex = -1;
         CharacterIndex = -1;
         LineIndex = -1;
@@ -565,15 +565,15 @@ class CODE
         TokenArray = [];
         TokenIsSplit = false;
 
-        if ( ItIsWrapped )
-        {
-            BaseContext = new CONTEXT( LANGUAGE_TYPE.Phoenix );
-            PhoenixContext = null;
-        }
-        else
+        if ( ItIsTemplate )
         {
             BaseContext = new CONTEXT( LANGUAGE_TYPE.Html );
             PhoenixContext = new CONTEXT( LANGUAGE_TYPE.Phoenix );
+        }
+        else
+        {
+            BaseContext = new CONTEXT( LANGUAGE_TYPE.Phoenix );
+            PhoenixContext = null;
         }
 
         Context = BaseContext;
@@ -1590,13 +1590,13 @@ class CODE
         string
             file_text;
 
-        if ( ItIsWrapped )
+        if ( ItIsTemplate )
         {
-            file_text = "<?php ";
+            file_text = "";
         }
         else
         {
-            file_text = "";
+            file_text = "<?php ";
         }
 
         line_index = 0;
@@ -1630,7 +1630,7 @@ class FILE
         OutputPath;
     bool
         ItExists,
-        ItIsWrapped;
+        ItIsTemplate;
 
     // ~~
 
@@ -1642,7 +1642,7 @@ class FILE
         InputPath = input_file_path;
         OutputPath = output_file_path;
         ItExists = true;
-        ItIsWrapped = input_file_path.endsWith( ".phx" );
+        ItIsTemplate = input_file_path.endsWith( ".pht" );
     }
     
     // ~~
@@ -1734,7 +1734,7 @@ class FILE
         {
             input_file_text = ReadInputFile();
 
-            code = new CODE( InputPath.endsWith( ".phx" ) );
+            code = new CODE( ItIsTemplate );
             code.Tokenize( input_file_text );
             code.Process();
             
