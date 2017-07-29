@@ -40,7 +40,7 @@ function AddSubscriber(
     string $email
     )
 {
-     $statement = GetStatement( 'insert into SUBSCRIBER ( Email ) values ( ?, ? )' );
+     $statement = GetStatement( 'insert into SUBSCRIBER ( Email ) values ( ? )' );
     $statement->bindParam( 1, $email, PDO::PARAM_STR );
     $statement->execute();
 

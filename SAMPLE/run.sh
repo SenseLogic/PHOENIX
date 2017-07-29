@@ -1,3 +1,3 @@
 #!/bin/sh
 set -x
-../phoenix --create --watch PHX/ PHP/
+php -S localhost:8000 -t PHP/
