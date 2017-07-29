@@ -1,1 +1,2 @@
-SAMPLE/PHP/static/* linguist-vendored
+SAMPLE/PHP/static/css/* linguist-vendored
+SAMPLE/PHP/static/js/* linguist-vendored
