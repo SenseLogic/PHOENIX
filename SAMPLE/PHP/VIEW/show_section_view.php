@@ -20,4 +20,3 @@
         </h6>
     <?php } ?>
 <?php $this->MainContent = ob_get_clean(); ?>
-
