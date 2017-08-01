@@ -207,7 +207,6 @@ function GetStatement(
     )
 {
     return GetConnection()->prepare( $command );
-
 }
 
 // ~~
