@@ -105,15 +105,14 @@ class TOKEN
     this(
         string text,
         LANGUAGE_TYPE language_type,
-        TOKEN_TYPE token_type,
-        CODE code
+        TOKEN_TYPE token_type
         )
     {
         Text = text;
         LanguageType = language_type;
         Type = token_type;
-        LineIndex = code.LineIndex;
-        ColumnIndex = code.TokenCharacterIndex - code.LineCharacterIndex;
+        LineIndex = 0;
+        ColumnIndex = 0;
         PriorSpaceCount = 0;
     }
     
@@ -461,7 +460,10 @@ class CODE
 
     void AddToken()
     {
-        Token = new TOKEN( "", Context.LanguageType, Context.TokenType, this );
+        Token = new TOKEN( "", Context.LanguageType, Context.TokenType );
+        Token.LineIndex = LineIndex;
+        Token.ColumnIndex = TokenCharacterIndex - LineCharacterIndex;
+        
         TokenArray ~= Token;
         TokenIsSplit = false;
     }
