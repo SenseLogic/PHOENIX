@@ -274,7 +274,7 @@ class CONTEXT
 class SCOPE
 {
     bool[ string ]
-        ItIsVariableMap;
+        IsVariableMap;
     long
         BlockLevel;
 
@@ -282,14 +282,14 @@ class SCOPE
         string variable_name
         )
     {
-        ItIsVariableMap[ variable_name ] = true;
+        IsVariableMap[ variable_name ] = true;
     }
 
     bool HasVariable(
         string variable_name
         )
     {
-        return ( variable_name in ItIsVariableMap ) !is null;
+        return ( variable_name in IsVariableMap ) !is null;
     }
 }
 
@@ -300,7 +300,7 @@ class CODE
     // -- ATTRIBUTES
 
     bool
-        ItIsTemplate;
+        IsTemplate;
     long
         LineCharacterIndex,
         CharacterIndex,
@@ -329,7 +329,7 @@ class CODE
         bool it_is_template
         )
     {
-        ItIsTemplate = it_is_template;
+        IsTemplate = it_is_template;
         LineCharacterIndex = -1;
         CharacterIndex = -1;
         LineIndex = -1;
@@ -567,7 +567,7 @@ class CODE
         TokenArray = [];
         TokenIsSplit = false;
 
-        if ( ItIsTemplate )
+        if ( IsTemplate )
         {
             BaseContext = new CONTEXT( LANGUAGE_TYPE.Html );
             PhoenixContext = new CONTEXT( LANGUAGE_TYPE.Phoenix );
@@ -1592,7 +1592,7 @@ class CODE
         string
             file_text;
 
-        if ( ItIsTemplate )
+        if ( IsTemplate )
         {
             file_text = "";
         }
@@ -1632,7 +1632,7 @@ class FILE
         OutputPath;
     bool
         ItExists,
-        ItIsTemplate;
+        IsTemplate;
 
     // ~~
 
@@ -1644,7 +1644,7 @@ class FILE
         InputPath = input_file_path;
         OutputPath = output_file_path;
         ItExists = true;
-        ItIsTemplate = input_file_path.endsWith( ".pht" );
+        IsTemplate = input_file_path.endsWith( ".pht" );
     }
     
     // ~~
@@ -1736,7 +1736,7 @@ class FILE
         {
             input_file_text = ReadInputFile();
 
-            code = new CODE( ItIsTemplate );
+            code = new CODE( IsTemplate );
             code.Tokenize( input_file_text );
             code.Process();
             
