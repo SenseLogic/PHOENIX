@@ -1631,7 +1631,7 @@ class FILE
         InputPath,
         OutputPath;
     bool
-        ItExists,
+        Exists,
         IsTemplate;
 
     // ~~
@@ -1643,7 +1643,7 @@ class FILE
     {
         InputPath = input_file_path;
         OutputPath = output_file_path;
-        ItExists = true;
+        Exists = true;
         IsTemplate = input_file_path.endsWith( ".pht" );
     }
     
@@ -1729,7 +1729,7 @@ class FILE
         CODE
             code;
             
-        if ( ItExists
+        if ( Exists
              && ( !OutputPath.exists()
                   || !modification_time_is_used
                   || InputPath.timeLastModified() > OutputPath.timeLastModified() ) )
@@ -1813,7 +1813,7 @@ void FindFiles(
 
     foreach ( ref old_file; FileMap )
     {
-        old_file.ItExists = false;
+        old_file.Exists = false;
     }
 
     foreach ( input_folder_entry; dirEntries( input_folder_path, "*.ph?", SpanMode.depth ) )
@@ -1839,7 +1839,7 @@ void FindFiles(
                 }
                 else
                 {
-                    file.ItExists = true;
+                    file.Exists = true;
                 }
             }
         }
