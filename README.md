@@ -1,3 +1,5 @@
+![](https://github.com/senselogic/PHOENIX/blob/master/LOGO/phoenix.png)
+
 # Phoenix
 
 Lightweight language that compiles to PHP.
