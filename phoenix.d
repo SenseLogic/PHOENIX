@@ -99,9 +99,9 @@ class TOKEN
         LineIndex,
         ColumnIndex,
         PriorSpaceCount;
-        
+
     // -- CONSTRUCTORS
-    
+
     this(
         string text,
         LANGUAGE_TYPE language_type,
@@ -115,13 +115,13 @@ class TOKEN
         ColumnIndex = 0;
         PriorSpaceCount = 0;
     }
-    
+
     // -- OPERATIONS
 
     bool IsReservedKeyword(
         )
     {
-        return 
+        return
             LanguageType == LANGUAGE_TYPE.Phoenix
             && Type == TOKEN_TYPE.Identifier
             && ( Text == "abstract"
@@ -220,11 +220,11 @@ class TOKEN
     }
 
     // ~~
-    
+
     bool IsAttributePrefixKeyword(
         )
     {
-        return 
+        return
             LanguageType == LANGUAGE_TYPE.Phoenix
             && Type == TOKEN_TYPE.Identifier
             && ( Text == "const"
@@ -233,9 +233,9 @@ class TOKEN
                  || Text == "public"
                  || Text == "static" );
     }
-    
+
     // ~~
-    
+
     void SetMinimumPriorSpaceCount(
         long minimum_prior_space_count
         )
@@ -463,7 +463,7 @@ class CODE
         Token = new TOKEN( "", Context.LanguageType, Context.TokenType );
         Token.LineIndex = LineIndex;
         Token.ColumnIndex = TokenCharacterIndex - LineCharacterIndex;
-        
+
         TokenArray ~= Token;
         TokenIsSplit = false;
     }
@@ -627,8 +627,8 @@ class CODE
                 TokenIsSplit = true;
             }
             else if ( character == '<'
-                      && ( character_2 == '?' 
-                           || character_2 == '%' 
+                      && ( character_2 == '?'
+                           || character_2 == '%'
                            || character_2 == '#' )
                       && Context.LanguageType != LANGUAGE_TYPE.Phoenix )
             {
@@ -1112,7 +1112,7 @@ class CODE
     }
 
     // ~~
-    
+
     void ProcessLocalVariables(
         ref long token_index
         )
@@ -1171,14 +1171,14 @@ class CODE
             if ( token.Type == TOKEN_TYPE.Identifier )
             {
                 Scope.AddVariable( token.Text );
-                
+
                 token.Text = "$" ~ token.Text;
             }
             else if ( token.Text == ";" )
             {
                 break;
             }
-            
+
             ++token_index;
         }
     }
@@ -1250,7 +1250,7 @@ class CODE
             it_is_value;
         TOKEN
             token;
-        
+
         Scope = new SCOPE;
         ScopeArray ~= Scope;
 
@@ -1269,7 +1269,7 @@ class CODE
                       || TokenArray[ token_index + 1 ].Text == ")" ) )
             {
                 Scope.AddVariable( token.Text );
-                
+
                 token.Text = "$" ~ token.Text;
             }
             else if ( token.Text == "=" )
@@ -1308,9 +1308,9 @@ class CODE
             token;
 
         ++token_index;
-        
+
         first_token_index = token_index;
-        
+
         if ( token_index < TokenArray.length
              && TokenArray[ token_index ].Text == "(" )
         {
@@ -1318,11 +1318,11 @@ class CODE
             last_token_index = -1;
 
             parenthesis_level = 0;
-                    
+
             while ( token_index < TokenArray.length )
             {
                 token = TokenArray[ token_index ];
-                
+
                 if ( token.Text == "(" )
                 {
                     ++parenthesis_level;
@@ -1330,7 +1330,7 @@ class CODE
                 else if ( token.Text == ")" )
                 {
                     --parenthesis_level;
-                
+
                     if ( parenthesis_level == 0 )
                     {
                         break;
@@ -1340,12 +1340,12 @@ class CODE
                 {
                     semicolon_token_index = token_index;
                 }
-                
+
                 ++token_index;
             }
-            
+
             last_token_index = token_index;
-            
+
             if ( first_token_index < semicolon_token_index
                  && semicolon_token_index < last_token_index
                  && first_token_index < TokenArray.length
@@ -1356,8 +1356,8 @@ class CODE
                 TokenArray[ semicolon_token_index ].Text = "as";
                 TokenArray[ semicolon_token_index ].SetMinimumPriorSpaceCount( 1 );
                 TokenArray[ first_token_index + 1 ].SetMinimumPriorSpaceCount( 1 );
-                
-                TokenArray 
+
+                TokenArray
                     = TokenArray[ 0 .. first_token_index + 1 ]
                       ~ TokenArray[ semicolon_token_index + 1 .. last_token_index ]
                       ~ TokenArray[ semicolon_token_index .. semicolon_token_index + 1 ]
@@ -1375,12 +1375,12 @@ class CODE
                 }
             }
         }
-                
+
         token_index = first_token_index - 1;
     }
 
     // ~~
-    
+
     void ProcessToken(
         ref long token_index
         )
@@ -1389,7 +1389,7 @@ class CODE
             token;
 
         token = TokenArray[ token_index ];
-        
+
         if ( token.LanguageType == LANGUAGE_TYPE.Phoenix )
         {
             if ( token.Type == TOKEN_TYPE.Identifier )
@@ -1472,8 +1472,8 @@ class CODE
                                || ( token_index > 0
                                     && TokenArray[ token_index - 1 ].Text == "::"
                                     && token_index + 1 < TokenArray.length
-                                    && TokenArray[ token_index + 1 ].Text != "(" )
-                                    && !token.IsConstant() ) )
+                                    && TokenArray[ token_index + 1 ].Text != "("
+                                    && !token.IsConstant() ) ) )
                 {
                     if ( token_index > 0
                          && TokenArray[ token_index - 1 ].Text == "#" )
@@ -1519,7 +1519,7 @@ class CODE
                     if ( Scope.BlockLevel > 0 )
                     {
                         --Scope.BlockLevel;
-                        
+
                         if ( Scope.BlockLevel == 0
                              && ScopeArray.length > 1 )
                         {
@@ -1567,13 +1567,13 @@ class CODE
     }
 
     // ~~
-    
+
     void Process(
         )
     {
         long
             token_index;
-            
+
         for ( token_index = 0;
               token_index < TokenArray.length;
               ++token_index )
@@ -1646,15 +1646,15 @@ class FILE
         Exists = true;
         IsTemplate = input_file_path.endsWith( ".pht" );
     }
-    
+
     // ~~
-    
+
     string ReadInputFile(
         )
     {
-        string 
+        string
             input_file_text;
-            
+
         writeln( "Reading file : ", InputPath );
 
         try
@@ -1665,24 +1665,24 @@ class FILE
         {
             Abort( "Can't read file : " ~ InputPath, file_exception );
         }
-        
+
         return input_file_text;
     }
-    
+
     // ~~
-    
+
     void CreateOutputFolder(
         )
     {
         string
             output_folder_path;
-            
+
         output_folder_path = OutputPath.dirName();
-        
+
         if ( !output_folder_path.exists() )
         {
             writeln( "Creating folder : ", output_folder_path );
-            
+
             try
             {
                 if ( output_folder_path != ""
@@ -1698,9 +1698,9 @@ class FILE
             }
         }
     }
-    
+
     // ~~
-    
+
     void WriteOutputFile(
         string output_file_text
         )
@@ -1728,7 +1728,7 @@ class FILE
             output_file_text;
         CODE
             code;
-            
+
         if ( Exists
              && ( !OutputPath.exists()
                   || !modification_time_is_used
@@ -1739,14 +1739,14 @@ class FILE
             code = new CODE( IsTemplate );
             code.Tokenize( input_file_text );
             code.Process();
-            
+
             output_file_text = code.GetText();
-            
+
             if ( CreateOptionIsEnabled )
             {
                 CreateOutputFolder();
             }
-            
+
             WriteOutputFile( output_file_text );
         }
     }
@@ -1821,18 +1821,18 @@ void FindFiles(
         if ( input_folder_entry.isFile() )
         {
             input_file_path = input_folder_entry.name();
-            
+
             if ( input_file_path.startsWith( input_folder_path )
                  && ( input_file_path.endsWith( ".phx" )
                       || input_file_path.endsWith( ".pht" ) ) )
             {
-                output_file_path 
-                    = output_folder_path 
+                output_file_path
+                    = output_folder_path
                       ~ input_file_path[ input_folder_path.length .. $ - 4 ]
                       ~ ".php";
-            
+
                 file = input_file_path in FileMap;
-                
+
                 if ( file is null )
                 {
                     FileMap[ input_file_path ] = new FILE( input_file_path, output_file_path );
@@ -1855,7 +1855,7 @@ void ProcessFiles(
     )
 {
     FindFiles( input_folder_path, output_folder_path );
-    
+
     foreach ( ref file; FileMap )
     {
         file.Process( modification_time_is_used );
