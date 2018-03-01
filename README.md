@@ -4,11 +4,11 @@
 
 Lightweight language and template engine which compiles to PHP.
 
-## Features
+## Description
 
-* More concise and readable syntax than standard PHP.
-* Watches file modifications for instant recompilation.
-* Very easy debugging and integration with existing code.
+Phoenix is a lightweight language and template engine which allows to program PHP web servers with a more concise and readable syntax.
+
+It automatically watches file modifications for instant compilation, and the generated code is identical to handcrafted code, so it is very easy to integrate with existing code.
 
 ## Sample
 
