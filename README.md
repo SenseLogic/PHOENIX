@@ -2,13 +2,13 @@
 
 # Phoenix
 
-Lightweight language that compiles to PHP.
+Lightweight language and template engine which compiles to PHP.
 
 ## Features
 
 * More concise and readable syntax than standard PHP.
 * Watches file modifications for instant recompilation.
-* Easy debugging and integration with existing code.
+* Very easy debugging and integration with existing code.
 
 ## Sample
 
