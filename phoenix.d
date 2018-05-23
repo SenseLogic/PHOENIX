@@ -341,7 +341,7 @@ class CODE
         BaseContext = null;
         PhoenixContext = null;
         Context = null;
-        Scope = new SCOPE;
+        Scope = new SCOPE();
         ScopeArray ~= Scope;
     }
 
@@ -1251,7 +1251,7 @@ class CODE
         TOKEN
             token;
 
-        Scope = new SCOPE;
+        Scope = new SCOPE();
         ScopeArray ~= Scope;
 
         ++token_index;
