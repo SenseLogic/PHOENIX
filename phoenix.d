@@ -18,8 +18,6 @@
     along with Phoenix.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-// == LOCAL
-
 // -- IMPORTS
 
 import core.stdc.stdlib : exit;
@@ -30,8 +28,6 @@ import std.file : dirEntries, exists, mkdirRecurse, readText, timeLastModified, 
 import std.path : dirName;
 import std.stdio : writeln;
 import std.string : endsWith, indexOf, replace, startsWith, toUpper;
-
-// == GLOBAL
 
 // -- TYPES
 
