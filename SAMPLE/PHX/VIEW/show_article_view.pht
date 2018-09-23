@@ -32,7 +32,7 @@
     <br/>
     <? foreach ( var comment; .CommentArray ) { ?>
         <h5>
-            <% comment.User.Pseudonym %> - <% comment.Date %>
+            <% comment.User.Pseudonym %> - <% comment.DateTime %>
         </h5>
         <p>
             <% comment.Text %>

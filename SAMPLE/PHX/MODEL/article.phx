@@ -12,7 +12,7 @@ function InflateArticleArray(
     array article_array
     )
 {
-    foreach ( var article; article_array ) 
+    foreach ( var article; article_array )
     {
         InflateArticle( article );
     }
@@ -23,7 +23,7 @@ function InflateArticleArray(
 function GetArticleArray(
     )
 {
-    var statement = GetStatement( 'select * from ARTICLE order by date DESC' );
+    var statement = GetStatement( 'select * from ARTICLE order by Date DESC' );
     statement.execute();
 
     return GetObjectArray( statement );
@@ -38,7 +38,7 @@ function GetArticleById(
     var statement = GetStatement( 'select * from ARTICLE where Id = ?' );
     statement.bindParam( 1, id, PDO::PARAM_INT );
     statement.execute();
-    
+
     return GetObject( statement );
 }
 
@@ -48,7 +48,7 @@ function GetArticleArrayBySectionId(
     int section_id
     )
 {
-    var statement = GetStatement( 'select * from ARTICLE where SectionId = ? order by date DESC' );
+    var statement = GetStatement( 'select * from ARTICLE where SectionId = ? order by Date DESC' );
     statement.bindParam( 1, section_id, PDO::PARAM_INT );
     statement.execute();
 
@@ -96,7 +96,7 @@ function AddArticle(
     statement.bindParam( 4, section_id, PDO::PARAM_INT );
     statement.bindParam( 5, user_id, PDO::PARAM_INT );
     statement.execute();
-    
+
     return GetAddedId( statement );
 }
 

@@ -32,7 +32,7 @@
     <br/>
     <?php foreach ( $this->CommentArray as  $comment ) { ?>
         <h5>
-            <?php echo htmlspecialchars( $comment->User->Pseudonym ); ?> - <?php echo htmlspecialchars( $comment->Date ); ?>
+            <?php echo htmlspecialchars( $comment->User->Pseudonym ); ?> - <?php echo htmlspecialchars( $comment->DateTime ); ?>
         </h5>
         <p>
             <?php echo htmlspecialchars( $comment->Text ); ?>

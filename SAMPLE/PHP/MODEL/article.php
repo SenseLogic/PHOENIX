@@ -23,7 +23,7 @@ function InflateArticleArray(
 function GetArticleArray(
     )
 {
-     $statement = GetStatement( 'select * from ARTICLE order by date DESC' );
+     $statement = GetStatement( 'select * from ARTICLE order by Date DESC' );
     $statement->execute();
 
     return GetObjectArray( $statement );
@@ -48,7 +48,7 @@ function GetArticleArrayBySectionId(
     int $section_id
     )
 {
-     $statement = GetStatement( 'select * from ARTICLE where SectionId = ? order by date DESC' );
+     $statement = GetStatement( 'select * from ARTICLE where SectionId = ? order by Date DESC' );
     $statement->bindParam( 1, $section_id, PDO::PARAM_INT );
     $statement->execute();
 
