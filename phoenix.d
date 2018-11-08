@@ -560,7 +560,7 @@ class CODE
 
         LineCharacterIndex = 0;
         LineIndex = 0;
-        TokenArray = [];
+        TokenArray = null;
         TokenIsSplit = false;
 
         if ( IsTemplate )
