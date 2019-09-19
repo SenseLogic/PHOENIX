@@ -1,6 +1,8 @@
-<?php require_once __DIR__ . '/' . '../MODEL/session.php';
+<?php // -- IMPORTS
 
-// ~~
+require_once __DIR__ . '/' . '../MODEL/session.php';
+
+// -- TYPES
 
 class CONTROLLER
 {

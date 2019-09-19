@@ -1,10 +1,12 @@
-<?php function GetUserArray(
+<?php // -- FUNCTIONS
+
+function GetUserArray(
     )
 {
-     $statement = GetStatement( 'select * from USER order by Email asc' );
+     $statement = GetDatabaseStatement( 'select * from USER order by Email asc' );
     $statement->execute();
 
-    return GetObjectArray( $statement );
+    return GetDatabaseObjectArray( $statement );
 }
 
 // ~~
@@ -13,11 +15,11 @@ function GetUserById(
     int $id
     )
 {
-     $statement = GetStatement( 'select * from USER where Id = ?' );
+     $statement = GetDatabaseStatement( 'select * from USER where Id = ?' );
     $statement->bindParam( 1, $id, PDO::PARAM_INT );
     $statement->execute();
 
-    return GetObject( $statement );
+    return GetDatabaseObject( $statement );
 }
 
 // ~~
@@ -27,7 +29,7 @@ function GetUserByPseudonymAndPassword(
     string $password
     )
 {
-     $statement = GetStatement( 'select * from USER where Pseudonym = ? and Password = ?' );
+     $statement = GetDatabaseStatement( 'select * from USER where Pseudonym = ? and Password = ?' );
     $statement->bindParam( 1, $pseudonym, PDO::PARAM_STR );
     $statement->bindParam( 2, $password, PDO::PARAM_STR );
     $statement->execute();
@@ -38,7 +40,7 @@ function GetUserByPseudonymAndPassword(
     }
     else
     {
-        return GetObject( $statement );
+        return GetDatabaseObject( $statement );
     }
 }
 
@@ -52,7 +54,7 @@ function ChangeUser(
     int $it_is_administrator
     )
 {
-     $statement = GetStatement( 'update USER set Id = ?, Email = ?, Pseudonym = ?, Password = ?, ItIsAdministrator = ? where Id = ?' );
+     $statement = GetDatabaseStatement( 'update USER set Id = ?, Email = ?, Pseudonym = ?, Password = ?, ItIsAdministrator = ? where Id = ?' );
     $statement->bindParam( 1, $id, PDO::PARAM_INT );
     $statement->bindParam( 2, $email, PDO::PARAM_STR );
     $statement->bindParam( 3, $pseudonym, PDO::PARAM_STR );
@@ -71,14 +73,14 @@ function AddUser(
     int $it_is_administrator
     )
 {
-     $statement = GetStatement( 'insert into USER ( Email, Pseudonym, Password, ItIsAdministrator ) values ( ?, ?, ?, ? )' );
+     $statement = GetDatabaseStatement( 'insert into USER ( Email, Pseudonym, Password, ItIsAdministrator ) values ( ?, ?, ?, ? )' );
     $statement->bindParam( 1, $email, PDO::PARAM_STR );
     $statement->bindParam( 2, $pseudonym, PDO::PARAM_STR );
     $statement->bindParam( 3, $password, PDO::PARAM_STR );
     $statement->bindParam( 4, $it_is_administrator, PDO::PARAM_INT );
     $statement->execute();
 
-    return GetAddedId( $statement );
+    return GetDatabaseAddedId( $statement );
 }
 
 // ~~
@@ -87,7 +89,7 @@ function RemoveUser(
     int $id
     )
 {
-     $statement = GetStatement( 'delete from USER where Id = ?' );
+     $statement = GetDatabaseStatement( 'delete from USER where Id = ?' );
     $statement->bindParam( 1, $id, PDO::PARAM_INT );
     $statement->execute();
 }

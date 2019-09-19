@@ -1,4 +1,6 @@
-<?php function InflateComment(
+<?php // -- FUNCTIONS
+
+function InflateComment(
     $comment
     )
 {
@@ -23,10 +25,10 @@ function InflateCommentArray(
 function GetCommentArray(
     )
 {
-     $statement = GetStatement( 'select * from COMMENT order by DateTime DESC' );
+     $statement = GetDatabaseStatement( 'select * from COMMENT order by DateTime DESC' );
     $statement->execute();
 
-    return GetObjectArray( $statement );
+    return GetDatabaseObjectArray( $statement );
 }
 
 // ~~
@@ -35,11 +37,11 @@ function GetCommentById(
     int $id
     )
 {
-     $statement = GetStatement( 'select * from COMMENT where Id = ?' );
+     $statement = GetDatabaseStatement( 'select * from COMMENT where Id = ?' );
     $statement->bindParam( 1, $id, PDO::PARAM_INT );
     $statement->execute();
 
-    return GetObject( $statement );
+    return GetDatabaseObject( $statement );
 }
 
 // ~~
@@ -48,11 +50,11 @@ function GetCommentArrayByArticleId(
     int $article_id
     )
 {
-     $statement = GetStatement( 'select * from COMMENT where ArticleId = ? order by DateTime DESC' );
+     $statement = GetDatabaseStatement( 'select * from COMMENT where ArticleId = ? order by DateTime DESC' );
     $statement->bindParam( 1, $article_id, PDO::PARAM_INT );
     $statement->execute();
 
-    return GetObjectArray( $statement );
+    return GetDatabaseObjectArray( $statement );
 }
 
 // ~~
@@ -65,7 +67,7 @@ function ChangeComment(
     int $user_id
     )
 {
-     $statement = GetStatement( 'update COMMENT set Id = ?, Text = ?, DateTime = ?, ArticleId = ?, UserId = ? where Id = ?' );
+     $statement = GetDatabaseStatement( 'update COMMENT set Id = ?, Text = ?, DateTime = ?, ArticleId = ?, UserId = ? where Id = ?' );
     $statement->bindParam( 1, $id, PDO::PARAM_INT );
     $statement->bindParam( 2, $text, PDO::PARAM_STR );
     $statement->bindParam( 3, $date_time, PDO::PARAM_STR );
@@ -83,13 +85,13 @@ function AddComment(
     int $user_id
     )
 {
-     $statement = GetStatement( 'insert into COMMENT ( Text, DateTime, ArticleId, UserId ) values ( ?, NOW(), ?, ? )' );
+     $statement = GetDatabaseStatement( 'insert into COMMENT ( Text, DateTime, ArticleId, UserId ) values ( ?, NOW(), ?, ? )' );
     $statement->bindParam( 1, $text, PDO::PARAM_STR );
     $statement->bindParam( 2, $article_id, PDO::PARAM_INT );
     $statement->bindParam( 3, $user_id, PDO::PARAM_INT );
     $statement->execute();
 
-    return GetAddedId( $statement );
+    return GetDatabaseAddedId( $statement );
 }
 
 // ~~
@@ -98,7 +100,7 @@ function RemoveComment(
     int $id
     )
 {
-     $statement = GetStatement( 'delete from COMMENT where Id = ?' );
+     $statement = GetDatabaseStatement( 'delete from COMMENT where Id = ?' );
     $statement->bindParam( 1, $id, PDO::PARAM_INT );
     $statement->execute();
 }

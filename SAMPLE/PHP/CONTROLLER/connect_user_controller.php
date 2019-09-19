@@ -1,8 +1,10 @@
-<?php require_once __DIR__ . '/' . 'controller.php';
+<?php // -- IMPORTS
+
+require_once __DIR__ . '/' . 'controller.php';
 require_once __DIR__ . '/' . '../MODEL/session.php';
 require_once __DIR__ . '/' . '../MODEL/user.php';
 
-// ~~
+// -- TYPES
 
 class CONNECT_USER_CONTROLLER extends CONTROLLER
 {
@@ -29,6 +31,6 @@ class CONNECT_USER_CONTROLLER extends CONTROLLER
     }
 }
 
-// ~~
+// -- STATEMENTS
 
  $connect_user_controller = new CONNECT_USER_CONTROLLER();

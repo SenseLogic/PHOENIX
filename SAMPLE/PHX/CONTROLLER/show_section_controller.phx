@@ -1,9 +1,11 @@
+// -- IMPORTS
+
 import 'controller.php';
 import '../MODEL/article.php';
 import '../MODEL/section.php';
 import '../MODEL/user.php';
 
-// ~~
+// -- TYPES
 
 class SHOW_SECTION_CONTROLLER extends CONTROLLER
 {
@@ -12,20 +14,20 @@ class SHOW_SECTION_CONTROLLER extends CONTROLLER
         )
     {
         parent::constructor();
-        
+
         .Session.Path = GetPath();
         .Session.Store();
-        
+
         .SectionArray = GetSectionArray();
-        
+
         if ( section_id <= 0 )
         {
             section_id = .SectionArray[ 0 ].Id;
         }
 
         .Section = GetSectionById( section_id );
-        .ArticleArray = GetArticleArrayBySectionId( section_id ); 
-                           
+        .ArticleArray = GetArticleArrayBySectionId( section_id );
+
         .Section.ImageIndex = section_id % 20;
         InflateArticleArray( .ArticleArray );
 
@@ -34,6 +36,6 @@ class SHOW_SECTION_CONTROLLER extends CONTROLLER
     }
 }
 
-// ~~
+// -- STATEMENTS
 
 var show_section_controller = new SHOW_SECTION_CONTROLLER( var section_id );

@@ -1,4 +1,6 @@
-<?php function InflateArticle(
+<?php // -- FUNCTIONS
+
+function InflateArticle(
     $article
     )
 {
@@ -23,10 +25,10 @@ function InflateArticleArray(
 function GetArticleArray(
     )
 {
-     $statement = GetStatement( 'select * from ARTICLE order by Date DESC' );
+     $statement = GetDatabaseStatement( 'select * from ARTICLE order by Date DESC' );
     $statement->execute();
 
-    return GetObjectArray( $statement );
+    return GetDatabaseObjectArray( $statement );
 }
 
 // ~~
@@ -35,11 +37,11 @@ function GetArticleById(
     int $id
     )
 {
-     $statement = GetStatement( 'select * from ARTICLE where Id = ?' );
+     $statement = GetDatabaseStatement( 'select * from ARTICLE where Id = ?' );
     $statement->bindParam( 1, $id, PDO::PARAM_INT );
     $statement->execute();
 
-    return GetObject( $statement );
+    return GetDatabaseObject( $statement );
 }
 
 // ~~
@@ -48,11 +50,11 @@ function GetArticleArrayBySectionId(
     int $section_id
     )
 {
-     $statement = GetStatement( 'select * from ARTICLE where SectionId = ? order by Date DESC' );
+     $statement = GetDatabaseStatement( 'select * from ARTICLE where SectionId = ? order by Date DESC' );
     $statement->bindParam( 1, $section_id, PDO::PARAM_INT );
     $statement->execute();
 
-    return GetObjectArray( $statement );
+    return GetDatabaseObjectArray( $statement );
 }
 
 // ~~
@@ -67,7 +69,7 @@ function ChangeArticle(
     int $user_id
     )
 {
-     $statement = GetStatement( 'update ARTICLE set Id = ?, Title = ?, Text = ?, Image = ?, Date = ?, SectionId = ?, UserId = ? where Id = ?' );
+     $statement = GetDatabaseStatement( 'update ARTICLE set Id = ?, Title = ?, Text = ?, Image = ?, Date = ?, SectionId = ?, UserId = ? where Id = ?' );
     $statement->bindParam( 1, $id, PDO::PARAM_INT );
     $statement->bindParam( 2, $title, PDO::PARAM_STR );
     $statement->bindParam( 3, $text, PDO::PARAM_STR );
@@ -89,7 +91,7 @@ function AddArticle(
     int $user_id
     )
 {
-     $statement = GetStatement( 'insert into ARTICLE ( Title, text, Image, Date, SectionId, UserId ) values ( ?, ?, ?, NOW(), ?, ? )' );
+     $statement = GetDatabaseStatement( 'insert into ARTICLE ( Title, text, Image, Date, SectionId, UserId ) values ( ?, ?, ?, NOW(), ?, ? )' );
     $statement->bindParam( 1, $title, PDO::PARAM_STR );
     $statement->bindParam( 2, $text, PDO::PARAM_STR );
     $statement->bindParam( 3, $image, PDO::PARAM_STR );
@@ -97,7 +99,7 @@ function AddArticle(
     $statement->bindParam( 5, $user_id, PDO::PARAM_INT );
     $statement->execute();
 
-    return GetAddedId( $statement );
+    return GetDatabaseAddedId( $statement );
 }
 
 // ~~
@@ -106,7 +108,7 @@ function RemoveArticle(
     int $id
     )
 {
-     $statement = GetStatement( 'delete from ARTICLE where Id = ?' );
+     $statement = GetDatabaseStatement( 'delete from ARTICLE where Id = ?' );
     $statement->bindParam( 1, $id, PDO::PARAM_INT );
     $statement->execute();
 }

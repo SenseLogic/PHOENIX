@@ -1,9 +1,11 @@
+// -- IMPORTS
+
 import 'controller.php';
 import '../MODEL/article.php';
 import '../MODEL/comment.php';
 import '../MODEL/session.php';
 
-// ~~
+// -- TYPES
 
 class ADD_COMMENT_CONTROLLER extends CONTROLLER
 {
@@ -12,18 +14,18 @@ class ADD_COMMENT_CONTROLLER extends CONTROLLER
         )
     {
         parent::constructor();
-        
+
         var text = GetPostValue( 'text' );
         .Article = GetArticleById( article_id );
         AddComment( text, article_id, .Session.User.Id );
 
         .Session.Message = 'Your comment has been added.';
         .Session.Store();
-        
+
         Reload( .Session.Path );
     }
 }
 
-// ~~
+// -- STATEMENTS
 
 var add_comment_controller = new ADD_COMMENT_CONTROLLER( var article_id );

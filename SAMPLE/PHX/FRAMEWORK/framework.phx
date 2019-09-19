@@ -1,19 +1,21 @@
+// -- FUNCTIONS
+
 function GetPath(
     )
 {
     static local
         path = null;
-        
+
     if ( is_null( path ) )
     {
         path = explode( '?', _SERVER[ 'REQUEST_URI' ] )[ 0 ];
-        
+
         if ( path == '' )
         {
             path = '/';
         }
     }
-    
+
     return path;
 }
 
@@ -27,12 +29,12 @@ function GetPathValueArray(
     {
         path = substr( path, 1 );
     }
-    
+
     if ( substr( path, -1 ) == '/' )
     {
         path = substr( path, 0, -1 );
     }
-        
+
     return explode( '/', path );
 }
 
@@ -107,7 +109,7 @@ function IsSessionValue(
     value
     )
 {
-    return 
+    return
         isset( _SESSION[ name ] )
         && _SESSION[ name ] == value;
 }
@@ -170,48 +172,48 @@ function IsId(
 
 // ~~
 
-function GetConnection(
+function GetDatabaseConnection(
     )
 {
     static local
         connection = null;
-        
+
     if ( is_null( connection ) )
     {
         connection = new PDO( 'mysql:host=localhost;dbname=BLOG', 'root', 'root' );
     }
-    
+
     return connection;
 }
 
 // ~~
 
-function GetError(
+function GetDatabaseError(
     )
 {
-    return GetConnection().errorInfo();
+    return GetDatabaseConnection().errorInfo();
 }
 
 // ~~
 
-function GetAddedId(
+function GetDatabaseAddedId(
     )
 {
-    return GetConnection().lastInsertId();
+    return GetDatabaseConnection().lastInsertId();
 }
 
 // ~~
 
-function GetStatement(
+function GetDatabaseStatement(
     string command
     )
 {
-    return GetConnection().prepare( command );
+    return GetDatabaseConnection().prepare( command );
 }
 
 // ~~
 
-function GetObject(
+function GetDatabaseObject(
     statement
     )
 {
@@ -220,20 +222,45 @@ function GetObject(
 
 // ~~
 
-function GetObjectArray(
+function GetDatabaseObjectArray(
     statement
     )
-{    
+{
     var object_array = [];
-    
-    while ( var object = statement.fetchObject() ) 
-    { 
+
+    while ( var object = statement.fetchObject() )
+    {
         array_push( object_array, object );
     }
-    
+
     return object_array;
 }
 
 // ~~
+
+method GetTranslation(
+    string text,
+    int translation_index
+    )
+{
+    local
+        translation_array;
+
+    translation_array = explode( ' ¨ ', text );
+
+    if ( translation_index < count( translation_array ) )
+    {
+        return text[ translation_index ];
+    }
+    else
+    {
+        return text[ 0 ];
+    }
+}
+
+// -- STATEMENTS
+
+ini_set( 'display_errors', 1 );
+error_reporting( E_ALL );
 
 session_start();

@@ -1,9 +1,11 @@
-<?php require_once __DIR__ . '/' . 'controller.php';
+<?php // -- IMPORTS
+
+require_once __DIR__ . '/' . 'controller.php';
 require_once __DIR__ . '/' . '../MODEL/article.php';
 require_once __DIR__ . '/' . '../MODEL/comment.php';
 require_once __DIR__ . '/' . '../MODEL/session.php';
 
-// ~~
+// -- TYPES
 
 class ADD_COMMENT_CONTROLLER extends CONTROLLER
 {
@@ -24,6 +26,6 @@ class ADD_COMMENT_CONTROLLER extends CONTROLLER
     }
 }
 
-// ~~
+// -- STATEMENTS
 
  $add_comment_controller = new ADD_COMMENT_CONTROLLER(  $article_id );

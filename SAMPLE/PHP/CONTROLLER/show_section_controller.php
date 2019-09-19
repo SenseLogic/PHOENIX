@@ -1,9 +1,11 @@
-<?php require_once __DIR__ . '/' . 'controller.php';
+<?php // -- IMPORTS
+
+require_once __DIR__ . '/' . 'controller.php';
 require_once __DIR__ . '/' . '../MODEL/article.php';
 require_once __DIR__ . '/' . '../MODEL/section.php';
 require_once __DIR__ . '/' . '../MODEL/user.php';
 
-// ~~
+// -- TYPES
 
 class SHOW_SECTION_CONTROLLER extends CONTROLLER
 {
@@ -34,6 +36,6 @@ class SHOW_SECTION_CONTROLLER extends CONTROLLER
     }
 }
 
-// ~~
+// -- STATEMENTS
 
  $show_section_controller = new SHOW_SECTION_CONTROLLER(  $section_id );

@@ -1,8 +1,10 @@
-<?php require_once __DIR__ . '/' . 'controller.php';
+<?php // -- IMPORTS
+
+require_once __DIR__ . '/' . 'controller.php';
 require_once __DIR__ . '/' . '../MODEL/session.php';
 require_once __DIR__ . '/' . '../MODEL/subscriber.php';
 
-// ~~
+// -- TYPES
 
 class ADD_SUBSCRIBER_CONTROLLER extends CONTROLLER
 {
@@ -21,6 +23,6 @@ class ADD_SUBSCRIBER_CONTROLLER extends CONTROLLER
     }
 }
 
-// ~~
+// -- STATEMENTS
 
  $add_subscriber_controller = new ADD_SUBSCRIBER_CONTROLLER();

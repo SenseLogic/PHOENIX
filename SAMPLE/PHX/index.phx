@@ -1,6 +1,8 @@
+// -- IMPORTS
+
 import 'FRAMEWORK/framework.php';
 
-// ~~
+// -- FUNCTIONS
 
 function Route(
     string path
@@ -10,21 +12,21 @@ function Route(
     var path_value_count = count( path_value_array );
     var controller_name = path_value_array[ 0 ];
 
-    if ( controller_name == 'show_section' 
+    if ( controller_name == 'show_section'
          && path_value_count == 2
          && IsId( path_value_array[ 1 ] ) )
     {
         var section_id = path_value_array[ 1 ];
         import 'CONTROLLER/show_section_controller.php';
     }
-    else if ( controller_name == 'show_article' 
+    else if ( controller_name == 'show_article'
               && path_value_count == 2
               && IsId( path_value_array[ 1 ] ) )
     {
         var article_id = path_value_array[ 1 ];
         import 'CONTROLLER/show_article_controller.php';
     }
-    else if ( controller_name == 'add_comment' 
+    else if ( controller_name == 'add_comment'
               && path_value_count == 2
               && IsId( path_value_array[ 1 ] )
               && IsSessionValue( "UserIsConnected", true ) )
@@ -32,17 +34,17 @@ function Route(
         var article_id = path_value_array[ 1 ];
         import 'CONTROLLER/add_comment_controller.php';
     }
-    else if ( controller_name == 'add_subscriber' 
+    else if ( controller_name == 'add_subscriber'
               && path_value_count == 1 )
     {
         import 'CONTROLLER/add_subscriber_controller.php';
     }
-    else if ( controller_name == 'connect_user' 
+    else if ( controller_name == 'connect_user'
               && path_value_count == 1 )
     {
         import 'CONTROLLER/connect_user_controller.php';
     }
-    else if ( controller_name == 'disconnect_user' 
+    else if ( controller_name == 'disconnect_user'
               && path_value_count == 1 )
     {
         import 'CONTROLLER/disconnect_user_controller.php';
@@ -53,5 +55,7 @@ function Route(
         import 'CONTROLLER/show_section_controller.php';
     }
 }
+
+// -- STATEMENTS
 
 Route( GetPath() );

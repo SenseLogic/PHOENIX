@@ -1,4 +1,6 @@
-<?php class SESSION
+<?php // -- TYPES
+
+class SESSION
 {
     function __construct(
         )

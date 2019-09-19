@@ -1,4 +1,6 @@
-<?php function GetPath(
+<?php // -- FUNCTIONS
+
+function GetPath(
     )
 {
     static 
@@ -170,7 +172,7 @@ function IsId(
 
 // ~~
 
-function GetConnection(
+function GetDatabaseConnection(
     )
 {
     static 
@@ -186,32 +188,32 @@ function GetConnection(
 
 // ~~
 
-function GetError(
+function GetDatabaseError(
     )
 {
-    return GetConnection()->errorInfo();
+    return GetDatabaseConnection()->errorInfo();
 }
 
 // ~~
 
-function GetAddedId(
+function GetDatabaseAddedId(
     )
 {
-    return GetConnection()->lastInsertId();
+    return GetDatabaseConnection()->lastInsertId();
 }
 
 // ~~
 
-function GetStatement(
+function GetDatabaseStatement(
     string $command
     )
 {
-    return GetConnection()->prepare( $command );
+    return GetDatabaseConnection()->prepare( $command );
 }
 
 // ~~
 
-function GetObject(
+function GetDatabaseObject(
     $statement
     )
 {
@@ -220,7 +222,7 @@ function GetObject(
 
 // ~~
 
-function GetObjectArray(
+function GetDatabaseObjectArray(
     $statement
     )
 {
@@ -235,5 +237,30 @@ function GetObjectArray(
 }
 
 // ~~
+
+function GetTranslation(
+    string $text,
+    int $translation_index
+    )
+{
+    
+        
+
+    $translation_array = explode( ' ¨ ', $text );
+
+    if ( $translation_index < count( $translation_array ) )
+    {
+        return $text[ $translation_index ];
+    }
+    else
+    {
+        return $text[ 0 ];
+    }
+}
+
+// -- STATEMENTS
+
+ini_set( 'display_errors', 1 );
+error_reporting( E_ALL );
 
 session_start();

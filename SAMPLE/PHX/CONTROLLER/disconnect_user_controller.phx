@@ -1,7 +1,9 @@
+// -- IMPORTS
+
 import 'controller.php';
 import '../MODEL/session.php';
 
-// ~~
+// -- TYPES
 
 class DISCONNECT_USER_CONTROLLER extends CONTROLLER
 {
@@ -9,7 +11,7 @@ class DISCONNECT_USER_CONTROLLER extends CONTROLLER
         )
     {
         parent::constructor();
-        
+
         .Session.UserIsConnected = false;
         .Session.Store();
 
@@ -17,6 +19,6 @@ class DISCONNECT_USER_CONTROLLER extends CONTROLLER
     }
 }
 
-// ~~
+// -- STATEMENTS
 
 var disconnect_user_controller = new DISCONNECT_USER_CONTROLLER();

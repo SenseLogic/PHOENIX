@@ -1,3 +1,5 @@
+// -- IMPORTS
+
 import 'controller.php';
 import '../MODEL/article.php';
 import '../MODEL/comment.php';
@@ -5,7 +7,7 @@ import '../MODEL/section.php';
 import '../MODEL/session.php';
 import '../MODEL/user.php';
 
-// ~~
+// -- TYPES
 
 class SHOW_ARTICLE_CONTROLLER extends CONTROLLER
 {
@@ -14,15 +16,15 @@ class SHOW_ARTICLE_CONTROLLER extends CONTROLLER
         )
     {
         parent::constructor();
-        
+
         .Session.Path = GetPath();
         .Session.Store();
-        
+
         .SectionArray = GetSectionArray();
         .Article = GetArticleById( article_id );
         .Section = GetSectionById( .Article.SectionId );
         .CommentArray = GetCommentArrayByArticleId( article_id );
-        
+
         .Article.ImageIndex = .Article.Id % 20;
         InflateArticle( .Article );
         InflateCommentArray( .CommentArray );
@@ -32,6 +34,6 @@ class SHOW_ARTICLE_CONTROLLER extends CONTROLLER
     }
 }
 
-// ~~
+// -- STATEMENTS
 
 var show_article_controller = new SHOW_ARTICLE_CONTROLLER( var article_id );

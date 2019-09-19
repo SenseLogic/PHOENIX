@@ -1,6 +1,8 @@
+// -- IMPORTS
+
 import '../MODEL/session.php';
 
-// ~~
+// -- TYPES
 
 class CONTROLLER
 {

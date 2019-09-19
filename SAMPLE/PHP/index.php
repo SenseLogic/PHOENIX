@@ -1,6 +1,8 @@
-<?php require_once __DIR__ . '/' . 'FRAMEWORK/framework.php';
+<?php // -- IMPORTS
 
-// ~~
+require_once __DIR__ . '/' . 'FRAMEWORK/framework.php';
+
+// -- FUNCTIONS
 
 function Route(
     string $path
@@ -53,5 +55,7 @@ function Route(
         require_once __DIR__ . '/' . 'CONTROLLER/show_section_controller.php';
     }
 }
+
+// -- STATEMENTS
 
 Route( GetPath() );

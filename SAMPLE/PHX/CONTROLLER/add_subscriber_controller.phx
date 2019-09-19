@@ -1,8 +1,10 @@
+// -- IMPORTS
+
 import 'controller.php';
 import '../MODEL/session.php';
 import '../MODEL/subscriber.php';
 
-// ~~
+// -- TYPES
 
 class ADD_SUBSCRIBER_CONTROLLER extends CONTROLLER
 {
@@ -10,9 +12,9 @@ class ADD_SUBSCRIBER_CONTROLLER extends CONTROLLER
         )
     {
         parent::constructor();
-        
+
         AddSubscriber( GetPostValue( 'email' ) );
-        
+
         .Session.UserHasSubscribed = true;
         .Session.Message = 'Thanks for your subscription.';
         .Session.Store();
@@ -21,6 +23,6 @@ class ADD_SUBSCRIBER_CONTROLLER extends CONTROLLER
     }
 }
 
-// ~~
+// -- STATEMENTS
 
 var add_subscriber_controller = new ADD_SUBSCRIBER_CONTROLLER();
