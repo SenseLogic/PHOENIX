@@ -151,7 +151,7 @@ function GetCookieValue(
 
 // ~~
 
-function Reload(
+function Redirect(
     string $path
     )
 {

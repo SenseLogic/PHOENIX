@@ -19,7 +19,7 @@ class ADD_SUBSCRIBER_CONTROLLER extends CONTROLLER
         .Session.Message = 'Thanks for your subscription.';
         .Session.Store();
 
-        Reload( .Session.Path );
+        Redirect( .Session.Path );
     }
 }
 

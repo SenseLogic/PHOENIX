@@ -27,7 +27,7 @@ class CONNECT_USER_CONTROLLER extends CONTROLLER
 
         $this->Session->Store();
 
-        Reload( $this->Session->Path );
+        Redirect( $this->Session->Path );
     }
 }
 

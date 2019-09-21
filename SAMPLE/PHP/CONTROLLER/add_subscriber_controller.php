@@ -19,7 +19,7 @@ class ADD_SUBSCRIBER_CONTROLLER extends CONTROLLER
         $this->Session->Message = 'Thanks for your subscription.';
         $this->Session->Store();
 
-        Reload( $this->Session->Path );
+        Redirect( $this->Session->Path );
     }
 }
 

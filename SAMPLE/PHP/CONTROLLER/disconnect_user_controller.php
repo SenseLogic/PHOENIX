@@ -15,7 +15,7 @@ class DISCONNECT_USER_CONTROLLER extends CONTROLLER
         $this->Session->UserIsConnected = false;
         $this->Session->Store();
 
-        Reload( $this->Session->Path );
+        Redirect( $this->Session->Path );
     }
 }
 

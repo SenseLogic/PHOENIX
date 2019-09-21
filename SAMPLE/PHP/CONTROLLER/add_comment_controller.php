@@ -22,7 +22,7 @@ class ADD_COMMENT_CONTROLLER extends CONTROLLER
         $this->Session->Message = 'Your comment has been added.';
         $this->Session->Store();
 
-        Reload( $this->Session->Path );
+        Redirect( $this->Session->Path );
     }
 }
 

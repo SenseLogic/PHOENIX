@@ -27,7 +27,7 @@ class CONNECT_USER_CONTROLLER extends CONTROLLER
 
         .Session.Store();
 
-        Reload( .Session.Path );
+        Redirect( .Session.Path );
     }
 }
 

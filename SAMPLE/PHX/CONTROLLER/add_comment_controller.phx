@@ -22,7 +22,7 @@ class ADD_COMMENT_CONTROLLER extends CONTROLLER
         .Session.Message = 'Your comment has been added.';
         .Session.Store();
 
-        Reload( .Session.Path );
+        Redirect( .Session.Path );
     }
 }
 

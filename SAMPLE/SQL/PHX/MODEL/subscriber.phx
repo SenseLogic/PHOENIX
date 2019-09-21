@@ -1,0 +1,60 @@
+// -- FUNCTIONS
+
+function GetDatabaseSubscriberArray(
+    )
+{
+    var statement = GetDatabaseStatement( 'select Id, Email from SUBSCRIBER order by Email asc' );
+    statement.execute();
+
+    return GetDatabaseObjectArray( statement );
+}
+
+// ~~
+
+function GetDatabaseSubscriber(
+    int id
+    )
+{
+    var statement = GetDatabaseStatement( 'select Id, Email from SUBSCRIBER where Id = ?' );
+    statement.bindParam( 1, id, PDO::PARAM_INT );
+    statement.execute();
+
+    return GetDatabaseObject( statement );
+}
+
+// ~~
+
+function AddDatabaseSubscriber(
+    string email
+    )
+{
+    var statement = GetDatabaseStatement( 'insert into SUBSCRIBER ( Email ) values ( ? )' );
+    statement.bindParam( 1, email, PDO::PARAM_STR );
+    statement.execute();
+
+    return GetDatabaseAddedId( statement );
+}
+
+// ~~
+
+function SetDatabaseSubscriber(
+    int id,
+    string email
+    )
+{
+    var statement = GetDatabaseStatement( 'update SUBSCRIBER set Email = ? where Id = ?' );
+    statement.bindParam( 1, email, PDO::PARAM_STR );
+    statement.bindParam( 2, id, PDO::PARAM_INT );
+    statement.execute();
+}
+
+// ~~
+
+function RemoveDatabaseSubscriber(
+    int id
+    )
+{
+    var statement = GetDatabaseStatement( 'delete from SUBSCRIBER where Id = ?' );
+    statement.bindParam( 1, id, PDO::PARAM_INT );
+    statement.execute();
+}

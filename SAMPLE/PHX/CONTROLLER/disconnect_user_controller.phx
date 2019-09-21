@@ -15,7 +15,7 @@ class DISCONNECT_USER_CONTROLLER extends CONTROLLER
         .Session.UserIsConnected = false;
         .Session.Store();
 
-        Reload( .Session.Path );
+        Redirect( .Session.Path );
     }
 }
 
