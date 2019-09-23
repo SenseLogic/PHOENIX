@@ -212,7 +212,7 @@ function GetDatabaseConnection(
 
     if ( is_null( connection ) )
     {
-        connection = new PDO( 'mysql:host=localhost;dbname=AGC_GLASS_RANGE', 'root', '' );
+        connection = new PDO( 'mysql:host=localhost;dbname=BLOG', 'root', 'root' );
         connection.prepare( "set names 'utf8mb4'" ).execute();
     }
 
