@@ -40,6 +40,38 @@ function GetPathValueArray(
 
 // ~~
 
+function IsGetRequest(
+    )
+{
+    return $_SERVER[ "REQUEST_METHOD" ] == "GET";
+}
+
+// ~~
+
+function IsPostRequest(
+    )
+{
+    return $_SERVER[ "REQUEST_METHOD" ] == "POST";
+}
+
+// ~~
+
+function IsPutRequest(
+    )
+{
+    return $_SERVER[ "REQUEST_METHOD" ] == "PUT";
+}
+
+// ~~
+
+function IsDeleteRequest(
+    )
+{
+    return $_SERVER[ "REQUEST_METHOD" ] == "DELETE";
+}
+
+// ~~
+
 function HasQueryValue(
     string $name
     )
@@ -180,7 +212,8 @@ function GetDatabaseConnection(
 
     if ( is_null( $connection ) )
     {
-        $connection = new PDO( 'mysql:host=localhost;dbname=BLOG', 'root', 'root' );
+        $connection = new PDO( 'mysql:host=localhost;dbname=AGC_GLASS_RANGE', 'root', '' );
+        $connection->prepare( "set names 'utf8mb4'" )->execute();
     }
 
     return $connection;
@@ -238,24 +271,55 @@ function GetDatabaseObjectArray(
 
 // ~~
 
+function GetBrowserLanguageIndex(
+    array $valid_language_code_array
+    )
+{
+    if ( isset( $_SERVER[ 'HTTP_ACCEPT_LANGUAGE' ] ) )
+    {
+         $browser_language_code_array = explode( ',', str_replace( ';', ',', $_SERVER[ 'HTTP_ACCEPT_LANGUAGE' ] ) );
+
+        foreach ( $browser_language_code_array as  $browser_language_code )
+        {
+            $browser_language_code = strtolower( substr( $browser_language_code, 0, 2 ) );
+
+             $valid_language_code_index = array_search( $browser_language_code, $valid_language_code_array, true );
+
+            if ( $valid_language_code_index !== false )
+            {
+                return $valid_language_code_index;
+            }
+        }
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+// ~~
+
 function GetTranslation(
     string $text,
-    int $translation_index
+    int $translation_index,
+    string $translation_separator
     )
 {
     
         
 
-    $translation_array = explode( ' ¨ ', $text );
+     $translation_array = explode( $translation_separator, $text );
 
     if ( $translation_index < count( $translation_array ) )
     {
-        return $text[ $translation_index ];
+        $translation = $translation_array[ $translation_index ];
     }
     else
     {
-        return $text[ 0 ];
+        $translation = $translation_array[ 0 ];
     }
+
+    return str_replace( '[<', '<', str_replace( '>]', '>', $translation ) );
 }
 
 // -- STATEMENTS
