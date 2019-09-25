@@ -43,7 +43,7 @@ function GetPathValueArray(
 function IsGetRequest(
     )
 {
-    return _SERVER[ "REQUEST_METHOD" ] == "GET";
+    return _SERVER[ 'REQUEST_METHOD' ] == 'GET';
 }
 
 // ~~
@@ -51,7 +51,7 @@ function IsGetRequest(
 function IsPostRequest(
     )
 {
-    return _SERVER[ "REQUEST_METHOD" ] == "POST";
+    return _SERVER[ 'REQUEST_METHOD' ] == 'POST';
 }
 
 // ~~
@@ -59,7 +59,7 @@ function IsPostRequest(
 function IsPutRequest(
     )
 {
-    return _SERVER[ "REQUEST_METHOD" ] == "PUT";
+    return _SERVER[ 'REQUEST_METHOD' ] == 'PUT';
 }
 
 // ~~
@@ -67,7 +67,7 @@ function IsPutRequest(
 function IsDeleteRequest(
     )
 {
-    return _SERVER[ "REQUEST_METHOD" ] == "DELETE";
+    return _SERVER[ 'REQUEST_METHOD' ] == 'DELETE';
 }
 
 // ~~
@@ -212,7 +212,7 @@ function GetDatabaseConnection(
 
     if ( is_null( connection ) )
     {
-        connection = new PDO( 'mysql:host=localhost;dbname=BLOG', 'root', 'root' );
+        connection = new PDO( 'mysql:host=localhost;dbname=BLOG', 'root', '' );
         connection.prepare( "set names 'utf8mb4'" ).execute();
     }
 
@@ -271,7 +271,7 @@ function GetDatabaseObjectArray(
 
 // ~~
 
-method GetBrowserLanguageIndex(
+function GetBrowserLanguageCode(
     array valid_language_code_array
     )
 {
@@ -287,39 +287,71 @@ method GetBrowserLanguageIndex(
 
             if ( valid_language_code_index !== false )
             {
-                return valid_language_code_index;
+                return valid_language_code_array[ valid_language_code_index ];
             }
         }
     }
     else
     {
-        return 0;
+        return valid_language_code_array[ 0 ];
     }
 }
 
 // ~~
 
-method GetTranslation(
+function GetTranslatedText(
     string text,
-    int translation_index,
-    string translation_separator
+    int translated_text_index
     )
 {
     local
-        translation;
+        translated_text;
 
-    var translation_array = explode( translation_separator, text );
+    var translated_text_array = explode( '¨', text );
 
-    if ( translation_index < count( translation_array ) )
+    if ( translated_text_index < count( translated_text_array ) )
     {
-        translation = translation_array[ translation_index ];
+        translated_text = translated_text_array[ translated_text_index ];
     }
     else
     {
-        translation = translation_array[ 0 ];
+        translated_text = translated_text_array[ 0 ];
     }
 
-    return str_replace( '[<', '<', str_replace( '>]', '>', translation ) );
+    return str_replace( '[<', '<', str_replace( '>]', '>', translated_text ) );
+}
+
+// ~~
+
+function GetTranslatedNumber(
+    string number,
+    string decimal_separator
+    )
+{
+    if ( decimal_separator == ',' )
+    {
+        return str_replace( '.', ',', number );
+    }
+    else
+    {
+        return number;
+    }
+}
+
+// ~~
+
+function GetCurrentDate(
+    )
+{
+    return date( 'Y-m-d' );
+}
+
+// ~~
+
+function GetCurrentDateTime(
+    )
+{
+    return date( 'Y-m-d H:i:s' );
 }
 
 // -- STATEMENTS
