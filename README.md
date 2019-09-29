@@ -26,11 +26,11 @@ It automatically watches file modifications for instant compilation, and the gen
                 message,
                 bold,
                 dwarf_name_array;
-                
+
             import 'imported.php';
             include 'included.php';
             include 'included.php';
-            
+
             import? 'notfound.php';
             include? 'notfound.php';
 
@@ -171,7 +171,7 @@ Most of the PHP syntax is kept unchanged, except that :
 * `method` declares a class method.
 * `constructor` is the constructor method.
 * `destructor` is the destructor method.
-* `foreach ( value; array )` is the foreach loop syntax. 
+* `foreach ( value; array )` is the foreach loop syntax.
 * `include` includes a file with a relative path.
 * `include?` includes a file with a relative path, if it exists.
 * `import` includes a file once with a relative path.
@@ -187,7 +187,7 @@ Most of the PHP syntax is kept unchanged, except that :
 
 ## Installation
 
-Install the [DMD 2 compiler](https://dlang.org/download.html).
+Install the [DMD 2 compiler](https://dlang.org/download.html) (choosing the MinGW setup option on Windows).
 
 Build the executable with the following command line :
 
@@ -197,17 +197,17 @@ dmd -m64 phoenix.d
 
 ## Command line
 
-``` 
+```
 phoenix [options] INPUT_FOLDER/ OUTPUT_FOLDER/
 ```
 
 ### Options
 
-``` 
+```
 --create : create the PHP folders if needed
 --watch : watch the Phoenix files for modifications
 --pause 500 : time to wait before checking the Phoenix files again
-``` 
+```
 
 ### Examples
 
