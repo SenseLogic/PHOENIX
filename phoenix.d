@@ -1261,7 +1261,8 @@ class CODE
             if ( token.Type == TOKEN_TYPE.Identifier
                  && !it_is_value
                  && token_index + 1 < TokenArray.length
-                 && ( TokenArray[ token_index + 1 ].Text == ","
+                 && ( TokenArray[ token_index + 1 ].Text == "="
+                      || TokenArray[ token_index + 1 ].Text == ","
                       || TokenArray[ token_index + 1 ].Text == ")" ) )
             {
                 Scope.AddVariable( token.Text );
