@@ -1,0 +1,163 @@
+// -- FUNCTIONS
+
+
+function GetPath(
+    )
+{
+    static local
+        path = null;
+
+    if ( is_null( path ) )
+    {
+        path = explode( '?', _SERVER[ 'REQUEST_URI' ] )[ 0 ];
+
+        if ( path === '' )
+        {
+            path = '/';
+        }
+    }
+
+    return path;
+}
+
+// ~~
+
+function GetPathValueArray(
+    string path
+    )
+{
+    if ( substr( path, 0, 1 ) === '/' )
+    {
+        path = substr( path, 1 );
+    }
+
+    if ( substr( path, -1 ) === '/' )
+    {
+        path = substr( path, 0, -1 );
+    }
+
+    return explode( '/', path );
+}
+
+// ~~
+
+function IsGetRequest(
+    )
+{
+    return _SERVER[ 'REQUEST_METHOD' ] === 'GET';
+}
+
+// ~~
+
+function IsPostRequest(
+    )
+{
+    return _SERVER[ 'REQUEST_METHOD' ] === 'POST';
+}
+
+// ~~
+
+function IsPutRequest(
+    )
+{
+    return _SERVER[ 'REQUEST_METHOD' ] === 'PUT';
+}
+
+// ~~
+
+function IsDeleteRequest(
+    )
+{
+    return _SERVER[ 'REQUEST_METHOD' ] === 'DELETE';
+}
+
+// ~~
+
+function HasQueryValue(
+    string name
+    )
+{
+    return isset( _GET[ name ] );
+}
+
+// ~~
+
+function GetQueryValue(
+    string name
+    )
+{
+    return _GET[ name ];
+}
+
+// ~~
+
+function HasPostValue(
+    string name
+    )
+{
+    return isset( _POST[ name ] );
+}
+
+// ~~
+
+function GetPostValue(
+    string name
+    )
+{
+    return _POST[ name ];
+}
+
+// ~~
+
+function HasCookieValue(
+    string name
+    )
+{
+    return isset( _COOKIE[ name ] );
+}
+
+// ~~
+
+function GetCookieValue(
+    string name
+    )
+{
+    return _COOKIE[ name ];
+}
+
+// ~~
+
+function GetCurrentDate(
+    )
+{
+    return date( 'Y-m-d' );
+}
+
+// ~~
+
+function GetCurrentDateTime(
+    )
+{
+    return date( 'Y-m-d H:i:s' );
+}
+
+// ~~
+
+function IsId(
+    value
+    )
+{
+    return
+        is_numeric( value )
+        && value === ( int ) value
+        && value > 0;
+}
+
+// ~~
+
+function Redirect(
+    string path
+    )
+{
+    header( 'Location: ' .. path );
+}

@@ -1,3 +1,10 @@
+// -- CONSTANTS
+
+define( 'DatabaseHost', 'localhost' );
+define( 'DatabaseName', 'BLOG' );
+define( 'DatabaseUserName', 'root' );
+define( 'DatabasePassword', '' );
+
 // -- IMPORTS
 
 import 'FRAMEWORK/framework.php';
