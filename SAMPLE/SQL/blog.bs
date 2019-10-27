@@ -1,4 +1,4 @@
-BLOG | count 5
+blog | count 5
 
     SECTION
 

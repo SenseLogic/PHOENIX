@@ -15,7 +15,7 @@ class ADD_COMMENT_CONTROLLER extends CONTROLLER
     {
         parent::__construct();
 
-         $text = GetPostValue( 'text' );
+         $text = GetPostValue( 'Text' );
         $this->Article = GetArticleById( $article_id );
         AddComment( $text, $article_id, $this->Session->User->Id );
 

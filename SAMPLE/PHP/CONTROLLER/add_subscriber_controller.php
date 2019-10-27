@@ -13,11 +13,14 @@ class ADD_SUBSCRIBER_CONTROLLER extends CONTROLLER
     {
         parent::__construct();
 
-        AddSubscriber( GetPostValue( 'email' ) );
+        if ( IsValidCaptcha( GetPostValue( 'Captcha' ), $this->Session->Captcha ) )
+        {
+            AddSubscriber( GetPostValue( 'Email' ) );
 
-        $this->Session->UserHasSubscribed = true;
-        $this->Session->Message = 'Thanks for your subscription.';
-        $this->Session->Store();
+            $this->Session->UserHasSubscribed = true;
+            $this->Session->Message = 'Thanks for your subscription.';
+            $this->Session->Store();
+        }
 
         Redirect( $this->Session->Path );
     }
@@ -25,4 +28,4 @@ class ADD_SUBSCRIBER_CONTROLLER extends CONTROLLER
 
 // -- STATEMENTS
 
- $add_subscriber_controller = new ADD_SUBSCRIBER_CONTROLLER();
+ $add_subscriber_controller = new ADD_SUBSCRIBER_CONTROLLER(  $c);

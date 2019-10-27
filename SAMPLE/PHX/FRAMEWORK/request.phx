@@ -1,5 +1,12 @@
 // -- FUNCTIONS
 
+function GetRequest(
+    )
+{
+    return _SERVER[ 'REQUEST_URI' ];
+}
+
+// ~~
 
 function GetPath(
     )
@@ -73,6 +80,14 @@ function IsDeleteRequest(
 
 // ~~
 
+function GetQuery(
+    )
+{
+    return _SERVER[ 'QUERY_STRING' ];
+}
+
+// ~~
+
 function HasQueryValue(
     string name
     )
@@ -87,6 +102,23 @@ function GetQueryValue(
     )
 {
     return _GET[ name ];
+}
+
+// ~~
+
+function FindQueryValue(
+    string value,
+    string default_value
+    )
+{
+    if ( isset( _GET[ name ] ) )
+    {
+        return _GET[ name ];
+    }
+    else
+    {
+        return default_value;
+    }
 }
 
 // ~~
@@ -109,6 +141,23 @@ function GetPostValue(
 
 // ~~
 
+function FindPostValue(
+    string value,
+    string default_value
+    )
+{
+    if ( isset( _POST[ name ] ) )
+    {
+        return _POST[ name ];
+    }
+    else
+    {
+        return default_value;
+    }
+}
+
+// ~~
+
 function HasCookieValue(
     string name
     )
@@ -127,18 +176,97 @@ function GetCookieValue(
 
 // ~~
 
-function GetCurrentDate(
+function FindCookieValue(
+    string value,
+    string default_value
     )
 {
-    return date( 'Y-m-d' );
+    if ( isset( _COOKIE[ name ] ) )
+    {
+        return _COOKIE[ name ];
+    }
+    else
+    {
+        return default_value;
+    }
 }
 
 // ~~
 
-function GetCurrentDateTime(
+function GetIpAddress(
     )
 {
-    return date( 'Y-m-d H:i:s' );
+    if ( isset( _SERVER[ 'HTTP_CLIENT_IP' ] ) )
+    {
+        return _SERVER[ 'HTTP_CLIENT_IP' ];
+    }
+    else if ( isset( _SERVER[ 'HTTP_X_FORWARDED_FOR' ] ) )
+    {
+        return _SERVER[ 'HTTP_X_FORWARDED_FOR' ];
+    }
+    else if ( isset( _SERVER[ 'HTTP_X_FORWARDED' ] ) )
+    {
+        return _SERVER[ 'HTTP_X_FORWARDED' ];
+    }
+    else if ( isset( _SERVER[ 'HTTP_FORWARDED_FOR' ] ) )
+    {
+        return _SERVER[ 'HTTP_FORWARDED_FOR' ];
+    }
+    else if ( isset( _SERVER[ 'HTTP_FORWARDED' ] ) )
+    {
+        return _SERVER[ 'HTTP_FORWARDED' ];
+    }
+    else if ( isset( _SERVER[ 'REMOTE_ADDR' ] ) )
+    {
+        return _SERVER[ 'REMOTE_ADDR' ];
+    }
+    else
+    {
+        return '0.0.0.0';
+    }
+}
+
+// ~~
+
+function GetBrowser(
+    )
+{
+    var user_agent = _SERVER[ 'HTTP_USER_AGENT' ];
+    var part_array = explode( '/', str_replace( ' ', '/', user_agent ) );
+
+    if ( in_array( 'Edge', part_array ) )
+    {
+        return 'Edge';
+    }
+    else if ( in_array( 'MSIE', part_array )
+              && !in_array( 'Opera', part_array ) )
+    {
+        return 'MSIE';
+    }
+    else if ( in_array( 'Firefox', part_array ) )
+    {
+        return 'Firefox';
+    }
+    else if ( in_array( 'Chrome', part_array ) )
+    {
+        return 'Chrome';
+    }
+    else if ( in_array( 'Safari', part_array ) )
+    {
+        return 'Safari';
+    }
+    else if ( in_array( 'Opera', part_array ) )
+    {
+        return 'Opera';
+    }
+    else if ( in_array( 'Netscape', part_array ) )
+    {
+        return 'Netscape';
+    }
+    else
+    {
+        return 'Unknown';
+    }
 }
 
 // ~~

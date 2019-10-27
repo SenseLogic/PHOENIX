@@ -13,7 +13,7 @@ class CONNECT_USER_CONTROLLER extends CONTROLLER
     {
         parent::constructor();
 
-        var user = GetUserByPseudonymAndPassword( GetPostValue( 'pseudonym' ), GetPostValue( 'password' ) );
+        var user = GetUserByPseudonymAndPassword( GetPostValue( 'Pseudonym' ), GetPostValue( 'Password' ) );
 
         if ( is_null( user ) )
         {

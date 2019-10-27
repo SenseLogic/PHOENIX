@@ -14,7 +14,7 @@ function GetDatabaseConnection(
                   DatabaseUserName,
                   DatabasePassword
                   );
-        connection = new PDO( 'mysql:host=localhost;dbname=BLOG', 'root', '' );
+
         connection.prepare( "set names 'utf8mb4'" ).execute();
     }
 

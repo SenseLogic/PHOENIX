@@ -4,9 +4,35 @@ function GetDatabaseSectionArray(
     )
 {
     var statement = GetDatabaseStatement( 'select Id, Number, Name, Text, Image from SECTION order by Number asc' );
-    statement.execute();
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
 
     return GetDatabaseObjectArray( statement );
+}
+
+// ~~
+
+function GetDatabaseSectionByIdMap(
+    )
+{
+    var statement = GetDatabaseStatement( 'select Id, Number, Name, Text, Image from SECTION' );
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
+
+    var section_map = [];
+
+    while ( var section = statement.fetchObject() )
+    {
+        section_map[ section.Id ] = section;
+    }
+
+    return section_map;
 }
 
 // ~~
@@ -15,9 +41,13 @@ function GetDatabaseSection(
     int id
     )
 {
-    var statement = GetDatabaseStatement( 'select Id, Number, Name, Text, Image from SECTION where Id = ?' );
+    var statement = GetDatabaseStatement( 'select Id, Number, Name, Text, Image from SECTION where Id = ? limit 1' );
     statement.bindParam( 1, id, PDO::PARAM_INT );
-    statement.execute();
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
 
     return GetDatabaseObject( statement );
 }
@@ -36,7 +66,11 @@ function AddDatabaseSection(
     statement.bindParam( 2, name, PDO::PARAM_STR );
     statement.bindParam( 3, text, PDO::PARAM_STR );
     statement.bindParam( 4, image, PDO::PARAM_STR );
-    statement.execute();
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
 
     return GetDatabaseAddedId( statement );
 }
@@ -57,7 +91,11 @@ function SetDatabaseSection(
     statement.bindParam( 3, text, PDO::PARAM_STR );
     statement.bindParam( 4, image, PDO::PARAM_STR );
     statement.bindParam( 5, id, PDO::PARAM_INT );
-    statement.execute();
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
 }
 
 // ~~
@@ -68,5 +106,9 @@ function RemoveDatabaseSection(
 {
     var statement = GetDatabaseStatement( 'delete from SECTION where Id = ?' );
     statement.bindParam( 1, id, PDO::PARAM_INT );
-    statement.execute();
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
 }

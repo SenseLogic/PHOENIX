@@ -1,0 +1,20 @@
+// -- IMPORTS
+
+import 'controller.php';
+
+// -- TYPES
+
+class GET_CAPTCHA_IMAGE_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        )
+    {
+        parent::constructor();
+
+        WriteCaptchaImage( .Session.Captcha );
+    }
+}
+
+// -- STATEMENTS
+
+var get_captcha_image_controller = new GET_CAPTCHA_IMAGE_CONTROLLER();

@@ -4,9 +4,35 @@ function GetDatabaseArticleArray(
     )
 {
     var statement = GetDatabaseStatement( 'select Id, SectionId, UserId, Title, Text, Image, Date from ARTICLE order by Date desc' );
-    statement.execute();
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
 
     return GetDatabaseObjectArray( statement );
+}
+
+// ~~
+
+function GetDatabaseArticleByIdMap(
+    )
+{
+    var statement = GetDatabaseStatement( 'select Id, SectionId, UserId, Title, Text, Image, Date from ARTICLE' );
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
+
+    var article_map = [];
+
+    while ( var article = statement.fetchObject() )
+    {
+        article_map[ article.Id ] = article;
+    }
+
+    return article_map;
 }
 
 // ~~
@@ -15,9 +41,13 @@ function GetDatabaseArticle(
     int id
     )
 {
-    var statement = GetDatabaseStatement( 'select Id, SectionId, UserId, Title, Text, Image, Date from ARTICLE where Id = ?' );
+    var statement = GetDatabaseStatement( 'select Id, SectionId, UserId, Title, Text, Image, Date from ARTICLE where Id = ? limit 1' );
     statement.bindParam( 1, id, PDO::PARAM_INT );
-    statement.execute();
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
 
     return GetDatabaseObject( statement );
 }
@@ -40,7 +70,11 @@ function AddDatabaseArticle(
     statement.bindParam( 4, text, PDO::PARAM_STR );
     statement.bindParam( 5, image, PDO::PARAM_STR );
     statement.bindParam( 6, date, PDO::PARAM_STR );
-    statement.execute();
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
 
     return GetDatabaseAddedId( statement );
 }
@@ -65,7 +99,11 @@ function SetDatabaseArticle(
     statement.bindParam( 5, image, PDO::PARAM_STR );
     statement.bindParam( 6, date, PDO::PARAM_STR );
     statement.bindParam( 7, id, PDO::PARAM_INT );
-    statement.execute();
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
 }
 
 // ~~
@@ -76,5 +114,9 @@ function RemoveDatabaseArticle(
 {
     var statement = GetDatabaseStatement( 'delete from ARTICLE where Id = ?' );
     statement.bindParam( 1, id, PDO::PARAM_INT );
-    statement.execute();
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
 }

@@ -1,6 +1,6 @@
 // -- IMPORTS
 
-import 'request.phx';
-import 'session.phx';
-import 'database.phx';
-import 'error.phx';
+import 'request.php';
+import 'session.php';
+import 'database.php';
+import 'error.php';

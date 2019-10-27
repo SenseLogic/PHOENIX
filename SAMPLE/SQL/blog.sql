@@ -2,15 +2,15 @@ set @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 set @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 set @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-drop schema if exists `BLOG`;
+drop schema if exists `blog`;
 
-create schema if not exists `BLOG` default character set utf8 collate utf8_general_ci;
+create schema if not exists `blog` default character set utf8mb4 collate utf8mb4_general_ci;
 
-use `BLOG`;
+use `blog`;
 
-drop table if exists `BLOG`.`SECTION`;
+drop table if exists `blog`.`SECTION`;
 
-create table if not exists `BLOG`.`SECTION`(
+create table if not exists `blog`.`SECTION`(
     `Id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `Number` INT UNSIGNED NULL,
     `Name` VARCHAR( 45 ) NULL,
@@ -19,9 +19,9 @@ create table if not exists `BLOG`.`SECTION`(
     primary key( `Id` )
     ) engine = InnoDB;
 
-drop table if exists `BLOG`.`USER`;
+drop table if exists `blog`.`USER`;
 
-create table if not exists `BLOG`.`USER`(
+create table if not exists `blog`.`USER`(
     `Id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `Email` VARCHAR( 45 ) NULL,
     `Pseudonym` VARCHAR( 45 ) NULL,
@@ -30,9 +30,9 @@ create table if not exists `BLOG`.`USER`(
     primary key( `Id` )
     ) engine = InnoDB;
 
-drop table if exists `BLOG`.`ARTICLE`;
+drop table if exists `blog`.`ARTICLE`;
 
-create table if not exists `BLOG`.`ARTICLE`(
+create table if not exists `blog`.`ARTICLE`(
     `Id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `SectionId` INT UNSIGNED NULL,
     `UserId` INT UNSIGNED NULL,
@@ -45,19 +45,19 @@ create table if not exists `BLOG`.`ARTICLE`(
     index `fk_article_user_2_idx`( `UserId` ASC ),
     constraint `fk_article_section_1`
     foreign key( `SectionId` )
-    references `BLOG`.`SECTION`( `Id` )
+    references `blog`.`SECTION`( `Id` )
         on delete set null
         on update no action,
     constraint `fk_article_user_2`
     foreign key( `UserId` )
-    references `BLOG`.`USER`( `Id` )
+    references `blog`.`USER`( `Id` )
         on delete set null
         on update no action
     ) engine = InnoDB;
 
-drop table if exists `BLOG`.`COMMENT`;
+drop table if exists `blog`.`COMMENT`;
 
-create table if not exists `BLOG`.`COMMENT`(
+create table if not exists `blog`.`COMMENT`(
     `Id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `ArticleId` INT UNSIGNED NULL,
     `UserId` INT UNSIGNED NULL,
@@ -68,19 +68,19 @@ create table if not exists `BLOG`.`COMMENT`(
     index `fk_comment_user_2_idx`( `UserId` ASC ),
     constraint `fk_comment_article_1`
     foreign key( `ArticleId` )
-    references `BLOG`.`ARTICLE`( `Id` )
+    references `blog`.`ARTICLE`( `Id` )
         on delete set null
         on update no action,
     constraint `fk_comment_user_2`
     foreign key( `UserId` )
-    references `BLOG`.`USER`( `Id` )
+    references `blog`.`USER`( `Id` )
         on delete set null
         on update no action
     ) engine = InnoDB;
 
-drop table if exists `BLOG`.`SUBSCRIBER`;
+drop table if exists `blog`.`SUBSCRIBER`;
 
-create table if not exists `BLOG`.`SUBSCRIBER`(
+create table if not exists `blog`.`SUBSCRIBER`(
     `Id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `Email` VARCHAR( 45 ) NULL,
     primary key( `Id` )

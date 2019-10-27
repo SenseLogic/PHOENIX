@@ -21,11 +21,11 @@
         <h4>
             Comment
         </h4>
-        <form action="/add_comment/<% .Article.Id %>/" method="post">
+        <form name="AddComment" action="/add_comment/<% .Article.Id %>/" method="post">
             <label for="text">
                 Text :
             </label>
-            <textarea id="text" name="text"/></textarea>
+            <textarea id="text" name="Text"/></textarea>
             <input type="submit" value="Send">
         </form>
     <? } ?>

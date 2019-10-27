@@ -10,6 +10,7 @@ class SESSION
         .User = FindSessionValue( 'User', null );
         .UserIsConnected = FindSessionValue( 'UserIsConnected', false );
         .UserHasSubscribed = FindSessionValue( 'UserHasSubscribed', false );
+        .Captcha = FindSessionValue( 'Captcha', '' );
     }
 
     // ~~
@@ -22,5 +23,6 @@ class SESSION
         SetSessionValue( 'User', .User );
         SetSessionValue( 'UserIsConnected', .UserIsConnected );
         SetSessionValue( 'UserHasSubscribed', .UserHasSubscribed );
+        SetSessionValue( 'Captcha', .Captcha );
     }
 }

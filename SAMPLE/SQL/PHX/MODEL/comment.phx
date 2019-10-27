@@ -4,9 +4,35 @@ function GetDatabaseCommentArray(
     )
 {
     var statement = GetDatabaseStatement( 'select Id, ArticleId, UserId, Text, DateTime from COMMENT order by DateTime desc' );
-    statement.execute();
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
 
     return GetDatabaseObjectArray( statement );
+}
+
+// ~~
+
+function GetDatabaseCommentByIdMap(
+    )
+{
+    var statement = GetDatabaseStatement( 'select Id, ArticleId, UserId, Text, DateTime from COMMENT' );
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
+
+    var comment_map = [];
+
+    while ( var comment = statement.fetchObject() )
+    {
+        comment_map[ comment.Id ] = comment;
+    }
+
+    return comment_map;
 }
 
 // ~~
@@ -15,9 +41,13 @@ function GetDatabaseComment(
     int id
     )
 {
-    var statement = GetDatabaseStatement( 'select Id, ArticleId, UserId, Text, DateTime from COMMENT where Id = ?' );
+    var statement = GetDatabaseStatement( 'select Id, ArticleId, UserId, Text, DateTime from COMMENT where Id = ? limit 1' );
     statement.bindParam( 1, id, PDO::PARAM_INT );
-    statement.execute();
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
 
     return GetDatabaseObject( statement );
 }
@@ -36,7 +66,11 @@ function AddDatabaseComment(
     statement.bindParam( 2, user_id, PDO::PARAM_INT );
     statement.bindParam( 3, text, PDO::PARAM_STR );
     statement.bindParam( 4, date_time, PDO::PARAM_STR );
-    statement.execute();
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
 
     return GetDatabaseAddedId( statement );
 }
@@ -57,7 +91,11 @@ function SetDatabaseComment(
     statement.bindParam( 3, text, PDO::PARAM_STR );
     statement.bindParam( 4, date_time, PDO::PARAM_STR );
     statement.bindParam( 5, id, PDO::PARAM_INT );
-    statement.execute();
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
 }
 
 // ~~
@@ -68,5 +106,9 @@ function RemoveDatabaseComment(
 {
     var statement = GetDatabaseStatement( 'delete from COMMENT where Id = ?' );
     statement.bindParam( 1, id, PDO::PARAM_INT );
-    statement.execute();
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
 }
