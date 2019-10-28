@@ -43,7 +43,6 @@ function Route(
         }
         else
         {
-            var_dump( path_value_array );
             var section_id = 0;
             import 'CONTROLLER/show_section_controller.php';
         }

@@ -43,7 +43,6 @@ function Route(
         }
         else
         {
-            var_dump( $path_value_array );
              $section_id = 0;
             require_once __DIR__ . '/' . 'CONTROLLER/show_section_controller.php';
         }

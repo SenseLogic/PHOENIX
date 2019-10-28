@@ -35,7 +35,7 @@ function IsSessionValue(
 {
     return
         isset( $_SESSION[ $name ] )
-        && $_SESSION[ $name ] === $value;
+        && $_SESSION[ $name ] == $value;
 }
 
 // ~~
