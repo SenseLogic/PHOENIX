@@ -43,7 +43,14 @@ function GetPathValueArray(
         $path = substr( $path, 0, -1 );
     }
 
-    return explode( '/', $path );
+    if ( $path === '' )
+    {
+        return array();
+    }
+    else
+    {
+        return explode( '/', $path );
+    }
 }
 
 // ~~
@@ -107,13 +114,13 @@ function GetQueryValue(
 // ~~
 
 function FindQueryValue(
-    string $value,
+    string $name,
     string $default_value
     )
 {
-    if ( isset( $_GET[ name ] ) )
+    if ( isset( $_GET[ $name ] ) )
     {
-        return $_GET[ name ];
+        return $_GET[ $name ];
     }
     else
     {
@@ -142,13 +149,13 @@ function GetPostValue(
 // ~~
 
 function FindPostValue(
-    string $value,
+    string $name,
     string $default_value
     )
 {
-    if ( isset( $_POST[ name ] ) )
+    if ( isset( $_POST[ $name ] ) )
     {
-        return $_POST[ name ];
+        return $_POST[ $name ];
     }
     else
     {
@@ -177,13 +184,13 @@ function GetCookieValue(
 // ~~
 
 function FindCookieValue(
-    string $value,
+    string $name,
     string $default_value
     )
 {
-    if ( isset( $_COOKIE[ name ] ) )
+    if ( isset( $_COOKIE[ $name ] ) )
     {
-        return $_COOKIE[ name ];
+        return $_COOKIE[ $name ];
     }
     else
     {

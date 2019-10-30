@@ -1,3 +1,3 @@
 #!/bin/sh
 set -x
-../phoenix --create --watch PHX/ PHP/
+../phoenix --create --watch CODE/ WEB/
