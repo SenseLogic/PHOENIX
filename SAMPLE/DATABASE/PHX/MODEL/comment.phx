@@ -15,29 +15,7 @@ function GetDatabaseCommentArray(
 
 // ~~
 
-function GetDatabaseCommentByIdMap(
-    )
-{
-    var statement = GetDatabaseStatement( 'select Id, ArticleId, UserId, Text, DateTime from COMMENT' );
-
-    if ( !statement.execute() )
-    {
-        var_dump( statement.errorInfo() );
-    }
-
-    var comment_map = [];
-
-    while ( var comment = statement.fetchObject() )
-    {
-        comment_map[ comment.Id ] = comment;
-    }
-
-    return comment_map;
-}
-
-// ~~
-
-function GetDatabaseComment(
+function GetDatabaseCommentById(
     int id
     )
 {
@@ -57,15 +35,13 @@ function GetDatabaseComment(
 function AddDatabaseComment(
     int article_id,
     int user_id,
-    string text,
-    string date_time
+    string text
     )
 {
-    var statement = GetDatabaseStatement( 'insert into COMMENT ( ArticleId, UserId, Text, DateTime ) values ( ?, ?, ?, ? )' );
+    var statement = GetDatabaseStatement( 'insert into COMMENT ( ArticleId, UserId, Text, DateTime ) values ( ?, ?, ?, now() )' );
     statement.bindParam( 1, article_id, PDO::PARAM_INT );
     statement.bindParam( 2, user_id, PDO::PARAM_INT );
     statement.bindParam( 3, text, PDO::PARAM_STR );
-    statement.bindParam( 4, date_time, PDO::PARAM_STR );
 
     if ( !statement.execute() )
     {
@@ -100,7 +76,7 @@ function SetDatabaseComment(
 
 // ~~
 
-function RemoveDatabaseComment(
+function RemoveDatabaseCommentById(
     int id
     )
 {

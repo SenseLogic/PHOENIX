@@ -3,6 +3,7 @@
 import 'controller.php';
 import '../MODEL/article.php';
 import '../MODEL/comment.php';
+import '../MODEL/model.php';
 import '../MODEL/section.php';
 import '../MODEL/session.php';
 import '../MODEL/user.php';
@@ -20,14 +21,15 @@ class SHOW_ARTICLE_CONTROLLER extends CONTROLLER
         .Session.Path = GetPath();
         .Session.Store();
 
-        .SectionArray = GetSectionArray();
-        .Article = GetArticleById( article_id );
-        .Section = GetSectionById( .Article.SectionId );
-        .CommentArray = GetCommentArrayByArticleId( article_id );
+        .SectionArray = GetDatabaseSectionArray();
+        .Article = GetDatabaseArticleById( article_id );
+        .Section = GetDatabaseSectionById( .Article.SectionId );
+        .CommentArray = GetDatabaseCommentArrayByArticleId( article_id );
 
         .Article.ImageIndex = .Article.Id % 20;
-        InflateArticle( .Article );
-        InflateCommentArray( .CommentArray );
+
+        InflateDatabaseArticle( .Article );
+        InflateDatabaseCommentArray( .CommentArray );
 
         import '../VIEW/show_article_view.php';
         import '../VIEW/show_page_view.php';

@@ -16,8 +16,8 @@ class ADD_COMMENT_CONTROLLER extends CONTROLLER
         parent::__construct();
 
          $text = GetPostValue( 'Text' );
-        $this->Article = GetArticleById( $article_id );
-        AddComment( $text, $article_id, $this->Session->User->Id );
+        $this->Article = GetDatabaseArticleById( $article_id );
+        AddDatabaseComment( $text, $article_id, $this->Session->User->Id );
 
         $this->Session->Message = 'Your comment has been added.';
         $this->Session->Store();

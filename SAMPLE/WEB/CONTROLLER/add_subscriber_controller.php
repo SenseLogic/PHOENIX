@@ -15,7 +15,7 @@ class ADD_SUBSCRIBER_CONTROLLER extends CONTROLLER
 
         if ( IsValidCaptcha( GetPostValue( 'Captcha' ), $this->Session->Captcha ) )
         {
-            AddSubscriber( GetPostValue( 'Email' ) );
+            AddDatabaseSubscriber( GetPostValue( 'Email' ) );
 
             $this->Session->UserHasSubscribed = true;
             $this->Session->Message = 'Thanks for your subscription.';

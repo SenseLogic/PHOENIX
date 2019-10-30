@@ -15,29 +15,7 @@ function GetDatabaseSubscriberArray(
 
 // ~~
 
-function GetDatabaseSubscriberByIdMap(
-    )
-{
-    var statement = GetDatabaseStatement( 'select Id, Email from SUBSCRIBER' );
-
-    if ( !statement.execute() )
-    {
-        var_dump( statement.errorInfo() );
-    }
-
-    var subscriber_map = [];
-
-    while ( var subscriber = statement.fetchObject() )
-    {
-        subscriber_map[ subscriber.Id ] = subscriber;
-    }
-
-    return subscriber_map;
-}
-
-// ~~
-
-function GetDatabaseSubscriber(
+function GetDatabaseSubscriberById(
     int id
     )
 {
@@ -88,7 +66,7 @@ function SetDatabaseSubscriber(
 
 // ~~
 
-function RemoveDatabaseSubscriber(
+function RemoveDatabaseSubscriberById(
     int id
     )
 {

@@ -15,29 +15,7 @@ function GetDatabaseSectionArray(
 
 // ~~
 
-function GetDatabaseSectionByIdMap(
-    )
-{
-    var statement = GetDatabaseStatement( 'select Id, Number, Name, Text, Image from SECTION' );
-
-    if ( !statement.execute() )
-    {
-        var_dump( statement.errorInfo() );
-    }
-
-    var section_map = [];
-
-    while ( var section = statement.fetchObject() )
-    {
-        section_map[ section.Id ] = section;
-    }
-
-    return section_map;
-}
-
-// ~~
-
-function GetDatabaseSection(
+function GetDatabaseSectionById(
     int id
     )
 {
@@ -100,7 +78,7 @@ function SetDatabaseSection(
 
 // ~~
 
-function RemoveDatabaseSection(
+function RemoveDatabaseSectionById(
     int id
     )
 {

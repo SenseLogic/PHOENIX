@@ -248,7 +248,7 @@ function GetBrowser(
     else if ( in_array( 'MSIE', part_array )
               && !in_array( 'Opera', part_array ) )
     {
-        return 'MSIE';
+        return 'Internet Explorer';
     }
     else if ( in_array( 'Firefox', part_array ) )
     {

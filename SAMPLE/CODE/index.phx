@@ -18,7 +18,12 @@ function Route(
 {
     var path_value_array = GetPathValueArray( path );
     var path_value_count = count( path_value_array );
-    var controller_name = path_value_array[ 0 ];
+    var controller_name = '';
+
+    if ( path_value_count > 0 )
+    {
+        controller_name = path_value_array[ 0 ];
+    }
 
     if ( IsGetRequest() )
     {

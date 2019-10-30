@@ -16,8 +16,8 @@ class ADD_COMMENT_CONTROLLER extends CONTROLLER
         parent::constructor();
 
         var text = GetPostValue( 'Text' );
-        .Article = GetArticleById( article_id );
-        AddComment( text, article_id, .Session.User.Id );
+        .Article = GetDatabaseArticleById( article_id );
+        AddDatabaseComment( text, article_id, .Session.User.Id );
 
         .Session.Message = 'Your comment has been added.';
         .Session.Store();

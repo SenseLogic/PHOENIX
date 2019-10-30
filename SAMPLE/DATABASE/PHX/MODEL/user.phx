@@ -15,29 +15,7 @@ function GetDatabaseUserArray(
 
 // ~~
 
-function GetDatabaseUserByIdMap(
-    )
-{
-    var statement = GetDatabaseStatement( 'select Id, Email, Pseudonym, Password, ItIsAdministrator from USER' );
-
-    if ( !statement.execute() )
-    {
-        var_dump( statement.errorInfo() );
-    }
-
-    var user_map = [];
-
-    while ( var user = statement.fetchObject() )
-    {
-        user_map[ user.Id ] = user;
-    }
-
-    return user_map;
-}
-
-// ~~
-
-function GetDatabaseUser(
+function GetDatabaseUserById(
     int id
     )
 {
@@ -100,7 +78,7 @@ function SetDatabaseUser(
 
 // ~~
 
-function RemoveDatabaseUser(
+function RemoveDatabaseUserById(
     int id
     )
 {

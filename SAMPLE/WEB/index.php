@@ -18,7 +18,12 @@ function Route(
 {
      $path_value_array = GetPathValueArray( $path );
      $path_value_count = count( $path_value_array );
-     $controller_name = $path_value_array[ 0 ];
+     $controller_name = '';
+
+    if ( $path_value_count > 0 )
+    {
+        $controller_name = $path_value_array[ 0 ];
+    }
 
     if ( IsGetRequest() )
     {

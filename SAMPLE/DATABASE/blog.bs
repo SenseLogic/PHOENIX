@@ -1,6 +1,6 @@
 blog | count 5
 
-    SECTION
+    SECTION | sorted
 
         Id : UINT32 | key, unique, incremented
         Number : UINT32 | indexed, ascending
@@ -8,7 +8,7 @@ blog | count 5
         Text : STRING
         Image : STRING | capacity 45
 
-    USER
+    USER | sorted
 
         Id : UINT32 | key, unique, incremented
         Email : STRING | capacity 45, indexed, ascending
@@ -16,7 +16,7 @@ blog | count 5
         Password : STRING | capacity 45
         ItIsAdministrator : BOOL
 
-    ARTICLE | count 15
+    ARTICLE | sorted, count 15
 
         Id : UINT32 | key, unique, incremented
         SectionId : SECTION.Id
@@ -24,17 +24,17 @@ blog | count 5
         Title : STRING
         Text : STRING
         Image : STRING | capacity 45
-        Date : DATE | indexed, descending
+        Date : DATE | indexed, descending, now
 
-    COMMENT | count 30
+    COMMENT | sorted, count 30
 
         Id : UINT32 | key, unique, incremented
         ArticleId : ARTICLE.Id
         UserId : USER.Id
         Text : STRING | english 2 4 5 7
-        DateTime : DATETIME | indexed, descending
+        DateTime : DATETIME | indexed, descending, now
 
-    SUBSCRIBER
+    SUBSCRIBER | sorted
 
         Id : UINT32 | key, unique, incremented
         Email : STRING | capacity 45, indexed, ascending

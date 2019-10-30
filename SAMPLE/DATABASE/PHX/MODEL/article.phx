@@ -15,29 +15,7 @@ function GetDatabaseArticleArray(
 
 // ~~
 
-function GetDatabaseArticleByIdMap(
-    )
-{
-    var statement = GetDatabaseStatement( 'select Id, SectionId, UserId, Title, Text, Image, Date from ARTICLE' );
-
-    if ( !statement.execute() )
-    {
-        var_dump( statement.errorInfo() );
-    }
-
-    var article_map = [];
-
-    while ( var article = statement.fetchObject() )
-    {
-        article_map[ article.Id ] = article;
-    }
-
-    return article_map;
-}
-
-// ~~
-
-function GetDatabaseArticle(
+function GetDatabaseArticleById(
     int id
     )
 {
@@ -59,17 +37,15 @@ function AddDatabaseArticle(
     int user_id,
     string title,
     string text,
-    string image,
-    string date
+    string image
     )
 {
-    var statement = GetDatabaseStatement( 'insert into ARTICLE ( SectionId, UserId, Title, Text, Image, Date ) values ( ?, ?, ?, ?, ?, ? )' );
+    var statement = GetDatabaseStatement( 'insert into ARTICLE ( SectionId, UserId, Title, Text, Image, Date ) values ( ?, ?, ?, ?, ?, date( now() ) )' );
     statement.bindParam( 1, section_id, PDO::PARAM_INT );
     statement.bindParam( 2, user_id, PDO::PARAM_INT );
     statement.bindParam( 3, title, PDO::PARAM_STR );
     statement.bindParam( 4, text, PDO::PARAM_STR );
     statement.bindParam( 5, image, PDO::PARAM_STR );
-    statement.bindParam( 6, date, PDO::PARAM_STR );
 
     if ( !statement.execute() )
     {
@@ -108,7 +84,7 @@ function SetDatabaseArticle(
 
 // ~~
 
-function RemoveDatabaseArticle(
+function RemoveDatabaseArticleById(
     int id
     )
 {

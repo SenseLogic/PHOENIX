@@ -1,62 +1,80 @@
 <?php // -- FUNCTIONS
 
-function GetSubscriberArray(
+function GetDatabaseSubscriberArray(
     )
 {
-     $statement = GetDatabaseStatement( 'select * from SUBSCRIBER order by Email asc' );
-    $statement->execute();
+     $statement = GetDatabaseStatement( 'select Id, Email from SUBSCRIBER order by Email asc' );
+
+    if ( !$statement->execute() )
+    {
+        var_dump( $statement->errorInfo() );
+    }
 
     return GetDatabaseObjectArray( $statement );
 }
 
 // ~~
 
-function GetSubscriberById(
+function GetDatabaseSubscriberById(
     int $id
     )
 {
-     $statement = GetDatabaseStatement( 'select * from SUBSCRIBER where Id = ?' );
+     $statement = GetDatabaseStatement( 'select Id, Email from SUBSCRIBER where Id = ? limit 1' );
     $statement->bindParam( 1, $id, PDO::PARAM_INT );
-    $statement->execute();
+
+    if ( !$statement->execute() )
+    {
+        var_dump( $statement->errorInfo() );
+    }
 
     return GetDatabaseObject( $statement );
 }
 
 // ~~
 
-function ChangeSubscriber(
-    int $id,
-    string $email
-    )
-{
-     $statement = GetDatabaseStatement( 'update SUBSCRIBER set Id = ?, Email = ? where Id = ?' );
-    $statement->bindParam( 1, $id, PDO::PARAM_INT );
-    $statement->bindParam( 2, $email, PDO::PARAM_STR );
-    $statement->bindParam( 3, $id, PDO::PARAM_INT );
-    $statement->execute();
-}
-
-// ~~
-
-function AddSubscriber(
+function AddDatabaseSubscriber(
     string $email
     )
 {
      $statement = GetDatabaseStatement( 'insert into SUBSCRIBER ( Email ) values ( ? )' );
     $statement->bindParam( 1, $email, PDO::PARAM_STR );
-    $statement->execute();
+
+    if ( !$statement->execute() )
+    {
+        var_dump( $statement->errorInfo() );
+    }
 
     return GetDatabaseAddedId( $statement );
 }
 
+// ~~
+
+function SetDatabaseSubscriber(
+    int $id,
+    string $email
+    )
+{
+     $statement = GetDatabaseStatement( 'update SUBSCRIBER set Email = ? where Id = ?' );
+    $statement->bindParam( 1, $email, PDO::PARAM_STR );
+    $statement->bindParam( 2, $id, PDO::PARAM_INT );
+
+    if ( !$statement->execute() )
+    {
+        var_dump( $statement->errorInfo() );
+    }
+}
 
 // ~~
 
-function RemoveSubscriber(
+function RemoveDatabaseSubscriberById(
     int $id
     )
 {
      $statement = GetDatabaseStatement( 'delete from SUBSCRIBER where Id = ?' );
     $statement->bindParam( 1, $id, PDO::PARAM_INT );
-    $statement->execute();
+
+    if ( !$statement->execute() )
+    {
+        var_dump( $statement->errorInfo() );
+    }
 }
