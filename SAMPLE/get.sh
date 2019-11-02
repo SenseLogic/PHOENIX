@@ -1,3 +1,3 @@
 #!/bin/sh
 set -x
-sudo apt install mysql-server php php-mysql php-gd
+sudo apt install mysql-community-server mysql-community-client php php-mysql php-gd
