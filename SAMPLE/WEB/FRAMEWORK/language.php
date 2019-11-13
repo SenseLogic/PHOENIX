@@ -28,6 +28,33 @@ function GetBrowserLanguageCode(
 
 // ~~
 
+function GetTranslatedTextByCode(
+    string $text,
+    string $language_code
+    )
+{
+     $translated_text_array = explode( '¨', $text );
+     $translated_text = $translated_text_array[ 0 ];
+
+    for (  $translated_text_index = 1;
+          $translated_text_index < count( $translated_text_array );
+          ++$translated_text_index )
+    {
+         $language_code_translated_text = $translated_text_array[ $translated_text_index ];
+
+        if ( substr( $language_code_translated_text, 0, 2 ) == $language_code )
+        {
+            $translated_text = substr( $language_code_translated_text, 3 );
+
+            break;
+        }
+    }
+
+    return str_replace( '[<', '<', str_replace( '>]', '>', $translated_text ) );
+}
+
+// ~~
+
 function GetTranslatedText(
     string $text,
     int $translated_text_index

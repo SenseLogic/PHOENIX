@@ -100,7 +100,7 @@
                                     captcha_field = add_subscriber_form.Captcha;
 
                                     if ( email_field.value !== ""
-                                         && /[a-z-.]+@[a-z-]+\.[a-z]+/g.test( email_field.value.toLowerCase() ) )
+                                         && /^[a-z-.]+@[a-z-.]+\.[a-z]+$/g.test( email_field.value.toLowerCase() ) )
                                     {
                                         email_field.classList.remove( "red" );
                                         email_field.classList.remove( "lighten-4" );
