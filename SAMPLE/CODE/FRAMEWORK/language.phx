@@ -28,50 +28,30 @@ function GetBrowserLanguageCode(
 
 // ~~
 
-function GetTranslatedTextByCode(
+function GetTranslatedText(
     string text,
-    string language_code
+    string language_code,
+    string default_language_code = 'en'
     )
 {
     var translated_text_array = explode( '¨', text );
     var translated_text = translated_text_array[ 0 ];
 
-    for ( var translated_text_index = 1;
-          translated_text_index < count( translated_text_array );
-          ++translated_text_index )
+    if ( language_code != default_language_code )
     {
-        var language_code_translated_text = translated_text_array[ translated_text_index ];
-
-        if ( substr( language_code_translated_text, 0, 2 ) == language_code )
+        for ( var translated_text_index = 1;
+              translated_text_index < count( translated_text_array );
+              ++translated_text_index )
         {
-            translated_text = substr( language_code_translated_text, 3 );
+            var language_code_translated_text = translated_text_array[ translated_text_index ];
 
-            break;
+            if ( substr( language_code_translated_text, 0, 2 ) == language_code )
+            {
+                translated_text = substr( language_code_translated_text, 3 );
+
+                break;
+            }
         }
-    }
-
-    return str_replace( '[<', '<', str_replace( '>]', '>', translated_text ) );
-}
-
-// ~~
-
-function GetTranslatedText(
-    string text,
-    int translated_text_index
-    )
-{
-    local
-        translated_text;
-
-    var translated_text_array = explode( '¨', text );
-
-    if ( translated_text_index < count( translated_text_array ) )
-    {
-        translated_text = translated_text_array[ translated_text_index ];
-    }
-    else
-    {
-        translated_text = translated_text_array[ 0 ];
     }
 
     return str_replace( '[<', '<', str_replace( '>]', '>', translated_text ) );
