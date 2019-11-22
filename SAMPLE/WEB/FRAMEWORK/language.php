@@ -1,7 +1,8 @@
 <?php // -- FUNCTIONS
 
 function GetBrowserLanguageCode(
-    array $valid_language_code_array
+    array $valid_language_code_array,
+    string $default_language_code = 'en'
     )
 {
     if ( isset( $_SERVER[ 'HTTP_ACCEPT_LANGUAGE' ] ) )
@@ -20,58 +21,62 @@ function GetBrowserLanguageCode(
             }
         }
     }
-    else
-    {
-        return $valid_language_code_array[ 0 ];
-    }
+
+    return $default_language_code;
 }
 
 // ~~
 
-function GetTranslatedTextByCode(
-    string $text,
-    string $language_code
+function ExtractLanguageCode(
+    array & $path_value_array,
+    array $valid_language_code_array,
+    string $default_language_code = 'en'
     )
 {
-     $translated_text_array = explode( '¨', $text );
-     $translated_text = $translated_text_array[ 0 ];
-
-    for (  $translated_text_index = 1;
-          $translated_text_index < count( $translated_text_array );
-          ++$translated_text_index )
+    if ( count( $path_value_array ) > 0 )
     {
-         $language_code_translated_text = $translated_text_array[ $translated_text_index ];
+         $language_code = $path_value_array[ 0 ];
 
-        if ( substr( $language_code_translated_text, 0, 2 ) == $language_code )
+        foreach ( $valid_language_code_array as  $valid_language_code )
         {
-            $translated_text = substr( $language_code_translated_text, 3 );
+            if ( $language_code === $valid_language_code )
+            {
+                $path_value_array = array_slice( $path_value_array, 1 );
 
-            break;
+                return $language_code;
+            }
         }
     }
 
-    return str_replace( '[<', '<', str_replace( '>]', '>', $translated_text ) );
+    return $default_language_code;
 }
 
 // ~~
 
 function GetTranslatedText(
     string $text,
-    int $translated_text_index
+    string $language_code,
+    string $default_language_code = 'en'
     )
 {
-    
-        
-
      $translated_text_array = explode( '¨', $text );
+     $translated_text = $translated_text_array[ 0 ];
 
-    if ( $translated_text_index < count( $translated_text_array ) )
+    if ( $language_code !== $default_language_code )
     {
-        $translated_text = $translated_text_array[ $translated_text_index ];
-    }
-    else
-    {
-        $translated_text = $translated_text_array[ 0 ];
+        for (  $translated_text_index = 1;
+              $translated_text_index < count( $translated_text_array );
+              ++$translated_text_index )
+        {
+             $language_code_translated_text = $translated_text_array[ $translated_text_index ];
+
+            if ( substr( $language_code_translated_text, 0, 2 ) === $language_code )
+            {
+                $translated_text = substr( $language_code_translated_text, 3 );
+
+                break;
+            }
+        }
     }
 
     return str_replace( '[<', '<', str_replace( '>]', '>', $translated_text ) );

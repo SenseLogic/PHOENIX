@@ -294,5 +294,5 @@ function Redirect(
     string $path
     )
 {
-    header( 'Location: ' . $path );
+    header( 'Location: ' . $path, true, 303 );
 }

@@ -1,7 +1,8 @@
 // -- FUNCTIONS
 
 function GetBrowserLanguageCode(
-    array valid_language_code_array
+    array valid_language_code_array,
+    string default_language_code = 'en'
     )
 {
     if ( isset( _SERVER[ 'HTTP_ACCEPT_LANGUAGE' ] ) )
@@ -20,10 +21,34 @@ function GetBrowserLanguageCode(
             }
         }
     }
-    else
+
+    return default_language_code;
+}
+
+// ~~
+
+function ExtractLanguageCode(
+    array & path_value_array,
+    array valid_language_code_array,
+    string default_language_code = 'en'
+    )
+{
+    if ( count( path_value_array ) > 0 )
     {
-        return valid_language_code_array[ 0 ];
+        var language_code = path_value_array[ 0 ];
+
+        foreach ( var valid_language_code; valid_language_code_array )
+        {
+            if ( language_code === valid_language_code )
+            {
+                path_value_array = array_slice( path_value_array, 1 );
+
+                return language_code;
+            }
+        }
     }
+
+    return default_language_code;
 }
 
 // ~~
@@ -37,7 +62,7 @@ function GetTranslatedText(
     var translated_text_array = explode( '¨', text );
     var translated_text = translated_text_array[ 0 ];
 
-    if ( language_code != default_language_code )
+    if ( language_code !== default_language_code )
     {
         for ( var translated_text_index = 1;
               translated_text_index < count( translated_text_array );
@@ -45,7 +70,7 @@ function GetTranslatedText(
         {
             var language_code_translated_text = translated_text_array[ translated_text_index ];
 
-            if ( substr( language_code_translated_text, 0, 2 ) == language_code )
+            if ( substr( language_code_translated_text, 0, 2 ) === language_code )
             {
                 translated_text = substr( language_code_translated_text, 3 );
 
