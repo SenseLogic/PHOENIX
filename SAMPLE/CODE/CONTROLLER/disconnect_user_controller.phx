@@ -7,10 +7,13 @@ import '../MODEL/session.php';
 
 class DISCONNECT_USER_CONTROLLER extends CONTROLLER
 {
+    // -- CONSTRUCTORS
+
     method constructor(
+        string language_code
         )
     {
-        parent::constructor();
+        parent::constructor( language_code );
 
         .Session.UserIsConnected = false;
         .Session.Store();
@@ -21,4 +24,4 @@ class DISCONNECT_USER_CONTROLLER extends CONTROLLER
 
 // -- STATEMENTS
 
-var disconnect_user_controller = new DISCONNECT_USER_CONTROLLER();
+var disconnect_user_controller = new DISCONNECT_USER_CONTROLLER( var language_code );

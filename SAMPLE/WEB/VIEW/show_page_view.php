@@ -9,20 +9,22 @@
         </title>
     </head>
     <body class="container">
+        <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/static/js/materialize.min.js"></script>
         <div class="row">
             <nav class="col m12">
                 <ul>
-                    <?php if ( $this->Session->UserIsConnected && $this->Session->User->ItIsAdministrator ) { ?>
+                    <?php foreach ( $this->SectionArray as  $section ) { ?>
                         <li>
-                            <a href="/administration">
-                                Administration
+                            <a href="/<?php echo htmlspecialchars( $this->LanguageCode ); ?>/section/<?php echo htmlspecialchars( $section->Id ); ?>">
+                                <?php echo htmlspecialchars( $section->Name ); ?>
                             </a>
                         </li>
                     <?php } ?>
-                    <?php foreach ( $this->SectionArray as  $section ) { ?>
+                    <?php if ( $this->Session->UserIsConnected && $this->Session->User->ItIsAdministrator ) { ?>
                         <li>
-                            <a href="/show_section/<?php echo htmlspecialchars( $section->Id ); ?>">
-                                <?php echo htmlspecialchars( $section->Name ); ?>
+                            <a href="/<?php echo htmlspecialchars( $this->LanguageCode ); ?>/subscribers">
+                                Subscribers
                             </a>
                         </li>
                     <?php } ?>
@@ -40,7 +42,7 @@
                 <?php if ( $this->Session->UserIsConnected ) { ?>
                     <div class="card">
                         <div class="card-content">
-                            <form name="DisconnectUserForm" action="/disconnect_user" method="post">
+                            <form name="DisconnectUserForm" action="/<?php echo htmlspecialchars( $this->LanguageCode ); ?>/disconnect_user" method="post">
                                 <input id="path" name="Path" type="hidden" value="<?php echo htmlspecialchars( GetPath() ); ?>"/>
                                 <input class="btn" type="submit" value="Log Out"/>
                             </form>
@@ -52,7 +54,7 @@
                             <h5>
                                 Connection
                             </h5>
-                            <form name="ConnectUserForm" action="/connect_user" method="post">
+                            <form name="ConnectUserForm" action="/<?php echo htmlspecialchars( $this->LanguageCode ); ?>/connect_user" method="post">
                                 <label for="pseudonym">
                                     Pseudonym :
                                     <input id="pseudonym" name="Pseudonym" type="text"/>
@@ -130,13 +132,13 @@
                                     return it_is_valid_add_subscriber_form;
                                 }
                             </script>
-                            <form name="AddSubscriberForm" onsubmit="return IsValidAddSubscriberForm()" action="/add_subscriber" method="post"/>
+                            <form name="AddSubscriberForm" onsubmit="return IsValidAddSubscriberForm()" action="/<?php echo htmlspecialchars( $this->LanguageCode ); ?>/add_subscriber" method="post"/>
                                 <label for="email">
                                     Email :
                                     <input id="email" name="Email" type="text"/>
                                 </label>
                                 <div>
-                                    <img id="captcha_image" src="/get_captcha_image" style="width:100%;height:auto"/>
+                                    <img id="captcha_image" src="/captcha" style="width:100%;height:auto"/>
                                 </div>
                                 <label for="captcha">
                                     Security Code :
@@ -149,17 +151,14 @@
                 <?php } ?>
             </div>
         </div>
-        <script type="text/javascript" src="/static/js/jquery.min.js"></script>
-        <script type="text/javascript" src="/static/js/materialize.min.js"></script>
         <script>
             $( document ).ready(
                 function()
                 {
-                    $( 'select' ).material_select();
                     <?php
                     if ( $this->Session->Message != '' )
                     {
-                        echo 'Materialize.toast( "' . $this->Session->Message . '", 3000 );';
+                        echo 'M.toast( { html : "' . $this->Session->Message . '", displayLength : 3000 } );';
 
                         $this->Session->Message = '';
                         $this->Session->Store();

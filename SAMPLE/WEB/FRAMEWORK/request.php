@@ -278,6 +278,35 @@ function GetBrowser(
 
 // ~~
 
+function GetLocation(
+    float & $latitude,
+    float & $longitude,
+    string & $country_code,
+    string $ip_address
+    )
+{
+    try
+    {
+         $geographic_data = json_decode( file_get_contents( "http://www.geoplugin.net/json.gp?ip=" . $ip_address ) );
+
+        if ( $geographic_data->geoplugin_status !== 404 )
+        {
+            $latitude = $geographic_data->geoplugin_latitude;
+            $longitude = $geographic_data->geoplugin_longitude;
+            $country_code = $geographic_data->geoplugin_countryCode;
+
+            return true;
+        }
+    }
+    catch ( Exception $exception )
+    {
+    }
+
+    return false;
+}
+
+// ~~
+
 function IsId(
     $value
     )

@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
     <h2>
-        <a href="/show_section/<?php echo htmlspecialchars( $this->Section->Id ); ?>">
+        <a href="/<?php echo htmlspecialchars( $this->LanguageCode ); ?>/section/<?php echo htmlspecialchars( $this->Section->Id ); ?>">
             <?php echo htmlspecialchars( $this->Section->Name ); ?>
         </a>
     </h2>
@@ -11,7 +11,7 @@
     <hr/>
     <?php foreach ( $this->ArticleArray as  $article ) { ?>
         <h5>
-            <a href="/show_article/<?php echo htmlspecialchars( $article->Id ); ?>">
+            <a href="/<?php echo htmlspecialchars( $this->LanguageCode ); ?>/article/<?php echo htmlspecialchars( $article->Id ); ?>">
                 <?php echo htmlspecialchars( $article->Title ); ?>
             </a>
         </h5>

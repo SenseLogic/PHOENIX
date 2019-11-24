@@ -1,6 +1,6 @@
 <?php // -- FUNCTIONS
 
-function GetDatabaseUserArray(
+function GetDatabaseUSERArray(
     )
 {
      $statement = GetDatabaseStatement( 'select Id, Email, Pseudonym, Password, ItIsAdministrator from USER order by Email asc' );
@@ -15,7 +15,7 @@ function GetDatabaseUserArray(
 
 // ~~
 
-function GetDatabaseUserById(
+function GetDatabaseUSERById(
     int $id
     )
 {
@@ -32,7 +32,7 @@ function GetDatabaseUserById(
 
 // ~~
 
-function AddDatabaseUser(
+function AddDatabaseUSER(
     string $email,
     string $pseudonym,
     string $password,
@@ -55,7 +55,7 @@ function AddDatabaseUser(
 
 // ~~
 
-function SetDatabaseUser(
+function SetDatabaseUSER(
     int $id,
     string $email,
     string $pseudonym,
@@ -78,7 +78,7 @@ function SetDatabaseUser(
 
 // ~~
 
-function RemoveDatabaseUserById(
+function RemoveDatabaseUSERById(
     int $id
     )
 {

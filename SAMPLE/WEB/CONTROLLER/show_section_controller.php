@@ -10,11 +10,14 @@ require_once __DIR__ . '/' . '../MODEL/user.php';
 
 class SHOW_SECTION_CONTROLLER extends CONTROLLER
 {
+    // -- CONSTRUCTORS
+
     function __construct(
+        string $language_code,
         int $section_id
         )
     {
-        parent::__construct();
+        parent::__construct( $language_code );
 
         $this->Session->Path = GetPath();
         $this->Session->Store();
@@ -39,4 +42,4 @@ class SHOW_SECTION_CONTROLLER extends CONTROLLER
 
 // -- STATEMENTS
 
- $show_section_controller = new SHOW_SECTION_CONTROLLER(  $section_id );
+ $show_section_controller = new SHOW_SECTION_CONTROLLER(  $language_code,  $section_id );

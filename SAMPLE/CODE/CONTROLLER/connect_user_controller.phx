@@ -9,10 +9,13 @@ import '../MODEL/user.php';
 
 class CONNECT_USER_CONTROLLER extends CONTROLLER
 {
+    // -- CONSTRUCTORS
+
     method constructor(
+        string language_code
         )
     {
-        parent::constructor();
+        parent::constructor( language_code );
 
         var user = GetDatabaseUserByPseudonymAndPassword( GetPostValue( 'Pseudonym' ), GetPostValue( 'Password' ) );
 
@@ -34,4 +37,4 @@ class CONNECT_USER_CONTROLLER extends CONTROLLER
 
 // -- STATEMENTS
 
-var connect_user_controller = new CONNECT_USER_CONTROLLER();
+var connect_user_controller = new CONNECT_USER_CONTROLLER( var language_code );

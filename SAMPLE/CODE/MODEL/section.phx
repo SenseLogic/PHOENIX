@@ -1,6 +1,6 @@
 // -- FUNCTIONS
 
-function GetDatabaseSectionArray(
+function GetDatabaseSECTIONArray(
     )
 {
     var statement = GetDatabaseStatement( 'select Id, Number, Name, Text, Image from SECTION order by Number asc' );
@@ -15,7 +15,7 @@ function GetDatabaseSectionArray(
 
 // ~~
 
-function GetDatabaseSectionById(
+function GetDatabaseSECTIONById(
     int id
     )
 {
@@ -32,7 +32,7 @@ function GetDatabaseSectionById(
 
 // ~~
 
-function AddDatabaseSection(
+function AddDatabaseSECTION(
     int number,
     string name,
     string text,
@@ -55,7 +55,7 @@ function AddDatabaseSection(
 
 // ~~
 
-function SetDatabaseSection(
+function SetDatabaseSECTION(
     int id,
     int number,
     string name,
@@ -78,7 +78,7 @@ function SetDatabaseSection(
 
 // ~~
 
-function RemoveDatabaseSectionById(
+function RemoveDatabaseSECTIONById(
     int id
     )
 {

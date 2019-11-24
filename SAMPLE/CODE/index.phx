@@ -7,7 +7,11 @@ define( 'DatabasePassword', 'root' );
 
 // -- IMPORTS
 
-import 'FRAMEWORK/framework.php';
+import 'FRAMEWORK/error.php';
+import 'FRAMEWORK/request.php';
+import 'FRAMEWORK/session.php';
+import 'FRAMEWORK/database.php';
+import 'FRAMEWORK/language.php';
 import 'FRAMEWORK/captcha.php';
 
 // -- FUNCTIONS
@@ -17,32 +21,39 @@ function Route(
     )
 {
     var path_value_array = GetPathValueArray( path );
-    var path_value_count = count( path_value_array );
-    var controller_name = '';
+    var language_code_array = [ 'en', 'de', 'fr' ];
+    var language_code = ExtractLanguageCode( path_value_array, language_code_array, '' );
 
-    if ( path_value_count > 0 )
+    if ( language_code === '' )
     {
-        controller_name = path_value_array[ 0 ];
+        language_code = GetBrowserLanguageCode( language_code_array, 'en' );
     }
+
+    var path_value_count = count( path_value_array );
 
     if ( IsGetRequest() )
     {
-        if ( controller_name == 'show_section'
-             && path_value_count == 2
+        if ( path_value_count == 2
+             && path_value_array[ 0 ] == 'section'
              && IsId( path_value_array[ 1 ] ) )
         {
             var section_id = path_value_array[ 1 ];
             import 'CONTROLLER/show_section_controller.php';
         }
-        else if ( controller_name == 'show_article'
-                  && path_value_count == 2
+        else if ( path_value_count == 2
+                  && path_value_array[ 0 ] == 'article'
                   && IsId( path_value_array[ 1 ] ) )
         {
             var article_id = path_value_array[ 1 ];
             import 'CONTROLLER/show_article_controller.php';
         }
-        else if ( controller_name == 'get_captcha_image'
-                  && path_value_count == 1 )
+        else if ( path_value_count == 1
+                  && path_value_array[ 0 ] == 'subscribers' )
+        {
+            import 'CONTROLLER/show_subscribers_controller.php';
+        }
+        else if ( path_value_count == 1
+                  && path_value_array[ 0 ] == 'captcha' )
         {
             import 'CONTROLLER/get_captcha_image_controller.php';
         }
@@ -54,26 +65,26 @@ function Route(
     }
     else if ( IsPostRequest() )
     {
-        if ( controller_name == 'add_comment'
-             && path_value_count == 2
+        if ( path_value_count == 2
+             && path_value_array[ 0 ] == 'add_comment'
              && IsId( path_value_array[ 1 ] )
              && IsSessionValue( "UserIsConnected", true ) )
         {
             var article_id = path_value_array[ 1 ];
             import 'CONTROLLER/add_comment_controller.php';
         }
-        else if ( controller_name == 'add_subscriber'
-                  && path_value_count == 1 )
+        else if ( path_value_count == 1
+                  && path_value_array[ 0 ] == 'add_subscriber' )
         {
             import 'CONTROLLER/add_subscriber_controller.php';
         }
-        else if ( controller_name == 'connect_user'
-                  && path_value_count == 1 )
+        else if ( path_value_count == 1
+                  && path_value_array[ 0 ] == 'connect_user' )
         {
             import 'CONTROLLER/connect_user_controller.php';
         }
-        else if ( controller_name == 'disconnect_user'
-                  && path_value_count == 1 )
+        else if ( path_value_count == 1
+                  && path_value_array[ 0 ] == 'disconnect_user' )
         {
             import 'CONTROLLER/disconnect_user_controller.php';
         }

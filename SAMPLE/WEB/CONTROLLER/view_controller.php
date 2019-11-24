@@ -4,7 +4,7 @@ require_once __DIR__ . '/' . '../MODEL/session.php';
 
 // -- TYPES
 
-class CONTROLLER
+class VIEW_CONTROLLER
 {
     // -- CONSTRUCTORS
 

@@ -6,9 +6,23 @@ import '../MODEL/session.php';
 
 class CONTROLLER
 {
+    // -- CONSTRUCTORS
+
     method constructor(
+        string language_code
         )
     {
         .Session = new SESSION();
+
+        .LanguageCode = language_code;
+    }
+
+    // -- INQUIRIES
+
+    method GetTranslatedText(
+        string text
+        )
+    {
+        return GetTranslatedText( text, .LanguageCode );
     }
 }

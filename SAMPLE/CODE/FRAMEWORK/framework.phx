@@ -1,6 +1,0 @@
-// -- IMPORTS
-
-import 'request.php';
-import 'session.php';
-import 'database.php';
-import 'error.php';

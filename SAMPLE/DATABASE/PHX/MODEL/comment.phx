@@ -1,6 +1,6 @@
 // -- FUNCTIONS
 
-function GetDatabaseCommentArray(
+function GetDatabaseCOMMENTArray(
     )
 {
     var statement = GetDatabaseStatement( 'select Id, ArticleId, UserId, Text, DateTime from COMMENT order by DateTime desc' );
@@ -15,7 +15,7 @@ function GetDatabaseCommentArray(
 
 // ~~
 
-function GetDatabaseCommentById(
+function GetDatabaseCOMMENTById(
     int id
     )
 {
@@ -32,7 +32,7 @@ function GetDatabaseCommentById(
 
 // ~~
 
-function AddDatabaseComment(
+function AddDatabaseCOMMENT(
     int article_id,
     int user_id,
     string text
@@ -53,7 +53,7 @@ function AddDatabaseComment(
 
 // ~~
 
-function SetDatabaseComment(
+function SetDatabaseCOMMENT(
     int id,
     int article_id,
     int user_id,
@@ -76,7 +76,7 @@ function SetDatabaseComment(
 
 // ~~
 
-function RemoveDatabaseCommentById(
+function RemoveDatabaseCOMMENTById(
     int id
     )
 {

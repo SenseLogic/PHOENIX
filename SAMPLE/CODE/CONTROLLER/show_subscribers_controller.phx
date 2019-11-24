@@ -1,0 +1,29 @@
+// -- IMPORTS
+
+import 'controller.php';
+import '../MODEL/section.php';
+import '../MODEL/subscriber.php';
+
+// -- TYPES
+
+class SHOW_SUBSCRIBERS_CONTROLLER extends CONTROLLER
+{
+    // -- CONSTRUCTORS
+
+    method constructor(
+        string language_code
+        )
+    {
+        parent::constructor( language_code );
+
+        .SectionArray = GetDatabaseSectionArray();
+        .SubscriberArray = GetDatabaseSubscriberArray();
+
+        import '../VIEW/show_subscribers_view.php';
+        import '../VIEW/show_page_view.php';
+    }
+}
+
+// -- STATEMENTS
+
+var show_subscribers_controller = new SHOW_SUBSCRIBERS_CONTROLLER( var language_code );

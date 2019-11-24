@@ -9,15 +9,18 @@ require_once __DIR__ . '/' . '../MODEL/session.php';
 
 class ADD_COMMENT_CONTROLLER extends CONTROLLER
 {
+    // -- CONSTRUCTORS
+
     function __construct(
+        string $language_code,
         int $article_id
         )
     {
-        parent::__construct();
+        parent::__construct( $language_code );
 
          $text = GetPostValue( 'Text' );
         $this->Article = GetDatabaseArticleById( $article_id );
-        AddDatabaseComment( $text, $article_id, $this->Session->User->Id );
+        AddDatabaseComment( $article_id, $this->Session->User->Id, $text );
 
         $this->Session->Message = 'Your comment has been added.';
         $this->Session->Store();
@@ -28,4 +31,4 @@ class ADD_COMMENT_CONTROLLER extends CONTROLLER
 
 // -- STATEMENTS
 
- $add_comment_controller = new ADD_COMMENT_CONTROLLER(  $article_id );
+ $add_comment_controller = new ADD_COMMENT_CONTROLLER(  $language_code,  $article_id );

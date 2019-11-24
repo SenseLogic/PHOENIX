@@ -9,15 +9,18 @@ import '../MODEL/session.php';
 
 class ADD_COMMENT_CONTROLLER extends CONTROLLER
 {
+    // -- CONSTRUCTORS
+
     method constructor(
+        string language_code,
         int article_id
         )
     {
-        parent::constructor();
+        parent::constructor( language_code );
 
         var text = GetPostValue( 'Text' );
         .Article = GetDatabaseArticleById( article_id );
-        AddDatabaseComment( text, article_id, .Session.User.Id );
+        AddDatabaseComment( article_id, .Session.User.Id, text );
 
         .Session.Message = 'Your comment has been added.';
         .Session.Store();
@@ -28,4 +31,4 @@ class ADD_COMMENT_CONTROLLER extends CONTROLLER
 
 // -- STATEMENTS
 
-var add_comment_controller = new ADD_COMMENT_CONTROLLER( var article_id );
+var add_comment_controller = new ADD_COMMENT_CONTROLLER( var language_code, var article_id );

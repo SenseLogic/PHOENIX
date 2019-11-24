@@ -10,11 +10,14 @@ import '../MODEL/user.php';
 
 class SHOW_SECTION_CONTROLLER extends CONTROLLER
 {
+    // -- CONSTRUCTORS
+
     method constructor(
+        string language_code,
         int section_id
         )
     {
-        parent::constructor();
+        parent::constructor( language_code );
 
         .Session.Path = GetPath();
         .Session.Store();
@@ -39,4 +42,4 @@ class SHOW_SECTION_CONTROLLER extends CONTROLLER
 
 // -- STATEMENTS
 
-var show_section_controller = new SHOW_SECTION_CONTROLLER( var section_id );
+var show_section_controller = new SHOW_SECTION_CONTROLLER( var language_code, var section_id );

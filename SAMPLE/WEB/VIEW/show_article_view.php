@@ -1,11 +1,11 @@
 <?php ob_start(); ?>
     <h2>
-        <a href="/show_section/<?php echo htmlspecialchars( $this->Section->Id ); ?>">
+        <a href="/<?php echo htmlspecialchars( $this->LanguageCode ); ?>/section/<?php echo htmlspecialchars( $this->Section->Id ); ?>">
             <?php echo htmlspecialchars( $this->Section->Name ); ?>
         </a>
     </h2>
     <h4>
-        <a href="/show_article/<?php echo htmlspecialchars( $this->Article->Id ); ?>">
+        <a href="/<?php echo htmlspecialchars( $this->LanguageCode ); ?>/article/<?php echo htmlspecialchars( $this->Article->Id ); ?>">
             <?php echo htmlspecialchars( $this->Article->Title ); ?>
         </a>
     </h4>
@@ -21,7 +21,7 @@
         <h4>
             Comment
         </h4>
-        <form name="AddComment" action="/add_comment/<?php echo htmlspecialchars( $this->Article->Id ); ?>/" method="post">
+        <form name="AddComment" action="/<?php echo htmlspecialchars( $this->LanguageCode ); ?>/add_comment/<?php echo htmlspecialchars( $this->Article->Id ); ?>/" method="post">
             <label for="text">
                 Text :
             </label>

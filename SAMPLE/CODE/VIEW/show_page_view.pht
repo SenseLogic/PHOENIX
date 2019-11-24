@@ -9,20 +9,22 @@
         </title>
     </head>
     <body class="container">
+        <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/static/js/materialize.min.js"></script>
         <div class="row">
             <nav class="col m12">
                 <ul>
-                    <? if ( .Session.UserIsConnected && .Session.User.ItIsAdministrator ) { ?>
+                    <? foreach ( var section; .SectionArray ) { ?>
                         <li>
-                            <a href="/administration">
-                                Administration
+                            <a href="/<% .LanguageCode %>/section/<% section.Id %>">
+                                <% section.Name %>
                             </a>
                         </li>
                     <? } ?>
-                    <? foreach ( var section; .SectionArray ) { ?>
+                    <? if ( .Session.UserIsConnected && .Session.User.ItIsAdministrator ) { ?>
                         <li>
-                            <a href="/show_section/<% section.Id %>">
-                                <% section.Name %>
+                            <a href="/<% .LanguageCode %>/subscribers">
+                                Subscribers
                             </a>
                         </li>
                     <? } ?>
@@ -40,7 +42,7 @@
                 <? if ( .Session.UserIsConnected ) { ?>
                     <div class="card">
                         <div class="card-content">
-                            <form name="DisconnectUserForm" action="/disconnect_user" method="post">
+                            <form name="DisconnectUserForm" action="/<% .LanguageCode %>/disconnect_user" method="post">
                                 <input id="path" name="Path" type="hidden" value="<% GetPath() %>"/>
                                 <input class="btn" type="submit" value="Log Out"/>
                             </form>
@@ -52,7 +54,7 @@
                             <h5>
                                 Connection
                             </h5>
-                            <form name="ConnectUserForm" action="/connect_user" method="post">
+                            <form name="ConnectUserForm" action="/<% .LanguageCode %>/connect_user" method="post">
                                 <label for="pseudonym">
                                     Pseudonym :
                                     <input id="pseudonym" name="Pseudonym" type="text"/>
@@ -130,13 +132,13 @@
                                     return it_is_valid_add_subscriber_form;
                                 }
                             </script>
-                            <form name="AddSubscriberForm" onsubmit="return IsValidAddSubscriberForm()" action="/add_subscriber" method="post"/>
+                            <form name="AddSubscriberForm" onsubmit="return IsValidAddSubscriberForm()" action="/<% .LanguageCode %>/add_subscriber" method="post"/>
                                 <label for="email">
                                     Email :
                                     <input id="email" name="Email" type="text"/>
                                 </label>
                                 <div>
-                                    <img id="captcha_image" src="/get_captcha_image" style="width:100%;height:auto"/>
+                                    <img id="captcha_image" src="/captcha" style="width:100%;height:auto"/>
                                 </div>
                                 <label for="captcha">
                                     Security Code :
@@ -149,17 +151,14 @@
                 <? } ?>
             </div>
         </div>
-        <script type="text/javascript" src="/static/js/jquery.min.js"></script>
-        <script type="text/javascript" src="/static/js/materialize.min.js"></script>
         <script>
             $( document ).ready(
                 function()
                 {
-                    $( 'select' ).material_select();
                     <?
                     if ( .Session.Message != '' )
                     {
-                        echo 'Materialize.toast( "' .. .Session.Message .. '", 3000 );';
+                        echo 'M.toast( { html : "' .. .Session.Message .. '", displayLength : 3000 } );';
 
                         .Session.Message = '';
                         .Session.Store();

@@ -8,14 +8,33 @@ import '../MODEL/subscriber.php';
 
 class ADD_SUBSCRIBER_CONTROLLER extends CONTROLLER
 {
+    // -- CONSTRUCTORS
+
     method constructor(
+        string language_code
         )
     {
-        parent::constructor();
+        parent::constructor( language_code );
 
         if ( IsValidCaptcha( GetPostValue( 'Captcha' ), .Session.Captcha ) )
         {
-            AddDatabaseSubscriber( GetPostValue( 'Email' ) );
+            var ip_address = GetIpAddress();
+            var browser = GetBrowser();
+            var latitude = 0.0;
+            var longitude = 0.0;
+            var country_code = 0.0;
+            var ip_address = '';
+
+            GetLocation( var latitude, var longitude, var country_code, ip_address );
+
+            AddDatabaseSubscriber(
+                GetPostValue( 'Email' ),
+                ip_address,
+                browser,
+                latitude,
+                longitude,
+                country_code
+                );
 
             .Session.UserHasSubscribed = true;
             .Session.Message = 'Thanks for your subscription.';
@@ -28,4 +47,4 @@ class ADD_SUBSCRIBER_CONTROLLER extends CONTROLLER
 
 // -- STATEMENTS
 
-var add_subscriber_controller = new ADD_SUBSCRIBER_CONTROLLER( var c);
+var add_subscriber_controller = new ADD_SUBSCRIBER_CONTROLLER( var language_code );

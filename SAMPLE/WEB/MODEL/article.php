@@ -1,6 +1,6 @@
 <?php // -- FUNCTIONS
 
-function GetDatabaseArticleArray(
+function GetDatabaseARTICLEArray(
     )
 {
      $statement = GetDatabaseStatement( 'select Id, SectionId, UserId, Title, Text, Image, Date from ARTICLE order by Date desc' );
@@ -15,7 +15,7 @@ function GetDatabaseArticleArray(
 
 // ~~
 
-function GetDatabaseArticleById(
+function GetDatabaseARTICLEById(
     int $id
     )
 {
@@ -32,7 +32,7 @@ function GetDatabaseArticleById(
 
 // ~~
 
-function AddDatabaseArticle(
+function AddDatabaseARTICLE(
     int $section_id,
     int $user_id,
     string $title,
@@ -57,7 +57,7 @@ function AddDatabaseArticle(
 
 // ~~
 
-function SetDatabaseArticle(
+function SetDatabaseARTICLE(
     int $id,
     int $section_id,
     int $user_id,
@@ -84,7 +84,7 @@ function SetDatabaseArticle(
 
 // ~~
 
-function RemoveDatabaseArticleById(
+function RemoveDatabaseARTICLEById(
     int $id
     )
 {

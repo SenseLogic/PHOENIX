@@ -9,10 +9,13 @@ require_once __DIR__ . '/' . '../MODEL/user.php';
 
 class CONNECT_USER_CONTROLLER extends CONTROLLER
 {
+    // -- CONSTRUCTORS
+
     function __construct(
+        string $language_code
         )
     {
-        parent::__construct();
+        parent::__construct( $language_code );
 
          $user = GetDatabaseUserByPseudonymAndPassword( GetPostValue( 'Pseudonym' ), GetPostValue( 'Password' ) );
 
@@ -34,4 +37,4 @@ class CONNECT_USER_CONTROLLER extends CONTROLLER
 
 // -- STATEMENTS
 
- $connect_user_controller = new CONNECT_USER_CONTROLLER();
+ $connect_user_controller = new CONNECT_USER_CONTROLLER(  $language_code );

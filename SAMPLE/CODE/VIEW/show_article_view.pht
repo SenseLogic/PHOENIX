@@ -1,11 +1,11 @@
 <? ob_start(); ?>
     <h2>
-        <a href="/show_section/<% .Section.Id %>">
+        <a href="/<% .LanguageCode %>/section/<% .Section.Id %>">
             <% .Section.Name %>
         </a>
     </h2>
     <h4>
-        <a href="/show_article/<% .Article.Id %>">
+        <a href="/<% .LanguageCode %>/article/<% .Article.Id %>">
             <% .Article.Title %>
         </a>
     </h4>
@@ -21,7 +21,7 @@
         <h4>
             Comment
         </h4>
-        <form name="AddComment" action="/add_comment/<% .Article.Id %>/" method="post">
+        <form name="AddComment" action="/<% .LanguageCode %>/add_comment/<% .Article.Id %>/" method="post">
             <label for="text">
                 Text :
             </label>

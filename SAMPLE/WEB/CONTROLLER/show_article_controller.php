@@ -12,11 +12,14 @@ require_once __DIR__ . '/' . '../MODEL/user.php';
 
 class SHOW_ARTICLE_CONTROLLER extends CONTROLLER
 {
+    // -- CONSTRUCTORS
+
     function __construct(
+        string $language_code,
         int $article_id
         )
     {
-        parent::__construct();
+        parent::__construct( $language_code );
 
         $this->Session->Path = GetPath();
         $this->Session->Store();
@@ -38,4 +41,4 @@ class SHOW_ARTICLE_CONTROLLER extends CONTROLLER
 
 // -- STATEMENTS
 
- $show_article_controller = new SHOW_ARTICLE_CONTROLLER(  $article_id );
+ $show_article_controller = new SHOW_ARTICLE_CONTROLLER(  $language_code,  $article_id );

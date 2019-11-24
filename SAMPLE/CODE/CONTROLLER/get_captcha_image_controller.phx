@@ -6,10 +6,13 @@ import 'controller.php';
 
 class GET_CAPTCHA_IMAGE_CONTROLLER extends CONTROLLER
 {
+    // -- CONSTRUCTORS
+
     method constructor(
+        string language_code
         )
     {
-        parent::constructor();
+        parent::constructor( language_code );
 
         WriteCaptchaImage( .Session.Captcha );
     }
@@ -17,4 +20,4 @@ class GET_CAPTCHA_IMAGE_CONTROLLER extends CONTROLLER
 
 // -- STATEMENTS
 
-var get_captcha_image_controller = new GET_CAPTCHA_IMAGE_CONTROLLER();
+var get_captcha_image_controller = new GET_CAPTCHA_IMAGE_CONTROLLER( var language_code );

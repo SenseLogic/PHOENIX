@@ -12,11 +12,14 @@ import '../MODEL/user.php';
 
 class SHOW_ARTICLE_CONTROLLER extends CONTROLLER
 {
+    // -- CONSTRUCTORS
+
     method constructor(
+        string language_code,
         int article_id
         )
     {
-        parent::constructor();
+        parent::constructor( language_code );
 
         .Session.Path = GetPath();
         .Session.Store();
@@ -38,4 +41,4 @@ class SHOW_ARTICLE_CONTROLLER extends CONTROLLER
 
 // -- STATEMENTS
 
-var show_article_controller = new SHOW_ARTICLE_CONTROLLER( var article_id );
+var show_article_controller = new SHOW_ARTICLE_CONTROLLER( var language_code, var article_id );

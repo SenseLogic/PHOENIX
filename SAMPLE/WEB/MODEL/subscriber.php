@@ -1,9 +1,9 @@
 <?php // -- FUNCTIONS
 
-function GetDatabaseSubscriberArray(
+function GetDatabaseSUBSCRIBERArray(
     )
 {
-     $statement = GetDatabaseStatement( 'select Id, Email from SUBSCRIBER order by Email asc' );
+     $statement = GetDatabaseStatement( 'select Id, Email, IpAddress, Browser, Latitude, Longitude, CountryCode, DateTime from SUBSCRIBER order by DateTime desc' );
 
     if ( !$statement->execute() )
     {
@@ -15,11 +15,11 @@ function GetDatabaseSubscriberArray(
 
 // ~~
 
-function GetDatabaseSubscriberById(
+function GetDatabaseSUBSCRIBERById(
     int $id
     )
 {
-     $statement = GetDatabaseStatement( 'select Id, Email from SUBSCRIBER where Id = ? limit 1' );
+     $statement = GetDatabaseStatement( 'select Id, Email, IpAddress, Browser, Latitude, Longitude, CountryCode, DateTime from SUBSCRIBER where Id = ? limit 1' );
     $statement->bindParam( 1, $id, PDO::PARAM_INT );
 
     if ( !$statement->execute() )
@@ -32,12 +32,22 @@ function GetDatabaseSubscriberById(
 
 // ~~
 
-function AddDatabaseSubscriber(
-    string $email
+function AddDatabaseSUBSCRIBER(
+    string $email,
+    string $ip_address,
+    string $browser,
+    float $latitude,
+    float $longitude,
+    string $country_code
     )
 {
-     $statement = GetDatabaseStatement( 'insert into SUBSCRIBER ( Email ) values ( ? )' );
+     $statement = GetDatabaseStatement( 'insert into SUBSCRIBER ( Email, IpAddress, Browser, Latitude, Longitude, CountryCode, DateTime ) values ( ?, ?, ?, ?, ?, ?, now() )' );
     $statement->bindParam( 1, $email, PDO::PARAM_STR );
+    $statement->bindParam( 2, $ip_address, PDO::PARAM_STR );
+    $statement->bindParam( 3, $browser, PDO::PARAM_STR );
+    $statement->bindParam( 4, $latitude, PDO::PARAM_STR );
+    $statement->bindParam( 5, $longitude, PDO::PARAM_STR );
+    $statement->bindParam( 6, $country_code, PDO::PARAM_STR );
 
     if ( !$statement->execute() )
     {
@@ -49,14 +59,26 @@ function AddDatabaseSubscriber(
 
 // ~~
 
-function SetDatabaseSubscriber(
+function SetDatabaseSUBSCRIBER(
     int $id,
-    string $email
+    string $email,
+    string $ip_address,
+    string $browser,
+    float $latitude,
+    float $longitude,
+    string $country_code,
+    string $date_time
     )
 {
-     $statement = GetDatabaseStatement( 'update SUBSCRIBER set Email = ? where Id = ?' );
+     $statement = GetDatabaseStatement( 'update SUBSCRIBER set Email = ?, IpAddress = ?, Browser = ?, Latitude = ?, Longitude = ?, CountryCode = ?, DateTime = ? where Id = ?' );
     $statement->bindParam( 1, $email, PDO::PARAM_STR );
-    $statement->bindParam( 2, $id, PDO::PARAM_INT );
+    $statement->bindParam( 2, $ip_address, PDO::PARAM_STR );
+    $statement->bindParam( 3, $browser, PDO::PARAM_STR );
+    $statement->bindParam( 4, $latitude, PDO::PARAM_STR );
+    $statement->bindParam( 5, $longitude, PDO::PARAM_STR );
+    $statement->bindParam( 6, $country_code, PDO::PARAM_STR );
+    $statement->bindParam( 7, $date_time, PDO::PARAM_STR );
+    $statement->bindParam( 8, $id, PDO::PARAM_INT );
 
     if ( !$statement->execute() )
     {
@@ -66,7 +88,7 @@ function SetDatabaseSubscriber(
 
 // ~~
 
-function RemoveDatabaseSubscriberById(
+function RemoveDatabaseSUBSCRIBERById(
     int $id
     )
 {
