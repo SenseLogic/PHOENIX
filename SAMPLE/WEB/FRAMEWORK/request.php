@@ -279,30 +279,34 @@ function GetBrowser(
 // ~~
 
 function GetLocation(
-    float & $latitude,
-    float & $longitude,
-    string & $country_code,
     string $ip_address
     )
 {
+     $location = new stdClass();
+    $location->Latitude = 0.0;
+    $location->Longitude = 0.0;
+    $location->CountryCode = '';
+    $location->TimeZone = '';
+    $location->IsFound = false;
+
     try
     {
          $geographic_data = json_decode( file_get_contents( "http://www.geoplugin.net/json.gp?ip=" . $ip_address ) );
 
         if ( $geographic_data->geoplugin_status !== 404 )
         {
-            $latitude = $geographic_data->geoplugin_latitude;
-            $longitude = $geographic_data->geoplugin_longitude;
-            $country_code = $geographic_data->geoplugin_countryCode;
-
-            return true;
+            $location->Latitude = $geographic_data->geoplugin_latitude;
+            $location->Longitude = $geographic_data->geoplugin_longitude;
+            $location->CountryCode = $geographic_data->geoplugin_countryCode;
+            $location->TimeZone = $geographic_data->geoplugin_timezone;
+            $location->IsFound = true;
         }
     }
     catch ( Exception $exception )
     {
     }
 
-    return false;
+    return $location;
 }
 
 // ~~

@@ -20,20 +20,15 @@ class ADD_SUBSCRIBER_CONTROLLER extends CONTROLLER
         {
             var ip_address = GetIpAddress();
             var browser = GetBrowser();
-            var latitude = 0.0;
-            var longitude = 0.0;
-            var country_code = 0.0;
-            var ip_address = '';
-
-            GetLocation( var latitude, var longitude, var country_code, ip_address );
+            var location = GetLocation( ip_address );
 
             AddDatabaseSubscriber(
                 GetPostValue( 'Email' ),
                 ip_address,
                 browser,
-                latitude,
-                longitude,
-                country_code
+                location.Latitude,
+                location.Longitude,
+                location.CountryCode
                 );
 
             .Session.UserHasSubscribed = true;

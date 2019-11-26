@@ -20,20 +20,15 @@ class ADD_SUBSCRIBER_CONTROLLER extends CONTROLLER
         {
              $ip_address = GetIpAddress();
              $browser = GetBrowser();
-             $latitude = 0.0;
-             $longitude = 0.0;
-             $country_code = 0.0;
-             $ip_address = '';
-
-            GetLocation(  $latitude,  $longitude,  $country_code, $ip_address );
+             $location = GetLocation( $ip_address );
 
             AddDatabaseSubscriber(
                 GetPostValue( 'Email' ),
                 $ip_address,
                 $browser,
-                $latitude,
-                $longitude,
-                $country_code
+                $location->Latitude,
+                $location->Longitude,
+                $location->CountryCode
                 );
 
             $this->Session->UserHasSubscribed = true;
