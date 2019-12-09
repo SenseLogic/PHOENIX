@@ -1,6 +1,6 @@
 <?php // -- FUNCTIONS
 
-function GetDatabaseSUBSCRIBERArray(
+function GetDatabaseSubscriberArray(
     )
 {
      $statement = GetDatabaseStatement( 'select Id, Email, IpAddress, Browser, Latitude, Longitude, CountryCode, DateTime from SUBSCRIBER order by DateTime desc' );
@@ -15,7 +15,7 @@ function GetDatabaseSUBSCRIBERArray(
 
 // ~~
 
-function GetDatabaseSUBSCRIBERById(
+function GetDatabaseSubscriberById(
     int $id
     )
 {
@@ -32,7 +32,7 @@ function GetDatabaseSUBSCRIBERById(
 
 // ~~
 
-function AddDatabaseSUBSCRIBER(
+function AddDatabaseSubscriber(
     string $email,
     string $ip_address,
     string $browser,
@@ -59,7 +59,7 @@ function AddDatabaseSUBSCRIBER(
 
 // ~~
 
-function SetDatabaseSUBSCRIBER(
+function SetDatabaseSubscriber(
     int $id,
     string $email,
     string $ip_address,
@@ -88,7 +88,7 @@ function SetDatabaseSUBSCRIBER(
 
 // ~~
 
-function RemoveDatabaseSUBSCRIBERById(
+function RemoveDatabaseSubscriberById(
     int $id
     )
 {

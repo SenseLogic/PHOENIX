@@ -1,6 +1,6 @@
 <?php // -- FUNCTIONS
 
-function GetDatabaseCOMMENTArray(
+function GetDatabaseCommentArray(
     )
 {
      $statement = GetDatabaseStatement( 'select Id, ArticleId, UserId, Text, DateTime from COMMENT order by DateTime desc' );
@@ -15,7 +15,7 @@ function GetDatabaseCOMMENTArray(
 
 // ~~
 
-function GetDatabaseCOMMENTById(
+function GetDatabaseCommentById(
     int $id
     )
 {
@@ -32,7 +32,7 @@ function GetDatabaseCOMMENTById(
 
 // ~~
 
-function AddDatabaseCOMMENT(
+function AddDatabaseComment(
     int $article_id,
     int $user_id,
     string $text
@@ -53,7 +53,7 @@ function AddDatabaseCOMMENT(
 
 // ~~
 
-function SetDatabaseCOMMENT(
+function SetDatabaseComment(
     int $id,
     int $article_id,
     int $user_id,
@@ -76,7 +76,7 @@ function SetDatabaseCOMMENT(
 
 // ~~
 
-function RemoveDatabaseCOMMENTById(
+function RemoveDatabaseCommentById(
     int $id
     )
 {
