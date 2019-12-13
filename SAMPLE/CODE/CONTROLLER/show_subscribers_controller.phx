@@ -1,8 +1,8 @@
 // -- IMPORTS
 
 import 'controller.php';
-import '../MODEL/section.php';
-import '../MODEL/subscriber.php';
+import '../MODEL/section_model.php';
+import '../MODEL/subscriber_model.php';
 
 // -- TYPES
 

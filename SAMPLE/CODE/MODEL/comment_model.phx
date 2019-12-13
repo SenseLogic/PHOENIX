@@ -1,0 +1,39 @@
+// -- IMPORTS
+
+import 'TABLE/comment.php';
+
+// -- FUNCTIONS
+
+function InflateDatabaseComment(
+    comment
+    )
+{
+    comment.Article = GetDatabaseArticleById( comment.ArticleId );
+    comment.User = GetDatabaseUserById( comment.UserId );
+}
+
+// ~~
+
+function InflateDatabaseCommentArray(
+    array comment_array
+    )
+{
+    foreach ( var comment; comment_array )
+    {
+        InflateDatabaseComment( comment );
+    }
+}
+
+// ~~
+
+function GetDatabaseCommentArrayByArticleId(
+    int article_id
+    )
+{
+    var statement = GetDatabaseStatement( 'select * from COMMENT where ArticleId = ? order by DateTime DESC' );
+    statement.bindParam( 1, article_id, PDO::PARAM_INT );
+    statement.execute();
+
+    return GetDatabaseObjectArray( statement );
+}
+

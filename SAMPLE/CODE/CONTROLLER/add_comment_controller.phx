@@ -1,9 +1,9 @@
 // -- IMPORTS
 
 import 'controller.php';
-import '../MODEL/article.php';
-import '../MODEL/comment.php';
-import '../MODEL/session.php';
+import '../MODEL/article_model.php';
+import '../MODEL/comment_model.php';
+import '../MODEL/session_model.php';
 
 // -- TYPES
 

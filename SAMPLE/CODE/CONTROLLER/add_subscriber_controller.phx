@@ -1,8 +1,7 @@
 // -- IMPORTS
 
 import 'controller.php';
-import '../MODEL/session.php';
-import '../MODEL/subscriber.php';
+import '../MODEL/subscriber_model.php';
 
 // -- TYPES
 

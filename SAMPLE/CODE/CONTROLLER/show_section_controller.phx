@@ -1,10 +1,9 @@
 // -- IMPORTS
 
 import 'controller.php';
-import '../MODEL/article.php';
-import '../MODEL/model.php';
-import '../MODEL/section.php';
-import '../MODEL/user.php';
+import '../MODEL/article_model.php';
+import '../MODEL/section_model.php';
+import '../MODEL/user_model.php';
 
 // -- TYPES
 

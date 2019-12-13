@@ -1,9 +1,9 @@
 <?php // -- IMPORTS
 
 require_once __DIR__ . '/' . 'controller.php';
-require_once __DIR__ . '/' . '../MODEL/article.php';
-require_once __DIR__ . '/' . '../MODEL/comment.php';
-require_once __DIR__ . '/' . '../MODEL/session.php';
+require_once __DIR__ . '/' . '../MODEL/article_model.php';
+require_once __DIR__ . '/' . '../MODEL/comment_model.php';
+require_once __DIR__ . '/' . '../MODEL/session_model.php';
 
 // -- TYPES
 
