@@ -200,42 +200,23 @@ function FindCookieValue(
 
 // ~~
 
-function GetIpAddress(
+function GetServerName(
     )
 {
-    if ( isset( $_SERVER[ 'HTTP_CLIENT_IP' ] ) )
-    {
-        return $_SERVER[ 'HTTP_CLIENT_IP' ];
-    }
-    else if ( isset( $_SERVER[ 'HTTP_X_FORWARDED_FOR' ] ) )
-    {
-        return $_SERVER[ 'HTTP_X_FORWARDED_FOR' ];
-    }
-    else if ( isset( $_SERVER[ 'HTTP_X_FORWARDED' ] ) )
-    {
-        return $_SERVER[ 'HTTP_X_FORWARDED' ];
-    }
-    else if ( isset( $_SERVER[ 'HTTP_FORWARDED_FOR' ] ) )
-    {
-        return $_SERVER[ 'HTTP_FORWARDED_FOR' ];
-    }
-    else if ( isset( $_SERVER[ 'HTTP_FORWARDED' ] ) )
-    {
-        return $_SERVER[ 'HTTP_FORWARDED' ];
-    }
-    else if ( isset( $_SERVER[ 'REMOTE_ADDR' ] ) )
-    {
-        return $_SERVER[ 'REMOTE_ADDR' ];
-    }
-    else
-    {
-        return '0.0.0.0';
-    }
+    return $_SERVER[ 'SERVER_NAME' ];
 }
 
 // ~~
 
-function GetBrowser(
+function GetServerAddress(
+    )
+{
+    return $_SERVER[ 'SERVER_ADDR' ];
+}
+
+// ~~
+
+function GetBrowserName(
     )
 {
      $user_agent = $_SERVER[ 'HTTP_USER_AGENT' ];
@@ -278,8 +259,43 @@ function GetBrowser(
 
 // ~~
 
-function GetLocation(
-    string $ip_address
+function GetBrowserAddress(
+    )
+{
+    if ( isset( $_SERVER[ 'HTTP_CLIENT_IP' ] ) )
+    {
+        return $_SERVER[ 'HTTP_CLIENT_IP' ];
+    }
+    else if ( isset( $_SERVER[ 'HTTP_X_FORWARDED_FOR' ] ) )
+    {
+        return $_SERVER[ 'HTTP_X_FORWARDED_FOR' ];
+    }
+    else if ( isset( $_SERVER[ 'HTTP_X_FORWARDED' ] ) )
+    {
+        return $_SERVER[ 'HTTP_X_FORWARDED' ];
+    }
+    else if ( isset( $_SERVER[ 'HTTP_FORWARDED_FOR' ] ) )
+    {
+        return $_SERVER[ 'HTTP_FORWARDED_FOR' ];
+    }
+    else if ( isset( $_SERVER[ 'HTTP_FORWARDED' ] ) )
+    {
+        return $_SERVER[ 'HTTP_FORWARDED' ];
+    }
+    else if ( isset( $_SERVER[ 'REMOTE_ADDR' ] ) )
+    {
+        return $_SERVER[ 'REMOTE_ADDR' ];
+    }
+    else
+    {
+        return '0.0.0.0';
+    }
+}
+
+// ~~
+
+function GetBrowserLocation(
+    string $browser_address
     )
 {
      $location = new stdClass();
@@ -291,7 +307,7 @@ function GetLocation(
 
     try
     {
-         $geographic_data = json_decode( file_get_contents( "http://www.geoplugin.net/json.gp?ip=" . $ip_address ) );
+         $geographic_data = json_decode( file_get_contents( "http://www.geoplugin.net/json.gp?ip=" . $browser_address ) );
 
         if ( $geographic_data->geoplugin_status !== 404 )
         {

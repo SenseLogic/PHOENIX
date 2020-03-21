@@ -17,17 +17,17 @@ class ADD_SUBSCRIBER_CONTROLLER extends CONTROLLER
 
         if ( IsValidCaptcha( GetPostValue( 'Captcha' ), $this->Session->Captcha ) )
         {
-             $ip_address = GetIpAddress();
-             $browser = GetBrowser();
-             $location = GetLocation( $ip_address );
+             $browser_address = GetBrowserAddress();
+             $browser_name = GetBrowserName();
+             $browser_location = GetBrowserLocation( $browser_address );
 
             AddDatabaseSubscriber(
                 GetPostValue( 'Email' ),
-                $ip_address,
-                $browser,
-                $location->Latitude,
-                $location->Longitude,
-                $location->CountryCode
+                $browser_address,
+                $browser_name,
+                $browser_location->Latitude,
+                $browser_location->Longitude,
+                $browser_location->CountryCode
                 );
 
             $this->Session->UserHasSubscribed = true;

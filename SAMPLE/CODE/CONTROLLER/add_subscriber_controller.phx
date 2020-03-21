@@ -17,17 +17,17 @@ class ADD_SUBSCRIBER_CONTROLLER extends CONTROLLER
 
         if ( IsValidCaptcha( GetPostValue( 'Captcha' ), .Session.Captcha ) )
         {
-            var ip_address = GetIpAddress();
-            var browser = GetBrowser();
-            var location = GetLocation( ip_address );
+            var browser_address = GetBrowserAddress();
+            var browser_name = GetBrowserName();
+            var browser_location = GetBrowserLocation( browser_address );
 
             AddDatabaseSubscriber(
                 GetPostValue( 'Email' ),
-                ip_address,
-                browser,
-                location.Latitude,
-                location.Longitude,
-                location.CountryCode
+                browser_address,
+                browser_name,
+                browser_location.Latitude,
+                browser_location.Longitude,
+                browser_location.CountryCode
                 );
 
             .Session.UserHasSubscribed = true;

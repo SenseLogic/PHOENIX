@@ -1,10 +1,3 @@
-// -- CONSTANTS
-
-define( 'DatabaseHost', 'localhost' );
-define( 'DatabaseName', 'blog' );
-define( 'DatabaseUserName', 'root' );
-define( 'DatabasePassword', 'root' );
-
 // -- IMPORTS
 
 import 'FRAMEWORK/error.php';
@@ -13,6 +6,16 @@ import 'FRAMEWORK/session.php';
 import 'FRAMEWORK/database.php';
 import 'FRAMEWORK/language.php';
 import 'FRAMEWORK/captcha.php';
+
+// -- CONSTANTS
+
+if ( GetServerName() === 'localhost' )
+{
+    define( 'DatabaseHost', 'localhost' );
+    define( 'DatabaseName', 'blog' );
+    define( 'DatabaseUserName', 'root' );
+    define( 'DatabasePassword', 'root' );
+}
 
 // -- FUNCTIONS
 
