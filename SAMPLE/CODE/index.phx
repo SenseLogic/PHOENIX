@@ -9,9 +9,10 @@ import 'FRAMEWORK/captcha.php';
 
 // -- CONSTANTS
 
+define( 'DatabaseHost', 'localhost' );
+
 if ( GetServerName() === 'localhost' )
 {
-    define( 'DatabaseHost', 'localhost' );
     define( 'DatabaseName', 'blog' );
     define( 'DatabaseUserName', 'root' );
     define( 'DatabasePassword', 'root' );
@@ -69,7 +70,7 @@ function Route(
     else if ( IsPostRequest() )
     {
         if ( path_value_count == 2
-             && path_value_array[ 0 ] == 'add_comment'
+             && path_value_array[ 0 ] == 'comment'
              && IsId( path_value_array[ 1 ] )
              && IsSessionValue( "UserIsConnected", true ) )
         {
@@ -77,19 +78,21 @@ function Route(
             import 'CONTROLLER/add_comment_controller.php';
         }
         else if ( path_value_count == 1
-                  && path_value_array[ 0 ] == 'add_subscriber' )
+                  && path_value_array[ 0 ] == 'subscriber' )
         {
             import 'CONTROLLER/add_subscriber_controller.php';
         }
-        else if ( path_value_count == 1
-                  && path_value_array[ 0 ] == 'connect_user' )
+        else if ( path_value_count == 2
+                  && path_value_array[ 0 ] == 'user' )
         {
-            import 'CONTROLLER/connect_user_controller.php';
-        }
-        else if ( path_value_count == 1
-                  && path_value_array[ 0 ] == 'disconnect_user' )
-        {
-            import 'CONTROLLER/disconnect_user_controller.php';
+            if ( path_value_array[ 1 ] == 'connect' )
+            {
+                import 'CONTROLLER/connect_user_controller.php';
+            }
+            else if ( path_value_array[ 1 ] == 'disconnect' )
+            {
+                import 'CONTROLLER/disconnect_user_controller.php';
+            }
         }
     }
 }

@@ -21,7 +21,7 @@
         <h4>
             Comment
         </h4>
-        <form name="AddComment" action="/<?php echo htmlspecialchars( $this->LanguageCode ); ?>/add_comment/<?php echo htmlspecialchars( $this->Article->Id ); ?>/" method="post">
+        <form name="AddComment" action="/<?php echo htmlspecialchars( $this->LanguageCode ); ?>/comment/<?php echo htmlspecialchars( $this->Article->Id ); ?>/" method="post">
             <label for="text">
                 Text :
             </label>

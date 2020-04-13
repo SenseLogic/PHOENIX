@@ -21,7 +21,7 @@
         <h4>
             Comment
         </h4>
-        <form name="AddComment" action="/<% .LanguageCode %>/add_comment/<% .Article.Id %>/" method="post">
+        <form name="AddComment" action="/<% .LanguageCode %>/comment/<% .Article.Id %>/" method="post">
             <label for="text">
                 Text :
             </label>

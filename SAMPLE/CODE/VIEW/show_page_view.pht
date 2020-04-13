@@ -42,7 +42,7 @@
                 <? if ( .Session.UserIsConnected ) { ?>
                     <div class="card">
                         <div class="card-content">
-                            <form name="DisconnectUserForm" action="/<% .LanguageCode %>/disconnect_user" method="post">
+                            <form name="DisconnectUserForm" action="/<% .LanguageCode %>/user/disconnect" method="post">
                                 <input id="path" name="Path" type="hidden" value="<% GetPath() %>"/>
                                 <input class="btn" type="submit" value="Log Out"/>
                             </form>
@@ -54,7 +54,7 @@
                             <h5>
                                 Connection
                             </h5>
-                            <form name="ConnectUserForm" action="/<% .LanguageCode %>/connect_user" method="post">
+                            <form name="ConnectUserForm" action="/<% .LanguageCode %>/user/connect" method="post">
                                 <label for="pseudonym">
                                     Pseudonym :
                                     <input id="pseudonym" name="Pseudonym" type="text"/>
@@ -132,7 +132,7 @@
                                     return it_is_valid_add_subscriber_form;
                                 }
                             </script>
-                            <form name="AddSubscriberForm" onsubmit="return IsValidAddSubscriberForm()" action="/<% .LanguageCode %>/add_subscriber" method="post"/>
+                            <form name="AddSubscriberForm" onsubmit="return IsValidAddSubscriberForm()" action="/<% .LanguageCode %>/subscriber" method="post"/>
                                 <label for="email">
                                     Email :
                                     <input id="email" name="Email" type="text"/>

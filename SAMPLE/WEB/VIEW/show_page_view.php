@@ -42,7 +42,7 @@
                 <?php if ( $this->Session->UserIsConnected ) { ?>
                     <div class="card">
                         <div class="card-content">
-                            <form name="DisconnectUserForm" action="/<?php echo htmlspecialchars( $this->LanguageCode ); ?>/disconnect_user" method="post">
+                            <form name="DisconnectUserForm" action="/<?php echo htmlspecialchars( $this->LanguageCode ); ?>/user/disconnect" method="post">
                                 <input id="path" name="Path" type="hidden" value="<?php echo htmlspecialchars( GetPath() ); ?>"/>
                                 <input class="btn" type="submit" value="Log Out"/>
                             </form>
@@ -54,7 +54,7 @@
                             <h5>
                                 Connection
                             </h5>
-                            <form name="ConnectUserForm" action="/<?php echo htmlspecialchars( $this->LanguageCode ); ?>/connect_user" method="post">
+                            <form name="ConnectUserForm" action="/<?php echo htmlspecialchars( $this->LanguageCode ); ?>/user/connect" method="post">
                                 <label for="pseudonym">
                                     Pseudonym :
                                     <input id="pseudonym" name="Pseudonym" type="text"/>
@@ -132,7 +132,7 @@
                                     return it_is_valid_add_subscriber_form;
                                 }
                             </script>
-                            <form name="AddSubscriberForm" onsubmit="return IsValidAddSubscriberForm()" action="/<?php echo htmlspecialchars( $this->LanguageCode ); ?>/add_subscriber" method="post"/>
+                            <form name="AddSubscriberForm" onsubmit="return IsValidAddSubscriberForm()" action="/<?php echo htmlspecialchars( $this->LanguageCode ); ?>/subscriber" method="post"/>
                                 <label for="email">
                                     Email :
                                     <input id="email" name="Email" type="text"/>
