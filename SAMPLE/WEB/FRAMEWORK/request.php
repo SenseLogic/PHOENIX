@@ -1,5 +1,47 @@
 <?php // -- FUNCTIONS
 
+function IsId(
+    $value
+    )
+{
+    return
+        is_numeric( $value )
+        && $value == ( int ) $value
+        && $value > 0;
+}
+
+// ~~
+
+function IsUuid(
+    $value
+    )
+{
+    return
+        is_string( $value )
+        && strlen( $value ) == 36
+        && preg_match( '/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/', $value ) === 1;
+}
+
+// ~~
+
+function GetJsonText(
+    $value
+    )
+{
+    return json_encode( $value );
+}
+
+// ~~
+
+function GetJsonValue(
+    $text
+    )
+{
+    return json_decode( $text );
+}
+
+// ~~
+
 function GetRequest(
     )
 {
@@ -327,26 +369,19 @@ function GetBrowserLocation(
 
 // ~~
 
-function IsId(
-    $value
+function GetJsonInput(
     )
 {
-    return
-        is_numeric( $value )
-        && $value == ( int ) $value
-        && $value > 0;
+    return json_decode( file_get_contents( "php://input" ) );
 }
 
 // ~~
 
-function IsUuid(
-    $value
+function AddHeader(
+    $text
     )
 {
-    return
-        is_string( $value )
-        && strlen( $value ) == 36
-        && preg_match( '/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/', $value ) === 1;
+    header( $text );
 }
 
 // ~~
@@ -356,4 +391,23 @@ function Redirect(
     )
 {
     header( 'Location: ' . $path, true, 303 );
+}
+
+// ~~
+
+function SetStatus(
+    $status_code
+    )
+{
+    http_response_code( $status_code );
+}
+
+// ~~
+
+function SetJsonResponse(
+    $object
+    )
+{
+    header( 'Content-Type: application/json; charset=UTF-8' );
+    echo json_encode( $object );
 }
