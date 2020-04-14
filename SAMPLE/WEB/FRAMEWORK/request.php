@@ -349,7 +349,7 @@ function GetBrowserLocation(
 
     try
     {
-         $geographic_data = json_decode( file_get_contents( "http://www.geoplugin.net/json.gp?ip=" . $browser_address ) );
+         $geographic_data = json_decode( file_get_contents( 'http://www.geoplugin.net/json.gp?ip=' . $browser_address ) );
 
         if ( $geographic_data->geoplugin_status !== 404 )
         {
@@ -372,7 +372,7 @@ function GetBrowserLocation(
 function GetJsonInput(
     )
 {
-    return json_decode( file_get_contents( "php://input" ) );
+    return json_decode( file_get_contents( 'php://input' ) );
 }
 
 // ~~
