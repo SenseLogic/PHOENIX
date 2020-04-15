@@ -18,7 +18,7 @@ function IsUuid(
 {
     return
         is_string( value )
-        && strlen( value ) == 36
+        && strlen( value ) === 36
         && preg_match( '/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/', value ) === 1;
 }
 

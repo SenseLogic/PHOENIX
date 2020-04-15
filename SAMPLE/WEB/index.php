@@ -37,27 +37,27 @@ function Route(
 
     if ( IsGetRequest() )
     {
-        if ( $path_value_count == 2
-             && $path_value_array[ 0 ] == 'section'
+        if ( $path_value_count === 2
+             && $path_value_array[ 0 ] === 'section'
              && IsId( $path_value_array[ 1 ] ) )
         {
              $section_id = $path_value_array[ 1 ];
             require_once __DIR__ . '/' . 'CONTROLLER/show_section_controller.php';
         }
-        else if ( $path_value_count == 2
-                  && $path_value_array[ 0 ] == 'article'
+        else if ( $path_value_count === 2
+                  && $path_value_array[ 0 ] === 'article'
                   && IsId( $path_value_array[ 1 ] ) )
         {
              $article_id = $path_value_array[ 1 ];
             require_once __DIR__ . '/' . 'CONTROLLER/show_article_controller.php';
         }
-        else if ( $path_value_count == 1
-                  && $path_value_array[ 0 ] == 'subscribers' )
+        else if ( $path_value_count === 1
+                  && $path_value_array[ 0 ] === 'subscribers' )
         {
             require_once __DIR__ . '/' . 'CONTROLLER/show_subscribers_controller.php';
         }
-        else if ( $path_value_count == 1
-                  && $path_value_array[ 0 ] == 'captcha' )
+        else if ( $path_value_count === 1
+                  && $path_value_array[ 0 ] === 'captcha' )
         {
             require_once __DIR__ . '/' . 'CONTROLLER/get_captcha_image_controller.php';
         }
@@ -69,27 +69,27 @@ function Route(
     }
     else if ( IsPostRequest() )
     {
-        if ( $path_value_count == 2
-             && $path_value_array[ 0 ] == 'comment'
+        if ( $path_value_count === 2
+             && $path_value_array[ 0 ] === 'comment'
              && IsId( $path_value_array[ 1 ] )
              && IsSessionValue( "UserIsConnected", true ) )
         {
              $article_id = $path_value_array[ 1 ];
             require_once __DIR__ . '/' . 'CONTROLLER/add_comment_controller.php';
         }
-        else if ( $path_value_count == 1
-                  && $path_value_array[ 0 ] == 'subscriber' )
+        else if ( $path_value_count === 1
+                  && $path_value_array[ 0 ] === 'subscriber' )
         {
             require_once __DIR__ . '/' . 'CONTROLLER/add_subscriber_controller.php';
         }
-        else if ( $path_value_count == 2
-                  && $path_value_array[ 0 ] == 'user' )
+        else if ( $path_value_count === 2
+                  && $path_value_array[ 0 ] === 'user' )
         {
-            if ( $path_value_array[ 1 ] == 'connect' )
+            if ( $path_value_array[ 1 ] === 'connect' )
             {
                 require_once __DIR__ . '/' . 'CONTROLLER/connect_user_controller.php';
             }
-            else if ( $path_value_array[ 1 ] == 'disconnect' )
+            else if ( $path_value_array[ 1 ] === 'disconnect' )
             {
                 require_once __DIR__ . '/' . 'CONTROLLER/disconnect_user_controller.php';
             }

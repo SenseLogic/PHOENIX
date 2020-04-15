@@ -14,7 +14,7 @@ function GetDatabaseUserByPseudonymAndPassword(
     statement.bindParam( 2, password, PDO::PARAM_STR );
     statement.execute();
 
-    if ( statement.rowCount() == 0 )
+    if ( statement.rowCount() === 0 )
     {
         return null;
     }
