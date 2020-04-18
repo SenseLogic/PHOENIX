@@ -33,7 +33,7 @@ function GetJsonText(
 
 // ~~
 
-function GetJsonValue(
+function GetJsonObject(
     text
     )
 {
