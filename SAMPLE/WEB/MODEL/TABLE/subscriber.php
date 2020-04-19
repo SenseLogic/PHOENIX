@@ -27,7 +27,7 @@ function GetDatabaseSubscriberById(
         var_dump( $statement->errorInfo() );
     }
 
-    return GetDatabaseObject( $statement );
+    return $statement->fetchObject();
 }
 
 // ~~

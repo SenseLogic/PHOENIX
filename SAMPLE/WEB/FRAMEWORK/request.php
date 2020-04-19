@@ -1,47 +1,5 @@
 <?php // -- FUNCTIONS
 
-function IsId(
-    $value
-    )
-{
-    return
-        is_numeric( $value )
-        && $value == ( int ) $value
-        && $value > 0;
-}
-
-// ~~
-
-function IsUuid(
-    $value
-    )
-{
-    return
-        is_string( $value )
-        && strlen( $value ) === 36
-        && preg_match( '/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/', $value ) === 1;
-}
-
-// ~~
-
-function GetJsonText(
-    $value
-    )
-{
-    return json_encode( $value );
-}
-
-// ~~
-
-function GetJsonObject(
-    $text
-    )
-{
-    return json_decode( $text );
-}
-
-// ~~
-
 function GetRequest(
     )
 {
@@ -125,6 +83,30 @@ function IsDeleteRequest(
     )
 {
     return $_SERVER[ 'REQUEST_METHOD' ] === 'DELETE';
+}
+
+// ~~
+
+function IsId(
+    $value
+    )
+{
+    return
+        is_numeric( $value )
+        && $value == ( int ) $value
+        && $value > 0;
+}
+
+// ~~
+
+function IsUuid(
+    $value
+    )
+{
+    return
+        is_string( $value )
+        && strlen( $value ) === 36
+        && preg_match( '/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/', $value ) === 1;
 }
 
 // ~~
@@ -365,6 +347,24 @@ function GetBrowserLocation(
     }
 
     return $location;
+}
+
+// ~~
+
+function GetJsonText(
+    $value
+    )
+{
+    return json_encode( $value );
+}
+
+// ~~
+
+function GetJsonObject(
+    $text
+    )
+{
+    return json_decode( $text );
 }
 
 // ~~
