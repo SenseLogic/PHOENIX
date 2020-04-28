@@ -99,4 +99,5 @@ function Route(
 
 // -- STATEMENTS
 
+ShowErrors();
 Route( GetPath() );
