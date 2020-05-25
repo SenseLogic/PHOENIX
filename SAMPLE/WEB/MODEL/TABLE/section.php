@@ -10,7 +10,16 @@ function GetDatabaseSectionArray(
         var_dump( $statement->errorInfo() );
     }
 
-    return GetDatabaseObjectArray( $statement );
+     $section_array = [];
+
+    while (  $section = $statement->fetchObject() )
+    {
+        $section->Id = ( int )( $section->Id );
+        $section->Number = ( int )( $section->Number );
+        array_push( $section_array, $section );
+    }
+
+    return $section_array;
 }
 
 // ~~
@@ -27,7 +36,11 @@ function GetDatabaseSectionById(
         var_dump( $statement->errorInfo() );
     }
 
-    return $statement->fetchObject();
+     $section = $statement->fetchObject();
+    $section->Id = ( int )( $section->Id );
+    $section->Number = ( int )( $section->Number );
+
+    return $section;
 }
 
 // ~~

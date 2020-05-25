@@ -10,7 +10,15 @@ function GetDatabaseCommentArray(
         var_dump( $statement->errorInfo() );
     }
 
-    return GetDatabaseObjectArray( $statement );
+     $comment_array = [];
+
+    while (  $comment = $statement->fetchObject() )
+    {
+        $comment->Id = ( int )( $comment->Id );
+        array_push( $comment_array, $comment );
+    }
+
+    return $comment_array;
 }
 
 // ~~
@@ -27,7 +35,10 @@ function GetDatabaseCommentById(
         var_dump( $statement->errorInfo() );
     }
 
-    return $statement->fetchObject();
+     $comment = $statement->fetchObject();
+    $comment->Id = ( int )( $comment->Id );
+
+    return $comment;
 }
 
 // ~~

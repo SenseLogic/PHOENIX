@@ -10,7 +10,17 @@ function GetDatabaseSubscriberArray(
         var_dump( $statement->errorInfo() );
     }
 
-    return GetDatabaseObjectArray( $statement );
+     $subscriber_array = [];
+
+    while (  $subscriber = $statement->fetchObject() )
+    {
+        $subscriber->Id = ( int )( $subscriber->Id );
+        $subscriber->Latitude = ( float )( $subscriber->Latitude );
+        $subscriber->Longitude = ( float )( $subscriber->Longitude );
+        array_push( $subscriber_array, $subscriber );
+    }
+
+    return $subscriber_array;
 }
 
 // ~~
@@ -27,7 +37,12 @@ function GetDatabaseSubscriberById(
         var_dump( $statement->errorInfo() );
     }
 
-    return $statement->fetchObject();
+     $subscriber = $statement->fetchObject();
+    $subscriber->Id = ( int )( $subscriber->Id );
+    $subscriber->Latitude = ( float )( $subscriber->Latitude );
+    $subscriber->Longitude = ( float )( $subscriber->Longitude );
+
+    return $subscriber;
 }
 
 // ~~

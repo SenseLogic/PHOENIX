@@ -10,7 +10,15 @@ function GetDatabaseArticleArray(
         var_dump( statement.errorInfo() );
     }
 
-    return GetDatabaseObjectArray( statement );
+    var article_array = [];
+
+    while ( var article = statement.fetchObject() )
+    {
+        article.Id = ( int )( article.Id );
+        array_push( article_array, article );
+    }
+
+    return article_array;
 }
 
 // ~~
@@ -27,7 +35,10 @@ function GetDatabaseArticleById(
         var_dump( statement.errorInfo() );
     }
 
-    return statement.fetchObject();
+    var article = statement.fetchObject();
+    article.Id = ( int )( article.Id );
+
+    return article;
 }
 
 // ~~

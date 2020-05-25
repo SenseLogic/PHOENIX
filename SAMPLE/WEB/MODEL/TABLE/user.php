@@ -10,7 +10,15 @@ function GetDatabaseUserArray(
         var_dump( $statement->errorInfo() );
     }
 
-    return GetDatabaseObjectArray( $statement );
+     $user_array = [];
+
+    while (  $user = $statement->fetchObject() )
+    {
+        $user->Id = ( int )( $user->Id );
+        array_push( $user_array, $user );
+    }
+
+    return $user_array;
 }
 
 // ~~
@@ -27,7 +35,10 @@ function GetDatabaseUserById(
         var_dump( $statement->errorInfo() );
     }
 
-    return $statement->fetchObject();
+     $user = $statement->fetchObject();
+    $user->Id = ( int )( $user->Id );
+
+    return $user;
 }
 
 // ~~

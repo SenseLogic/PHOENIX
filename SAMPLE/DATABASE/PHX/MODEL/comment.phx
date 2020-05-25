@@ -10,7 +10,15 @@ function GetDatabaseCommentArray(
         var_dump( statement.errorInfo() );
     }
 
-    return GetDatabaseObjectArray( statement );
+    var comment_array = [];
+
+    while ( var comment = statement.fetchObject() )
+    {
+        comment.Id = ( int )( comment.Id );
+        array_push( comment_array, comment );
+    }
+
+    return comment_array;
 }
 
 // ~~
@@ -27,7 +35,10 @@ function GetDatabaseCommentById(
         var_dump( statement.errorInfo() );
     }
 
-    return statement.fetchObject();
+    var comment = statement.fetchObject();
+    comment.Id = ( int )( comment.Id );
+
+    return comment;
 }
 
 // ~~
