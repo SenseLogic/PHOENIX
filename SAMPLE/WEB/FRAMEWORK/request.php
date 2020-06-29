@@ -333,7 +333,9 @@ function GetBrowserLocation(
     {
          $geographic_data = json_decode( file_get_contents( 'http://www.geoplugin.net/json.gp?ip=' . $browser_address ) );
 
-        if ( $geographic_data->geoplugin_status !== 404 )
+        if ( $geographic_data !== null
+             && property_exists( $geographic_data, 'geoplugin_status' )
+             && $geographic_data->geoplugin_status !== 404 )
         {
             $location->Latitude = $geographic_data->geoplugin_latitude;
             $location->Longitude = $geographic_data->geoplugin_longitude;
@@ -344,6 +346,28 @@ function GetBrowserLocation(
     }
     catch ( Exception $exception )
     {
+    }
+
+    if ( !$location->IsFound )
+    {
+        try
+        {
+             $geographic_data = json_decode( file_get_contents( 'http://ip-api.com/json/' . $browser_address ) );
+
+            if ( $geographic_data !== null
+                 && property_exists( $geographic_data, 'status' )
+                 && $geographic_data->status === 'success' )
+            {
+                $location->Latitude = $geographic_data->lat;
+                $location->Longitude = $geographic_data->lon;
+                $location->CountryCode = $geographic_data->countryCode;
+                $location->TimeZone = $geographic_data->timezone;
+                $location->IsFound = true;
+            }
+        }
+        catch ( Exception $exception )
+        {
+        }
     }
 
     return $location;
