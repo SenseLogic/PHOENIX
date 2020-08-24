@@ -9,16 +9,34 @@ function SetTimeZone(
 
 // ~~
 
-function GetCurrentMicrosecondTimestamp()
+function GetCurrentTimestamp(
+    )
 {
-    return microtime();
+    return time();
 }
 
 // ~~
 
-function GetCurrentTimestamp()
+function GetCurrentFractionalTimestamp(
+    )
 {
-    return time();
+    return microtime( true );
+}
+
+// ~~
+
+function GetCurrentMillisecondTimestamp(
+    )
+{
+    return round( microtime( true ) * 1000 );
+}
+
+// ~~
+
+function GetCurrentMicrosecondTimestamp(
+    )
+{
+    return round( microtime( true ) * 1000000 );
 }
 
 // ~~
