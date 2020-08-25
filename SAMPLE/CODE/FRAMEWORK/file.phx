@@ -23,9 +23,9 @@ function GetValidFileName(
 {
     return
         str_replace(
-            file_name,
             str_split( ' #%&$@:!?=+*|\'"`{}[]<>' ),
-            '_'
+            '_',
+            file_name
             );
 }
 
@@ -88,12 +88,13 @@ function SplitFilePath(
 
 // ~~
 
-function GetTimestampedFilePath(
-    string file_path
+function GetSuffixedFilePath(
+    string file_path,
+    string suffix
     )
 {
     var part_array = SplitFilePath( file_path );
-    part_array[ 1 ] ..= GetCurrentMicrosecondTimeStamp();
+    part_array[ 1 ] ..= suffix;
 
     return implode( part_array );
 }
@@ -104,7 +105,9 @@ function HasUploadedFile(
     string name
     )
 {
-    return isset( $_FILES[ name ] );
+    return
+        count( _FILES ) > 0
+        && isset( _FILES[ name ] );
 }
 
 // ~~
@@ -113,7 +116,7 @@ function GetUploadedFilePath(
     string name
     )
 {
-    return $_FILES[ name ][ 'tmp_name' ];
+    return _FILES[ name ][ 'tmp_name' ];
 }
 
 // ~~
@@ -122,7 +125,7 @@ function GetUploadedFileName(
     string name
     )
 {
-    return $_FILES[ name ][ 'name' ];
+    return _FILES[ name ][ 'name' ];
 }
 
 // ~~
@@ -131,7 +134,7 @@ function GetUploadedFileByteCount(
     string name
     )
 {
-    return $_FILES[ name ][ 'size' ];
+    return _FILES[ name ][ 'size' ];
 }
 
 // ~~

@@ -17,18 +17,12 @@ function GetCurrentTimestamp(
 
 // ~~
 
-function GetCurrentFractionalTimestamp(
-    )
-{
-    return microtime( true );
-}
-
-// ~~
-
 function GetCurrentMillisecondTimestamp(
     )
 {
-    return round( microtime( true ) * 1000 );
+     $part_array = explode( ' ', microtime() );
+
+    return $part_array[ 1 ] . substr( $part_array[ 0 ] . '00000', 2, 3 );
 }
 
 // ~~
@@ -36,7 +30,9 @@ function GetCurrentMillisecondTimestamp(
 function GetCurrentMicrosecondTimestamp(
     )
 {
-    return round( microtime( true ) * 1000000 );
+     $part_array = explode( ' ', microtime() );
+
+    return $part_array[ 1 ] . substr( $part_array[ 0 ] . '00000000', 2, 6 );
 }
 
 // ~~
