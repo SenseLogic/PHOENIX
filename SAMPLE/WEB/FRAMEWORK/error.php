@@ -1,4 +1,4 @@
-<?php // -- STATEMENTS
+<?php // -- FUNCTIONS
 
 function ShowErrors(
     )
