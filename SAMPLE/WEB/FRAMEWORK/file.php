@@ -1,11 +1,21 @@
 <?php // -- FUNCTIONS
 
+function GetBaseFolderPath(
+    )
+{
+    return $_SERVER[ 'DOCUMENT_ROOT' ] . '/';
+}
+
+// ~~
+
 function GetValidFolderPath(
     string $folder_path
     )
 {
+    $folder_path = str_replace( '\\', '/', $folder_path );
+
     if ( $folder_path === ''
-         && substr( $folder_path, -1 ) === '/' )
+         || substr( $folder_path, -1 ) === '/' )
     {
         return $folder_path;
     }
@@ -13,6 +23,15 @@ function GetValidFolderPath(
     {
         return $folder_path . '/';
     }
+}
+
+// ~~
+
+function GetValidFilePath(
+    $file_path
+    )
+{
+    return str_replace( '\\', '/', $file_path );
 }
 
 // ~~
@@ -31,6 +50,32 @@ function GetValidFileName(
 
 // ~~
 
+function GetRelativeFolderPath(
+    $folder_path,
+    $base_folder_path
+    )
+{
+    $base_folder_path = GetValidFolderPath( $base_folder_path );
+    $folder_path = GetValidFolderPath( $folder_path );
+
+    return RemovePrefix( $folder_path, $base_folder_path );
+}
+
+// ~~
+
+function GetRelativeFilePath(
+    $file_path,
+    $base_folder_path
+    )
+{
+    $base_folder_path = GetValidFolderPath( $base_folder_path );
+    $file_path = GetValidFilePath( $file_path );
+
+    return RemovePrefix( $file_path, $base_folder_path );
+}
+
+// ~~
+
 function HasValidExtension(
     string $file_path,
     array $extension_array
@@ -41,10 +86,110 @@ function HasValidExtension(
 
 // ~~
 
-function GetRootFolderPath(
+function IsFolderPath(
+    $path
     )
 {
-    return $_SERVER[ 'DOCUMENT_ROOT' ] . '/';
+    return is_dir( $path );
+}
+
+// ~~
+
+function IsMatchingFilePath(
+    $file_path,
+    $file_filter
+    )
+{
+    return fnmatch( $file_filter, $file_path );
+}
+
+// ~~
+
+function GetMatchingFilePathArray(
+    string $file_filter
+    )
+{
+    return glob( $file_filter );
+}
+
+// ~~
+
+function AddFolderPathArray(
+    array & $folder_path_array,
+    string $folder_path,
+    bool $is_recursive = false
+    )
+{
+    foreach ( scandir( $folder_path, SCANDIR_SORT_NONE ) as  $file_path )
+    {
+        if ( $file_path !== '.'
+             && $file_path !== '..' )
+        {
+            if ( is_dir( $file_path ) )
+            {
+                array_push( $folder_path_array, GetValidFolderPath( $file_path ) );
+
+                if ( $is_recursive )
+                {
+                    AddFolderPathArray( $folder_path_array, $file_path, true );
+                }
+            }
+        }
+    }
+}
+
+// ~~
+
+function GetFolderPathArray(
+    array & $folder_path_array,
+    string $folder_path,
+    bool $is_recursive = false
+    )
+{
+    $folder_path_array = array();
+
+    AddFolderPathArray( $folder_path_array, $folder_path, $is_recursive );
+}
+
+// ~~
+
+function AddFilePathArray(
+    array & $file_path_array,
+    string $folder_path,
+    bool $is_recursive = false
+    )
+{
+    foreach ( scandir( $folder_path, SCANDIR_SORT_NONE ) as  $file_path )
+    {
+        if ( $file_path !== '.'
+             && $file_path !== '..' )
+        {
+            if ( is_dir( $file_path ) )
+            {
+                if ( $is_recursive )
+                {
+                    AddFilePathArray( $file_path_array, $file_path, true );
+                }
+            }
+            else
+            {
+                array_push( $file_path_array, GetValidFilePath( $file_path ) );
+            }
+        }
+    }
+}
+
+// ~~
+
+function GetFilePathArray(
+    array & $file_path_array,
+    string $folder_path,
+    bool $is_recursive = false
+    )
+{
+    $file_path_array = array();
+
+    AddFilePathArray( $file_path_array, $folder_path, $is_recursive );
 }
 
 // ~~

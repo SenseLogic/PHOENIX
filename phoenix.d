@@ -1706,7 +1706,11 @@ class FILE
 
         try
         {
-            OutputPath.write( output_file_text );
+            if ( !OutputPath.exists()
+                 || OutputPath.readText() != output_file_text )
+            {
+                OutputPath.write( output_file_text );
+            }
         }
         catch ( FileException file_exception )
         {
