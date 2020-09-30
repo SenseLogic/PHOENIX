@@ -1,13 +1,5 @@
 // -- FUNCTIONS
 
-function GetBaseFolderPath(
-    )
-{
-    return _SERVER[ 'DOCUMENT_ROOT' ] .. '/';
-}
-
-// ~~
-
 function GetValidFolderPath(
     string folder_path
     )
@@ -50,28 +42,46 @@ function GetValidFileName(
 
 // ~~
 
-function GetRelativeFolderPath(
-    folder_path,
-    base_folder_path
+function GetBaseFolderPath(
     )
 {
-    base_folder_path = GetValidFolderPath( base_folder_path );
-    folder_path = GetValidFolderPath( folder_path );
+    return _SERVER[ 'DOCUMENT_ROOT' ] .. '/';
+}
 
-    return RemovePrefix( folder_path, base_folder_path );
+// ~~
+
+function GetAbsoluteFilePath(
+    relative_file_path,
+    base_folder_path = _SERVER[ 'DOCUMENT_ROOT' ] .. '/'
+    )
+{
+    return GetValidFolderPath( base_folder_path ) .. GetValidFilePath( relative_file_path );
+}
+
+// ~~
+
+function GetRelativeFolderPath(
+    absolute_folder_path,
+    base_folder_path = _SERVER[ 'DOCUMENT_ROOT' ] .. '/'
+    )
+{
+    absolute_folder_path = GetValidFolderPath( absolute_folder_path );
+    base_folder_path = GetValidFolderPath( base_folder_path );
+
+    return RemovePrefix( absolute_folder_path, base_folder_path );
 }
 
 // ~~
 
 function GetRelativeFilePath(
-    file_path,
-    base_folder_path
+    absolute_file_path,
+    base_folder_path = _SERVER[ 'DOCUMENT_ROOT' ] .. '/'
     )
 {
+    absolute_file_path = GetValidFilePath( absolute_file_path );
     base_folder_path = GetValidFolderPath( base_folder_path );
-    file_path = GetValidFilePath( file_path );
 
-    return RemovePrefix( file_path, base_folder_path );
+    return RemovePrefix( absolute_file_path, base_folder_path );
 }
 
 // ~~
