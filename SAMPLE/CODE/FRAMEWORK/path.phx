@@ -28,6 +28,27 @@ function GetValidFilePath(
 
 // ~~
 
+function JoinFilePath(
+    string folder_path,
+    string file_label,
+    string file_extension = ""
+    )
+{
+    folder_path = str_replace( '\\', '/', folder_path );
+
+    if ( folder_path === ''
+         || substr( folder_path, -1 ) === '/' )
+    {
+        return folder_path .. str_replace( '\\', '/', file_label ) .. file_extension;
+    }
+    else
+    {
+        return folder_path .. '/' .. str_replace( '\\', '/', file_label ) .. file_extension;
+    }
+}
+
+// ~~
+
 function GetValidFileName(
     string file_name
     )
@@ -52,9 +73,14 @@ function GetBaseFolderPath(
 
 function GetAbsoluteFilePath(
     relative_file_path,
-    base_folder_path = _SERVER[ 'DOCUMENT_ROOT' ] .. '/'
+    base_folder_path = null
     )
 {
+    if ( base_folder_path === null )
+    {
+        base_folder_path = GetBaseFolderPath();
+    }
+
     return GetValidFolderPath( base_folder_path ) .. GetValidFilePath( relative_file_path );
 }
 
@@ -62,9 +88,14 @@ function GetAbsoluteFilePath(
 
 function GetRelativeFolderPath(
     absolute_folder_path,
-    base_folder_path = _SERVER[ 'DOCUMENT_ROOT' ] .. '/'
+    base_folder_path = null
     )
 {
+    if ( base_folder_path === null )
+    {
+        base_folder_path = GetBaseFolderPath();
+    }
+
     absolute_folder_path = GetValidFolderPath( absolute_folder_path );
     base_folder_path = GetValidFolderPath( base_folder_path );
 
@@ -75,9 +106,14 @@ function GetRelativeFolderPath(
 
 function GetRelativeFilePath(
     absolute_file_path,
-    base_folder_path = _SERVER[ 'DOCUMENT_ROOT' ] .. '/'
+    base_folder_path = null
     )
 {
+    if ( base_folder_path === null )
+    {
+        base_folder_path = GetBaseFolderPath();
+    }
+
     absolute_file_path = GetValidFilePath( absolute_file_path );
     base_folder_path = GetValidFolderPath( base_folder_path );
 
@@ -91,7 +127,7 @@ function HasValidExtension(
     array extension_array
     )
 {
-    return in_array( SplitFilePath( file_path )[ 1 ], extension_array );
+    return in_array( GetFileExtension( file_path ), extension_array );
 }
 
 // ~~
@@ -135,9 +171,11 @@ function AddFolderPathArray(
         if ( file_path !== '.'
              && file_path !== '..' )
         {
+            file_path = JoinFilePath( folder_path, file_path );
+
             if ( is_dir( file_path ) )
             {
-                array_push( folder_path_array, GetValidFolderPath( file_path ) );
+                array_push( folder_path_array, file_path );
 
                 if ( is_recursive )
                 {
@@ -174,6 +212,8 @@ function AddFilePathArray(
         if ( file_path !== '.'
              && file_path !== '..' )
         {
+            file_path = JoinFilePath( folder_path, file_path );
+
             if ( is_dir( file_path ) )
             {
                 if ( is_recursive )
@@ -241,7 +281,62 @@ function GetFileName(
         var folder_path_character_count = last_slash_character_index + 1;
     }
 
-    return substr( file_path, folder_path_character_count, file_name_character_count );
+    return substr( file_path, folder_path_character_count );
+}
+
+// ~~
+
+function GetFilePathCharacterCounts(
+    int & folder_path_character_count,
+    int & file_label_character_count,
+    int & file_extension_character_count,
+    string file_path
+    )
+{
+    var file_path_character_count = strlen( file_path );
+    var last_slash_character_index = strrpos( file_path, '/' );
+
+    if ( last_slash_character_index === false )
+    {
+        folder_path_character_count = 0;
+        var last_dot_character_index = strrpos( file_path, '.' );
+    }
+    else
+    {
+        folder_path_character_count = last_slash_character_index + 1;
+        var last_dot_character_index = strrpos( file_path, '.', last_slash_character_index );
+    }
+
+    if ( last_dot_character_index === false )
+    {
+        file_extension_character_count = 0;
+        file_label_character_count = file_path_character_count - folder_path_character_count;
+    }
+    else
+    {
+        file_extension_character_count = file_path_character_count - last_dot_character_index;
+        file_label_character_count = file_path_character_count - folder_path_character_count - file_extension_character_count;
+    }
+}
+
+// ~~
+
+function GetFileLabel(
+    string file_path
+    )
+{
+    var folder_path_character_count = 0;
+    var file_label_character_count = 0;
+    var file_extension_character_count = 0;
+
+    GetFilePathCharacterCounts(
+        folder_path_character_count,
+        file_label_character_count,
+        file_extension_character_count,
+        file_path
+        );
+
+    return substr( file_path, folder_path_character_count, file_label_character_count );
 }
 
 // ~~
@@ -250,32 +345,42 @@ function GetFileExtension(
     string file_path
     )
 {
-    var file_path_character_count = strlen( file_path );
-    var last_slash_character_index = strrpos( file_path, '/' );
+    var folder_path_character_count = 0;
+    var file_label_character_count = 0;
+    var file_extension_character_count = 0;
 
-    if ( last_slash_character_index === false )
-    {
-        var folder_path_character_count = 0;
-        var last_dot_character_index = strrpos( file_path, '.' );
-    }
-    else
-    {
-        var folder_path_character_count = last_slash_character_index + 1;
-        var last_dot_character_index = strrpos( file_path, '.', last_slash_character_index );
-    }
+    GetFilePathCharacterCounts(
+        folder_path_character_count,
+        file_label_character_count,
+        file_extension_character_count,
+        file_path
+        );
 
-    if ( last_dot_character_index === false )
-    {
-        var file_extension_character_count = 0;
-        var file_name_character_count = file_path_character_count - folder_path_character_count;
-    }
-    else
-    {
-        var file_extension_character_count = file_path_character_count - last_dot_character_index;
-        var file_name_character_count = file_path_character_count - folder_path_character_count - file_extension_character_count;
-    }
+    return substr( file_path, folder_path_character_count + file_label_character_count, file_extension_character_count );
+}
 
-    return substr( file_path, folder_path_character_count + file_name_character_count, file_extension_character_count );
+// ~~
+
+function GetSuffixedFilePath(
+    string file_path,
+    string file_label_suffix
+    )
+{
+    var folder_path_character_count = 0;
+    var file_label_character_count = 0;
+    var file_extension_character_count = 0;
+
+    GetFilePathCharacterCounts(
+        folder_path_character_count,
+        file_label_character_count,
+        file_extension_character_count,
+        file_path
+        );
+
+    return
+        substr( file_path, 0, folder_path_character_count + file_label_character_count )
+        .. file_label_suffix
+        .. substr( file_path, folder_path_character_count + file_label_character_count );
 }
 
 // ~~
@@ -284,48 +389,21 @@ function SplitFilePath(
     string file_path
     )
 {
-    var file_path_character_count = strlen( file_path );
-    var last_slash_character_index = strrpos( file_path, '/' );
+    var folder_path_character_count = 0;
+    var file_label_character_count = 0;
+    var file_extension_character_count = 0;
 
-    if ( last_slash_character_index === false )
-    {
-        var folder_path_character_count = 0;
-        var last_dot_character_index = strrpos( file_path, '.' );
-    }
-    else
-    {
-        var folder_path_character_count = last_slash_character_index + 1;
-        var last_dot_character_index = strrpos( file_path, '.', last_slash_character_index );
-    }
-
-    if ( last_dot_character_index === false )
-    {
-        var file_extension_character_count = 0;
-        var file_name_character_count = file_path_character_count - folder_path_character_count;
-    }
-    else
-    {
-        var file_extension_character_count = file_path_character_count - last_dot_character_index;
-        var file_name_character_count = file_path_character_count - folder_path_character_count - file_extension_character_count;
-    }
+    GetFilePathCharacterCounts(
+        folder_path_character_count,
+        file_label_character_count,
+        file_extension_character_count,
+        file_path
+        );
 
     return
         array(
             substr( file_path, 0, folder_path_character_count ),
-            substr( file_path, folder_path_character_count, file_name_character_count ),
-            substr( file_path, folder_path_character_count + file_name_character_count, file_extension_character_count )
+            substr( file_path, folder_path_character_count, file_label_character_count ),
+            substr( file_path, folder_path_character_count + file_label_character_count, file_extension_character_count )
             );
-}
-
-// ~~
-
-function GetSuffixedFilePath(
-    string file_path,
-    string suffix
-    )
-{
-    var part_array = SplitFilePath( file_path );
-    part_array[ 1 ] ..= suffix;
-
-    return implode( part_array );
 }
