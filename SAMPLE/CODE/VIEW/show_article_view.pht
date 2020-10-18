@@ -1,41 +1,41 @@
-<? ob_start(); ?>
-    <h2>
-        <a href="/<% .LanguageCode %>/section/<% .Section.Id %>">
-            <% .Section.Name %>
-        </a>
-    </h2>
+<? import 'BLOCK/page_header_block.php'; ?>
+<h2>
+    <a href="/<% .LanguageCode %>/section/<% .Section.Id %>">
+        <% .Section.Name %>
+    </a>
+</h2>
+<h4>
+    <a href="/<% .LanguageCode %>/article/<% .Article.Id %>">
+        <% .Article.Title %>
+    </a>
+</h4>
+<h5>
+    <% .Article.User.Email %> - <% .Article.Date %>
+</h5>
+<img class="responsive-img" src="/static/media/jpg/<% .Article.ImageIndex %>.jpg"/>
+<p>
+    <% .Article.Text %>
+</p>
+<hr/>
+<? if ( .Session.UserIsConnected ) { ?>
     <h4>
-        <a href="/<% .LanguageCode %>/article/<% .Article.Id %>">
-            <% .Article.Title %>
-        </a>
+        Comment
     </h4>
+    <form name="AddComment" action="/<% .LanguageCode %>/comment/<% .Article.Id %>/" method="post">
+        <label for="text">
+            Text :
+        </label>
+        <textarea id="text" name="Text"/></textarea>
+        <input type="submit" value="Send">
+    </form>
+<? } ?>
+<br/>
+<? foreach ( var comment; .CommentArray ) { ?>
     <h5>
-        <% .Article.User.Pseudonym %> - <% .Article.Date %>
+        <% comment.User.Email %> - <% comment.DateTime %>
     </h5>
-    <img class="responsive-img" src="/static/img/<% .Article.ImageIndex %>.jpg"/>
     <p>
-        <% .Article.Text %>
+        <% comment.Text %>
     </p>
-    <hr/>
-    <? if ( .Session.UserIsConnected ) { ?>
-        <h4>
-            Comment
-        </h4>
-        <form name="AddComment" action="/<% .LanguageCode %>/comment/<% .Article.Id %>/" method="post">
-            <label for="text">
-                Text :
-            </label>
-            <textarea id="text" name="Text"/></textarea>
-            <input type="submit" value="Send">
-        </form>
-    <? } ?>
-    <br/>
-    <? foreach ( var comment; .CommentArray ) { ?>
-        <h5>
-            <% comment.User.Pseudonym %> - <% comment.DateTime %>
-        </h5>
-        <p>
-            <% comment.Text %>
-        </p>
-    <? } ?>
-<? .MainContent = ob_get_clean(); ?>
+<? } ?>
+<? import 'BLOCK/page_footer_block.php'; ?>

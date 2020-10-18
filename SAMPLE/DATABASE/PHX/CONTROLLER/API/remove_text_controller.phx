@@ -1,0 +1,9 @@
+// -- IMPORTS
+
+import '../../MODEL/text_model.php';
+
+// -- STATEMENTS
+
+RemoveDatabaseTextByUuid( text_uuid );
+
+SetStatus( 204 );

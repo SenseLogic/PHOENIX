@@ -1,0 +1,25 @@
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/section_model.php';
+
+// -- TYPES
+
+class EDIT_SECTION_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        int section_id
+        )
+    {
+        parent::constructor();
+
+        .Title = 'Edit a section';
+        .Section = GetDatabaseSectionById( section_id );
+
+        import '../VIEW/edit_section_view.php';
+    }
+}
+
+// -- STATEMENTS
+
+var edit_section_controller = new EDIT_SECTION_CONTROLLER( var section_id );

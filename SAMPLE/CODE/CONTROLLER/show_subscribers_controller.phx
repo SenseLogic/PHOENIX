@@ -1,12 +1,12 @@
 // -- IMPORTS
 
-import 'controller.php';
+import 'view_controller.php';
 import '../MODEL/section_model.php';
 import '../MODEL/subscriber_model.php';
 
 // -- TYPES
 
-class SHOW_SUBSCRIBERS_CONTROLLER extends CONTROLLER
+class SHOW_SUBSCRIBERS_CONTROLLER extends VIEW_CONTROLLER
 {
     // -- CONSTRUCTORS
 
@@ -20,7 +20,6 @@ class SHOW_SUBSCRIBERS_CONTROLLER extends CONTROLLER
         .SubscriberArray = GetDatabaseSubscriberArray();
 
         import '../VIEW/show_subscribers_view.php';
-        import '../VIEW/show_page_view.php';
     }
 }
 

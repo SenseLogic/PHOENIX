@@ -1,0 +1,10 @@
+// -- IMPORTS
+
+import '../../MODEL/text_model.php';
+
+// -- STATEMENTS
+
+var text = GetDatabaseTextByUuid( var text_uuid );
+
+SetStatus( 200 );
+SetJsonResponse( text );

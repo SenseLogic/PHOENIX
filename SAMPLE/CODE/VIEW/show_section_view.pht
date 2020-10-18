@@ -1,22 +1,22 @@
-<? ob_start(); ?>
-    <h2>
-        <a href="/<% .LanguageCode %>/section/<% .Section.Id %>">
-            <% .Section.Name %>
+<? import 'BLOCK/page_header_block.php'; ?>
+<h2>
+    <a href="/<% .LanguageCode %>/section/<% .Section.Id %>">
+        <% .Section.Name %>
+    </a>
+</h2>
+<img class="responsive-img" src="/static/media/jpg/<% .Section.ImageIndex %>.jpg"/>
+<p>
+    <% .Section.Text %>
+</p>
+<hr/>
+<? foreach ( var article; .ArticleArray ) { ?>
+    <h5>
+        <a href="/<% .LanguageCode %>/article/<% article.Id %>">
+            <% article.Title %>
         </a>
-    </h2>
-    <img class="responsive-img" src="/static/img/<% .Section.ImageIndex %>.jpg"/>
-    <p>
-        <% .Section.Text %>
-    </p>
-    <hr/>
-    <? foreach ( var article; .ArticleArray ) { ?>
-        <h5>
-            <a href="/<% .LanguageCode %>/article/<% article.Id %>">
-                <% article.Title %>
-            </a>
-        </h5>
-        <h6>
-            <% article.User.Pseudonym %> - <% article.Date %>
-        </h6>
-    <? } ?>
-<? .MainContent = ob_get_clean(); ?>
+    </h5>
+    <h6>
+        <% article.User.Email %> - <% article.Date %>
+    </h6>
+<? } ?>
+<? import 'BLOCK/page_footer_block.php'; ?>

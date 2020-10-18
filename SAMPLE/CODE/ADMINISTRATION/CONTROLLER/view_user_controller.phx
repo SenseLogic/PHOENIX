@@ -1,0 +1,26 @@
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/user_model.php';
+
+// -- TYPES
+
+class VIEW_USER_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        int user_id
+        )
+    {
+        parent::constructor();
+
+        .Title = 'View a user';
+        .User = GetDatabaseUserById( user_id );
+        .PreviousPage = GetSessionValue( 'PreviousPage' );
+
+        import '../VIEW/view_user_view.php';
+    }
+}
+
+// -- STATEMENTS
+
+var view_user_controller = new VIEW_USER_CONTROLLER( var user_id );

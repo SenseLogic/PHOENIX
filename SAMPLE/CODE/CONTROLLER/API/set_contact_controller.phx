@@ -1,0 +1,10 @@
+// -- IMPORTS
+
+import '../../MODEL/contact_model.php';
+
+// -- STATEMENTS
+
+var input = GetJsonInput();
+SetDatabaseContact( var contact_uuid, input.Name, input.Email, input.Message, input.DateTime );
+
+SetStatus( 200 );

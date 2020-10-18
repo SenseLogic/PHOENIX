@@ -1,0 +1,10 @@
+// -- IMPORTS
+
+import '../../MODEL/section_model.php';
+
+// -- STATEMENTS
+
+var input = GetJsonInput();
+SetDatabaseSection( var section_uuid, input.Number, input.Name, input.Text, input.Image );
+
+SetStatus( 200 );

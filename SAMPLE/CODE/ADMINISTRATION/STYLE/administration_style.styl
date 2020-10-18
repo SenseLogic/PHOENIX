@@ -1,0 +1,311 @@
+/*
+    CONSTANTS
+*/
+
+/*
+    IMPORTS
+*/
+
+@import "../../STYLE/VISTA/vista_reset.styl"
+@import "../../STYLE/VISTA/vista.styl"
+
+// ~~
+
+MakeRootFontSize( 16px );
+MakeContainerExtended();
+MakeJustifySelfStart();
+MakeJustifySelfEnd();
+MakeFractionalWidthValueRange( 12 );
+MakeFractionalHeightValueRange( 12 );
+MakeFontWeightRange( 100, 100, 9 );
+
+// ~~
+
+html
+{
+    background: #FFFFFF;
+}
+
+body
+{
+    min-height: 100vh;
+}
+
+a
+{
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover
+{
+    color: inherit;
+    cursor: pointer;
+}
+
+a:hover,
+input:hover
+{
+    text-decoration: none;
+}
+
+a:focus,
+button:focus,
+input:focus,
+textarea:focus
+{
+    outline: none;
+}
+
+.page-container
+{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+}
+
+.page-menu
+{
+    grid-area: 1 / 1 / span 2;
+    padding: 15 * Pxm;
+    display: flex;
+    background-image: linear-gradient( to right, #29323c 0%, #485563 100%);
+    width: 72 * Pxm;
+}
+
+.page-menu-content
+{
+    position: fixed;
+}
+
+.page-menu-item
+{
+    margin-top: 10 * Pxm;
+}
+
+.page-menu-title
+{
+    margin-left: 5 * Pxm;
+    font-size: 20 * Pxm;
+    color: #FFFFFF;
+}
+
+.page-title
+{
+    grid-area: 1 / 2;
+    padding: 15 * Pxm;
+    text-align: center;
+    background-image: linear-gradient( to top, #4481eb 0%, #04befe 100%);
+}
+
+.page-title-content
+{
+    font-size: 28 * Pxm;
+    color: #FFFFFF;
+}
+
+.page-body
+{
+    grid-area: 2 / 2;
+    padding: 15 * Pxm;
+    background-image: linear-gradient( to top, #fdfbfb 0%, #ebedee 100%);
+
+}
+
+.page-body-content
+{
+    color: #222222;
+}
+
+.page-section
+{
+    border-radius: 10 * Pxm;
+    background-color: #FFFFFF;
+    padding: 15 * Pxm;
+}
+
+.form-container
+{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 15 * Pxm;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.form-container-small
+{
+    max-width: 30rem;
+}
+
+.form-extended
+{
+    grid-column: 1 / -1;
+}
+
+.form-input
+{
+    display: block;
+    border: 1px solid #CCCCCC;
+    border-radius: 5 * Pxm;
+    padding: 5 * Pxm;
+    width: 100%;
+}
+
+.form-textarea
+{
+    display: block;
+    border: 1px solid #CCCCCC;
+    border-radius: 5 * Pxm;
+    padding: 5 * Pxm;
+    width: 100%;
+    height: 36 * Pxm;
+    min-height: 36 * Pxm;
+    overflow: hidden;
+}
+
+.form-field-name
+{
+    font-weight: bold;
+    padding-top: 5 * Pxm;
+}
+
+.form-column-name
+{
+    font-weight: bold;
+}
+
+.form-centered
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-button
+{
+    display: inline-block;
+    border: none;
+    width: 24 * Pxm;
+    height: 24 * Pxm;
+}
+
+.form-button + .form-button
+{
+    margin-left: 5 * Pxm;
+}
+
+.form-button-large
+{
+    width: 40 * Pxm;
+    height: 40 * Pxm;
+}
+
+.text-button
+{
+    @extend .form-button;
+    background: url(/static/media/svg/admin/text_icon.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.contact-button
+{
+    @extend .form-button;
+    background: url(/static/media/svg/admin/contact_icon.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.user-button
+{
+    @extend .form-button;
+    background: url(/static/media/svg/admin/user_icon.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.disconnect-button
+{
+    @extend .form-button;
+    background: url(/static/media/svg/admin/disconnect_icon.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.connect-button
+{
+    @extend .form-button;
+    background: url(/static/media/svg/admin/connect_icon.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.view-button
+{
+    @extend .form-button;
+    background: url(/static/media/svg/admin/view_icon.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.edit-button
+{
+    @extend .form-button;
+    background: url(/static/media/svg/admin/edit_icon.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.remove-button
+{
+    @extend .form-button;
+    background: url(/static/media/svg/admin/remove_icon.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.add-button
+{
+    @extend .form-button;
+    background: url(/static/media/svg/admin/add_icon.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.cancel-button
+{
+    @extend .form-button;
+    background: url(/static/media/svg/admin/cancel_icon.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.apply-button
+{
+    @extend .form-button;
+    background: url(/static/media/svg/admin/apply_icon.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.table-container
+{
+    align-items: start;
+}
+
+.text-table
+{
+    grid-template-columns: repeat( 3, auto );
+}
+
+.contact-table
+{
+    grid-template-columns: repeat( 5, auto );
+}
+
+.user-table
+{
+    grid-template-columns: repeat( 4, auto );
+}
+
+/*
+    DEBUG
+*/
+/*
+*
+{
+    outline: 0.1px solid rgba( 255, 0, 0, 0.5 );
+}
+*/

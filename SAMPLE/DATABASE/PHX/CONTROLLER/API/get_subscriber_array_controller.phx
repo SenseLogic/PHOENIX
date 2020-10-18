@@ -1,0 +1,10 @@
+// -- IMPORTS
+
+import '../../MODEL/subscriber_model.php';
+
+// -- STATEMENTS
+
+var subscriber_array = GetDatabaseSubscriberArray();
+
+SetStatus( 200 );
+SetJsonResponse( subscriber_array );

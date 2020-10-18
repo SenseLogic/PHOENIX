@@ -6,6 +6,15 @@ create schema if not exists `blog` default character set utf8mb4 collate utf8mb4
 
 use `blog`;
 
+drop table if exists `blog`.`TEXT`;
+
+create table if not exists `blog`.`TEXT`(
+    `Id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `Slug` TEXT NULL,
+    `Text` TEXT NULL,
+    primary key( `Id` )
+    ) engine = InnoDB;
+
 drop table if exists `blog`.`SECTION`;
 
 create table if not exists `blog`.`SECTION`(
@@ -14,17 +23,6 @@ create table if not exists `blog`.`SECTION`(
     `Name` VARCHAR( 45 ) NULL,
     `Text` TEXT NULL,
     `Image` VARCHAR( 45 ) NULL,
-    primary key( `Id` )
-    ) engine = InnoDB;
-
-drop table if exists `blog`.`USER`;
-
-create table if not exists `blog`.`USER`(
-    `Id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    `Email` VARCHAR( 45 ) NULL,
-    `Pseudonym` VARCHAR( 45 ) NULL,
-    `Password` VARCHAR( 45 ) NULL,
-    `ItIsAdministrator` TINYINT UNSIGNED NULL,
     primary key( `Id` )
     ) engine = InnoDB;
 
@@ -63,6 +61,25 @@ create table if not exists `blog`.`SUBSCRIBER`(
     `Longitude` DOUBLE NULL,
     `CountryCode` VARCHAR( 2 ) NULL,
     `DateTime` DATETIME NULL,
+    primary key( `Id` )
+    ) engine = InnoDB;
+
+create table if not exists `blog`.`CONTACT`(
+    `Id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `Name` TEXT NULL,
+    `Email` TEXT NULL,
+    `Message` TEXT NULL,
+    `DateTime` DATETIME NULL,
+    primary key( `Id` )
+    ) engine = InnoDB;
+
+drop table if exists `blog`.`USER`;
+
+create table if not exists `blog`.`USER`(
+    `Id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `Email` TEXT NULL,
+    `Password` TEXT NULL,
+    `IsAdministrator` TINYINT UNSIGNED NULL,
     primary key( `Id` )
     ) engine = InnoDB;
 

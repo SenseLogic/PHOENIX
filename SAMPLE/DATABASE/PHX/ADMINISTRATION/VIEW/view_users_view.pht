@@ -1,0 +1,43 @@
+<? include 'BLOCK/page_header_block.php' ?>
+<div class="">
+    <div class="page-section form-section">
+        <div class="form-container table-container user-table">
+            <div class="form-column-name">
+                Email
+            </div>
+            <div class="form-column-name">
+                Password
+            </div>
+            <div class="form-column-name">
+                IsAdministrator
+            </div>
+            <div class="form-column-name">
+                Action
+            </div>
+            <? foreach ( var user; .UserArray ) { ?>
+                <div>
+                    <% user.Email %>
+                </div>
+                <div>
+                    <% user.Password %>
+                </div>
+                <div>
+                    <% user.IsAdministrator %>
+                </div>
+                <div class="form-centered">
+                    <a class="form-button view-button" href="/admin/user/view/<% user.Id %>">
+                    </a>
+                    <a class="form-button edit-button" href="/admin/user/edit/<% user.Id %>">
+                    </a>
+                    <a class="form-button remove-button" href="/admin/user/remove/<% user.Id %>">
+                    </a>
+                </div>
+            <? } ?>
+            <div class="form-extended form-centered">
+                <a class="form-button form-button-large add-button" href="/admin/user/add">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<? include 'BLOCK/page_footer_block.php' ?>

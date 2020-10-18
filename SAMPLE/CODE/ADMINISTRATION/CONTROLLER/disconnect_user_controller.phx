@@ -1,0 +1,23 @@
+// -- IMPORTS
+
+import 'controller.php';
+
+// -- TYPES
+
+class DISCONNECT_USER_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        )
+    {
+        parent::constructor();
+
+        .Session.UserIsConnected = false;
+        .Session.Store();
+
+        Redirect( '/admin' );
+    }
+}
+
+// -- STATEMENTS
+
+var disconnect_user_controller = new DISCONNECT_USER_CONTROLLER();

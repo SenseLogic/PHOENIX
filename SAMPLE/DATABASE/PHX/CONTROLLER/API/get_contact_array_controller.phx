@@ -1,0 +1,10 @@
+// -- IMPORTS
+
+import '../../MODEL/contact_model.php';
+
+// -- STATEMENTS
+
+var contact_array = GetDatabaseContactArray();
+
+SetStatus( 200 );
+SetJsonResponse( contact_array );

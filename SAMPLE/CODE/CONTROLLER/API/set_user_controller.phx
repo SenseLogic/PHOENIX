@@ -1,0 +1,10 @@
+// -- IMPORTS
+
+import '../../MODEL/user_model.php';
+
+// -- STATEMENTS
+
+var input = GetJsonInput();
+SetDatabaseUser( var user_uuid, input.Email, input.Password, input.IsAdministrator );
+
+SetStatus( 200 );

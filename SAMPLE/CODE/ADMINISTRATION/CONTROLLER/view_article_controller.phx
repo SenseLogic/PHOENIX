@@ -1,0 +1,26 @@
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/article_model.php';
+
+// -- TYPES
+
+class VIEW_ARTICLE_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        int article_id
+        )
+    {
+        parent::constructor();
+
+        .Title = 'View a article';
+        .Article = GetDatabaseArticleById( article_id );
+        .PreviousPage = GetSessionValue( 'PreviousPage' );
+
+        import '../VIEW/view_article_view.php';
+    }
+}
+
+// -- STATEMENTS
+
+var view_article_controller = new VIEW_ARTICLE_CONTROLLER( var article_id );

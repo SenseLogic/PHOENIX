@@ -1,0 +1,26 @@
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/contact_model.php';
+
+// -- TYPES
+
+class VIEW_CONTACTS_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        )
+    {
+        parent::constructor();
+
+        .Title = 'View contacts';
+        .ContactArray = GetDatabaseContactArray();
+
+        SetSessionValue( 'PreviousPage', GetRequest() );
+
+        import '../VIEW/view_contacts_view.php';
+    }
+}
+
+// -- STATEMENTS
+
+var view_contacts_controller = new VIEW_CONTACTS_CONTROLLER();

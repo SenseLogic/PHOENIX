@@ -1,0 +1,9 @@
+// -- IMPORTS
+
+import '../../MODEL/user_model.php';
+
+// -- STATEMENTS
+
+RemoveDatabaseUserByUuid( user_uuid );
+
+SetStatus( 204 );

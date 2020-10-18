@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link type="text/css" rel="stylesheet" href="/static/css/materialize.min.css"/>
+        <title>
+            Blog
+        </title>
+    </head>
+    <body class="container">
+        <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/static/js/materialize.min.js"></script>
+        <div class="row">
+            <nav class="col m12">
+                <ul>
+                    <? foreach ( var section; .SectionArray ) { ?>
+                        <li>
+                            <a href="/<% .LanguageCode %>/section/<% section.Id %>">
+                                <% section.Name %>
+                            </a>
+                        </li>
+                    <? } ?>
+                    <? if ( .Session.UserIsConnected ) { ?>
+                        <li>
+                            <a href="/<% .LanguageCode %>/subscribers">
+                                Subscribers
+                            </a>
+                        </li>
+                    <? } ?>
+                </ul>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col m9">
+                <h1>
+                    Blog
+                </h1>

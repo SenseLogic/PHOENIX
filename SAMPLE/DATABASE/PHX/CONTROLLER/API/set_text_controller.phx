@@ -1,0 +1,10 @@
+// -- IMPORTS
+
+import '../../MODEL/text_model.php';
+
+// -- STATEMENTS
+
+var input = GetJsonInput();
+SetDatabaseText( var text_uuid, input.Slug, input.Text );
+
+SetStatus( 200 );

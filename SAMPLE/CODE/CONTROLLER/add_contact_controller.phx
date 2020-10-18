@@ -1,0 +1,66 @@
+// -- IMPORTS
+
+import 'controller.php';
+import '../MODEL/contact_model.php';
+
+// -- TYPES
+
+class ADD_CONTACT_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        string name,
+        string email,
+        string message,
+        string captcha
+        )
+    {
+        parent::constructor();
+
+        if ( IsValidCaptcha( captcha, .Session.Captcha ) )
+        {
+            AddDatabaseContact( name, email, message );
+            .SendEmails( name, email, message );
+
+            SetStatus( 200 );
+        }
+        else
+        {
+            SetStatus( 401 );
+        }
+    }
+
+    // ~~
+
+    method SendEmails(
+        string name,
+        string email,
+        string message
+        )
+    {
+        SendEmail(
+            'mail3.webcms.lu',
+            25,
+            'contact@blog.com',
+            '0ddd!f259@',
+            'contact@blog.com',
+            email,
+            'blog.com',
+            "Bonjour,\n\nMerci de votre intérêt pour Blog :)\n\nÀ très bientôt,\n\nFrédéric Feltz\n"
+            );
+
+        SendEmail(
+            'mail3.webcms.lu',
+            25,
+            'contact@blog.com',
+            '0ddd!f259@',
+            'contact@blog.com',
+            'info@blog.com',
+            'Demande de contact de ' .. email .. ' pour Blog',
+            'Nom : ' .. name .. '\nE-mail : ' .. email .. '\nMessage : ' .. message .. '\n'
+            );
+    }
+}
+
+// -- STATEMENTS
+
+var add_contact_controller = new ADD_CONTACT_CONTROLLER( var name, var email, var message, var captcha );

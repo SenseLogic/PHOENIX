@@ -1,0 +1,32 @@
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/subscriber_model.php';
+
+// -- TYPES
+
+class DO_EDIT_SUBSCRIBER_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        int subscriber_id
+        )
+    {
+        parent::constructor();
+
+        var email = GetPostValue( 'Email' );
+        var ip_address = GetPostValue( 'IpAddress' );
+        var browser = GetPostValue( 'Browser' );
+        var latitude = GetPostValue( 'Latitude' );
+        var longitude = GetPostValue( 'Longitude' );
+        var country_code = GetPostValue( 'CountryCode' );
+        var date_time = GetPostValue( 'DateTime' );
+
+        SetDatabaseSubscriber( subscriber_id, email, ip_address, browser, latitude, longitude, country_code, date_time );
+
+        Redirect( '/admin/subscriber' );
+    }
+}
+
+// -- STATEMENTS
+
+var do_edit_subscriber_controller = new DO_EDIT_SUBSCRIBER_CONTROLLER( var subscriber_id );

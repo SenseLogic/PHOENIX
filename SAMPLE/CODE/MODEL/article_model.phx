@@ -1,6 +1,6 @@
 // -- IMPORTS
 
-import 'TABLE/article.php';
+import 'article.php';
 
 // -- FUNCTIONS
 

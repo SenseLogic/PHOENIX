@@ -1,0 +1,10 @@
+// -- IMPORTS
+
+import '../../MODEL/article_model.php';
+
+// -- STATEMENTS
+
+var article = GetDatabaseArticleByUuid( var article_uuid );
+
+SetStatus( 200 );
+SetJsonResponse( article );

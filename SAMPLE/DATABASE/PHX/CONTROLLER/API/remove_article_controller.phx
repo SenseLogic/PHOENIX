@@ -1,0 +1,9 @@
+// -- IMPORTS
+
+import '../../MODEL/article_model.php';
+
+// -- STATEMENTS
+
+RemoveDatabaseArticleByUuid( article_uuid );
+
+SetStatus( 204 );

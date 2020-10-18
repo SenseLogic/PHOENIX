@@ -1,0 +1,37 @@
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/user_model.php';
+
+// -- TYPES
+
+class DO_CONNECT_USER_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        )
+    {
+        parent::constructor();
+
+        var email = GetPostValue( 'Email' );
+        var password = GetPostValue( 'Password' );
+        var user = GetDatabaseUserByEmailAndPassword( email, password );
+
+        if ( user === null )
+        {
+            .Title = 'LOG IN';
+
+            import '../VIEW/connect_user_view.php';
+        }
+        else
+        {
+            .Session.UserIsConnected = true;
+            .Session.Store();
+
+            Redirect( '/admin/text' );
+        }
+    }
+}
+
+// -- STATEMENTS
+
+var do_connect_user_controller = new DO_CONNECT_USER_CONTROLLER();

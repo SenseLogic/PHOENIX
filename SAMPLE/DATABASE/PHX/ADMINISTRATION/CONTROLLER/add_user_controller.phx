@@ -1,0 +1,23 @@
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/user_model.php';
+
+// -- TYPES
+
+class ADD_USER_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        )
+    {
+        parent::constructor();
+
+        .Title = 'Add a user';
+
+        import '../VIEW/add_user_view.php';
+    }
+}
+
+// -- STATEMENTS
+
+var add_user_controller = new ADD_USER_CONTROLLER();

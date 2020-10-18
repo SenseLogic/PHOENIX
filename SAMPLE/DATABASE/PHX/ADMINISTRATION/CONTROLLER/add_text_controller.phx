@@ -1,0 +1,23 @@
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/text_model.php';
+
+// -- TYPES
+
+class ADD_TEXT_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        )
+    {
+        parent::constructor();
+
+        .Title = 'Add a text';
+
+        import '../VIEW/add_text_view.php';
+    }
+}
+
+// -- STATEMENTS
+
+var add_text_controller = new ADD_TEXT_CONTROLLER();

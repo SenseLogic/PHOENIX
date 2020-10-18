@@ -1,20 +1,18 @@
-blog | count 5
+blog
 
-    SECTION | sorted, dropped
+    TEXT | dropped, count 5
+
+        Id : UINT32 | key, unique, incremented
+        Slug : STRING | indexed
+        Text : STRING | is_text
+
+    SECTION | sorted, dropped, count 5
 
         Id : UINT32 | key, unique, incremented
         Number : UINT32 | indexed, ascending
         Name : STRING | capacity 45
-        Text : STRING
+        Text : STRING | is_text
         Image : STRING | capacity 45
-
-    USER | sorted, dropped
-
-        Id : UINT32 | key, unique, incremented
-        Email : STRING | capacity 45, indexed, ascending
-        Pseudonym : STRING | capacity 45
-        Password : STRING | capacity 45
-        ItIsAdministrator : BOOL
 
     ARTICLE | sorted, dropped, count 15
 
@@ -22,7 +20,7 @@ blog | count 5
         SectionId : SECTION.Id
         UserId : USER.Id
         Title : STRING
-        Text : STRING
+        Text : STRING | is_text
         Image : STRING | capacity 45
         Date : DATE | indexed, descending, now
 
@@ -31,10 +29,10 @@ blog | count 5
         Id : UINT32 | key, unique, incremented
         ArticleId : ARTICLE.Id
         UserId : USER.Id
-        Text : STRING | english 2 4 5 7
+        Text : STRING | english 2 4 5 7, is_text
         DateTime : DATETIME | indexed, descending, now
 
-    SUBSCRIBER | sorted, dropped
+    SUBSCRIBER | sorted, dropped, count 5
 
         Id : UINT32 | key, unique, incremented
         Email : STRING | capacity 45, indexed
@@ -44,3 +42,18 @@ blog | count 5
         Longitude : FLOAT64
         CountryCode : STRING | capacity 2
         DateTime : DATETIME | descending, now
+
+    CONTACT | sorted, count 5
+
+        Id : UINT32 | key, unique, incremented
+        Name : STRING
+        Email : STRING
+        Message : STRING | is_text
+        DateTime : DATETIME | now, descending
+
+    USER | sorted, dropped, count 5
+
+        Id : UINT32 | key, unique, incremented, ascending, mapped
+        Email : STRING
+        Password : STRING
+        IsAdministrator : BOOL

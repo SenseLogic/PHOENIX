@@ -1,0 +1,31 @@
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/article_model.php';
+
+// -- TYPES
+
+class DO_EDIT_ARTICLE_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        int article_id
+        )
+    {
+        parent::constructor();
+
+        var section_id = GetPostValue( 'SectionId' );
+        var user_id = GetPostValue( 'UserId' );
+        var title = GetPostValue( 'Title' );
+        var text = GetPostValue( 'Text' );
+        var image = GetPostValue( 'Image' );
+        var date = GetPostValue( 'Date' );
+
+        SetDatabaseArticle( article_id, section_id, user_id, title, text, image, date );
+
+        Redirect( '/admin/article' );
+    }
+}
+
+// -- STATEMENTS
+
+var do_edit_article_controller = new DO_EDIT_ARTICLE_CONTROLLER( var article_id );

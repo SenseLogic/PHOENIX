@@ -1,0 +1,10 @@
+// -- IMPORTS
+
+import '../../MODEL/user_model.php';
+
+// -- STATEMENTS
+
+var user_array = GetDatabaseUserArray();
+
+SetStatus( 200 );
+SetJsonResponse( user_array );

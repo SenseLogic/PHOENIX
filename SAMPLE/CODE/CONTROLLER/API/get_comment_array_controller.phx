@@ -1,0 +1,10 @@
+// -- IMPORTS
+
+import '../../MODEL/comment_model.php';
+
+// -- STATEMENTS
+
+var comment_array = GetDatabaseCommentArray();
+
+SetStatus( 200 );
+SetJsonResponse( comment_array );

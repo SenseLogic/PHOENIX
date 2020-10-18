@@ -1,0 +1,10 @@
+// -- IMPORTS
+
+import '../../MODEL/comment_model.php';
+
+// -- STATEMENTS
+
+var input = GetJsonInput();
+SetDatabaseComment( var comment_uuid, input.ArticleId, input.UserId, input.Text, input.DateTime );
+
+SetStatus( 200 );

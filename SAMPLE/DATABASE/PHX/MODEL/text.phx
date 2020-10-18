@@ -1,0 +1,95 @@
+// -- FUNCTIONS
+
+function GetDatabaseTextArray(
+    )
+{
+    var statement = GetDatabaseStatement( 'select Id, Slug, Text from TEXT' );
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
+
+    var text_array = [];
+
+    while ( var text = statement.fetchObject() )
+    {
+        text.Id = ( int )( text.Id );
+        array_push( text_array, text );
+    }
+
+    return text_array;
+}
+
+// ~~
+
+function GetDatabaseTextById(
+    int id
+    )
+{
+    var statement = GetDatabaseStatement( 'select Id, Slug, Text from TEXT where Id = ? limit 1' );
+    statement.bindParam( 1, id, PDO::PARAM_INT );
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
+
+    var text = statement.fetchObject();
+    text.Id = ( int )( text.Id );
+
+    return text;
+}
+
+// ~~
+
+function AddDatabaseText(
+    string slug,
+    string text
+    )
+{
+    var statement = GetDatabaseStatement( 'insert into TEXT ( Slug, Text ) values ( ?, ? )' );
+    statement.bindParam( 1, slug, PDO::PARAM_STR );
+    statement.bindParam( 2, text, PDO::PARAM_STR );
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
+
+    return GetDatabaseAddedId( statement );
+}
+
+// ~~
+
+function SetDatabaseText(
+    int id,
+    string slug,
+    string text
+    )
+{
+    var statement = GetDatabaseStatement( 'update TEXT set Slug = ?, Text = ? where Id = ?' );
+    statement.bindParam( 1, slug, PDO::PARAM_STR );
+    statement.bindParam( 2, text, PDO::PARAM_STR );
+    statement.bindParam( 3, id, PDO::PARAM_INT );
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
+}
+
+// ~~
+
+function RemoveDatabaseTextById(
+    int id
+    )
+{
+    var statement = GetDatabaseStatement( 'delete from TEXT where Id = ?' );
+    statement.bindParam( 1, id, PDO::PARAM_INT );
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
+}

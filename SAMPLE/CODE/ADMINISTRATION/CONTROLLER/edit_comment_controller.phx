@@ -1,0 +1,25 @@
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/comment_model.php';
+
+// -- TYPES
+
+class EDIT_COMMENT_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        int comment_id
+        )
+    {
+        parent::constructor();
+
+        .Title = 'Edit a comment';
+        .Comment = GetDatabaseCommentById( comment_id );
+
+        import '../VIEW/edit_comment_view.php';
+    }
+}
+
+// -- STATEMENTS
+
+var edit_comment_controller = new EDIT_COMMENT_CONTROLLER( var comment_id );

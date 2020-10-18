@@ -12,3 +12,6 @@ cat get.sql
 echo "press Enter"
 sudo /usr/bin/mysql -u root -p < get.sql
 sudo systemctl restart mysql
+sudo apt install nodejs
+sudo npm install -g npm
+sudo npm install -g stylus

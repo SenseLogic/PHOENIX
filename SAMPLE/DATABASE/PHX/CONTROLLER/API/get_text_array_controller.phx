@@ -1,0 +1,10 @@
+// -- IMPORTS
+
+import '../../MODEL/text_model.php';
+
+// -- STATEMENTS
+
+var text_array = GetDatabaseTextArray();
+
+SetStatus( 200 );
+SetJsonResponse( text_array );

@@ -1,2 +1,3 @@
 phoenix
 *.o
+SAMPLE/PUBLIC/php.log

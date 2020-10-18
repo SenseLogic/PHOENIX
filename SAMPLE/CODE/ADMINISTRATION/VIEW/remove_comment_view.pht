@@ -1,0 +1,38 @@
+<? include 'BLOCK/page_header_block.php' ?>
+<div>
+    <div class="page-section form-section">
+        <form class="form-centered" action="/admin/comment/remove/<% .Comment.Id %>" method="post">
+            <div class="form-container">
+                <div class="form-field-name">
+                    Article Id :
+                </div>
+                <div>
+                    <input class="form-input" name="ArticleId" type="text" value="<% .Comment.ArticleId %>" readonly/>
+                </div>
+                <div class="form-field-name">
+                    User Id :
+                </div>
+                <div>
+                    <input class="form-input" name="UserId" type="text" value="<% .Comment.UserId %>" readonly/>
+                </div>
+                <div class="form-field-name">
+                    Text :
+                </div>
+                <div>
+                    <textarea class="form-textarea" name="Text" readonly><% .Comment.Text %></textarea>
+                </div>
+                <div class="form-field-name">
+                    Date Time :
+                </div>
+                <div>
+                    <input class="form-input" name="DateTime" type="text" value="<% .Comment.DateTime %>" readonly/>
+                </div>
+                <a class="justify-self-start form-button form-button-large cancel-button" href="/admin/comment">
+                </a>
+                <button class="justify-self-end form-button-large form-button form-button-large remove-button" type="submit">
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<? include 'BLOCK/page_footer_block.php' ?>

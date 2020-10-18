@@ -1,0 +1,25 @@
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/subscriber_model.php';
+
+// -- TYPES
+
+class EDIT_SUBSCRIBER_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        int subscriber_id
+        )
+    {
+        parent::constructor();
+
+        .Title = 'Edit a subscriber';
+        .Subscriber = GetDatabaseSubscriberById( subscriber_id );
+
+        import '../VIEW/edit_subscriber_view.php';
+    }
+}
+
+// -- STATEMENTS
+
+var edit_subscriber_controller = new EDIT_SUBSCRIBER_CONTROLLER( var subscriber_id );

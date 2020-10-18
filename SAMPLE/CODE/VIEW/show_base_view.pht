@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="en" class="overflow-scrollbar-hidden">
+    <head>
+        <? include 'BLOCK/page_head_block.php'; ?>
+    </head>
+    <body>
+        <? include 'BLOCK/page_body_block.php'; ?>
+    </body>
+</html>

@@ -1,0 +1,774 @@
+<#%%PHX/CONTROLLER/API/get_{#variable#}_array_controller.phx
+// -- IMPORTS
+
+import '../../MODEL/{#variable#}_model.php';
+
+// -- STATEMENTS
+
+var {#variable#}_array = GetDatabase{#attribute#}Array();
+
+SetStatus( 200 );
+SetJsonResponse( {#variable#}_array );
+%%PHX/CONTROLLER/API/get_{#variable#}_controller.phx
+// -- IMPORTS
+
+import '../../MODEL/{#variable#}_model.php';
+
+// -- STATEMENTS
+
+var {#variable#} = GetDatabase{#attribute#}ByUuid( var {#variable#}_uuid );
+
+SetStatus( 200 );
+SetJsonResponse( {#variable#} );
+%%PHX/CONTROLLER/API/add_{#variable#}_controller.phx
+// -- IMPORTS
+
+import '../../MODEL/{#variable#}_model.php';
+
+// -- STATEMENTS
+
+var input = GetJsonInput();
+AddDatabase{#attribute#}( <%input.{%attribute%}<~!{%is_last%}<>, ~>%> );
+
+SetStatus( 201 );
+%%PHX/CONTROLLER/API/set_{#variable#}_controller.phx
+// -- IMPORTS
+
+import '../../MODEL/{#variable#}_model.php';
+
+// -- STATEMENTS
+
+var input = GetJsonInput();
+SetDatabase{#attribute#}( var {#variable#}_uuid, <$input.{%attribute%}<~!{%is_last_non_key%}<>, ~>$> );
+
+SetStatus( 200 );
+%%PHX/CONTROLLER/API/remove_{#variable#}_controller.phx
+// -- IMPORTS
+
+import '../../MODEL/{#variable#}_model.php';
+
+// -- STATEMENTS
+
+RemoveDatabase{#attribute#}ByUuid( {#variable#}_uuid );
+
+SetStatus( 204 );
+#><#%%JS/MODEL/{#variable#}.js
+// -- TYPES
+
+class {#type#} extends VISTA_DATA
+{
+    // -- CONSTRUCTORS
+
+    constructor(
+        )
+    {
+        super();
+        <%
+        this.{%attribute%} = {%javascript_default%};%>
+    }
+}
+#><#%%JS/MODEL/{#variable#}_store.js
+// -- TYPES
+
+class {#type#}_STORE extends VISTA_STORE
+{
+    // -- CONSTRUCTORS
+
+    constructor(
+        )
+    {
+        super(
+            {#type#},
+            "Uuid",
+            [ <%"{%attribute%}"<~!{%is_last%}<>, ~>%> ],
+            "/api/{#style#}",
+            "{#attribute#}"
+            );
+    }
+}
+#><#%%PHX/ADMINISTRATION/CONTROLLER/add_{#variable#}_controller.phx
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/{#variable#}_model.php';
+
+// -- TYPES
+
+class ADD_{#type#}_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        )
+    {
+        parent::constructor();
+
+        .Title = 'Add a {#locution#}';
+
+        import '../VIEW/add_{#variable#}_view.php';
+    }
+}
+
+// -- STATEMENTS
+
+var add_{#variable#}_controller = new ADD_{#type#}_CONTROLLER();
+%%PHX/ADMINISTRATION/CONTROLLER/do_add_{#variable#}_controller.phx
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/{#variable#}_model.php';
+
+// -- TYPES
+
+class DO_ADD_{#type#}_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        )
+    {
+        parent::constructor();
+<$
+        var {%variable%} = GetPostValue( '{%attribute%}' );$>
+
+        AddDatabase{#attribute#}( <${%variable%}<~!{%is_last%}<>, ~>$> );
+
+        Redirect( '/admin/{#style#}' );
+    }
+}
+
+// -- STATEMENTS
+
+var do_add_{#variable#}_controller = new DO_ADD_{#type#}_CONTROLLER();
+%%PHX/ADMINISTRATION/CONTROLLER/edit_{#variable#}_controller.phx
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/{#variable#}_model.php';
+
+// -- TYPES
+
+class EDIT_{#type#}_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        int {#variable#}_id
+        )
+    {
+        parent::constructor();
+
+        .Title = 'Edit a {#locution#}';
+        .{#attribute#} = GetDatabase{#attribute#}ById( {#variable#}_id );
+
+        import '../VIEW/edit_{#variable#}_view.php';
+    }
+}
+
+// -- STATEMENTS
+
+var edit_{#variable#}_controller = new EDIT_{#type#}_CONTROLLER( var {#variable#}_id );
+%%PHX/ADMINISTRATION/CONTROLLER/do_edit_{#variable#}_controller.phx
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/{#variable#}_model.php';
+
+// -- TYPES
+
+class DO_EDIT_{#type#}_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        int {#variable#}_id
+        )
+    {
+        parent::constructor();
+<$
+        var {%variable%} = GetPostValue( '{%attribute%}' );$>
+
+        SetDatabase{#attribute#}( {#variable#}_id, <${%variable%}<~!{%is_last%}<>, ~>$> );
+
+        Redirect( '/admin/{#style#}' );
+    }
+}
+
+// -- STATEMENTS
+
+var do_edit_{#variable#}_controller = new DO_EDIT_{#type#}_CONTROLLER( var {#variable#}_id );
+%%PHX/ADMINISTRATION/CONTROLLER/remove_{#variable#}_controller.phx
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/{#variable#}_model.php';
+
+// -- TYPES
+
+class REMOVE_{#type#}_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        int {#variable#}_id
+        )
+    {
+        parent::constructor();
+
+        .Title = 'Remove a {#locution#}';
+        .{#attribute#} = GetDatabase{#attribute#}ById( {#variable#}_id );
+
+        import '../VIEW/remove_{#variable#}_view.php';
+    }
+}
+
+// -- STATEMENTS
+
+var remove_{#variable#}_controller = new REMOVE_{#type#}_CONTROLLER( var {#variable#}_id );
+%%PHX/ADMINISTRATION/CONTROLLER/do_remove_{#variable#}_controller.phx
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/{#variable#}_model.php';
+
+// -- TYPES
+
+class DO_REMOVE_{#type#}_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        int {#variable#}_id
+        )
+    {
+        parent::constructor();
+
+        RemoveDatabase{#attribute#}ById( {#variable#}_id );
+
+        Redirect( '/admin/{#style#}' );
+    }
+}
+
+// -- STATEMENTS
+
+var do_remove_{#variable#}_controller = new DO_REMOVE_{#type#}_CONTROLLER( var {#variable#}_id );
+%%PHX/ADMINISTRATION/CONTROLLER/view_{#variable#}_controller.phx
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/{#variable#}_model.php';
+
+// -- TYPES
+
+class VIEW_{#type#}_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        int {#variable#}_id
+        )
+    {
+        parent::constructor();
+
+        .Title = 'View a {#locution#}';
+        .{#attribute#} = GetDatabase{#attribute#}ById( {#variable#}_id );
+        .PreviousPage = GetSessionValue( 'PreviousPage' );
+
+        import '../VIEW/view_{#variable#}_view.php';
+    }
+}
+
+// -- STATEMENTS
+
+var view_{#variable#}_controller = new VIEW_{#type#}_CONTROLLER( var {#variable#}_id );
+%%PHX/ADMINISTRATION/CONTROLLER/view_{#variable#}s_controller.phx
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/{#variable#}_model.php';
+
+// -- TYPES
+
+class VIEW_{#type#}S_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        )
+    {
+        parent::constructor();
+
+        .Title = 'View {#locution#}s';
+        .{#attribute#}Array = GetDatabase{#attribute#}Array();
+
+        SetSessionValue( 'PreviousPage', GetRequest() );
+
+        import '../VIEW/view_{#variable#}s_view.php';
+    }
+}
+
+// -- STATEMENTS
+
+var view_{#variable#}s_controller = new VIEW_{#type#}S_CONTROLLER();
+%%PHX/ADMINISTRATION/VIEW/add_{#variable#}_view.pht
+<? include 'BLOCK/page_header_block.php' ?>
+<script>
+    // -- FUNCTIONS
+
+    function IsValidAdd{#attribute#}Form()
+    {
+        var
+            add_{#variable#}_form,
+            it_is_valid_add_{#variable#}_form<$,
+            {%variable%}_field$>;
+
+        it_is_valid_add_{#variable#}_form = true;
+
+        add_{#variable#}_form = document.Add{#attribute#}Form;<$
+        {%variable%}_field = add_{#variable#}_form.{%attribute%};$>
+<$
+        if ( {%variable%}_field.value !== "" )
+        {
+            {%variable%}_field.classList.remove( "form-field-error" );
+        }
+        else
+        {
+            {%variable%}_field.classList.add( "form-field-error" );
+
+            it_is_valid_add_{#variable#}_form = false;
+        }
+$>
+        return it_is_valid_add_{#variable#}_form;
+    }
+</script>
+<div>
+    <div class="page-section form-section">
+        <form class="form-centered" name="Add{#attribute#}Form" onsubmit="return IsValidAdd{#attribute#}Form()" action="/admin/{#style#}/add" method="post">
+            <div class="form-container"><$
+                <div class="form-field-name">
+                    {%title%} :
+                </div>
+                <div>
+                    <~{%is_text%}<><textarea class="form-textarea" name="{%attribute%}"></textarea><><input class="form-input" name="{%attribute%}" type="text"/>~>
+                </div>$>
+                <a class="justify-self-start form-button form-button-large cancel-button" href="/admin/{#style#}">
+                </a>
+                <button class="justify-self-end form-button form-button-large apply-button" type="submit">
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<? include 'BLOCK/page_footer_block.php' ?>
+%%PHX/ADMINISTRATION/VIEW/edit_{#variable#}_view.pht
+<? include 'BLOCK/page_header_block.php' ?>
+<script>
+    // -- FUNCTIONS
+
+    function IsValidEdit{#attribute#}Form()
+    {
+        var
+            edit_{#variable#}_form,
+            it_is_valid_edit_{#variable#}_form<$,
+            {%variable%}_field$>;
+
+        it_is_valid_edit_{#variable#}_form = true;
+
+        edit_{#variable#}_form = document.Edit{#attribute#}Form;<$
+        {%variable%}_field = edit_{#variable#}_form.{%attribute%};$>
+<$
+        if ( {%variable%}_field.value !== "" )
+        {
+            {%variable%}_field.classList.remove( "form-field-error" );
+        }
+        else
+        {
+            {%variable%}_field.classList.add( "form-field-error" );
+
+            it_is_valid_edit_{#variable#}_form = false;
+        }
+$>
+        return it_is_valid_edit_{#variable#}_form;
+    }
+</script>
+<div>
+    <div class="page-section form-section">
+        <form class="form-centered" name="Edit{#attribute#}Form" onsubmit="return IsValidEdit{#attribute#}Form()" action="/admin/{#style#}/edit/<\% .{#attribute#}.Id %\>" method="post">
+            <div class="form-container"><$
+                <div class="form-field-name">
+                    {%title%} :
+                </div>
+                <div>
+                    <~{%is_text%}<><textarea class="form-textarea" name="{%attribute%}"><\% .{#attribute#}.{%attribute%} %\></textarea><><input class="form-input" name="{%attribute%}" type="text" value="<\% .{#attribute#}.{%attribute%} %\>"/>~>
+                </div>$>
+                <a class="justify-self-start form-button form-button-large cancel-button" href="/admin/{#style#}">
+                </a>
+                <button class="justify-self-end form-button form-button-large apply-button" type="submit">
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<? include 'BLOCK/page_footer_block.php' ?>
+%%PHX/ADMINISTRATION/VIEW/remove_{#variable#}_view.pht
+<? include 'BLOCK/page_header_block.php' ?>
+<div>
+    <div class="page-section form-section">
+        <form class="form-centered" action="/admin/{#style#}/remove/<\% .{#attribute#}.Id %\>" method="post">
+            <div class="form-container"><$
+                <div class="form-field-name">
+                    {%title%} :
+                </div>
+                <div>
+                    <~{%is_text%}<><textarea class="form-textarea" name="{%attribute%}" readonly><\% .{#attribute#}.{%attribute%} %\></textarea><><input class="form-input" name="{%attribute%}" type="text" value="<\% .{#attribute#}.{%attribute%} %\>" readonly/>~>
+                </div>$>
+                <a class="justify-self-start form-button form-button-large cancel-button" href="/admin/{#style#}">
+                </a>
+                <button class="justify-self-end form-button-large form-button form-button-large remove-button" type="submit">
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<? include 'BLOCK/page_footer_block.php' ?>
+%%PHX/ADMINISTRATION/VIEW/view_{#variable#}_view.pht
+<? include 'BLOCK/page_header_block.php' ?>
+<div>
+    <div class="page-section form-section">
+        <div class="form-container"><$
+            <div class="form-field-name">
+                {%title%} :
+            </div>
+            <div>
+                <~{%is_text%}<><textarea class="form-textarea" name="{%attribute%}" readonly><\% .{#attribute#}.{%attribute%} %\></textarea><><input class="form-input" name="{%attribute%}" type="text" value="<\% .{#attribute#}.{%attribute%} %\>" readonly/>~>
+            </div>$>
+            <a class="justify-self-start form-button form-button-large cancel-button" href="<\% .PreviousPage %\>">
+            </a>
+        </div>
+    </div>
+</div>
+<? include 'BLOCK/page_footer_block.php' ?>
+%%PHX/ADMINISTRATION/VIEW/view_{#variable#}s_view.pht
+<? include 'BLOCK/page_header_block.php' ?>
+<div class="">
+    <div class="page-section form-section">
+        <div class="form-container table-container {#style#}-table"><$
+            <div class="form-column-name">
+                {%attribute%}
+            </div>$>
+            <div class="form-column-name">
+                Action
+            </div>
+            <? foreach ( var {#variable#}; .{#attribute#}Array ) { ?><$
+                <div>
+                    <\% {#variable#}.{%attribute%} %\>
+                </div>$>
+                <div class="form-centered">
+                    <a class="form-button view-button" href="/admin/{#style#}/view/<\% {#variable#}.Id %\>">
+                    </a>
+                    <a class="form-button edit-button" href="/admin/{#style#}/edit/<\% {#variable#}.Id %\>">
+                    </a>
+                    <a class="form-button remove-button" href="/admin/{#style#}/remove/<\% {#variable#}.Id %\>">
+                    </a>
+                </div>
+            <? } ?>
+            <div class="form-extended form-centered">
+                <a class="form-button form-button-large add-button" href="/admin/{#style#}/add">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<? include 'BLOCK/page_footer_block.php' ?>
+#><#%%PHX/CONTROLLER/API/get_{#variable#}_array_controller.phx
+// -- IMPORTS
+
+import '../../MODEL/{#variable#}_model.php';
+
+// -- STATEMENTS
+
+var {#variable#}_array = GetDatabase{#attribute#}Array();
+
+SetStatus( 200 );
+SetJsonResponse( {#variable#}_array );
+%%PHX/CONTROLLER/API/get_{#variable#}_controller.phx
+// -- IMPORTS
+
+import '../../MODEL/{#variable#}_model.php';
+
+// -- STATEMENTS
+
+var {#variable#} = GetDatabase{#attribute#}ByUuid( var {#variable#}_uuid );
+
+SetStatus( 200 );
+SetJsonResponse( {#variable#} );
+%%PHX/CONTROLLER/API/add_{#variable#}_controller.phx
+// -- IMPORTS
+
+import '../../MODEL/{#variable#}_model.php';
+
+// -- STATEMENTS
+
+var input = GetJsonInput();
+AddDatabase{#attribute#}( <%input.{%attribute%}<~!{%is_last%}<>, ~>%> );
+
+SetStatus( 201 );
+%%PHX/CONTROLLER/API/set_{#variable#}_controller.phx
+// -- IMPORTS
+
+import '../../MODEL/{#variable#}_model.php';
+
+// -- STATEMENTS
+
+var input = GetJsonInput();
+SetDatabase{#attribute#}( var {#variable#}_uuid, <$input.{%attribute%}<~!{%is_last_non_key%}<>, ~>$> );
+
+SetStatus( 200 );
+%%PHX/CONTROLLER/API/remove_{#variable#}_controller.phx
+// -- IMPORTS
+
+import '../../MODEL/{#variable#}_model.php';
+
+// -- STATEMENTS
+
+RemoveDatabase{#attribute#}ByUuid( {#variable#}_uuid );
+
+SetStatus( 204 );
+#>%%PHX/index.phx
+// -- IMPORTS
+
+import 'FRAMEWORK/error.php';
+import 'FRAMEWORK/language.php';
+import 'FRAMEWORK/request.php';
+import 'FRAMEWORK/session.php';
+import 'FRAMEWORK/database.php';
+import 'FRAMEWORK/captcha.php';
+
+// -- CONSTANTS
+
+define( 'DatabaseHost', 'localhost' );
+
+if ( GetServerName() == 'localhost' )
+{
+    define( 'DatabaseName', '???' );
+    define( 'DatabaseUserName', 'root' );
+    define( 'DatabasePassword', '' );
+}
+else
+{
+    define( 'DatabaseName', '???' );
+    define( 'DatabaseUserName', '???' );
+    define( 'DatabasePassword', '???' );
+}
+
+// -- FUNCTIONS
+
+function Route(
+    string path
+    )
+{
+    var language_code_array = [ 'en', 'de', 'fr' ];
+    var path_value_array = GetPathValueArray( path );
+    var language_code = ExtractLanguageCode( path_value_array, language_code_array, '' );
+
+    if ( language_code === '' )
+    {
+        language_code = GetBrowserLanguageCode( language_code_array, 'en' );
+    }
+
+    var path_value_array = GetPathValueArray( path );
+    var path_value_count = count( path_value_array );
+    var it_is_get_request = IsGetRequest();
+    var it_is_post_request = IsPostRequest();
+    var it_is_put_request = IsPutRequest();
+    var it_is_delete_request = IsDeleteRequest();
+    var user_is_connected = FindSessionValue( 'UserIsConnected', false );
+
+    if ( path_value_count >= 2
+         && path_value_array[ 0 ] === 'api' )
+    {
+        if ( !user_is_connected )
+        {
+            import 'CONTROLLER/API/report_unauthorized_request_controller.php';
+        }<#
+        else if ( path_value_array[ 1 ] === '{#variable#}' )
+        {
+            if ( it_is_get_request
+                 && path_value_count === 2 )
+            {
+                import 'CONTROLLER/API/get_{#variable#}_array_controller.php';
+            }
+            else if ( it_is_get_request
+                      && path_value_count === 3
+                      && IsUuid( path_value_array[ 2 ] ) )
+            {
+                var {#variable#}_uuid = path_value_array[ 2 ];
+
+                import 'CONTROLLER/API/get_{#variable#}_controller.php';
+            }
+            else if ( it_is_post_request
+                      && path_value_count === 2 )
+            {
+                import 'CONTROLLER/API/add_{#variable#}_controller.php';
+            }
+            else if ( it_is_put_request
+                      && path_value_count === 3
+                      && IsUuid( path_value_array[ 2 ] ) )
+            {
+                var {#variable#}_uuid = path_value_array[ 2 ];
+
+                import 'CONTROLLER/API/set_{#variable#}_controller.php';
+            }
+            else if ( it_is_delete_request
+                      && path_value_count === 3
+                      && IsUuid( path_value_array[ 2 ] ) )
+            {
+                var {#variable#}_uuid = path_value_array[ 2 ];
+
+                import 'CONTROLLER/API/remove_{#variable#}_controller.php';
+            }
+            else
+            {
+                import 'CONTROLLER/API/report_bad_request_controller.php';
+            }
+        }#>
+        else
+        {
+            import 'CONTROLLER/API/report_bad_request_controller.php';
+        }
+    }
+    else if ( path_value_count >= 1
+              && path_value_array[ 0 ] === 'admin' )
+    {
+        var user_is_connected = FindSessionValue( 'UserIsConnected', false );
+
+        if ( path_value_count === 1
+             || !user_is_connected )
+        {
+            if ( it_is_get_request )
+            {
+                import 'ADMINISTRATION/CONTROLLER/connect_user_controller.php';
+            }
+            else if ( it_is_post_request )
+            {
+                import 'ADMINISTRATION/CONTROLLER/do_connect_user_controller.php';
+            }
+            else
+            {
+                import 'ADMINISTRATION/CONTROLLER/show_error_controller.php';
+            }
+        }
+        else if ( it_is_get_request
+                  && path_value_count === 2
+                  && path_value_array[ 1 ] === 'disconnect' )
+        {
+            import 'ADMINISTRATION/CONTROLLER/disconnect_user_controller.php';
+        }<#
+        else if ( path_value_count >= 2
+                  && path_value_array[ 1 ] === '{#style#}' )
+        {
+            if ( it_is_get_request
+                 && path_value_count === 2 )
+            {
+                import 'ADMINISTRATION/CONTROLLER/view_{#variable#}s_controller.php';
+            }
+            else if ( it_is_get_request
+                      && path_value_count === 3
+                      && path_value_array[ 2 ] === 'add' )
+            {
+                import 'ADMINISTRATION/CONTROLLER/add_{#variable#}_controller.php';
+            }
+            else if ( it_is_post_request
+                      && path_value_count === 3
+                      && path_value_array[ 2 ] === 'add'<$
+                      && HasPostValue( '{%attribute%}' )$> )
+            {
+                import 'ADMINISTRATION/CONTROLLER/do_add_{#variable#}_controller.php';
+            }
+            else if ( it_is_get_request
+                      && path_value_count === 4
+                      && path_value_array[ 2 ] === 'view'
+                      && IsId( path_value_array[ 3 ] ) )
+            {
+                var {#variable#}_id = path_value_array[ 3 ];
+
+                import 'ADMINISTRATION/CONTROLLER/view_{#variable#}_controller.php';
+            }
+            else if ( it_is_get_request
+                      && path_value_count === 4
+                      && path_value_array[ 2 ] === 'edit'
+                      && IsId( path_value_array[ 3 ] ) )
+            {
+                var {#variable#}_id = path_value_array[ 3 ];
+
+                import 'ADMINISTRATION/CONTROLLER/edit_{#variable#}_controller.php';
+            }
+            else if ( it_is_post_request
+                      && path_value_count === 4
+                      && path_value_array[ 2 ] === 'edit'
+                      && IsId( path_value_array[ 3 ] )<$
+                      && HasPostValue( '{%attribute%}' )$> )
+            {
+                var {#variable#}_id = path_value_array[ 3 ];
+
+                import 'ADMINISTRATION/CONTROLLER/do_edit_{#variable#}_controller.php';
+            }
+            else if ( it_is_get_request
+                      && path_value_count === 4
+                      && path_value_array[ 2 ] === 'remove'
+                      && IsId( path_value_array[ 3 ] ) )
+            {
+                var {#variable#}_id = path_value_array[ 3 ];
+
+                import 'ADMINISTRATION/CONTROLLER/remove_{#variable#}_controller.php';
+            }
+            else if ( it_is_post_request
+                      && path_value_count === 4
+                      && path_value_array[ 2 ] === 'remove'
+                      && IsId( path_value_array[ 3 ] ) )
+            {
+                var {#variable#}_id = path_value_array[ 3 ];
+
+                import 'ADMINISTRATION/CONTROLLER/do_remove_{#variable#}_controller.php';
+            }
+            else
+            {
+                import 'ADMINISTRATION/CONTROLLER/show_error_controller.php';
+            }
+        }#>
+        else
+        {
+            import 'ADMINISTRATION/CONTROLLER/show_error_controller.php';
+        }
+    }
+    else
+    {
+        if ( it_is_get_request )
+        {
+            if ( path_value_count === 1
+                 && path_value_array[ 0 ] === 'captcha' )
+            {
+                import 'CONTROLLER/get_captcha_image_controller.php';
+            }
+            else if ( path_value_count == 0 )
+            {
+                import 'CONTROLLER/show_base_controller.php';
+            }
+            else
+            {
+                SetStatusCode( 404 );
+            }
+        }
+        else if ( it_is_post_request )
+        {
+            if ( path_value_count === 1
+                 && path_value_array[ 0 ] === 'contact'
+                 && HasPostValue( 'Name' )
+                 && HasPostValue( 'Email' )
+                 && HasPostValue( 'Message' )
+                 && HasPostValue( 'Captcha' ) )
+            {
+                var name = GetPostValue( 'Name' );
+                var email = GetPostValue( 'Email' );
+                var message = GetPostValue( 'Message' );
+                var captcha = GetPostValue( 'Captcha' );
+
+                import 'CONTROLLER/add_contact_controller.php';
+            }
+            else
+            {
+                SetStatusCode( 404 );
+            }
+        }
+    }
+}
+
+// -- STATEMENTS
+
+ShowErrors();
+PrintRequest();
+Route( GetPath() );

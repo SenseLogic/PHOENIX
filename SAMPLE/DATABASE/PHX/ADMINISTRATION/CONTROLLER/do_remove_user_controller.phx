@@ -1,0 +1,24 @@
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/user_model.php';
+
+// -- TYPES
+
+class DO_REMOVE_USER_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        int user_id
+        )
+    {
+        parent::constructor();
+
+        RemoveDatabaseUserById( user_id );
+
+        Redirect( '/admin/user' );
+    }
+}
+
+// -- STATEMENTS
+
+var do_remove_user_controller = new DO_REMOVE_USER_CONTROLLER( var user_id );
