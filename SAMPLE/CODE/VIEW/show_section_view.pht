@@ -16,7 +16,7 @@
         </a>
     </h5>
     <h6>
-        <% article.User.Email %> - <% article.Date %>
+        <% article.User.Pseudonym %> - <% article.Date %>
     </h6>
 <? } ?>
 <? import 'BLOCK/page_footer_block.php'; ?>

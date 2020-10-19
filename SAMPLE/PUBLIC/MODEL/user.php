@@ -3,7 +3,7 @@
 function GetDatabaseUserArray(
     )
 {
-     $statement = GetDatabaseStatement( 'select Id, Email, Password, IsAdministrator from USER order by Id asc' );
+     $statement = GetDatabaseStatement( 'select Id, Email, Pseudonym, Password, IsAdministrator from USER order by Id asc' );
 
     if ( !$statement->execute() )
     {
@@ -26,7 +26,7 @@ function GetDatabaseUserArray(
 function GetDatabaseUserByIdMap(
     )
 {
-     $statement = GetDatabaseStatement( 'select Id, Email, Password, IsAdministrator from USER' );
+     $statement = GetDatabaseStatement( 'select Id, Email, Pseudonym, Password, IsAdministrator from USER' );
 
     if ( !$statement->execute() )
     {
@@ -50,7 +50,7 @@ function GetDatabaseUserById(
     int $id
     )
 {
-     $statement = GetDatabaseStatement( 'select Id, Email, Password, IsAdministrator from USER where Id = ? limit 1' );
+     $statement = GetDatabaseStatement( 'select Id, Email, Pseudonym, Password, IsAdministrator from USER where Id = ? limit 1' );
     $statement->bindParam( 1, $id, PDO::PARAM_INT );
 
     if ( !$statement->execute() )
@@ -68,14 +68,16 @@ function GetDatabaseUserById(
 
 function AddDatabaseUser(
     string $email,
+    string $pseudonym,
     string $password,
     bool $is_administrator
     )
 {
-     $statement = GetDatabaseStatement( 'insert into USER ( Email, Password, IsAdministrator ) values ( ?, ?, ? )' );
+     $statement = GetDatabaseStatement( 'insert into USER ( Email, Pseudonym, Password, IsAdministrator ) values ( ?, ?, ?, ? )' );
     $statement->bindParam( 1, $email, PDO::PARAM_STR );
-    $statement->bindParam( 2, $password, PDO::PARAM_STR );
-    $statement->bindParam( 3, $is_administrator, PDO::PARAM_BOOL );
+    $statement->bindParam( 2, $pseudonym, PDO::PARAM_STR );
+    $statement->bindParam( 3, $password, PDO::PARAM_STR );
+    $statement->bindParam( 4, $is_administrator, PDO::PARAM_BOOL );
 
     if ( !$statement->execute() )
     {
@@ -90,15 +92,17 @@ function AddDatabaseUser(
 function SetDatabaseUser(
     int $id,
     string $email,
+    string $pseudonym,
     string $password,
     bool $is_administrator
     )
 {
-     $statement = GetDatabaseStatement( 'update USER set Email = ?, Password = ?, IsAdministrator = ? where Id = ?' );
+     $statement = GetDatabaseStatement( 'update USER set Email = ?, Pseudonym = ?, Password = ?, IsAdministrator = ? where Id = ?' );
     $statement->bindParam( 1, $email, PDO::PARAM_STR );
-    $statement->bindParam( 2, $password, PDO::PARAM_STR );
-    $statement->bindParam( 3, $is_administrator, PDO::PARAM_BOOL );
-    $statement->bindParam( 4, $id, PDO::PARAM_INT );
+    $statement->bindParam( 2, $pseudonym, PDO::PARAM_STR );
+    $statement->bindParam( 3, $password, PDO::PARAM_STR );
+    $statement->bindParam( 4, $is_administrator, PDO::PARAM_BOOL );
+    $statement->bindParam( 5, $id, PDO::PARAM_INT );
 
     if ( !$statement->execute() )
     {

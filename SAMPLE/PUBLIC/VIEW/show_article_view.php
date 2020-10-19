@@ -10,7 +10,7 @@
     </a>
 </h4>
 <h5>
-    <?php echo htmlspecialchars( $this->Article->User->Email ); ?> - <?php echo htmlspecialchars( $this->Article->Date ); ?>
+    <?php echo htmlspecialchars( $this->Article->User->Pseudonym ); ?> - <?php echo htmlspecialchars( $this->Article->Date ); ?>
 </h5>
 <img class="responsive-img" src="/static/media/jpg/<?php echo htmlspecialchars( $this->Article->ImageIndex ); ?>.jpg"/>
 <p>
@@ -32,7 +32,7 @@
 <br/>
 <?php foreach ( $this->CommentArray as  $comment ) { ?>
     <h5>
-        <?php echo htmlspecialchars( $comment->User->Email ); ?> - <?php echo htmlspecialchars( $comment->DateTime ); ?>
+        <?php echo htmlspecialchars( $comment->User->Pseudonym ); ?> - <?php echo htmlspecialchars( $comment->DateTime ); ?>
     </h5>
     <p>
         <?php echo htmlspecialchars( $comment->Text ); ?>

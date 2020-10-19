@@ -10,7 +10,7 @@
     </a>
 </h4>
 <h5>
-    <% .Article.User.Email %> - <% .Article.Date %>
+    <% .Article.User.Pseudonym %> - <% .Article.Date %>
 </h5>
 <img class="responsive-img" src="/static/media/jpg/<% .Article.ImageIndex %>.jpg"/>
 <p>
@@ -32,7 +32,7 @@
 <br/>
 <? foreach ( var comment; .CommentArray ) { ?>
     <h5>
-        <% comment.User.Email %> - <% comment.DateTime %>
+        <% comment.User.Pseudonym %> - <% comment.DateTime %>
     </h5>
     <p>
         <% comment.Text %>

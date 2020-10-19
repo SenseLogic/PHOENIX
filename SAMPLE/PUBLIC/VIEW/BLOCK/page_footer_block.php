@@ -16,9 +16,9 @@
                                 Connection
                             </h5>
                             <form name="ConnectUserForm" action="/<?php echo htmlspecialchars( $this->LanguageCode ); ?>/user/connect" method="post">
-                                <label for="email">
-                                    Email :
-                                    <input id="email" name="Email" type="text"/>
+                                <label for="pseudonym">
+                                    Pseudonym :
+                                    <input id="pseudonym" name="Pseudonym" type="text"/>
                                 </label>
                                 <label for="password">
                                     Password :

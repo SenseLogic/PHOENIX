@@ -15,11 +15,11 @@ class CONNECT_USER_CONTROLLER extends CONTROLLER
     {
         parent::constructor( language_code );
 
-        var user = GetDatabaseUserByEmailAndPassword( GetPostValue( 'Email' ), GetPostValue( 'Password' ) );
+        var user = GetDatabaseUserByPseudonymAndPassword( GetPostValue( 'Pseudonym' ), GetPostValue( 'Password' ) );
 
         if ( is_null( user ) )
         {
-            .Session.Message = 'Invalid email or password.';
+            .Session.Message = 'Invalid pseudonym or password.';
         }
         else
         {

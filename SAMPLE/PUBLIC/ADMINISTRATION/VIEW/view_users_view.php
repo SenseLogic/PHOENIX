@@ -6,6 +6,9 @@
                 Email
             </div>
             <div class="form-column-name">
+                Pseudonym
+            </div>
+            <div class="form-column-name">
                 Password
             </div>
             <div class="form-column-name">
@@ -17,6 +20,9 @@
             <?php foreach ( $this->UserArray as  $user ) { ?>
                 <div>
                     <?php echo htmlspecialchars( $user->Email ); ?>
+                </div>
+                <div>
+                    <?php echo htmlspecialchars( $user->Pseudonym ); ?>
                 </div>
                 <div>
                     <?php echo htmlspecialchars( $user->Password ); ?>

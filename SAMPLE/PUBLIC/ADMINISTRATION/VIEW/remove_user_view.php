@@ -10,6 +10,12 @@
                     <input class="form-input" name="Email" type="text" value="<?php echo htmlspecialchars( $this->User->Email ); ?>" readonly/>
                 </div>
                 <div class="form-field-name">
+                    Pseudonym :
+                </div>
+                <div>
+                    <input class="form-input" name="Pseudonym" type="text" value="<?php echo htmlspecialchars( $this->User->Pseudonym ); ?>" readonly/>
+                </div>
+                <div class="form-field-name">
                     Password :
                 </div>
                 <div>

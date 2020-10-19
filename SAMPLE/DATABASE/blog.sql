@@ -78,6 +78,7 @@ drop table if exists `blog`.`USER`;
 create table if not exists `blog`.`USER`(
     `Id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `Email` TEXT NULL,
+    `Pseudonym` TEXT NULL,
     `Password` TEXT NULL,
     `IsAdministrator` TINYINT UNSIGNED NULL,
     primary key( `Id` )

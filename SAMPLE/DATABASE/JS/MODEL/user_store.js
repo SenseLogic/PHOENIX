@@ -10,7 +10,7 @@ class USER_STORE extends VISTA_STORE
         super(
             USER,
             "Uuid",
-            [ "Id", "Email", "Password", "IsAdministrator" ],
+            [ "Id", "Email", "Pseudonym", "Password", "IsAdministrator" ],
             "/api/user",
             "User"
             );

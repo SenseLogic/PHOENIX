@@ -5,6 +5,6 @@ import '../../MODEL/user_model.php';
 // -- STATEMENTS
 
 var input = GetJsonInput();
-SetDatabaseUser( var user_uuid, input.Email, input.Password, input.IsAdministrator );
+SetDatabaseUser( var user_uuid, input.Email, input.Pseudonym, input.Password, input.IsAdministrator );
 
 SetStatus( 200 );

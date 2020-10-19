@@ -866,6 +866,7 @@ function Route(
                       && path_value_count === 3
                       && path_value_array[ 2 ] === 'add'
                       && HasPostValue( 'Email' )
+                      && HasPostValue( 'Pseudonym' )
                       && HasPostValue( 'Password' )
                       && HasPostValue( 'IsAdministrator' ) )
             {
@@ -894,6 +895,7 @@ function Route(
                       && path_value_array[ 2 ] === 'edit'
                       && IsId( path_value_array[ 3 ] )
                       && HasPostValue( 'Email' )
+                      && HasPostValue( 'Pseudonym' )
                       && HasPostValue( 'Password' )
                       && HasPostValue( 'IsAdministrator' ) )
             {

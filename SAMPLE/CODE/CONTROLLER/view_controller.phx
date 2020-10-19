@@ -28,7 +28,25 @@ class VIEW_CONTROLLER
 
     // -- INQUIRIES
 
-    method GetRawText(
+    method GetTranslatedText(
+        string text
+        )
+    {
+        return GetTranslatedText( text, .LanguageCode );
+    }
+
+    // ~~
+
+    method GetTranslatedNumber(
+        string number
+        )
+    {
+        return GetTranslatedNumber( number, .LanguageDecimalSeparator );
+    }
+
+    // ~~
+
+    method GetBareText(
         string text
         )
     {
@@ -154,24 +172,6 @@ class VIEW_CONTROLLER
                 ],
                 .GetTranslatedText( text )
                 );
-    }
-
-    // ~~
-
-    method GetTranslatedText(
-        string text
-        )
-    {
-        return GetTranslatedText( text, .LanguageCode );
-    }
-
-    // ~~
-
-    method GetTranslatedNumber(
-        string number
-        )
-    {
-        return GetTranslatedNumber( number, .LanguageDecimalSeparator );
     }
 
     // ~~

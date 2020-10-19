@@ -8,6 +8,7 @@
             add_user_form,
             it_is_valid_add_user_form,
             email_field,
+            pseudonym_field,
             password_field,
             is_administrator_field;
 
@@ -15,6 +16,7 @@
 
         add_user_form = document.AddUserForm;
         email_field = add_user_form.Email;
+        pseudonym_field = add_user_form.Pseudonym;
         password_field = add_user_form.Password;
         is_administrator_field = add_user_form.IsAdministrator;
 
@@ -25,6 +27,17 @@
         else
         {
             email_field.classList.add( "form-field-error" );
+
+            it_is_valid_add_user_form = false;
+        }
+
+        if ( pseudonym_field.value !== "" )
+        {
+            pseudonym_field.classList.remove( "form-field-error" );
+        }
+        else
+        {
+            pseudonym_field.classList.add( "form-field-error" );
 
             it_is_valid_add_user_form = false;
         }
@@ -63,6 +76,12 @@
                 </div>
                 <div>
                     <input class="form-input" name="Email" type="text"/>
+                </div>
+                <div class="form-field-name">
+                    Pseudonym :
+                </div>
+                <div>
+                    <input class="form-input" name="Pseudonym" type="text"/>
                 </div>
                 <div class="form-field-name">
                     Password :

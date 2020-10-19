@@ -14,10 +14,11 @@ class DO_EDIT_USER_CONTROLLER extends CONTROLLER
         parent::__construct();
 
          $email = GetPostValue( 'Email' );
+         $pseudonym = GetPostValue( 'Pseudonym' );
          $password = GetPostValue( 'Password' );
          $is_administrator = GetPostValue( 'IsAdministrator' );
 
-        SetDatabaseUser( $user_id, $email, $password, $is_administrator );
+        SetDatabaseUser( $user_id, $email, $pseudonym, $password, $is_administrator );
 
         Redirect( '/admin/user' );
     }

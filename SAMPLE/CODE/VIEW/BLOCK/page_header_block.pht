@@ -9,7 +9,7 @@
         </title>
     </head>
     <body class="container">
-        <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/static/js/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="/static/js/materialize.min.js"></script>
         <div class="row">
             <nav class="col m12">

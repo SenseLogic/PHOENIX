@@ -15,11 +15,11 @@ class CONNECT_USER_CONTROLLER extends CONTROLLER
     {
         parent::__construct( $language_code );
 
-         $user = GetDatabaseUserByEmailAndPassword( GetPostValue( 'Email' ), GetPostValue( 'Password' ) );
+         $user = GetDatabaseUserByPseudonymAndPassword( GetPostValue( 'Pseudonym' ), GetPostValue( 'Password' ) );
 
         if ( is_null( $user ) )
         {
-            $this->Session->Message = 'Invalid email or password.';
+            $this->Session->Message = 'Invalid pseudonym or password.';
         }
         else
         {

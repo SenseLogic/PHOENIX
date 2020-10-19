@@ -16,7 +16,7 @@
         </a>
     </h5>
     <h6>
-        <?php echo htmlspecialchars( $article->User->Email ); ?> - <?php echo htmlspecialchars( $article->Date ); ?>
+        <?php echo htmlspecialchars( $article->User->Pseudonym ); ?> - <?php echo htmlspecialchars( $article->Date ); ?>
     </h6>
 <?php } ?>
 <?php require_once __DIR__ . '/' . 'BLOCK/page_footer_block.php'; ?>

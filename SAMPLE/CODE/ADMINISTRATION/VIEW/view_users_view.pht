@@ -6,6 +6,9 @@
                 Email
             </div>
             <div class="form-column-name">
+                Pseudonym
+            </div>
+            <div class="form-column-name">
                 Password
             </div>
             <div class="form-column-name">
@@ -17,6 +20,9 @@
             <? foreach ( var user; .UserArray ) { ?>
                 <div>
                     <% user.Email %>
+                </div>
+                <div>
+                    <% user.Pseudonym %>
                 </div>
                 <div>
                     <% user.Password %>

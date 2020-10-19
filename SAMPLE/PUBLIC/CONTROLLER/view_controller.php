@@ -28,7 +28,25 @@ class VIEW_CONTROLLER
 
     // -- INQUIRIES
 
-    function GetRawText(
+    function GetTranslatedText(
+        string $text
+        )
+    {
+        return GetTranslatedText( $text, $this->LanguageCode );
+    }
+
+    // ~~
+
+    function GetTranslatedNumber(
+        string $number
+        )
+    {
+        return GetTranslatedNumber( $number, $this->LanguageDecimalSeparator );
+    }
+
+    // ~~
+
+    function GetBareText(
         string $text
         )
     {
@@ -154,24 +172,6 @@ class VIEW_CONTROLLER
                 ],
                 $this->GetTranslatedText( $text )
                 );
-    }
-
-    // ~~
-
-    function GetTranslatedText(
-        string $text
-        )
-    {
-        return GetTranslatedText( $text, $this->LanguageCode );
-    }
-
-    // ~~
-
-    function GetTranslatedNumber(
-        string $number
-        )
-    {
-        return GetTranslatedNumber( $number, $this->LanguageDecimalSeparator );
     }
 
     // ~~

@@ -9,6 +9,12 @@
                 <input class="form-input" name="Email" type="text" value="<% .User.Email %>" readonly/>
             </div>
             <div class="form-field-name">
+                Pseudonym :
+            </div>
+            <div>
+                <input class="form-input" name="Pseudonym" type="text" value="<% .User.Pseudonym %>" readonly/>
+            </div>
+            <div class="form-field-name">
                 Password :
             </div>
             <div>

@@ -11,6 +11,7 @@ class USER extends VISTA_DATA
         
         this.Id = 0;
         this.Email = "";
+        this.Pseudonym = "";
         this.Password = "";
         this.IsAdministrator = false;
     }

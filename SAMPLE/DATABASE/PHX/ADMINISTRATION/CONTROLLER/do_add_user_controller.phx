@@ -13,10 +13,11 @@ class DO_ADD_USER_CONTROLLER extends CONTROLLER
         parent::constructor();
 
         var email = GetPostValue( 'Email' );
+        var pseudonym = GetPostValue( 'Pseudonym' );
         var password = GetPostValue( 'Password' );
         var is_administrator = GetPostValue( 'IsAdministrator' );
 
-        AddDatabaseUser( email, password, is_administrator );
+        AddDatabaseUser( email, pseudonym, password, is_administrator );
 
         Redirect( '/admin/user' );
     }

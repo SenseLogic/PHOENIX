@@ -55,5 +55,6 @@ blog
 
         Id : UINT32 | key, unique, incremented, ascending, mapped
         Email : STRING
+        Pseudonym : STRING
         Password : STRING
         IsAdministrator : BOOL
