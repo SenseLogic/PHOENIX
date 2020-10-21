@@ -209,6 +209,34 @@ textarea:focus
     background-size: contain;
 }
 
+.section-button
+{
+    @extend .form-button;
+    background: url(/static/media/svg/admin/section_icon.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.article-button
+{
+    @extend .form-button;
+    background: url(/static/media/svg/admin/article_icon.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.comment-button
+{
+    @extend .form-button;
+    background: url(/static/media/svg/admin/comment_icon.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.subscriber-button
+{
+    @extend .form-button;
+    background: url(/static/media/svg/admin/subscriber_icon.svg) no-repeat center center;
+    background-size: contain;
+}
+
 .contact-button
 {
     @extend .form-button;
@@ -289,6 +317,26 @@ textarea:focus
     grid-template-columns: repeat( 3, auto );
 }
 
+.section-table
+{
+    grid-template-columns: repeat( 5, auto );
+}
+
+.article-table
+{
+    grid-template-columns: repeat( 7, auto );
+}
+
+.comment-table
+{
+    grid-template-columns: repeat( 5, auto );
+}
+
+.subscriber-table
+{
+    grid-template-columns: repeat( 8, auto );
+}
+
 .contact-table
 {
     grid-template-columns: repeat( 5, auto );
@@ -296,7 +344,7 @@ textarea:focus
 
 .user-table
 {
-    grid-template-columns: repeat( 4, auto );
+    grid-template-columns: repeat( 5, auto );
 }
 
 /*

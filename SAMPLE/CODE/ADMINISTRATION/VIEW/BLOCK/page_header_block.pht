@@ -15,6 +15,30 @@
                         </a>
                     </div>
                     <div class="page-menu-item">
+                        <a href="/admin/section">
+                            <span class="form-button form-button-large section-button">
+                            </span>
+                        </a>
+                    </div>
+                    <div class="page-menu-item">
+                        <a href="/admin/article">
+                            <span class="form-button form-button-large article-button">
+                            </span>
+                        </a>
+                    </div>
+                    <div class="page-menu-item">
+                        <a href="/admin/comment">
+                            <span class="form-button form-button-large comment-button">
+                            </span>
+                        </a>
+                    </div>
+                    <div class="page-menu-item">
+                        <a href="/admin/subscriber">
+                            <span class="form-button form-button-large subscriber-button">
+                            </span>
+                        </a>
+                    </div>
+                    <div class="page-menu-item">
                         <a href="/admin/contact">
                             <span class="form-button form-button-large contact-button">
                             </span>

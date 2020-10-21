@@ -1,36 +1,36 @@
 <? include 'BLOCK/page_header_block.php' ?>
-<div class="">
+<div>
     <div class="page-section form-section">
-        <div class="form-container table-container user-table">
-            <div class="form-column-name">
+        <div class="form-container table-container user-table sortable-grid">
+            <div class="form-column-name sortable-grid-column">
                 Email
             </div>
-            <div class="form-column-name">
+            <div class="form-column-name sortable-grid-column">
                 Pseudonym
             </div>
-            <div class="form-column-name">
+            <div class="form-column-name sortable-grid-column">
                 Password
             </div>
-            <div class="form-column-name">
-                IsAdministrator
+            <div class="form-column-name sortable-grid-column">
+                Is Administrator
             </div>
-            <div class="form-column-name">
+            <div class="form-column-name sortable-grid-column">
                 Action
             </div>
             <? foreach ( var user; .UserArray ) { ?>
-                <div>
+                <div class="sortable-grid-cell">
                     <% user.Email %>
                 </div>
-                <div>
+                <div class="sortable-grid-cell">
                     <% user.Pseudonym %>
                 </div>
-                <div>
+                <div class="sortable-grid-cell">
                     <% user.Password %>
                 </div>
-                <div>
+                <div class="sortable-grid-cell">
                     <% user.IsAdministrator %>
                 </div>
-                <div class="form-centered">
+                <div class="form-centered sortable-grid-cell">
                     <a class="form-button view-button" href="/admin/user/view/<% user.Id %>">
                     </a>
                     <a class="form-button edit-button" href="/admin/user/edit/<% user.Id %>">
@@ -39,11 +39,12 @@
                     </a>
                 </div>
             <? } ?>
-            <div class="form-extended form-centered">
+            <div class="form-extended form-centered sortable-grid-footer">
                 <a class="form-button form-button-large add-button" href="/admin/user/add">
                 </a>
             </div>
         </div>
     </div>
 </div>
+<? import '../../FRAMEWORK/sortable_grid.php'; ?>
 <? include 'BLOCK/page_footer_block.php' ?>

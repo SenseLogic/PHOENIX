@@ -434,20 +434,20 @@ $>
 <? include 'BLOCK/page_footer_block.php' ?>
 %%PHX/ADMINISTRATION/VIEW/view_{#variable#}s_view.pht
 <? include 'BLOCK/page_header_block.php' ?>
-<div class="">
+<div>
     <div class="page-section form-section">
-        <div class="form-container table-container {#style#}-table"><$
-            <div class="form-column-name">
-                {%attribute%}
+        <div class="form-container table-container {#style#}-table sortable-grid"><$
+            <div class="form-column-name sortable-grid-column">
+                <~TitleCase<>{%attribute%}~>
             </div>$>
-            <div class="form-column-name">
+            <div class="form-column-name sortable-grid-column">
                 Action
             </div>
             <? foreach ( var {#variable#}; .{#attribute#}Array ) { ?><$
-                <div>
+                <div class="sortable-grid-cell">
                     <\% {#variable#}.{%attribute%} %\>
                 </div>$>
-                <div class="form-centered">
+                <div class="form-centered sortable-grid-cell">
                     <a class="form-button view-button" href="/admin/{#style#}/view/<\% {#variable#}.Id %\>">
                     </a>
                     <a class="form-button edit-button" href="/admin/{#style#}/edit/<\% {#variable#}.Id %\>">
@@ -456,13 +456,14 @@ $>
                     </a>
                 </div>
             <? } ?>
-            <div class="form-extended form-centered">
+            <div class="form-extended form-centered sortable-grid-footer">
                 <a class="form-button form-button-large add-button" href="/admin/{#style#}/add">
                 </a>
             </div>
         </div>
     </div>
 </div>
+<? import '../../FRAMEWORK/sortable_grid.php'; ?>
 <? include 'BLOCK/page_footer_block.php' ?>
 #><#%%PHX/CONTROLLER/API/get_{#variable#}_array_controller.phx
 // -- IMPORTS
@@ -532,11 +533,11 @@ import 'FRAMEWORK/captcha.php';
 
 define( 'DatabaseHost', 'localhost' );
 
-if ( GetServerName() == 'localhost' )
+if ( GetServerName() === 'localhost' )
 {
-    define( 'DatabaseName', '???' );
+    define( 'DatabaseName', 'blog' );
     define( 'DatabaseUserName', 'root' );
-    define( 'DatabasePassword', '' );
+    define( 'DatabasePassword', 'root' );
 }
 else
 {
@@ -551,8 +552,8 @@ function Route(
     string path
     )
 {
-    var language_code_array = [ 'en', 'de', 'fr' ];
     var path_value_array = GetPathValueArray( path );
+    var language_code_array = [ 'en', 'de', 'fr' ];
     var language_code = ExtractLanguageCode( path_value_array, language_code_array, '' );
 
     if ( language_code === '' )
@@ -560,7 +561,6 @@ function Route(
         language_code = GetBrowserLanguageCode( language_code_array, 'en' );
     }
 
-    var path_value_array = GetPathValueArray( path );
     var path_value_count = count( path_value_array );
     var it_is_get_request = IsGetRequest();
     var it_is_post_request = IsPostRequest();
@@ -734,23 +734,68 @@ function Route(
             {
                 import 'CONTROLLER/get_captcha_image_controller.php';
             }
+            else if ( path_value_count === 2
+                      && path_value_array[ 0 ] === 'section'
+                      && IsId( path_value_array[ 1 ] ) )
+            {
+                var section_id = path_value_array[ 1 ];
+                import 'CONTROLLER/show_section_controller.php';
+            }
+            else if ( path_value_count === 2
+                      && path_value_array[ 0 ] === 'article'
+                      && IsId( path_value_array[ 1 ] ) )
+            {
+                var article_id = path_value_array[ 1 ];
+                import 'CONTROLLER/show_article_controller.php';
+            }
+            else if ( path_value_count === 1
+                      && path_value_array[ 0 ] === 'subscribers' )
+            {
+                import 'CONTROLLER/show_subscribers_controller.php';
+            }
             else if ( path_value_count == 0 )
             {
-                import 'CONTROLLER/show_base_controller.php';
+                var section_id = 0;
+                import 'CONTROLLER/show_section_controller.php';
             }
             else
             {
-                SetStatusCode( 404 );
+                SetStatus( 404 );
             }
         }
         else if ( it_is_post_request )
         {
-            if ( path_value_count === 1
-                 && path_value_array[ 0 ] === 'contact'
-                 && HasPostValue( 'Name' )
-                 && HasPostValue( 'Email' )
-                 && HasPostValue( 'Message' )
-                 && HasPostValue( 'Captcha' ) )
+            if ( path_value_count === 2
+                 && path_value_array[ 0 ] === 'user' )
+            {
+                if ( path_value_array[ 1 ] === 'connect' )
+                {
+                    import 'CONTROLLER/connect_user_controller.php';
+                }
+                else if ( path_value_array[ 1 ] === 'disconnect' )
+                {
+                    import 'CONTROLLER/disconnect_user_controller.php';
+                }
+            }
+            else if ( path_value_count === 2
+                      && path_value_array[ 0 ] === 'comment'
+                      && IsId( path_value_array[ 1 ] )
+                      && IsSessionValue( "UserIsConnected", true ) )
+            {
+                var article_id = path_value_array[ 1 ];
+                import 'CONTROLLER/add_comment_controller.php';
+            }
+            else if ( path_value_count === 1
+                      && path_value_array[ 0 ] === 'subscriber' )
+            {
+                import 'CONTROLLER/add_subscriber_controller.php';
+            }
+            else if ( path_value_count === 1
+                      && path_value_array[ 0 ] === 'contact'
+                      && HasPostValue( 'Name' )
+                      && HasPostValue( 'Email' )
+                      && HasPostValue( 'Message' )
+                      && HasPostValue( 'Captcha' ) )
             {
                 var name = GetPostValue( 'Name' );
                 var email = GetPostValue( 'Email' );
@@ -761,7 +806,7 @@ function Route(
             }
             else
             {
-                SetStatusCode( 404 );
+                SetStatus( 404 );
             }
         }
     }

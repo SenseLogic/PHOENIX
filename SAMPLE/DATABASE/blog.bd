@@ -4,6 +4,6 @@ TEXT
 
 USER
 
-    Email Password IsAdministrator
+    Email Pseudonym Password IsAdministrator
 
-        root@root.com ~ xyz ~ true
+        root@root.com ~ root ~ xyz ~ true

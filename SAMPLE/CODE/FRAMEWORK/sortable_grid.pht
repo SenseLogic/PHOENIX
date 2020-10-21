@@ -1,16 +1,16 @@
 <style>
-    .sortable-table-column
+    .sortable-grid-column
     {
         cursor: pointer;
     }
 
-    .sortable-table-column.order-is-ascending:after
+    .sortable-grid-column.order-is-ascending:after
     {
         position: absolute;
         content: "\00a0\25B2";
     }
 
-    .sortable-table-column.order-is-descending:after
+    .sortable-grid-column.order-is-descending:after
     {
         position: absolute;
         content: "\00a0\25BC";
@@ -20,7 +20,7 @@
     $( document ).ready(
         function ()
         {
-            var column_array = $( ".sortable-table-column" );
+            var column_array = $( ".sortable-grid-column" );
 
             column_array.each(
                 function ( index )
@@ -34,7 +34,7 @@
                 {
                     function GetCellValue( row, cell_index )
                     {
-                        return $( row ).children( "td" ).eq( cell_index ).text();
+                        return row[ cell_index ].textContent;
                     }
 
                     function GetCellComparison( cell_index, order_is_descending )
@@ -72,10 +72,13 @@
 
                     this.OrderIsDescending = !this.OrderIsDescending;
                     var order_is_descending = this.OrderIsDescending;
-                    var table = $( this ).parents( ".sortable-table" ).eq( 0 );
-                    var column_array = table.find( ".sortable-table-column" );
+                    var table = $( this ).parents( ".sortable-grid" ).eq( 0 );
+                    var column_array = table.find( ".sortable-grid-column" );
+                    var column_count = column_array.length;
                     var sorted_column = this;
                     var sorted_column_index = $( this ).index();
+                    var cell_array = table.find( ".sortable-grid-cell" ).toArray();
+                    var footer_array = table.find( ".sortable-grid-footer" ).toArray();
 
                     column_array.each(
                         function ( index )
@@ -96,12 +99,35 @@
                         }
                         );
 
-                    var row_array = table.find( "tr:gt(0)" ).toArray();
+                    var row_array = [];
+                    var row_index = 0;
+
+                    for ( var cell_index = 0;
+                          cell_index < cell_array.length;
+                          ++cell_index )
+                    {
+                        if ( cell_index % column_count === 0 )
+                        {
+                            row_index = cell_index / column_count;
+                            row_array[ row_index ] = [];
+                        }
+
+                        row_array[ row_index ].push( cell_array[ cell_index ] );
+                    }
+
                     var sorted_row_array = row_array.sort( GetCellComparison( sorted_column_index, order_is_descending ) );
 
                     for ( var sorted_row of sorted_row_array )
                     {
-                        table.append( sorted_row );
+                        for ( var sorted_cell of sorted_row )
+                        {
+                            table.append( sorted_cell );
+                        }
+                    }
+
+                    for ( var footer of footer_array )
+                    {
+                        table.append( footer );
                     }
                 }
                 );

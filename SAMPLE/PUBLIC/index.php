@@ -46,8 +46,6 @@ function Route(
      $it_is_delete_request = IsDeleteRequest();
      $user_is_connected = FindSessionValue( 'UserIsConnected', false );
 
-     $path_value_count = count( $path_value_array );
-
     if ( $path_value_count >= 2
          && $path_value_array[ 0 ] === 'api' )
     {

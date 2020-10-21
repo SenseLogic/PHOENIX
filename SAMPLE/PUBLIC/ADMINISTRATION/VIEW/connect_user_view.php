@@ -3,9 +3,9 @@
     <form class="form-centered" name="ConnectUser" action="/admin" method="post">
         <div class="form-container form-container-small">
             <div class="form-field-name">
-                E-mail :
+                Pseudonym :
             </div>
-            <input class="form-input" name="Email" type="email"/>
+            <input class="form-input" name="Pseudonym" type="pseudonym"/>
             <div class="form-field-name">
                 Password :
             </div>

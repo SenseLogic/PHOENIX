@@ -12,9 +12,9 @@ class DO_CONNECT_USER_CONTROLLER extends CONTROLLER
     {
         parent::__construct();
 
-         $email = GetPostValue( 'Email' );
+         $pseudonym = GetPostValue( 'Pseudonym' );
          $password = GetPostValue( 'Password' );
-         $user = GetDatabaseUserByEmailAndPassword( $email, $password );
+         $user = GetDatabaseUserByPseudonymAndPassword( $pseudonym, $password );
 
         if ( $user === null )
         {

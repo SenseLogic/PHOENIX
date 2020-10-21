@@ -12,9 +12,9 @@ class DO_CONNECT_USER_CONTROLLER extends CONTROLLER
     {
         parent::constructor();
 
-        var email = GetPostValue( 'Email' );
+        var pseudonym = GetPostValue( 'Pseudonym' );
         var password = GetPostValue( 'Password' );
-        var user = GetDatabaseUserByEmailAndPassword( email, password );
+        var user = GetDatabaseUserByPseudonymAndPassword( pseudonym, password );
 
         if ( user === null )
         {

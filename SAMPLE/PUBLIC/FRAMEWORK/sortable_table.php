@@ -1,16 +1,16 @@
 <style>
-    .sortable-column
+    .sortable-table-column
     {
         cursor: pointer;
     }
 
-    .sortable-column.order-is-ascending:after
+    .sortable-table-column.order-is-ascending:after
     {
         position: absolute;
         content: "\00a0\25B2";
     }
 
-    .sortable-column.order-is-descending:after
+    .sortable-table-column.order-is-descending:after
     {
         position: absolute;
         content: "\00a0\25BC";
@@ -20,16 +20,16 @@
     $( document ).ready(
         function ()
         {
-            var sortable_column_array = $( ".sortable-column" );
+            var column_array = $( ".sortable-table-column" );
 
-            sortable_column_array.each(
+            column_array.each(
                 function ( index )
                 {
                     this.OrderIsDescending = ( this.classList.contains( "order-is-descending" ) >= 0 );
                 }
                 );
 
-            sortable_column_array.click(
+            column_array.click(
                 function()
                 {
                     function GetCellValue( row, cell_index )
@@ -72,11 +72,12 @@
 
                     this.OrderIsDescending = !this.OrderIsDescending;
                     var order_is_descending = this.OrderIsDescending;
-                    var sortable_table = $( this ).parents( ".sortable-table" ).eq( 0 );
-                    var sortable_column_array = sortable_table.find( ".sortable-column" );
+                    var table = $( this ).parents( ".sortable-table" ).eq( 0 );
+                    var column_array = table.find( ".sortable-table-column" );
                     var sorted_column = this;
+                    var sorted_column_index = $( this ).index();
 
-                    sortable_column_array.each(
+                    column_array.each(
                         function ( index )
                         {
                             $( this ).removeClass( "order-is-ascending" ).removeClass( "order-is-descending" );
@@ -95,14 +96,12 @@
                         }
                         );
 
-                    var row_array = sortable_table.find( "tr:gt(0)" ).toArray();
-                    var sorted_row_array = row_array.sort( GetCellComparison( $( this ).index(), order_is_descending ) );
+                    var row_array = table.find( "tr:gt(0)" ).toArray();
+                    var sorted_row_array = row_array.sort( GetCellComparison( sorted_column_index, order_is_descending ) );
 
-                    for ( var sorted_row_index = 0;
-                          sorted_row_index < sorted_row_array.length;
-                          ++sorted_row_index )
+                    for ( var sorted_row of sorted_row_array )
                     {
-                        sortable_table.append( sorted_row_array[ sorted_row_index ] );
+                        table.append( sorted_row );
                     }
                 }
                 );
