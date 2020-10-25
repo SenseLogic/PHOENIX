@@ -37,6 +37,14 @@ function GetCurrentMicrosecondTimestamp(
 
 // ~~
 
+function GetCurrentDateTimeSuffix(
+    )
+{
+    return date( 'YmdHis' );
+}
+
+// ~~
+
 function GetCurrentDateTime(
     )
 {

@@ -382,8 +382,16 @@ $>
                 <div class="form-field-name">
                     {%title%} :
                 </div>
-                <div>
-                    <~{%is_text%}<><textarea class="form-textarea" name="{%attribute%}"><\% .{#attribute#}.{%attribute%} %\></textarea><><input class="form-input" name="{%attribute%}" type="text" value="<\% .{#attribute#}.{%attribute%} %\>"/>~>
+                <div><~{%is_image%}<>
+                    <input class="form-input" name="{%attribute%}" type="text" value="<\% .{#attribute#}.{%attribute%} %\>"/>
+                    <div class="form-upload-container">
+                        <img class="form-upload-image" src="/upload/image/<\% .{#attribute#}.{%attribute%} %\>"/>
+                        <label class="form-upload-button">
+                            <img class="form-upload-icon" src="/static/image/icon/admin/upload_icon.svg"/><input id="file" class="form-upload-file" type="file" accept="image/jpeg, image/png" onchange="HandleFileChangeEvent( this );"/>
+                        </label>
+                    </div><><~{%is_text%}<>
+                    <textarea class="form-textarea" name="{%attribute%}"><\% .{#attribute#}.{%attribute%} %\></textarea><>
+                    <input class="form-input" name="{%attribute%}" type="text" value="<\% .{#attribute#}.{%attribute%} %\>"/>~>~>
                 </div>$>
                 <a class="justify-self-start form-button form-button-large cancel-button" href="/admin/{#style#}">
                 </a>
@@ -523,6 +531,10 @@ SetStatus( 204 );
 // -- IMPORTS
 
 import 'FRAMEWORK/error.php';
+import 'FRAMEWORK/text.php';
+import 'FRAMEWORK/path.php';
+import 'FRAMEWORK/file.php';
+import 'FRAMEWORK/date.php';
 import 'FRAMEWORK/language.php';
 import 'FRAMEWORK/request.php';
 import 'FRAMEWORK/session.php';
@@ -641,6 +653,12 @@ function Route(
             {
                 import 'ADMINISTRATION/CONTROLLER/show_error_controller.php';
             }
+        }
+        else if ( it_is_post_request
+                  && path_value_count == 2
+                  && path_value_array[ 1 ] === 'upload' )
+        {
+            import 'ADMINISTRATION/CONTROLLER/upload_file_controller.php';
         }
         else if ( it_is_get_request
                   && path_value_count === 2

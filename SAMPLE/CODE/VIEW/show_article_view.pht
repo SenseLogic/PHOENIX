@@ -12,7 +12,7 @@
 <h5>
     <% .Article.User.Pseudonym %> - <% .Article.Date %>
 </h5>
-<img class="responsive-img" src="/static/media/jpg/<% .Article.ImageIndex %>.jpg"/>
+<img class="responsive-img" src="/upload/image/<% .Article.Image %>"/>
 <p>
     <% .Article.Text %>
 </p>

@@ -502,6 +502,22 @@ textarea:focus {
   min-height: 2.25rem;
   overflow: hidden;
 }
+.form-upload-container {
+  margin-top: 0.5rem;
+}
+.form-upload-image {
+  border-radius: 0.3125rem;
+  width: 25%;
+  height: auto;
+}
+.form-upload-icon {
+  height: 1rem;
+}
+.form-upload-file {
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
 .form-field-name {
   font-weight: bold;
   padding-top: 0.3125rem;
@@ -543,63 +559,63 @@ textarea:focus {
   height: 2.5rem;
 }
 .text-button {
-  background: url("/static/media/svg/admin/text_icon.svg") no-repeat center center;
+  background: url("/static/image/icon/admin/text_icon.svg") no-repeat center center;
   background-size: contain;
 }
 .section-button {
-  background: url("/static/media/svg/admin/section_icon.svg") no-repeat center center;
+  background: url("/static/image/icon/admin/section_icon.svg") no-repeat center center;
   background-size: contain;
 }
 .article-button {
-  background: url("/static/media/svg/admin/article_icon.svg") no-repeat center center;
+  background: url("/static/image/icon/admin/article_icon.svg") no-repeat center center;
   background-size: contain;
 }
 .comment-button {
-  background: url("/static/media/svg/admin/comment_icon.svg") no-repeat center center;
+  background: url("/static/image/icon/admin/comment_icon.svg") no-repeat center center;
   background-size: contain;
 }
 .subscriber-button {
-  background: url("/static/media/svg/admin/subscriber_icon.svg") no-repeat center center;
+  background: url("/static/image/icon/admin/subscriber_icon.svg") no-repeat center center;
   background-size: contain;
 }
 .contact-button {
-  background: url("/static/media/svg/admin/contact_icon.svg") no-repeat center center;
+  background: url("/static/image/icon/admin/contact_icon.svg") no-repeat center center;
   background-size: contain;
 }
 .user-button {
-  background: url("/static/media/svg/admin/user_icon.svg") no-repeat center center;
+  background: url("/static/image/icon/admin/user_icon.svg") no-repeat center center;
   background-size: contain;
 }
 .disconnect-button {
-  background: url("/static/media/svg/admin/disconnect_icon.svg") no-repeat center center;
+  background: url("/static/image/icon/admin/disconnect_icon.svg") no-repeat center center;
   background-size: contain;
 }
 .connect-button {
-  background: url("/static/media/svg/admin/connect_icon.svg") no-repeat center center;
+  background: url("/static/image/icon/admin/connect_icon.svg") no-repeat center center;
   background-size: contain;
 }
 .view-button {
-  background: url("/static/media/svg/admin/view_icon.svg") no-repeat center center;
+  background: url("/static/image/icon/admin/view_icon.svg") no-repeat center center;
   background-size: contain;
 }
 .edit-button {
-  background: url("/static/media/svg/admin/edit_icon.svg") no-repeat center center;
+  background: url("/static/image/icon/admin/edit_icon.svg") no-repeat center center;
   background-size: contain;
 }
 .remove-button {
-  background: url("/static/media/svg/admin/remove_icon.svg") no-repeat center center;
+  background: url("/static/image/icon/admin/remove_icon.svg") no-repeat center center;
   background-size: contain;
 }
 .add-button {
-  background: url("/static/media/svg/admin/add_icon.svg") no-repeat center center;
+  background: url("/static/image/icon/admin/add_icon.svg") no-repeat center center;
   background-size: contain;
 }
 .cancel-button {
-  background: url("/static/media/svg/admin/cancel_icon.svg") no-repeat center center;
+  background: url("/static/image/icon/admin/cancel_icon.svg") no-repeat center center;
   background-size: contain;
 }
 .apply-button {
-  background: url("/static/media/svg/admin/apply_icon.svg") no-repeat center center;
+  background: url("/static/image/icon/admin/apply_icon.svg") no-repeat center center;
   background-size: contain;
 }
 .table-container {

@@ -1,6 +1,10 @@
 <?php // -- IMPORTS
 
 require_once __DIR__ . '/' . 'FRAMEWORK/error.php';
+require_once __DIR__ . '/' . 'FRAMEWORK/text.php';
+require_once __DIR__ . '/' . 'FRAMEWORK/path.php';
+require_once __DIR__ . '/' . 'FRAMEWORK/file.php';
+require_once __DIR__ . '/' . 'FRAMEWORK/date.php';
 require_once __DIR__ . '/' . 'FRAMEWORK/language.php';
 require_once __DIR__ . '/' . 'FRAMEWORK/request.php';
 require_once __DIR__ . '/' . 'FRAMEWORK/session.php';
@@ -365,6 +369,12 @@ function Route(
             {
                 require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/show_error_controller.php';
             }
+        }
+        else if ( $it_is_post_request
+                  && $path_value_count == 2
+                  && $path_value_array[ 1 ] === 'upload' )
+        {
+            require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/upload_file_controller.php';
         }
         else if ( $it_is_get_request
                   && $path_value_count === 2

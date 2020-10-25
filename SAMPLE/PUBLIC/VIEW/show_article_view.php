@@ -12,7 +12,7 @@
 <h5>
     <?php echo htmlspecialchars( $this->Article->User->Pseudonym ); ?> - <?php echo htmlspecialchars( $this->Article->Date ); ?>
 </h5>
-<img class="responsive-img" src="/static/media/jpg/<?php echo htmlspecialchars( $this->Article->ImageIndex ); ?>.jpg"/>
+<img class="responsive-img" src="/upload/image/<?php echo htmlspecialchars( $this->Article->Image ); ?>"/>
 <p>
     <?php echo htmlspecialchars( $this->Article->Text ); ?>
 </p>

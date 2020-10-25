@@ -94,6 +94,12 @@
                 </div>
                 <div>
                     <input class="form-input" name="Image" type="text" value="<?php echo htmlspecialchars( $this->Section->Image ); ?>"/>
+                    <div class="form-upload-container">
+                        <img class="form-upload-image" src="/upload/image/<?php echo htmlspecialchars( $this->Section->Image ); ?>"/>
+                        <label class="form-upload-button">
+                            <img class="form-upload-icon" src="/static/image/icon/admin/upload_icon.svg"/><input id="file" class="form-upload-file" type="file" accept="image/jpeg, image/png" onchange="HandleFileChangeEvent( this );"/>
+                        </label>
+                    </div>
                 </div>
                 <a class="justify-self-start form-button form-button-large cancel-button" href="/admin/section">
                 </a>

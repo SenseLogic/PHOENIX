@@ -9,6 +9,24 @@ function GetCharacterCount(
 
 // ~~
 
+function GetHexadecimalText(
+    int $integer
+    )
+{
+    return base_convert( $integer, 10, 16 );
+}
+
+// ~~
+
+function GetHexatridecimalText(
+    int $integer
+    )
+{
+    return base_convert( $integer, 10, 36 );
+}
+
+// ~~
+
 function HasPrefix(
     string $text,
     string $prefix
