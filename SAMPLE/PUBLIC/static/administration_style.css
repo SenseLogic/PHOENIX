@@ -507,8 +507,9 @@ textarea:focus {
 }
 .form-upload-image {
   border-radius: 0.3125rem;
-  width: 25%;
-  height: auto;
+  width: auto;
+  max-width: 80%;
+  height: 12.5rem;
 }
 .form-upload-icon {
   height: 1rem;

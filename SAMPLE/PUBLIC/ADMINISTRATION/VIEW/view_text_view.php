@@ -6,13 +6,13 @@
                 Slug :
             </div>
             <div>
-                <input class="form-input" name="Slug" type="text" value="<?php echo htmlspecialchars( $this->Text->Slug ); ?>" readonly/>
+                    <input class="form-input" name="Slug" type="text" value="<?php echo htmlspecialchars( $this->Text->Slug ); ?>" readonly/>
             </div>
             <div class="form-field-name">
                 Text :
             </div>
             <div>
-                <textarea class="form-textarea" name="Text" readonly><?php echo htmlspecialchars( $this->Text->Text ); ?></textarea>
+                    <textarea class="form-textarea" name="Text" readonly><?php echo htmlspecialchars( $this->Text->Text ); ?></textarea>
             </div>
             <a class="justify-self-start form-button form-button-large cancel-button" href="<?php echo htmlspecialchars( $this->PreviousPage ); ?>">
             </a>

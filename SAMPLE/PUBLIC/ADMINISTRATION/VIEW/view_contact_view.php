@@ -6,25 +6,25 @@
                 Name :
             </div>
             <div>
-                <input class="form-input" name="Name" type="text" value="<?php echo htmlspecialchars( $this->Contact->Name ); ?>" readonly/>
+                    <input class="form-input" name="Name" type="text" value="<?php echo htmlspecialchars( $this->Contact->Name ); ?>" readonly/>
             </div>
             <div class="form-field-name">
                 Email :
             </div>
             <div>
-                <input class="form-input" name="Email" type="text" value="<?php echo htmlspecialchars( $this->Contact->Email ); ?>" readonly/>
+                    <input class="form-input" name="Email" type="text" value="<?php echo htmlspecialchars( $this->Contact->Email ); ?>" readonly/>
             </div>
             <div class="form-field-name">
                 Message :
             </div>
             <div>
-                <textarea class="form-textarea" name="Message" readonly><?php echo htmlspecialchars( $this->Contact->Message ); ?></textarea>
+                    <textarea class="form-textarea" name="Message" readonly><?php echo htmlspecialchars( $this->Contact->Message ); ?></textarea>
             </div>
             <div class="form-field-name">
                 Date Time :
             </div>
             <div>
-                <input class="form-input" name="DateTime" type="text" value="<?php echo htmlspecialchars( $this->Contact->DateTime ); ?>" readonly/>
+                    <input class="form-input" name="DateTime" type="text" value="<?php echo htmlspecialchars( $this->Contact->DateTime ); ?>" readonly/>
             </div>
             <a class="justify-self-start form-button form-button-large cancel-button" href="<?php echo htmlspecialchars( $this->PreviousPage ); ?>">
             </a>

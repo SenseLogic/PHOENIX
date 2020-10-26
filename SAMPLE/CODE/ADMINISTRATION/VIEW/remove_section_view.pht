@@ -26,6 +26,9 @@
                 </div>
                 <div>
                     <input class="form-input" name="Image" type="text" value="<% .Section.Image %>" readonly/>
+                    <div class="form-upload-container">
+                        <img class="form-upload-image" src="/upload/image/<% .Section.Image %>" onerror="this.src='/static/image/icon/admin/missing_icon.svg'"/>
+                    </div>
                 </div>
                 <a class="justify-self-start form-button form-button-large cancel-button" href="/admin/section">
                 </a>

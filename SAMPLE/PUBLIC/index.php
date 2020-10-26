@@ -1,6 +1,7 @@
 <?php // -- IMPORTS
 
 require_once __DIR__ . '/' . 'FRAMEWORK/error.php';
+require_once __DIR__ . '/' . 'FRAMEWORK/global.php';
 require_once __DIR__ . '/' . 'FRAMEWORK/text.php';
 require_once __DIR__ . '/' . 'FRAMEWORK/path.php';
 require_once __DIR__ . '/' . 'FRAMEWORK/file.php';
@@ -10,6 +11,7 @@ require_once __DIR__ . '/' . 'FRAMEWORK/request.php';
 require_once __DIR__ . '/' . 'FRAMEWORK/session.php';
 require_once __DIR__ . '/' . 'FRAMEWORK/database.php';
 require_once __DIR__ . '/' . 'FRAMEWORK/captcha.php';
+require_once __DIR__ . '/' . 'FRAMEWORK/mail.php';
 
 // -- CONSTANTS
 
@@ -371,10 +373,11 @@ function Route(
             }
         }
         else if ( $it_is_post_request
-                  && $path_value_count == 2
-                  && $path_value_array[ 1 ] === 'upload' )
+                  && $path_value_count == 3
+                  && $path_value_array[ 1 ] === 'upload'
+                  && $path_value_array[ 2 ] === 'image' )
         {
-            require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/upload_file_controller.php';
+            require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/upload_image_controller.php';
         }
         else if ( $it_is_get_request
                   && $path_value_count === 2

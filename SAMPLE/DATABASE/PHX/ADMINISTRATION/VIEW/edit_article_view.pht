@@ -125,11 +125,11 @@
                     Image :
                 </div>
                 <div>
-                    <input class="form-input" name="Image" type="text" value="<% .Article.Image %>"/>
+                    <input class="form-input" name="Image" type="text" value="<% .Article.Image %>" oninput="HandleImageNameInputChangeEvent( this )"/>
                     <div class="form-upload-container">
-                        <img class="form-upload-image" src="/upload/image/<% .Article.Image %>"/>
+                        <img class="form-upload-image" src="/upload/image/<% .Article.Image %>" onerror="this.src='/static/image/icon/admin/missing_icon.svg'"/>
                         <label class="form-upload-button">
-                            <img class="form-upload-icon" src="/static/image/icon/admin/upload_icon.svg"/><input id="file" class="form-upload-file" type="file" accept="image/jpeg, image/png" onchange="HandleFileChangeEvent( this );"/>
+                            <img class="form-upload-icon" src="/static/image/icon/admin/upload_icon.svg"/><input id="file" class="form-upload-file" type="file" accept="image/jpeg, image/png" onchange="HandleImageFileInputChangeEvent( this )"/>
                         </label>
                     </div>
                 </div>

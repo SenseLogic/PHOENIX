@@ -93,7 +93,13 @@
                     Image :
                 </div>
                 <div>
-                    <input class="form-input" name="Image" type="text"/>
+                    <input class="form-input" name="Image" type="text" oninput="HandleImageNameInputChangeEvent( this )"/>
+                    <div class="form-upload-container">
+                        <img class="form-upload-image" src="" onerror="this.src='/static/image/icon/admin/missing_icon.svg'"/>
+                        <label class="form-upload-button">
+                            <img class="form-upload-icon" src="/static/image/icon/admin/upload_icon.svg"/><input id="file" class="form-upload-file" type="file" accept="image/jpeg, image/png" onchange="HandleImageFileInputChangeEvent( this )"/>
+                        </label>
+                    </div>
                 </div>
                 <a class="justify-self-start form-button form-button-large cancel-button" href="/admin/section">
                 </a>

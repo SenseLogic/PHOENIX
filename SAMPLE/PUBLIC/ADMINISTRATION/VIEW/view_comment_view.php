@@ -6,25 +6,25 @@
                 Article Id :
             </div>
             <div>
-                <input class="form-input" name="ArticleId" type="text" value="<?php echo htmlspecialchars( $this->Comment->ArticleId ); ?>" readonly/>
+                    <input class="form-input" name="ArticleId" type="text" value="<?php echo htmlspecialchars( $this->Comment->ArticleId ); ?>" readonly/>
             </div>
             <div class="form-field-name">
                 User Id :
             </div>
             <div>
-                <input class="form-input" name="UserId" type="text" value="<?php echo htmlspecialchars( $this->Comment->UserId ); ?>" readonly/>
+                    <input class="form-input" name="UserId" type="text" value="<?php echo htmlspecialchars( $this->Comment->UserId ); ?>" readonly/>
             </div>
             <div class="form-field-name">
                 Text :
             </div>
             <div>
-                <textarea class="form-textarea" name="Text" readonly><?php echo htmlspecialchars( $this->Comment->Text ); ?></textarea>
+                    <textarea class="form-textarea" name="Text" readonly><?php echo htmlspecialchars( $this->Comment->Text ); ?></textarea>
             </div>
             <div class="form-field-name">
                 Date Time :
             </div>
             <div>
-                <input class="form-input" name="DateTime" type="text" value="<?php echo htmlspecialchars( $this->Comment->DateTime ); ?>" readonly/>
+                    <input class="form-input" name="DateTime" type="text" value="<?php echo htmlspecialchars( $this->Comment->DateTime ); ?>" readonly/>
             </div>
             <a class="justify-self-start form-button form-button-large cancel-button" href="<?php echo htmlspecialchars( $this->PreviousPage ); ?>">
             </a>

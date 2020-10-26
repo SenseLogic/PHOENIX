@@ -6,43 +6,43 @@
                 Email :
             </div>
             <div>
-                <input class="form-input" name="Email" type="text" value="<% .Subscriber.Email %>" readonly/>
+                    <input class="form-input" name="Email" type="text" value="<% .Subscriber.Email %>" readonly/>
             </div>
             <div class="form-field-name">
                 Ip Address :
             </div>
             <div>
-                <input class="form-input" name="IpAddress" type="text" value="<% .Subscriber.IpAddress %>" readonly/>
+                    <input class="form-input" name="IpAddress" type="text" value="<% .Subscriber.IpAddress %>" readonly/>
             </div>
             <div class="form-field-name">
                 Browser :
             </div>
             <div>
-                <input class="form-input" name="Browser" type="text" value="<% .Subscriber.Browser %>" readonly/>
+                    <input class="form-input" name="Browser" type="text" value="<% .Subscriber.Browser %>" readonly/>
             </div>
             <div class="form-field-name">
                 Latitude :
             </div>
             <div>
-                <input class="form-input" name="Latitude" type="text" value="<% .Subscriber.Latitude %>" readonly/>
+                    <input class="form-input" name="Latitude" type="text" value="<% .Subscriber.Latitude %>" readonly/>
             </div>
             <div class="form-field-name">
                 Longitude :
             </div>
             <div>
-                <input class="form-input" name="Longitude" type="text" value="<% .Subscriber.Longitude %>" readonly/>
+                    <input class="form-input" name="Longitude" type="text" value="<% .Subscriber.Longitude %>" readonly/>
             </div>
             <div class="form-field-name">
                 Country Code :
             </div>
             <div>
-                <input class="form-input" name="CountryCode" type="text" value="<% .Subscriber.CountryCode %>" readonly/>
+                    <input class="form-input" name="CountryCode" type="text" value="<% .Subscriber.CountryCode %>" readonly/>
             </div>
             <div class="form-field-name">
                 Date Time :
             </div>
             <div>
-                <input class="form-input" name="DateTime" type="text" value="<% .Subscriber.DateTime %>" readonly/>
+                    <input class="form-input" name="DateTime" type="text" value="<% .Subscriber.DateTime %>" readonly/>
             </div>
             <a class="justify-self-start form-button form-button-large cancel-button" href="<% .PreviousPage %>">
             </a>

@@ -3,14 +3,14 @@
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link type="text/css" rel="stylesheet" href="/static/css/materialize.min.css"/>
+        <link type="text/css" rel="stylesheet" href="/static/style/materialize.min.css"/>
         <title>
             Blog
         </title>
     </head>
     <body class="container">
-        <script type="text/javascript" src="/static/js/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="/static/js/materialize.min.js"></script>
+        <script type="text/javascript" src="/static/script/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="/static/script/materialize.min.js"></script>
         <div class="row">
             <nav class="col m12">
                 <ul>

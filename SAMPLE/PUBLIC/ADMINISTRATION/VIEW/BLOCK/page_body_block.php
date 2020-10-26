@@ -1,10 +1,19 @@
-<script src="/static/js/jquery-3.2.1.min.js"></script>
-<script src="/static/js/vista_base.js"></script>
-<script src="/static/js/vista_element.js"></script>
-<script src="/static/js/vista_animation.js"></script>
-<script src="/static/js/vista_request.js"></script>
+<script src="/static/script/jquery-3.2.1.min.js"></script>
+<script src="/static/script/vista_base.js"></script>
+<script src="/static/script/vista_element.js"></script>
+<script src="/static/script/vista_animation.js"></script>
+<script src="/static/script/vista_request.js"></script>
 <script>
-    async function HandleFileChangeEvent(
+    function HandleImageNameInputChangeEvent(
+        path_element
+        )
+    {
+        path_element.nextElementSibling.firstElementChild.src = "/upload/image/" + path_element.value;
+    }
+
+    // ~~
+
+    async function HandleImageFileInputChangeEvent(
         file_element
         )
     {
@@ -17,7 +26,7 @@
         {
             form_data = new FormData();
             form_data.append( "file", file_element.files[ 0 ] );
-            request = await SendRequest( "/admin/upload", "POST", form_data );
+            request = await SendRequest( "/admin/upload/image", "POST", form_data );
 
             if ( request.status === 201 )
             {

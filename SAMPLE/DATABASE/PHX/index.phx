@@ -1,6 +1,7 @@
 // -- IMPORTS
 
 import 'FRAMEWORK/error.php';
+import 'FRAMEWORK/global.php';
 import 'FRAMEWORK/text.php';
 import 'FRAMEWORK/path.php';
 import 'FRAMEWORK/file.php';
@@ -10,6 +11,7 @@ import 'FRAMEWORK/request.php';
 import 'FRAMEWORK/session.php';
 import 'FRAMEWORK/database.php';
 import 'FRAMEWORK/captcha.php';
+import 'FRAMEWORK/mail.php';
 
 // -- CONSTANTS
 
@@ -371,10 +373,11 @@ function Route(
             }
         }
         else if ( it_is_post_request
-                  && path_value_count == 2
-                  && path_value_array[ 1 ] === 'upload' )
+                  && path_value_count == 3
+                  && path_value_array[ 1 ] === 'upload'
+                  && path_value_array[ 2 ] === 'image' )
         {
-            import 'ADMINISTRATION/CONTROLLER/upload_file_controller.php';
+            import 'ADMINISTRATION/CONTROLLER/upload_image_controller.php';
         }
         else if ( it_is_get_request
                   && path_value_count === 2
