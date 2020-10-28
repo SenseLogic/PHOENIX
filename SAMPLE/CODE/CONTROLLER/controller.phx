@@ -9,7 +9,7 @@ class CONTROLLER
     // -- CONSTRUCTORS
 
     method constructor(
-        string language_code
+        string language_code = "en"
         )
     {
         .Session = new SESSION();

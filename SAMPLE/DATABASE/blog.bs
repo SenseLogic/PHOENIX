@@ -6,7 +6,7 @@ blog
         Slug : STRING | indexed
         Text : STRING | is_text
 
-    SECTION | sorted, dropped, count 5
+    SECTION | sorted, dropped
 
         Id : UINT32 | key, unique, incremented
         Number : UINT32 | indexed, ascending

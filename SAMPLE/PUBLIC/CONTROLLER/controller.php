@@ -9,7 +9,7 @@ class CONTROLLER
     // -- CONSTRUCTORS
 
     function __construct(
-        string $language_code
+        string $language_code = "en"
         )
     {
         $this->Session = new SESSION();
