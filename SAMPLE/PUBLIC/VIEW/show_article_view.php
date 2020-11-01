@@ -12,10 +12,11 @@
 <h5>
     <?php echo htmlspecialchars( $this->Article->User->Pseudonym ); ?> - <?php echo htmlspecialchars( $this->Article->Date ); ?>
 </h5>
-<img class="responsive-img" src="/upload/image/<?php echo htmlspecialchars( $this->Article->Image ); ?>"/>
+<img class="full-width responsive-img" src="/upload/image/<?php echo htmlspecialchars( $this->Article->Image ); ?>"/>
 <p>
     <?php echo htmlspecialchars( $this->Article->Text ); ?>
 </p>
+<video class="full-width responsive-video" autoplay muted loop><source src="/upload/video/<?php echo htmlspecialchars( $this->Article->Video ); ?>"/></video>
 <hr/>
 <?php if ( $this->Session->UserIsConnected ) { ?>
     <h4>

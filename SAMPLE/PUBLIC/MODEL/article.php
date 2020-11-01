@@ -3,7 +3,7 @@
 function GetDatabaseArticleArray(
     )
 {
-     $statement = GetDatabaseStatement( 'select Id, SectionId, UserId, Title, Text, Image, Date from ARTICLE order by Date desc' );
+     $statement = GetDatabaseStatement( 'select Id, SectionId, UserId, Title, Text, Image, Video, Date from ARTICLE order by Date desc' );
 
     if ( !$statement->execute() )
     {
@@ -27,7 +27,7 @@ function GetDatabaseArticleById(
     int $id
     )
 {
-     $statement = GetDatabaseStatement( 'select Id, SectionId, UserId, Title, Text, Image, Date from ARTICLE where Id = ? limit 1' );
+     $statement = GetDatabaseStatement( 'select Id, SectionId, UserId, Title, Text, Image, Video, Date from ARTICLE where Id = ? limit 1' );
     $statement->bindParam( 1, $id, PDO::PARAM_INT );
 
     if ( !$statement->execute() )
@@ -48,15 +48,17 @@ function AddDatabaseArticle(
     int $user_id,
     string $title,
     string $text,
-    string $image
+    string $image,
+    string $video
     )
 {
-     $statement = GetDatabaseStatement( 'insert into ARTICLE ( SectionId, UserId, Title, Text, Image, Date ) values ( ?, ?, ?, ?, ?, date( now() ) )' );
+     $statement = GetDatabaseStatement( 'insert into ARTICLE ( SectionId, UserId, Title, Text, Image, Video, Date ) values ( ?, ?, ?, ?, ?, ?, date( now() ) )' );
     $statement->bindParam( 1, $section_id, PDO::PARAM_INT );
     $statement->bindParam( 2, $user_id, PDO::PARAM_INT );
     $statement->bindParam( 3, $title, PDO::PARAM_STR );
     $statement->bindParam( 4, $text, PDO::PARAM_STR );
     $statement->bindParam( 5, $image, PDO::PARAM_STR );
+    $statement->bindParam( 6, $video, PDO::PARAM_STR );
 
     if ( !$statement->execute() )
     {
@@ -75,17 +77,19 @@ function SetDatabaseArticle(
     string $title,
     string $text,
     string $image,
+    string $video,
     string $date
     )
 {
-     $statement = GetDatabaseStatement( 'update ARTICLE set SectionId = ?, UserId = ?, Title = ?, Text = ?, Image = ?, Date = ? where Id = ?' );
+     $statement = GetDatabaseStatement( 'update ARTICLE set SectionId = ?, UserId = ?, Title = ?, Text = ?, Image = ?, Video = ?, Date = ? where Id = ?' );
     $statement->bindParam( 1, $section_id, PDO::PARAM_INT );
     $statement->bindParam( 2, $user_id, PDO::PARAM_INT );
     $statement->bindParam( 3, $title, PDO::PARAM_STR );
     $statement->bindParam( 4, $text, PDO::PARAM_STR );
     $statement->bindParam( 5, $image, PDO::PARAM_STR );
-    $statement->bindParam( 6, $date, PDO::PARAM_STR );
-    $statement->bindParam( 7, $id, PDO::PARAM_INT );
+    $statement->bindParam( 6, $video, PDO::PARAM_STR );
+    $statement->bindParam( 7, $date, PDO::PARAM_STR );
+    $statement->bindParam( 8, $id, PDO::PARAM_INT );
 
     if ( !$statement->execute() )
     {

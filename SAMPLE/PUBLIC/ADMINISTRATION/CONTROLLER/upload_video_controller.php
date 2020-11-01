@@ -4,7 +4,7 @@ require_once __DIR__ . '/' . 'controller.php';
 
 // -- TYPES
 
-class UPLOAD_FILE_CONTROLLER extends CONTROLLER
+class UPLOAD_VIDEO_CONTROLLER extends CONTROLLER
 {
     function __construct(
         )
@@ -16,7 +16,7 @@ class UPLOAD_FILE_CONTROLLER extends CONTROLLER
              $source_file_path = GetUploadedFilePath( 'file' );
              $source_file_name = GetValidFileName( GetUploadedFileName( 'file' ) );
              $target_file_name = GetSuffixedFilePath( $source_file_name, '_' . GetCurrentDateTimeSuffix() );
-             $target_file_path = GetBaseFolderPath() . 'upload/file/' . $target_file_name;
+             $target_file_path = GetBaseFolderPath() . 'upload/video/' . $target_file_name;
 
             if ( MoveUploadedFile( $source_file_path, $target_file_path ) )
             {
@@ -33,4 +33,4 @@ class UPLOAD_FILE_CONTROLLER extends CONTROLLER
 
 // -- STATEMENTS
 
- $upload_file_controller = new UPLOAD_FILE_CONTROLLER();
+ $upload_video_controller = new UPLOAD_VIDEO_CONTROLLER();

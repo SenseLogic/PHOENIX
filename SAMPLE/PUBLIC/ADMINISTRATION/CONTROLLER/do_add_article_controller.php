@@ -17,9 +17,10 @@ class DO_ADD_ARTICLE_CONTROLLER extends CONTROLLER
          $title = GetPostValue( 'Title' );
          $text = GetPostValue( 'Text' );
          $image = GetPostValue( 'Image' );
+         $video = GetPostValue( 'Video' );
          $date = GetPostValue( 'Date' );
 
-        AddDatabaseArticle( $section_id, $user_id, $title, $text, $image, $date );
+        AddDatabaseArticle( $section_id, $user_id, $title, $text, $image, $video, $date );
 
         Redirect( '/admin/article' );
     }

@@ -379,6 +379,20 @@ function Route(
         {
             require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/upload_image_controller.php';
         }
+        else if ( $it_is_post_request
+                  && $path_value_count == 3
+                  && $path_value_array[ 1 ] === 'upload'
+                  && $path_value_array[ 2 ] === 'video' )
+        {
+            require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/upload_video_controller.php';
+        }
+        else if ( $it_is_post_request
+                  && $path_value_count == 3
+                  && $path_value_array[ 1 ] === 'upload'
+                  && $path_value_array[ 2 ] === 'file' )
+        {
+            require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/upload_file_controller.php';
+        }
         else if ( $it_is_get_request
                   && $path_value_count === 2
                   && $path_value_array[ 1 ] === 'disconnect' )
@@ -559,6 +573,7 @@ function Route(
                       && HasPostValue( 'Title' )
                       && HasPostValue( 'Text' )
                       && HasPostValue( 'Image' )
+                      && HasPostValue( 'Video' )
                       && HasPostValue( 'Date' ) )
             {
                 require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/do_add_article_controller.php';
@@ -590,6 +605,7 @@ function Route(
                       && HasPostValue( 'Title' )
                       && HasPostValue( 'Text' )
                       && HasPostValue( 'Image' )
+                      && HasPostValue( 'Video' )
                       && HasPostValue( 'Date' ) )
             {
                  $article_id = $path_value_array[ 3 ];

@@ -12,10 +12,11 @@
 <h5>
     <% .Article.User.Pseudonym %> - <% .Article.Date %>
 </h5>
-<img class="responsive-img" src="/upload/image/<% .Article.Image %>"/>
+<img class="full-width responsive-img" src="/upload/image/<% .Article.Image %>"/>
 <p>
     <% .Article.Text %>
 </p>
+<video class="full-width responsive-video" autoplay muted loop><source src="/upload/video/<% .Article.Video %>"/></video>
 <hr/>
 <? if ( .Session.UserIsConnected ) { ?>
     <h4>

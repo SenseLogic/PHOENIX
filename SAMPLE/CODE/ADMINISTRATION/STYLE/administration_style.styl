@@ -167,10 +167,13 @@ textarea:focus
 
 .form-upload-container
 {
+    display: flex;
+    align-items: center;
     margin-top: 8 * Pxm;
 }
 
-.form-upload-image
+.form-upload-image,
+.form-upload-video
 {
     border-radius: 5 * Pxm;
     width: auto;
@@ -180,6 +183,7 @@ textarea:focus
 
 .form-upload-icon
 {
+    margin-left: 4 * Pxm;
     height: 16 * Pxm;
 }
 
@@ -349,7 +353,7 @@ textarea:focus
 
 .article-table
 {
-    grid-template-columns: repeat( 7, auto );
+    grid-template-columns: repeat( 8, auto );
 }
 
 .comment-table

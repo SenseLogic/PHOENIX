@@ -3,10 +3,16 @@
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link type="text/css" rel="stylesheet" href="/static/style/materialize.min.css"/>
         <title>
             Blog
         </title>
+        <link type="text/css" rel="stylesheet" href="/static/style/materialize.min.css"/>
+        <style>
+            .full-width
+            {
+                width: 100%;
+            }
+        </style>
     </head>
     <body class="container">
         <script type="text/javascript" src="/static/script/jquery-3.2.1.min.js"></script>

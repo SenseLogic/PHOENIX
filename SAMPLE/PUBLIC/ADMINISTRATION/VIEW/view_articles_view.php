@@ -18,6 +18,9 @@
                 Image
             </div>
             <div class="form-column-name sortable-grid-column">
+                Video
+            </div>
+            <div class="form-column-name sortable-grid-column">
                 Date
             </div>
             <div class="form-column-name sortable-grid-column">
@@ -38,6 +41,9 @@
                 </div>
                 <div class="sortable-grid-cell">
                     <?php echo htmlspecialchars( $article->Image ); ?>
+                </div>
+                <div class="sortable-grid-cell">
+                    <?php echo htmlspecialchars( $article->Video ); ?>
                 </div>
                 <div class="sortable-grid-cell">
                     <?php echo htmlspecialchars( $article->Date ); ?>

@@ -18,9 +18,10 @@ class DO_EDIT_ARTICLE_CONTROLLER extends CONTROLLER
         var title = GetPostValue( 'Title' );
         var text = GetPostValue( 'Text' );
         var image = GetPostValue( 'Image' );
+        var video = GetPostValue( 'Video' );
         var date = GetPostValue( 'Date' );
 
-        SetDatabaseArticle( article_id, section_id, user_id, title, text, image, date );
+        SetDatabaseArticle( article_id, section_id, user_id, title, text, image, video, date );
 
         Redirect( '/admin/article' );
     }

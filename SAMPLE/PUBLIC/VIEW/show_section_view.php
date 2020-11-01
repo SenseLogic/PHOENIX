@@ -4,7 +4,7 @@
         <?php echo htmlspecialchars( $this->Section->Name ); ?>
     </a>
 </h2>
-<img class="responsive-img" src="/upload/image/<?php echo htmlspecialchars( $this->Section->Image ); ?>"/>
+<img class="full-width responsive-img" src="/upload/image/<?php echo htmlspecialchars( $this->Section->Image ); ?>"/>
 <p>
     <?php echo htmlspecialchars( $this->Section->Text ); ?>
 </p>

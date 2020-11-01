@@ -10,7 +10,7 @@ class ARTICLE_STORE extends VISTA_STORE
         super(
             ARTICLE,
             "Uuid",
-            [ "Id", "SectionId", "UserId", "Title", "Text", "Image", "Date" ],
+            [ "Id", "SectionId", "UserId", "Title", "Text", "Image", "Video", "Date" ],
             "/api/article",
             "Article"
             );

@@ -22,7 +22,7 @@ create table if not exists `blog`.`SECTION`(
     `Number` INT UNSIGNED NULL,
     `Name` VARCHAR( 45 ) NULL,
     `Text` TEXT NULL,
-    `Image` VARCHAR( 45 ) NULL,
+    `Image` TEXT NULL,
     primary key( `Id` )
     ) engine = InnoDB;
 
@@ -34,7 +34,8 @@ create table if not exists `blog`.`ARTICLE`(
     `UserId` INT UNSIGNED NULL,
     `Title` TEXT NULL,
     `Text` TEXT NULL,
-    `Image` VARCHAR( 45 ) NULL,
+    `Image` TEXT NULL,
+    `Video` TEXT NULL,
     `Date` DATE NULL,
     primary key( `Id` )
     ) engine = InnoDB;

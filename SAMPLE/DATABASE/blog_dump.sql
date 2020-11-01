@@ -4,26 +4,27 @@ CREATE TABLE `ARTICLE` (
   `UserId` INT UNSIGNED NULL, 
   `Title` TEXT NULL, 
   `Text` TEXT NULL, 
-  `Image` VARCHAR( 45 ) NULL, 
+  `Image` TEXT NULL, 
+  `Video` TEXT NULL, 
   `Date` DATE NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `ARTICLE` (`Id`, `SectionId`, `UserId`, `Title`, `Text`, `Image`, `Date`) VALUES
-(1, 5, 4, 'Pilgrims you shackle and beautifully.', 'Exchanged some time would then also become great respect, I\'ll think if there you take it. Straightened up in anything yesterday of wealth the submission, then for much longer to act of robbers. Long nails grew up here for nothing.', 'picture_16.jpg', '2008-06-08'),
-(2, 2, 5, 'Body and clear his refuge to belong to.', 'They\'ve become completely concentrated soul die his mourning, daily he pondered deeply it sounded new. Past I shall know love him you well, look which wondrously reminded him foamed at once.', 'picture_13.jpg', '2013-12-04'),
-(3, 2, 5, 'Name neither felt deep contemplation spoke to.', 'Lost but in himself from on chance not happened, turned up a knowledgeable one has this hour. Curious more I wouldn\'t we who seek knowledge.', 'picture_5.jpg', '2012-05-01'),
-(4, 2, 1, 'Bowed deeply thinking is better things in ear.', 'You seen this terrible world of among people, majority of merciless self-denial practised meditation through your heart. Nothing he learned my way with him, man and offered him except to death. Knowing patient is our boat the courtesan\'s greeting.', 'picture_13.jpg', '2014-12-26'),
-(5, 2, 5, 'Then so I understand spoke.', 'This pointless was annoyed and still missing in grief. Stood at several of contemplation washing his way, death where from wisdom always good as ever.', 'picture_3.jpg', '2013-07-03'),
-(6, 3, 3, 'Read out over freezing shoulders his stakes.', 'Fine food for it could it says. Laughed it voices joined it completely filled with, himself was chewing a passionately painful yearning got lost. Opened the light what do with hunger.', 'picture_10.jpg', '2001-05-27'),
-(7, 1, 4, 'Always he become sacred offerings.', 'So my very smart face was holy, body inside and necessary came when has got here. Good just too spoke slowly among carters and obedience.', 'picture_15.jpg', '2014-09-18'),
-(8, 3, 2, 'Smiled quietly dangling hand from death.', 'Tears as defeated as any work beautiful. Ah most as old men among the, out from an old tired his own.', 'picture_5.jpg', '2014-03-12'),
-(9, 1, 2, 'Her cheek turned black ones.', 'I used to live with awe the beat him, been presented so now from now so much. Cared little pleasures and right was it.', 'picture_19.jpg', '2003-03-18'),
-(10, 4, 5, 'Were like and sorrow.', 'Majority of pain at yourself though she asked himself, you\'ve learned what pain filled himself mocking voice, sleep with very good sir and lots of offerings. Enjoyed his worldly and ate neither perished nor thinking, willingness my place to salvation as `learning\'.', 'picture_4.jpg', '2007-10-09'),
-(11, 4, 1, 'Full of mere words.', 'Asked himself despised at me honourable one, for possessions and ferried travellers of patience. That\'s their holy to dress at once. Teachings but so venerable among hundreds of a, among all there gray in perfumed waters.', 'picture_3.jpg', '2002-01-07'),
-(12, 4, 3, 'Asked many days by throwing out badly.', 'Near thus open his childhood friend of monks, ablutions nor thinking is holding your hospitality my heart. Conducted him my being loved most shameful life, thing both followed by was time she him.', 'picture_11.jpg', '2014-02-04'),
-(13, 5, 1, 'Death is holding your birth magic spells.', 'Touched and looked up I knew it, few four or foolish or worth keeping he exclaimed. Enjoyed his possession and call of wise, lust had received as shining his chest. Body and spoke disembarking on so beautiful things.', 'picture_11.jpg', '2000-02-10'),
-(14, 3, 5, 'Eyes today because you insist upon.', 'Mute who scorns diversity who breathed of others. Waiting thinking his breath was sleeping answered, even now a few he awaited the father, did his perfumed waters and loaning money for me.', 'picture_11.jpg', '2009-09-10'),
-(15, 4, 1, 'Watched them my heart.', 'Haven\'t learned here on an accusation in good journey, broke loose embraced wrapped up felt unable to breathe. Afterwards when has entered your birth magic words exclaimed, times had perceived it turned back after another person.', 'picture_10.jpg', '2001-01-11');
+INSERT INTO `ARTICLE` (`Id`, `SectionId`, `UserId`, `Title`, `Text`, `Image`, `Video`, `Date`) VALUES
+(1, 5, 1, 'Silently he hated trick of good for.', 'Laughed just woken up money or discard them, farewell from an angry and me and. Secretly he dreamt of making it already, seeing images listening with veneration for your heart, late he fled to live really become dead.', 'picture_7.jpg', 'video_2.mp4', '2012-08-28'),
+(2, 2, 3, 'Death the name is.', 'Did see is eternally taking becomes void. Truly the women with him disregard him, do anything enter the most holy man, asked again perhaps get yourself away like my brothers.', 'picture_2.jpg', 'video_2.mp4', '2001-12-17'),
+(3, 5, 3, 'Glance before any goals.', 'Or moon and casually as these verses, boy has driven by annihilating his life. Will go on one was reborn in hut, he\'s taking care about in teachings perfected man. Then uttering a father was transmitted to live it.', 'picture_5.jpg', 'video_0.mp4', '2000-12-18'),
+(4, 4, 2, 'Sun tanned his companion.', 'Distant spot his greatness only been fleeting, placed his own manner he himself fall. False god more ugly spell whenever they come said, worry in some small one turned pale like you.', 'picture_13.jpg', 'video_0.mp4', '2006-10-06'),
+(5, 3, 2, 'Pleasure also learn the bondage of thousands.', 'Man and weeping ones taught thoroughly understand him comfort, bid him except to come it so, shimmered his liberated eyes the celebration of others. Their transitoriness and call magic flowed on, softly perhaps you sir from death the poison.', 'picture_0.jpg', 'video_1.mp4', '2014-06-12'),
+(6, 4, 1, 'Hasn\'t it can teach them.', 'Their transitoriness in positions and becomes old torn loin-cloth, half unconsciousness a delicacy whose face the. Could bring happiness of perfume is mine I do.', 'picture_3.jpg', 'video_2.mp4', '2008-06-05'),
+(7, 4, 4, 'Rarely talked about and desires were long time.', 'Distorted her red smart or a hardly noticeable gesture. People will entice me bear your trainee for you, you\'ll hear again make offerings for me to speak.', 'picture_15.jpg', 'video_1.mp4', '2014-12-28'),
+(8, 3, 2, 'Loudly clapped her body inside that line.', 'Without shoes and weeping the perfection of misery. Sir intent to heal the banana tasted, loudly clapped her breast popped out a banana tasted.', 'picture_3.jpg', 'video_0.mp4', '2003-09-18'),
+(9, 3, 5, 'Business of spoke with learned it.', 'Wheel of perfection I intent to be stolen, means of failure into it has come back. Deep joy in no water ran incessantly hit him, daily in reaching the gesture of humans, won\'t hit me one I called name.', 'picture_13.jpg', 'video_2.mp4', '2013-05-26'),
+(10, 5, 5, 'Blossomed slowly that we\'ve already learned it.', 'Then began asked himself appeared on foot, late at hers and once in being an error. You\'ve spoken so said thoughtful words so irrefutably. Thus you want to an assistant shave his error.', 'picture_19.jpg', 'video_2.mp4', '2007-03-15'),
+(11, 1, 3, 'Mouth I\'m telling you well.', 'Many there gray hairs among so leave him, straightened up from festering wounds dripped pus and beggar. Can think so will obtain a level, lacked nothing when someone always expect it.', 'picture_3.jpg', 'video_2.mp4', '2011-06-04'),
+(12, 1, 1, 'We\'ll hear my hair.', 'Exchanged some of mockery with calm days, stared at our capacity for fifteen days. Rarely spoke for their forests he used crude swearwords. It speaks to stop breathing forth from it, all belonged together the filled with mockery.', 'picture_5.jpg', 'video_0.mp4', '2014-02-28'),
+(13, 5, 3, 'You into every wind every exercise often again.', 'High arch smart brown nipple of others, pilgrims and wisdom was prepared to me, loudly clapped her dress at it right don\'t dare.', 'picture_7.jpg', 'video_2.mp4', '2000-06-04'),
+(14, 3, 1, 'Times he lay hidden at your child.', 'Dreams came into eyes a beautiful trees. Previous life of remote areas of monks, while came flowing river surrounded by bees. The links of perfect everything they come back, goal without seeing old ferryman yes I felt.', 'picture_7.jpg', 'video_2.mp4', '2005-10-04'),
+(15, 5, 3, 'Placed him disregard him.', 'Since it stirring a fish felt once seen everything. Harmony knowledge has discovered house with you. Which you\'ll go then wanted to strive for them. More importance on water quietly lamented quietly.', 'picture_7.jpg', 'video_0.mp4', '2005-03-19');
 
 CREATE TABLE `COMMENT` (
   `Id` INT UNSIGNED NOT NULL AUTO_INCREMENT, 
@@ -34,36 +35,36 @@ CREATE TABLE `COMMENT` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `COMMENT` (`Id`, `ArticleId`, `UserId`, `Text`, `DateTime`) VALUES
-(1, 1, 2, 'Ran along your son\'s upbringing. When would feel life told him.', '2010-06-23 00:44:10'),
-(2, 6, 2, 'Greeted her and know this, wanted to inform his impending death, latter had drowned and find his bed. When would believe that\'s everything.', '2015-09-04 23:54:43'),
-(3, 13, 5, 'Ferryman ate could also still found friendship, who has a high trees and offerings.', '2006-10-18 20:10:53'),
-(4, 4, 3, 'Young woman\'s smiling and fresh as true. Shouldn\'t I don\'t force him, travellers of sympathy for twenty-eight days.', '2010-10-28 16:56:55'),
-(5, 3, 5, 'Friend children are wise she admitted, venerable chiefly his nor was sleeping.', '2005-07-19 02:37:07'),
-(6, 12, 3, 'Without seeing monks saw you with mockery, most hurriedly walking along pondered.', '2012-09-12 15:41:27'),
-(7, 2, 2, 'Don\'t forget him had laughed, let\'s not comprehend any given me on. River never upset by me and, can go a day exalted one\'s body.', '2013-08-12 08:08:14'),
-(8, 13, 4, 'Much money wasted time from an. Son to opinions in agreement with, or devote himself of that. Lovely couldn\'t recognise the non-self.', '2000-03-12 05:08:48'),
-(9, 10, 4, 'Black snake fled to avoid evil. Non-eternal things and becomes void.', '2014-04-14 08:22:16'),
-(10, 13, 1, 'You\'re exclaimed indignantly but not necessary, ah you still awaiting him leaving. Reached and walked at head so irrefutably.', '2014-03-03 03:47:39'),
-(11, 10, 3, 'Nevertheless renewed themselves intended to experience. Boat recognised though without thinking.', '2005-07-02 09:19:07'),
-(12, 9, 1, 'Deeply and villages to accept his path. Had gone to identify the room.', '2011-04-22 11:26:22'),
-(13, 3, 4, 'False god more nor self-castigation, many things they received in your thoughts, close to divide it laughed. You\'re stronger with one wants.', '2006-08-15 08:23:49'),
-(14, 8, 3, 'Sir from me since his hands, monk as bathing performing the courtesan\'s greeting.', '2013-01-16 09:25:52'),
-(15, 10, 2, 'Shimmered his learning this can understand, has lived the mother\'s house from horror. Lacked all pretended to pretty.', '2014-12-26 11:35:42'),
-(16, 3, 4, 'Daily in again you\'re wearing fine clothes, leaned against them should incessantly hit. Fully become tired felt thirst tiredness.', '2000-01-13 06:00:29'),
-(17, 1, 3, 'You have liked this world, read a game the uncertain. Would die ten thousand times the many, half unconsciousness a desire was a.', '2015-03-04 05:57:14'),
-(18, 14, 1, 'Quietly moving on which so rich man. Tomorrow morning noon he saw, nothing and often I wish without food. Read them after another time.', '2004-08-15 18:05:39'),
-(19, 4, 2, 'Stone was shimmering in love, years compare this to himself.', '2009-10-16 22:15:30'),
-(20, 13, 2, 'Where did his stakes and tenacity, full the searching so she him.', '2015-06-16 12:22:06'),
-(21, 8, 5, 'Speak harsh and clear to burn, children already all one suffering, sleep again now become gray. Evening with great thinkers do this.', '2014-11-04 11:56:26'),
-(22, 4, 2, 'Whom is small near it. Weren\'t you as one always everything. We\'ll continue demonstrating his blissfulness of worship.', '2011-02-25 16:41:05'),
-(23, 12, 4, 'Where stayed behind from myself from me, worry said this wearing the submission. Over all alone I think is present, entire world strangers and ultimate part.', '2013-05-28 17:52:36'),
-(24, 6, 1, 'Son of wrinkles of dreams flowed on, curious more and sparkling the one. Which wondrously reminded him still awaiting him.', '2004-03-24 19:31:16'),
-(25, 1, 1, 'Glance with love are submissive all this. Friend was among these verses. Old he bent over as true.', '2000-09-22 02:11:07'),
-(26, 2, 2, 'Told to awake joyful source in heat, could demonstrate his farewell to. Other travellers and finally drown.', '2006-05-25 01:06:30'),
-(27, 3, 3, 'I\'ll learn in that teachings, offerings for gods together with. Love having honestly told him, come back to giving me.', '2009-11-04 17:51:05'),
-(28, 4, 4, 'Wouldn\'t like my cousin in, sir am a longing to serve. Mouth twitched with their fearfulness.', '2013-08-20 20:20:54'),
-(29, 11, 5, 'And wishes of people can\'t, saw rising from everywhere at him. Questions but smiled quietly as I do.', '2006-04-02 11:01:16'),
-(30, 13, 4, 'Smart as and it tasted the moon. Were still had prepared rice there.', '2007-01-12 14:00:37');
+(1, 7, 1, 'Scent of contemplation washing clothes, followed the style of sickliness of joy.', '2008-04-11 03:04:39'),
+(2, 7, 5, 'Different than twenty paces away, young man which could he accepted invitation, can only represented second- or hopes.', '2005-08-18 15:00:12'),
+(3, 1, 5, 'Nothing he on foot took a parable. Didn\'t you lying and lazy, scolding and ever would force him.', '2003-02-04 16:16:34'),
+(4, 13, 5, 'Will hear more neither thought like bees. Listened and illusion and saw him unconscious, opened the mango-tree his destiny upon himself.', '2005-02-17 16:30:59'),
+(5, 5, 3, 'Putting me on your river, until his limbs back inside the water, from you aren\'t capable of. Want back hour stopped searching.', '2005-12-11 23:10:25'),
+(6, 10, 5, 'Slowly that someone who seeks unity, now so venerable teachings will not astonished. Same day on time ago for knowledge, I\'m losing my stomach learned every year.', '2006-11-11 21:32:32'),
+(7, 3, 4, 'Pleasure cannot deny my father. Shall know I shall become silent, in holiness which can learn. At one step of too much.', '2013-01-22 10:22:26'),
+(8, 7, 2, 'Once told you force him, loudly clapped her grove as you mean.', '2015-05-21 01:29:15'),
+(9, 11, 4, 'Still recognise me beautiful trees. Still fighting in agreement with. Pilgrims shall live to cling him.', '2007-03-13 09:15:20'),
+(10, 14, 3, 'High mountains everywhere this could tell, weren\'t you force you entirely sinful, remained within you a cold void. As quenched it tired put me to.', '2013-07-16 23:12:16'),
+(11, 5, 5, 'For oneself and reliable voice of the. Words delicate impenetrable perhaps reciprocate it, so leave saw and unleash it.', '2006-09-15 16:26:51'),
+(12, 4, 1, 'Language would spent his skin. Indeed awakened and you\'ve seen so irrefutably. Don\'t be here remember something cooked rice.', '2009-01-06 22:45:49'),
+(13, 13, 5, 'Will to friend I been, distant high goal towards beggars lost in. You\'re suffering longingly it is.', '2015-06-14 17:10:12'),
+(14, 3, 1, 'Broke loose embraced him leaving one\'s heart. Herself had replaced my senses.', '2012-05-08 05:07:59'),
+(15, 12, 4, 'Next to such an untouchable peace, go on to an arrow. Image also told how wise his farewell, man without mockery some moments a loss.', '2007-09-02 15:58:40'),
+(16, 5, 5, 'His days short numbing of teachings, sun surrounded by many thousands, while exhaling the bows with the business.', '2000-02-21 12:58:32'),
+(17, 13, 5, 'They\'ve become tired desperate had dreamt of, until it\'ll becomes morning from myself.', '2012-06-28 02:47:55'),
+(18, 15, 5, 'All teachings are already discovered house locked, indignant he stood at my amusement. After every aspect of sounded strange, previous lives the foot of sounded strange.', '2013-03-05 12:47:52'),
+(19, 12, 1, 'Thought about myself old ferryman to kiss, man who wants to tower high calling.', '2012-11-14 02:48:05'),
+(20, 10, 5, 'Both the business was indeed no use, simply thus advise me again. Body to rest to love a man, fully understanding what about in an error.', '2014-07-07 08:41:24'),
+(21, 2, 4, 'Early in stubborn disobedience and mysterious, also eventually have pretty shoes such jokes. Fled that this final shiver ran away.', '2012-10-16 11:14:19'),
+(22, 2, 5, 'It teaches nothing else from him. Near it today in not calm hearts.', '2008-02-19 01:53:23'),
+(23, 14, 2, 'Possessions of wine and have thought. Learned from the feet to speak.', '2007-05-14 15:02:55'),
+(24, 2, 2, 'Without stopping no delight my teacher, river at the joyful love her suffering. Perhaps reciprocate it out well are smiling.', '2006-05-19 08:08:35'),
+(25, 5, 3, 'Will stand and I\'m happy fortune, willingness my wife\'s funeral pile on earth. Looked up paced to read. An animal it sucked up from him.', '2003-01-10 20:59:17'),
+(26, 6, 4, 'Whenever embarrassment and precocious words, opened the bamboo forest his path.', '2001-10-18 09:42:50'),
+(27, 13, 1, 'Next person someone is divine, didn\'t you going to shine. Weren\'t you entirely or human being.', '2005-09-18 23:08:40'),
+(28, 12, 4, 'Near thus much longer used to, greed from had intended to say friend. Finding it lying in everyone can wait.', '2006-01-03 15:13:05'),
+(29, 4, 2, 'Opposite to carry it fly, come back into your direction.', '2009-09-16 17:28:19'),
+(30, 12, 1, 'Whenever embarrassment and stepped the self, haven\'t you at her side.', '2007-02-23 14:20:53');
 
 CREATE TABLE `CONTACT` (
   `Id` INT UNSIGNED NOT NULL AUTO_INCREMENT, 
@@ -74,26 +75,26 @@ CREATE TABLE `CONTACT` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `CONTACT` (`Id`, `Name`, `Email`, `Message`, `DateTime`) VALUES
-(1, 'Stclairholmes', 'leodora.wolford@outlook.com', 'Araferaucoq', '2004-01-19 06:26:31'),
-(2, 'Kemp', 'annmarie.loucel@live.com', 'Essandy', '2000-12-14 23:57:27'),
-(3, 'Zumhagen', 'joellen.burkhardt@hotmail.com', 'Mufoerku', '2005-07-13 07:30:48'),
-(4, 'Dilen', 'reva.tauscher@hotmail.com', 'Ommockotke', '2011-02-13 03:54:55'),
-(5, 'Witkowski', 'farooq.boroski@yahoo.com', 'Kylavuonerri', '2000-09-05 21:34:29');
+(1, 'Moreland', 'annmaria.desroches@gmail.com', 'Ukinader', '2003-10-07 02:30:39'),
+(2, 'Grigsby', 'torey.stamps@hotmail.com', 'Obemeesole', '2005-04-04 23:15:28'),
+(3, 'Fields', 'alika.triggiano@mail.com', 'Kagobipenu', '2005-09-07 07:55:45'),
+(4, 'Loisel', 'viviane.colton@gmail.com', 'Boderenesa', '2012-11-10 03:22:22'),
+(5, 'Esler', 'wilf.machan@hotmail.com', 'Beretzko', '2005-03-01 11:05:54');
 
 CREATE TABLE `SECTION` (
   `Id` INT UNSIGNED NOT NULL AUTO_INCREMENT, 
   `Number` INT UNSIGNED NULL, 
   `Name` VARCHAR( 45 ) NULL, 
   `Text` TEXT NULL, 
-  `Image` VARCHAR( 45 ) NULL
+  `Image` TEXT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `SECTION` (`Id`, `Number`, `Name`, `Text`, `Image`) VALUES
-(1, 586, 'Sports', 'Out this ferry at once a deception, has taught you wouldn\'t want back after year. Shall please you subject to spend many secrets.', 'picture_12.jpg'),
-(2, 644, 'Lifestyle', 'World that of worry said in their worries, does really feel life still any further. Heard shuddering with painful confession into your river.', 'picture_2.jpg'),
-(3, 650, 'Business', 'Passed to bitter despair until no time, put into it intoxicated him under their goal, salvation by annoyance and walked along my father. High stakes that full height of ill-humour of wealth.', 'picture_4.jpg'),
-(4, 180, 'Technology', 'Curious more and turned back at him. Hours looked around they received no other hand, young face of them without reason he dreamed this. You\'re stronger than could win him calculations.', 'picture_1.jpg'),
-(5, 71, 'History', 'Leapt in every aspect of you he got lost, moderate living according to suffer a precise rule, know my back up again start his life. Remained standing where snakes often I\'ll see all secrets.', 'picture_13.jpg');
+(1, 867, 'Sports', 'Lust covetousness sloth and trade but destitute so good. Body however small basket woven out of words, example hadn\'t been possible that terrible and it\'s enough. Teachings sound of reflection the thousand voices.', 'picture_3.jpg'),
+(2, 182, 'Lifestyle', 'Exchanged humorous banter with light like who offered him, we would get over the dead bird. Behold here opened soul slowly it as foolish world, said when his path of misery which you well.', 'picture_16.jpg'),
+(3, 141, 'Business', 'Touched arm away nobody will never since then. Rich in times the arrogant and her eyes, tales and next person who offered to obtain money. Listen to appeal to him out what had risen.', 'picture_5.jpg'),
+(4, 110, 'Technology', 'Bad talk about than \'hard water in you, young daughters when has taken care of mere words. Fled today because I needed lust in the, walked on loaned money if the old eyes. Though these are learning which revealed their paths.', 'picture_18.jpg'),
+(5, 616, 'History', 'She played with perfect respect to read. Entered his fists and superior to death, language would perhaps turn seventy and from myself, thinking does nothing left in love words. Tales and in good life with mockery.', 'picture_11.jpg');
 
 CREATE TABLE `SUBSCRIBER` (
   `Id` INT UNSIGNED NOT NULL AUTO_INCREMENT, 
@@ -107,11 +108,11 @@ CREATE TABLE `SUBSCRIBER` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `SUBSCRIBER` (`Id`, `Email`, `IpAddress`, `Browser`, `Latitude`, `Longitude`, `CountryCode`, `DateTime`) VALUES
-(1, 'ardys.amlani@outlook.com', '62 Hawkes Avenue', 'Adjaneso', 61.81, 69.88, 'LS', '2009-06-08 02:58:14'),
-(2, 'diana.witkowski@outlook.com', '23 Schwab Court', 'Asseonheiste', 83.46, 88.02, 'JO', '2009-08-24 19:17:15'),
-(3, 'jaan.pimentel@live.com', '11 Freno Park', 'Labfivega', 50.64, 92.39, 'TF', '2010-08-01 18:18:48'),
-(4, 'etheline.mcdevitt@mail.com', '84 Heile Court', 'Inczip', 86.59, 52.55, 'MD', '2000-06-06 02:01:20'),
-(5, 'rori.kibler@live.com', '70 Zetterlundclark Alley', 'Alotero', 91.6, 99.12, 'AI', '2010-11-21 09:39:58');
+(1, 'ilka.guyarbour@live.com', '74 Searl Boulevard', 'Managgik', 50.05, 13.08, 'HR', '2003-07-19 17:47:17'),
+(2, 'derin.handley@mail.com', '38 Rajwani Drive', 'Armetipu', 62.18, 83.53, 'RS', '2005-11-25 12:41:38'),
+(3, 'tex.kernodle@yahoo.com', '43 Bourbonnais Court', 'Beliksemor', 71.02, 60.84, 'JM', '2013-09-23 11:26:42'),
+(4, 'lidia.wrigley@live.com', '69 Cricker Park', 'Arkeley', 52.85, 54.6, 'KH', '2010-12-08 06:06:26'),
+(5, 'parminder.meletios@live.com', '46 Hoequist Alley', 'Annema', 53.91, 44.45, 'CG', '2007-02-24 06:12:58');
 
 CREATE TABLE `TEXT` (
   `Id` INT UNSIGNED NOT NULL AUTO_INCREMENT, 
@@ -120,11 +121,11 @@ CREATE TABLE `TEXT` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `TEXT` (`Id`, `Slug`, `Text`) VALUES
-(1, 'linaggo', 'Eternal who knows such thing most wretched people, against her child so it than used crude swearwords, had defeated as alien to spend many voices. Entire eternal perfection of autumn fear of truth.'),
-(2, 'ardelluceq', 'Now from soil into and while even conscious anxiety, been at yourself by itself before you ferryman yes. Latter had changed a heron ate could do, let\'s not give you must follow that my teacher, greed from living by killing prohibited joy with doubt.'),
-(3, 'albadara', 'Accustomed to them just an entire game and again. Sinner is near it earned him again after year, truly right one man\'s garments to bear. Scent of him asleep and preserved by simpler means.'),
-(4, 'sonicksip', 'Since I won\'t for dwell on face the, mouth on their great secret art of that. Looked through him running away that teachings. Wonderful sleep with barber\'s assistant in perfumed waters, eyes became calm somewhat resembling a soft bed.'),
-(5, 'ornsowu', 'False god it cannot deny my reward, at yourself away neither old he can learn, these pleasures these reports only slowly lose a student. The joyful because I also talk with dice.');
+(1, 'amabhod', 'Smart less proud but work there aren\'t capable of. Boy was my name of worship in such feats, mumbled a frightening emptiness saw with your son. Got to pile on to earn thus rejuvenated.'),
+(2, 'synnessi', 'Us on water of tormenting yourself I\'m greeting me. Smiled and drink wine from teachers warnings his students, at about himself mocking disdain of as well.'),
+(3, 'allodnarug', 'Your parents renounced your words it\'s enough, hut in circles we lived among the, smiled silently spoke sadly waited and hear more. They flocked like only the times and worry, possessions of developing though she uttered a great.'),
+(4, 'toredechinu', 'Else might have transported many an angry words, and spend many things change quickly across this area. Come over shoulder embraced him disregard him.'),
+(5, 'avereilof', 'Him linen for myself any specific intention. Afterwards when playing with yearning got it, lacked nothing stung any goals they commanded. Mumbled a wonderful sleep into lust the darkness.');
 
 CREATE TABLE `USER` (
   `Id` INT UNSIGNED NOT NULL AUTO_INCREMENT, 
@@ -136,10 +137,10 @@ CREATE TABLE `USER` (
 
 INSERT INTO `USER` (`Id`, `Email`, `Pseudonym`, `Password`, `IsAdministrator`) VALUES
 (1, 'root@root.com', 'root', 'xyz', 1),
-(2, 'cindra.cholette@yahoo.com', 'cindracholette', 'ef#9fYlemar', 1),
-(3, 'rubia.cloherty@live.com', 'rubiacloherty', 'moZdu:rkau7', 0),
-(4, 'vivyan.vairavan@gmail.com', 'vivyanvairavan', ',atorG4', 1),
-(5, 'duong.gilles@yahoo.com', 'duonggilles', '*owama3raCl', 0);
+(2, 'shailendra.streibel@gmail.com', 'shailendrastreibel', 'pru*Yez4', 0),
+(3, 'michaelina.malek@gmail.com', 'michaelinamalek', '7&otrUi', 0),
+(4, 'lilyan.montag@gmail.com', 'lilyanmontag', 'Nhar4a-', 1),
+(5, 'breena.ventrone@gmail.com', 'breenaventrone', 'l2i%Yat', 1);
 
 ALTER TABLE `ARTICLE`
   ADD PRIMARY KEY (`Id`);

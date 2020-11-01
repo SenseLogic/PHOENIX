@@ -12,7 +12,7 @@ blog
         Number : UINT32 | indexed, ascending
         Name : STRING | capacity 45
         Text : STRING | is_text
-        Image : STRING = "picture_{{integer 0 19}}.jpg" | capacity 45, is_image
+        Image : STRING = "picture_{{integer 0 19}}.jpg" | is_image
 
     ARTICLE | sorted, dropped, count 15
 
@@ -21,7 +21,8 @@ blog
         UserId : USER.Id
         Title : STRING
         Text : STRING | is_text
-        Image : STRING = "picture_{{integer 0 19}}.jpg" | capacity 45, is_image
+        Image : STRING = "picture_{{integer 0 19}}.jpg" | is_image
+        Video : STRING = "video_{{integer 0 2}}.mp4" | is_video
         Date : DATE | indexed, descending, now
 
     COMMENT | sorted, dropped, count 30

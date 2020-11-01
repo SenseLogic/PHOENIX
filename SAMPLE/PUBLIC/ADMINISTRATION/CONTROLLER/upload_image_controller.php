@@ -4,7 +4,7 @@ require_once __DIR__ . '/' . 'controller.php';
 
 // -- TYPES
 
-class UPLOAD_FILE_CONTROLLER extends CONTROLLER
+class UPLOAD_IMAGE_CONTROLLER extends CONTROLLER
 {
     function __construct(
         )
@@ -33,4 +33,4 @@ class UPLOAD_FILE_CONTROLLER extends CONTROLLER
 
 // -- STATEMENTS
 
- $upload_file_controller = new UPLOAD_FILE_CONTROLLER();
+ $upload_image_controller = new UPLOAD_IMAGE_CONTROLLER();

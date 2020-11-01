@@ -15,6 +15,7 @@ class ARTICLE extends VISTA_DATA
         this.Title = "";
         this.Text = "";
         this.Image = "";
+        this.Video = "";
         this.Date = "1970-01-01";
     }
 }

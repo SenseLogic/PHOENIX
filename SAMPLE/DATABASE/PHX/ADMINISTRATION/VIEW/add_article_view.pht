@@ -12,6 +12,7 @@
             title_field,
             text_field,
             image_field,
+            video_field,
             date_field;
 
         it_is_valid_add_article_form = true;
@@ -22,6 +23,7 @@
         title_field = add_article_form.Title;
         text_field = add_article_form.Text;
         image_field = add_article_form.Image;
+        video_field = add_article_form.Video;
         date_field = add_article_form.Date;
 
         if ( section_id_field.value !== "" )
@@ -79,6 +81,17 @@
             it_is_valid_add_article_form = false;
         }
 
+        if ( video_field.value !== "" )
+        {
+            video_field.classList.remove( "form-field-error" );
+        }
+        else
+        {
+            video_field.classList.add( "form-field-error" );
+
+            it_is_valid_add_article_form = false;
+        }
+
         if ( date_field.value !== "" )
         {
             date_field.classList.remove( "form-field-error" );
@@ -129,7 +142,19 @@
                     <div class="form-upload-container">
                         <img class="form-upload-image" src="" onerror="this.src='/static/image/icon/admin/missing_icon.svg'"/>
                         <label class="form-upload-button">
-                            <img class="form-upload-icon" src="/static/image/icon/admin/upload_icon.svg"/><input id="file" class="form-upload-file" type="file" accept="image/jpeg, image/png" onchange="HandleImageFileInputChangeEvent( this )"/>
+                            <img class="form-upload-icon" src="/static/image/icon/admin/upload_icon.svg"/><input id="file" class="form-upload-file" type="file" accept="image/jpeg, image/png, image/webp, image/gif, image/svg" onchange="HandleImageFileInputChangeEvent( this )"/>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-field-name">
+                    Video :
+                </div>
+                <div>
+                    <input class="form-input" name="Video" type="text" oninput="HandleVideoNameInputChangeEvent( this )"/>
+                    <div class="form-upload-container">
+                        <video class="form-upload-video" controls><source src="" type="video/mp4" onerror="this.src='/static/video/admin/missing_video.mp4'"/></video>
+                        <label class="form-upload-button">
+                            <img class="form-upload-icon" src="/static/image/icon/admin/upload_icon.svg"/><input id="file" class="form-upload-file" type="file" accept="video/mp4" onchange="HandleVideoFileInputChangeEvent( this )"/>
                         </label>
                     </div>
                 </div>

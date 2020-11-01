@@ -37,6 +37,15 @@
                     </div>
                 </div>
                 <div class="form-field-name">
+                    Video :
+                </div>
+                <div>
+                    <input class="form-input" name="Video" type="text" value="<?php echo htmlspecialchars( $this->Article->Video ); ?>" readonly/>
+                    <div class="form-upload-container">
+                        <video class="form-upload-video" controls><source src="/upload/video/<?php echo htmlspecialchars( $this->Article->Video ); ?>" type="video/mp4" onerror="this.src='/static/video/admin/missing_video.mp4'"/></video>
+                    </div>
+                </div>
+                <div class="form-field-name">
                     Date :
                 </div>
                 <div>

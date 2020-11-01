@@ -4,7 +4,7 @@
         <% .Section.Name %>
     </a>
 </h2>
-<img class="responsive-img" src="/upload/image/<% .Section.Image %>"/>
+<img class="full-width responsive-img" src="/upload/image/<% .Section.Image %>"/>
 <p>
     <% .Section.Text %>
 </p>

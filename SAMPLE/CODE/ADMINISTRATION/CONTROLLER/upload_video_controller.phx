@@ -4,7 +4,7 @@ import 'controller.php';
 
 // -- TYPES
 
-class UPLOAD_IMAGE_CONTROLLER extends CONTROLLER
+class UPLOAD_VIDEO_CONTROLLER extends CONTROLLER
 {
     method constructor(
         )
@@ -16,7 +16,7 @@ class UPLOAD_IMAGE_CONTROLLER extends CONTROLLER
             var source_file_path = GetUploadedFilePath( 'file' );
             var source_file_name = GetValidFileName( GetUploadedFileName( 'file' ) );
             var target_file_name = GetSuffixedFilePath( source_file_name, '_' .. GetCurrentDateTimeSuffix() );
-            var target_file_path = GetBaseFolderPath() .. 'upload/image/' .. target_file_name;
+            var target_file_path = GetBaseFolderPath() .. 'upload/video/' .. target_file_name;
 
             if ( MoveUploadedFile( source_file_path, target_file_path ) )
             {
@@ -33,4 +33,4 @@ class UPLOAD_IMAGE_CONTROLLER extends CONTROLLER
 
 // -- STATEMENTS
 
-var upload_image_controller = new UPLOAD_IMAGE_CONTROLLER();
+var upload_video_controller = new UPLOAD_VIDEO_CONTROLLER();

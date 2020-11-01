@@ -503,15 +503,19 @@ textarea:focus {
   overflow: hidden;
 }
 .form-upload-container {
+  display: flex;
+  align-items: center;
   margin-top: 0.5rem;
 }
-.form-upload-image {
+.form-upload-image,
+.form-upload-video {
   border-radius: 0.3125rem;
   width: auto;
   max-width: 80%;
   height: 12.5rem;
 }
 .form-upload-icon {
+  margin-left: 0.25rem;
   height: 1rem;
 }
 .form-upload-file {
@@ -629,7 +633,7 @@ textarea:focus {
   grid-template-columns: repeat(5, auto);
 }
 .article-table {
-  grid-template-columns: repeat(7, auto);
+  grid-template-columns: repeat(8, auto);
 }
 .comment-table {
   grid-template-columns: repeat(5, auto);
