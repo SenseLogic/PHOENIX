@@ -1,0 +1,28 @@
+// -- TYPES
+
+class SESSION
+{
+    method constructor(
+        )
+    {
+        .Path = FindSessionValue( 'Path', '' );
+        .Message = FindSessionValue( 'Message', '' );
+        .User = FindSessionValue( 'User', null );
+        .UserIsConnected = FindSessionValue( 'UserIsConnected', false );
+        .UserHasSubscribed = FindSessionValue( 'UserHasSubscribed', false );
+        .Captcha = FindSessionValue( 'Captcha', '' );
+    }
+
+    // ~~
+
+    method Store(
+        )
+    {
+        SetSessionValue( 'Path', .Path );
+        SetSessionValue( 'Message', .Message );
+        SetSessionValue( 'User', .User );
+        SetSessionValue( 'UserIsConnected', .UserIsConnected );
+        SetSessionValue( 'UserHasSubscribed', .UserHasSubscribed );
+        SetSessionValue( 'Captcha', .Captcha );
+    }
+}

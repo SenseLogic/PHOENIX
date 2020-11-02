@@ -1,0 +1,5 @@
+<? include 'BLOCK/page_header_block.php'; ?>
+<div>
+    Base view
+</div>
+<? include 'BLOCK/page_footer_block.php'; ?>

@@ -1,0 +1,23 @@
+// -- IMPORTS
+
+import 'controller.php';
+
+// -- TYPES
+
+class GET_CAPTCHA_IMAGE_CONTROLLER extends CONTROLLER
+{
+    // -- CONSTRUCTORS
+
+    method constructor(
+        string language_code
+        )
+    {
+        parent::constructor( language_code );
+
+        WriteCaptchaImage( .Session.Captcha );
+    }
+}
+
+// -- STATEMENTS
+
+var get_captcha_image_controller = new GET_CAPTCHA_IMAGE_CONTROLLER( var language_code );

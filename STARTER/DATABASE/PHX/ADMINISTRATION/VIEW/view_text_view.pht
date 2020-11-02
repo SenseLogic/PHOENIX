@@ -1,0 +1,22 @@
+<? include 'BLOCK/page_header_block.php' ?>
+<div>
+    <div class="page-section form-section">
+        <div class="form-container">
+            <div class="form-field-name">
+                Slug :
+            </div>
+            <div>
+                    <input class="form-input" name="Slug" type="text" value="<% .Text.Slug %>" readonly/>
+            </div>
+            <div class="form-field-name">
+                Text :
+            </div>
+            <div>
+                    <textarea class="form-textarea" name="Text" readonly><% .Text.Text %></textarea>
+            </div>
+            <a class="justify-self-start form-button form-button-large cancel-button" href="<% .PreviousPage %>">
+            </a>
+        </div>
+    </div>
+</div>
+<? include 'BLOCK/page_footer_block.php' ?>

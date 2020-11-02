@@ -1,0 +1,26 @@
+// -- IMPORTS
+
+import 'controller.php';
+
+// -- TYPES
+
+class DISCONNECT_USER_CONTROLLER extends CONTROLLER
+{
+    // -- CONSTRUCTORS
+
+    method constructor(
+        string language_code
+        )
+    {
+        parent::constructor( language_code );
+
+        .Session.UserIsConnected = false;
+        .Session.Store();
+
+        Redirect( .Session.Path );
+    }
+}
+
+// -- STATEMENTS
+
+var disconnect_user_controller = new DISCONNECT_USER_CONTROLLER( var language_code );

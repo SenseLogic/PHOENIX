@@ -1,6 +1,6 @@
 #!/bin/sh
 set -x
-../../../BASIL/basil --sql --phoenix blog.bs blog.bd blog.bt
+../../../BASIL/basil --sql --phoenix blog.bs blog.bd blog.bt administration.bt api.bt
 cp PHX/index.phx ../CODE/
 cp PHX/MODEL/*.phx ../CODE/MODEL/
 cp PHX/ADMINISTRATION/CONTROLLER/*.phx ../CODE/ADMINISTRATION/CONTROLLER/

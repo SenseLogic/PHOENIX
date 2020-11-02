@@ -1,0 +1,25 @@
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/user_model.php';
+
+// -- TYPES
+
+class REMOVE_USER_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        int user_id
+        )
+    {
+        parent::constructor();
+
+        .Title = 'Remove a user';
+        .User = GetDatabaseUserById( user_id );
+
+        import '../VIEW/remove_user_view.php';
+    }
+}
+
+// -- STATEMENTS
+
+var remove_user_controller = new REMOVE_USER_CONTROLLER( var user_id );

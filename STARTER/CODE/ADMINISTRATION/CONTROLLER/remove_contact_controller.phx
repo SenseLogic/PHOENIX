@@ -1,0 +1,25 @@
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/contact_model.php';
+
+// -- TYPES
+
+class REMOVE_CONTACT_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        int contact_id
+        )
+    {
+        parent::constructor();
+
+        .Title = 'Remove a contact';
+        .Contact = GetDatabaseContactById( contact_id );
+
+        import '../VIEW/remove_contact_view.php';
+    }
+}
+
+// -- STATEMENTS
+
+var remove_contact_controller = new REMOVE_CONTACT_CONTROLLER( var contact_id );

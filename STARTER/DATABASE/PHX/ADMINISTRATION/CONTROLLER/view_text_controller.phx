@@ -1,0 +1,26 @@
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/text_model.php';
+
+// -- TYPES
+
+class VIEW_TEXT_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        int text_id
+        )
+    {
+        parent::constructor();
+
+        .Title = 'View a text';
+        .Text = GetDatabaseTextById( text_id );
+        .PreviousPage = GetSessionValue( 'PreviousPage' );
+
+        import '../VIEW/view_text_view.php';
+    }
+}
+
+// -- STATEMENTS
+
+var view_text_controller = new VIEW_TEXT_CONTROLLER( var text_id );

@@ -1,0 +1,9 @@
+TEXT
+
+    Slug Text
+
+USER
+
+    Email Pseudonym Password IsAdministrator
+
+        root@root.com ~ root ~ xyz ~ true

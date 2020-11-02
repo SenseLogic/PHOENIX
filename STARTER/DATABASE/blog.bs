@@ -1,0 +1,23 @@
+blog
+
+    TEXT | dropped, count 5
+
+        Id : UINT32 | key, unique, incremented
+        Slug : STRING | indexed
+        Text : STRING | is_text
+
+    CONTACT | sorted, count 5
+
+        Id : UINT32 | key, unique, incremented
+        Name : STRING
+        Email : STRING
+        Message : STRING | is_text
+        DateTime : DATETIME | now, descending
+
+    USER | sorted, dropped, count 5
+
+        Id : UINT32 | key, unique, incremented, ascending, mapped
+        Email : STRING
+        Pseudonym : STRING
+        Password : STRING
+        IsAdministrator : BOOL

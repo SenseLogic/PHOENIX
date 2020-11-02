@@ -1,0 +1,26 @@
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/text_model.php';
+
+// -- TYPES
+
+class VIEW_TEXTS_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        )
+    {
+        parent::constructor();
+
+        .Title = 'View texts';
+        .TextArray = GetDatabaseTextArray();
+
+        SetSessionValue( 'PreviousPage', GetRequest() );
+
+        import '../VIEW/view_texts_view.php';
+    }
+}
+
+// -- STATEMENTS
+
+var view_texts_controller = new VIEW_TEXTS_CONTROLLER();

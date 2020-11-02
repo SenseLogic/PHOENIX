@@ -1,0 +1,41 @@
+// -- IMPORTS
+
+@import "base_style.styl"
+
+// -- CLASSES
+
+.text-button
+{
+    @extend .form-button;
+    background: url(/static/image/icon/admin/text_icon.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.contact-button
+{
+    @extend .form-button;
+    background: url(/static/image/icon/admin/contact_icon.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.user-button
+{
+    @extend .form-button;
+    background: url(/static/image/icon/admin/user_icon.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.text-table
+{
+    grid-template-columns: repeat( 3, auto );
+}
+
+.contact-table
+{
+    grid-template-columns: repeat( 5, auto );
+}
+
+.user-table
+{
+    grid-template-columns: repeat( 5, auto );
+}

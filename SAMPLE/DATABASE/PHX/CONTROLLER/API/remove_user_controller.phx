@@ -7,3 +7,4 @@ import '../../MODEL/user_model.php';
 RemoveDatabaseUserByUuid( user_uuid );
 
 SetStatus( 204 );
+

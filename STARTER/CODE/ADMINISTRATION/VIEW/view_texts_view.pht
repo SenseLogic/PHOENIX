@@ -1,0 +1,38 @@
+<? include 'BLOCK/page_header_block.php' ?>
+<div>
+    <div class="page-section form-section">
+        <div class="form-container table-container text-table sortable-grid">
+            <div class="form-column-name sortable-grid-column">
+                Slug
+            </div>
+            <div class="form-column-name sortable-grid-column">
+                Text
+            </div>
+            <div class="form-column-name sortable-grid-column">
+                Action
+            </div>
+            <? foreach ( var text; .TextArray ) { ?>
+                <div class="sortable-grid-cell">
+                    <% text.Slug %>
+                </div>
+                <div class="sortable-grid-cell">
+                    <% text.Text %>
+                </div>
+                <div class="form-centered sortable-grid-cell">
+                    <a class="form-button view-button" href="/admin/text/view/<% text.Id %>">
+                    </a>
+                    <a class="form-button edit-button" href="/admin/text/edit/<% text.Id %>">
+                    </a>
+                    <a class="form-button remove-button" href="/admin/text/remove/<% text.Id %>">
+                    </a>
+                </div>
+            <? } ?>
+            <div class="form-extended form-centered sortable-grid-footer">
+                <a class="form-button form-button-large add-button" href="/admin/text/add">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<? import '../../FRAMEWORK/sortable_grid.php'; ?>
+<? include 'BLOCK/page_footer_block.php' ?>

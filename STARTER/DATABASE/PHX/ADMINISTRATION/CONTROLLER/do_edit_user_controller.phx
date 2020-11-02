@@ -1,0 +1,29 @@
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/user_model.php';
+
+// -- TYPES
+
+class DO_EDIT_USER_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        int user_id
+        )
+    {
+        parent::constructor();
+
+        var email = GetPostValue( 'Email' );
+        var pseudonym = GetPostValue( 'Pseudonym' );
+        var password = GetPostValue( 'Password' );
+        var is_administrator = GetPostValue( 'IsAdministrator' );
+
+        SetDatabaseUser( user_id, email, pseudonym, password, is_administrator );
+
+        Redirect( '/admin/user' );
+    }
+}
+
+// -- STATEMENTS
+
+var do_edit_user_controller = new DO_EDIT_USER_CONTROLLER( var user_id );
