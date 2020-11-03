@@ -11,6 +11,20 @@
     background-size: contain;
 }
 
+.section-button
+{
+    @extend .form-button;
+    background: url(/static/image/icon/admin/section_icon.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.article-button
+{
+    @extend .form-button;
+    background: url(/static/image/icon/admin/article_icon.svg) no-repeat center center;
+    background-size: contain;
+}
+
 .contact-button
 {
     @extend .form-button;
@@ -28,6 +42,16 @@
 .text-table
 {
     grid-template-columns: repeat( 3, auto );
+}
+
+.section-table
+{
+    grid-template-columns: repeat( 3, auto );
+}
+
+.article-table
+{
+    grid-template-columns: repeat( 7, auto );
 }
 
 .contact-table

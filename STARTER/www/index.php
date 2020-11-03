@@ -175,6 +175,162 @@ function Route(
             }
         }
         else if ( $path_value_count >= 2
+                  && $path_value_array[ 1 ] === 'section' )
+        {
+            if ( $it_is_get_request
+                 && $path_value_count === 2 )
+            {
+                require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/view_sections_controller.php';
+            }
+            else if ( $it_is_get_request
+                      && $path_value_count === 3
+                      && $path_value_array[ 2 ] === 'add' )
+            {
+                require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/add_section_controller.php';
+            }
+            else if ( $it_is_post_request
+                      && $path_value_count === 3
+                      && $path_value_array[ 2 ] === 'add'
+                      && HasPostValue( 'Name' )
+                      && HasPostValue( 'Slug' ) )
+            {
+                require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/do_add_section_controller.php';
+            }
+            else if ( $it_is_get_request
+                      && $path_value_count === 4
+                      && $path_value_array[ 2 ] === 'view'
+                      && IsId( $path_value_array[ 3 ] ) )
+            {
+                 $section_id = $path_value_array[ 3 ];
+
+                require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/view_section_controller.php';
+            }
+            else if ( $it_is_get_request
+                      && $path_value_count === 4
+                      && $path_value_array[ 2 ] === 'edit'
+                      && IsId( $path_value_array[ 3 ] ) )
+            {
+                 $section_id = $path_value_array[ 3 ];
+
+                require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/edit_section_controller.php';
+            }
+            else if ( $it_is_post_request
+                      && $path_value_count === 4
+                      && $path_value_array[ 2 ] === 'edit'
+                      && IsId( $path_value_array[ 3 ] )
+                      && HasPostValue( 'Name' )
+                      && HasPostValue( 'Slug' ) )
+            {
+                 $section_id = $path_value_array[ 3 ];
+
+                require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/do_edit_section_controller.php';
+            }
+            else if ( $it_is_get_request
+                      && $path_value_count === 4
+                      && $path_value_array[ 2 ] === 'remove'
+                      && IsId( $path_value_array[ 3 ] ) )
+            {
+                 $section_id = $path_value_array[ 3 ];
+
+                require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/remove_section_controller.php';
+            }
+            else if ( $it_is_post_request
+                      && $path_value_count === 4
+                      && $path_value_array[ 2 ] === 'remove'
+                      && IsId( $path_value_array[ 3 ] ) )
+            {
+                 $section_id = $path_value_array[ 3 ];
+
+                require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/do_remove_section_controller.php';
+            }
+            else
+            {
+                require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/show_error_controller.php';
+            }
+        }
+        else if ( $path_value_count >= 2
+                  && $path_value_array[ 1 ] === 'article' )
+        {
+            if ( $it_is_get_request
+                 && $path_value_count === 2 )
+            {
+                require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/view_articles_controller.php';
+            }
+            else if ( $it_is_get_request
+                      && $path_value_count === 3
+                      && $path_value_array[ 2 ] === 'add' )
+            {
+                require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/add_article_controller.php';
+            }
+            else if ( $it_is_post_request
+                      && $path_value_count === 3
+                      && $path_value_array[ 2 ] === 'add'
+                      && HasPostValue( 'Title' )
+                      && HasPostValue( 'Slug' )
+                      && HasPostValue( 'Text' )
+                      && HasPostValue( 'Image' )
+                      && HasPostValue( 'Video' )
+                      && HasPostValue( 'SectionSlug' ) )
+            {
+                require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/do_add_article_controller.php';
+            }
+            else if ( $it_is_get_request
+                      && $path_value_count === 4
+                      && $path_value_array[ 2 ] === 'view'
+                      && IsId( $path_value_array[ 3 ] ) )
+            {
+                 $article_id = $path_value_array[ 3 ];
+
+                require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/view_article_controller.php';
+            }
+            else if ( $it_is_get_request
+                      && $path_value_count === 4
+                      && $path_value_array[ 2 ] === 'edit'
+                      && IsId( $path_value_array[ 3 ] ) )
+            {
+                 $article_id = $path_value_array[ 3 ];
+
+                require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/edit_article_controller.php';
+            }
+            else if ( $it_is_post_request
+                      && $path_value_count === 4
+                      && $path_value_array[ 2 ] === 'edit'
+                      && IsId( $path_value_array[ 3 ] )
+                      && HasPostValue( 'Title' )
+                      && HasPostValue( 'Slug' )
+                      && HasPostValue( 'Text' )
+                      && HasPostValue( 'Image' )
+                      && HasPostValue( 'Video' )
+                      && HasPostValue( 'SectionSlug' ) )
+            {
+                 $article_id = $path_value_array[ 3 ];
+
+                require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/do_edit_article_controller.php';
+            }
+            else if ( $it_is_get_request
+                      && $path_value_count === 4
+                      && $path_value_array[ 2 ] === 'remove'
+                      && IsId( $path_value_array[ 3 ] ) )
+            {
+                 $article_id = $path_value_array[ 3 ];
+
+                require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/remove_article_controller.php';
+            }
+            else if ( $it_is_post_request
+                      && $path_value_count === 4
+                      && $path_value_array[ 2 ] === 'remove'
+                      && IsId( $path_value_array[ 3 ] ) )
+            {
+                 $article_id = $path_value_array[ 3 ];
+
+                require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/do_remove_article_controller.php';
+            }
+            else
+            {
+                require_once __DIR__ . '/' . 'ADMINISTRATION/CONTROLLER/show_error_controller.php';
+            }
+        }
+        else if ( $path_value_count >= 2
                   && $path_value_array[ 1 ] === 'contact' )
         {
             if ( $it_is_get_request
@@ -356,24 +512,12 @@ function Route(
         }
         else if ( $it_is_post_request )
         {
-            if ( $path_value_count === 2
-                 && $path_value_array[ 0 ] === 'user' )
-            {
-                if ( $path_value_array[ 1 ] === 'connect' )
-                {
-                    require_once __DIR__ . '/' . 'CONTROLLER/connect_user_controller.php';
-                }
-                else if ( $path_value_array[ 1 ] === 'disconnect' )
-                {
-                    require_once __DIR__ . '/' . 'CONTROLLER/disconnect_user_controller.php';
-                }
-            }
-            else if ( $path_value_count === 1
-                      && $path_value_array[ 0 ] === 'contact'
-                      && HasPostValue( 'Name' )
-                      && HasPostValue( 'Email' )
-                      && HasPostValue( 'Message' )
-                      && HasPostValue( 'Captcha' ) )
+            if ( $path_value_count === 1
+                 && $path_value_array[ 0 ] === 'contact'
+                 && HasPostValue( 'Name' )
+                 && HasPostValue( 'Email' )
+                 && HasPostValue( 'Message' )
+                 && HasPostValue( 'Captcha' ) )
             {
                  $name = GetPostValue( 'Name' );
                  $email = GetPostValue( 'Email' );

@@ -17,6 +17,28 @@ create table if not exists `blog`.`TEXT`(
     primary key( `Id` )
     ) engine = InnoDB;
 
+drop table if exists `blog`.`SECTION`;
+
+create table if not exists `blog`.`SECTION`(
+    `Id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `Name` TEXT NULL,
+    `Slug` TEXT NULL,
+    primary key( `Id` )
+    ) engine = InnoDB;
+
+drop table if exists `blog`.`ARTICLE`;
+
+create table if not exists `blog`.`ARTICLE`(
+    `Id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `Title` TEXT NULL,
+    `Slug` TEXT NULL,
+    `Text` TEXT NULL,
+    `Image` TEXT NULL,
+    `Video` TEXT NULL,
+    `SectionSlug` TEXT NULL,
+    primary key( `Id` )
+    ) engine = InnoDB;
+
 drop table if exists `blog`.`CONTACT`;
 
 create table if not exists `blog`.`CONTACT`(

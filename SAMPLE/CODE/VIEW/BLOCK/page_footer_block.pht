@@ -31,9 +31,7 @@
                 <? } ?>
                 <? if ( !.Session.UserHasSubscribed ) { ?>
                     <?
-                        .Captcha = GetCaptchaText( 6 );
-
-                        .Session.Captcha = .Captcha;
+                        .Session.Captcha = GetCaptchaText( 6 );
                         .Session.Store();
                     ?>
                     <div class="card">
@@ -44,7 +42,7 @@
                             <script>
                                 // -- FUNCTIONS
 
-                                <# GetCaptchaCode( .Captcha ) #>
+                                <# GetCaptchaCode( .Session.Captcha ) #>
 
                                 // ~~
 
@@ -99,7 +97,7 @@
                                     <input id="email" name="Email" type="text"/>
                                 </label>
                                 <div>
-                                    <img id="captcha_image" src="/captcha" style="width:100%;height:auto"/>
+                                    <img id="captcha-image" src="/captcha" style="width:100%;height:auto"/>
                                 </div>
                                 <label for="captcha">
                                     Security Code :

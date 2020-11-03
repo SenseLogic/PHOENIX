@@ -95,7 +95,7 @@
                 <div>
                     <input class="form-input" name="Image" type="text" value="<?php echo htmlspecialchars( $this->Section->Image ); ?>" oninput="HandleImageNameInputChangeEvent( this )"/>
                     <div class="form-upload-container">
-                        <img class="form-upload-image" src="/upload/image/<?php echo htmlspecialchars( $this->Section->Image ); ?>" onerror="this.src='/static/image/icon/admin/missing_icon.svg'"/>
+                        <img class="form-upload-image" src="/upload/image/<?php echo htmlspecialchars( $this->Section->Image ); ?>" onerror="this.src='/upload/image/missing_image.svg'"/>
                         <label class="form-upload-button">
                             <img class="form-upload-icon" src="/static/image/icon/admin/upload_icon.svg"/><input id="file" class="form-upload-file" type="file" accept="image/jpeg, image/png, image/webp, image/gif, image/svg" onchange="HandleImageFileInputChangeEvent( this )"/>
                         </label>

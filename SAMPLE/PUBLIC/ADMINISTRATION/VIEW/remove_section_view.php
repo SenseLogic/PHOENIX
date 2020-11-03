@@ -27,7 +27,7 @@
                 <div>
                     <input class="form-input" name="Image" type="text" value="<?php echo htmlspecialchars( $this->Section->Image ); ?>" readonly/>
                     <div class="form-upload-container">
-                        <img class="form-upload-image" src="/upload/image/<?php echo htmlspecialchars( $this->Section->Image ); ?>" onerror="this.src='/static/image/icon/admin/missing_icon.svg'"/>
+                        <img class="form-upload-image" src="/upload/image/<?php echo htmlspecialchars( $this->Section->Image ); ?>" onerror="this.src='/upload/image/missing_image.svg'"/>
                     </div>
                 </div>
                 <a class="justify-self-start form-button form-button-large cancel-button" href="/admin/section">

@@ -1,0 +1,26 @@
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/section_model.php';
+
+// -- TYPES
+
+class VIEW_SECTIONS_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        )
+    {
+        parent::constructor();
+
+        .Title = 'View sections';
+        .SectionArray = GetDatabaseSectionArray();
+
+        SetSessionValue( 'PreviousPage', GetRequest() );
+
+        import '../VIEW/view_sections_view.php';
+    }
+}
+
+// -- STATEMENTS
+
+var view_sections_controller = new VIEW_SECTIONS_CONTROLLER();

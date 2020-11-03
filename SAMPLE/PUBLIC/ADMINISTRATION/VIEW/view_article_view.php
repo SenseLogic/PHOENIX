@@ -32,7 +32,7 @@
             <div>
                 <input class="form-input" name="Image" type="text" value="<?php echo htmlspecialchars( $this->Article->Image ); ?>" readonly/>
                 <div class="form-upload-container">
-                    <img class="form-upload-image" src="/upload/image/<?php echo htmlspecialchars( $this->Article->Image ); ?>" onerror="this.src='/static/image/icon/admin/missing_icon.svg'"/>
+                    <img class="form-upload-image" src="/upload/image/<?php echo htmlspecialchars( $this->Article->Image ); ?>" onerror="this.src='/upload/image/missing_image.svg'"/>
                 </div>
             </div>
             <div class="form-field-name">
@@ -41,7 +41,7 @@
             <div>
                 <input class="form-input" name="Video" type="text" value="<?php echo htmlspecialchars( $this->Article->Video ); ?>" readonly/>
                 <div class="form-upload-container">
-                    <video class="form-upload-video" controls><source src="/upload/video/<?php echo htmlspecialchars( $this->Article->Video ); ?>" type="video/mp4" onerror="this.src='/static/video/admin/missing_video.mp4'"/></video>
+                    <video class="form-upload-video" src="/upload/video/<?php echo htmlspecialchars( $this->Article->Video ); ?>" type="video/mp4" onerror="this.src='/upload/video/missing_video.mp4'"></video>
                 </div>
             </div>
             <div class="form-field-name">

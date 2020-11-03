@@ -1,6 +1,8 @@
 <?php // -- IMPORTS
 
 require_once __DIR__ . '/' . 'view_controller.php';
+require_once __DIR__ . '/' . '../MODEL/article_model.php';
+require_once __DIR__ . '/' . '../MODEL/section_model.php';
 require_once __DIR__ . '/' . '../MODEL/text_model.php';
 
 // -- TYPES
@@ -13,8 +15,10 @@ class SHOW_BASE_CONTROLLER extends VIEW_CONTROLLER
     {
         parent::__construct( $language_code );
 
-        $this->Captcha = GetCaptchaText( 6 );
+        $this->SectionArray = GetDatabaseSectionArray();
+        $this->ArticleArray = GetDatabaseArticleArray();
 
+        $this->Captcha = GetCaptchaText( 6 );
         $this->Session->Captcha = $this->Captcha;
         $this->Session->Store();
 

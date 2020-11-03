@@ -199,24 +199,12 @@ function Route(
         }
         else if ( it_is_post_request )
         {
-            if ( path_value_count === 2
-                 && path_value_array[ 0 ] === 'user' )
-            {
-                if ( path_value_array[ 1 ] === 'connect' )
-                {
-                    import 'CONTROLLER/connect_user_controller.php';
-                }
-                else if ( path_value_array[ 1 ] === 'disconnect' )
-                {
-                    import 'CONTROLLER/disconnect_user_controller.php';
-                }
-            }
-            else if ( path_value_count === 1
-                      && path_value_array[ 0 ] === 'contact'
-                      && HasPostValue( 'Name' )
-                      && HasPostValue( 'Email' )
-                      && HasPostValue( 'Message' )
-                      && HasPostValue( 'Captcha' ) )
+            if ( path_value_count === 1
+                 && path_value_array[ 0 ] === 'contact'
+                 && HasPostValue( 'Name' )
+                 && HasPostValue( 'Email' )
+                 && HasPostValue( 'Message' )
+                 && HasPostValue( 'Captcha' ) )
             {
                 var name = GetPostValue( 'Name' );
                 var email = GetPostValue( 'Email' );

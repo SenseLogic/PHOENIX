@@ -539,6 +539,8 @@ textarea:focus {
 .cancel-button,
 .apply-button,
 .text-button,
+.section-button,
+.article-button,
 .contact-button,
 .user-button {
   display: inline-block;
@@ -595,6 +597,14 @@ textarea:focus {
   background: url("/static/image/icon/admin/text_icon.svg") no-repeat center center;
   background-size: contain;
 }
+.section-button {
+  background: url("/static/image/icon/admin/section_icon.svg") no-repeat center center;
+  background-size: contain;
+}
+.article-button {
+  background: url("/static/image/icon/admin/article_icon.svg") no-repeat center center;
+  background-size: contain;
+}
 .contact-button {
   background: url("/static/image/icon/admin/contact_icon.svg") no-repeat center center;
   background-size: contain;
@@ -605,6 +615,12 @@ textarea:focus {
 }
 .text-table {
   grid-template-columns: repeat(3, auto);
+}
+.section-table {
+  grid-template-columns: repeat(3, auto);
+}
+.article-table {
+  grid-template-columns: repeat(7, auto);
 }
 .contact-table {
   grid-template-columns: repeat(5, auto);

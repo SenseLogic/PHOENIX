@@ -1,0 +1,23 @@
+// -- IMPORTS
+
+import 'controller.php';
+import '../../MODEL/section_model.php';
+
+// -- TYPES
+
+class ADD_SECTION_CONTROLLER extends CONTROLLER
+{
+    method constructor(
+        )
+    {
+        parent::constructor();
+
+        .Title = 'Add a section';
+
+        import '../VIEW/add_section_view.php';
+    }
+}
+
+// -- STATEMENTS
+
+var add_section_controller = new ADD_SECTION_CONTROLLER();

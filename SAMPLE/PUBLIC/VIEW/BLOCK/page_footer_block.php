@@ -31,9 +31,7 @@
                 <?php } ?>
                 <?php if ( !$this->Session->UserHasSubscribed ) { ?>
                     <?php
-                        $this->Captcha = GetCaptchaText( 6 );
-
-                        $this->Session->Captcha = $this->Captcha;
+                        $this->Session->Captcha = GetCaptchaText( 6 );
                         $this->Session->Store();
                     ?>
                     <div class="card">
@@ -44,7 +42,7 @@
                             <script>
                                 // -- FUNCTIONS
 
-                                <?php echo GetCaptchaCode( $this->Captcha ); ?>
+                                <?php echo GetCaptchaCode( $this->Session->Captcha ); ?>
 
                                 // ~~
 
@@ -99,7 +97,7 @@
                                     <input id="email" name="Email" type="text"/>
                                 </label>
                                 <div>
-                                    <img id="captcha_image" src="/captcha" style="width:100%;height:auto"/>
+                                    <img id="captcha-image" src="/captcha" style="width:100%;height:auto"/>
                                 </div>
                                 <label for="captcha">
                                     Security Code :
