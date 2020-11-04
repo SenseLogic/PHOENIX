@@ -1,7 +1,0 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <? include 'page_head_block.php' ?>
-    </head>
-    <body>
-        <? include 'page_body_block.php' ?>
