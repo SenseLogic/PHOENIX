@@ -1,3 +1,4 @@
 phoenix
 *.o
 SAMPLE/PUBLIC/php.log
+STARTER/www/php.log

@@ -5,8 +5,8 @@ replace into `blog`.`TEXT`
     values
     (
         1,
-        "axtotchiedul",
-        "Just ready to pleasure with thanks returned asked it, surrounded by her old he considered indispensable and salvation. Wouldn't you don't quite understand this repetition this time."
+        "comurneu",
+        "One many sweet dull was also do, language would bring happiness and under the evening's ablution. Thought like an ox-cart and then said."
     );
 
 replace into `blog`.`TEXT`
@@ -16,8 +16,8 @@ replace into `blog`.`TEXT`
     values
     (
         2,
-        "eighowskidi",
-        "Like happiness something by that curious more willing, forgive me how wise his kindness this way. Black ones with agonising pain also be achieved it."
+        "oulober",
+        "Taught my name is holding one's thoughts, sir is waiting of followers of talk, glance with respect to instruct them all. You're awake which roughly means that she went outside, father for two of perfection which goal."
     );
 
 replace into `blog`.`TEXT`
@@ -27,8 +27,8 @@ replace into `blog`.`TEXT`
     values
     (
         3,
-        "otturkade",
-        "Pearls he has done differently sound it also do, spoke little child from men talked incessantly. Majority of many there pondering while begging buying bananas, evening had occupied their richness and golden cage."
+        "xenasobe",
+        "Proper it any longer a dark waters, write very old loincloth and every tavern of offerings. I'll continue gambling he smiled a coconut-tree. Exclaimed if this entire eternal characteristics as."
     );
 
 replace into `blog`.`TEXT`
@@ -38,8 +38,8 @@ replace into `blog`.`TEXT`
     values
     (
         4,
-        "sourupparnit",
-        "Warrior and into emptiness let escape of paths. How shall let his spirit to receive, they've become dead jackal was hidden so clearly, would kill and evil words it's you kidding. Face lying by killing the mute gaze asked."
+        "telelbejo",
+        "Boy over every gesture every urge to death, wavered to burning woe just his suffering, simply thus alone in house there is so irrefutably."
     );
 
 replace into `blog`.`TEXT`
@@ -49,8 +49,8 @@ replace into `blog`.`TEXT`
     values
     (
         5,
-        "manulkeu",
-        "Monks on gods saw whom had gathered dust, arrow-fast he wanted for any given upper garments. Half gray in learning from one suffering."
+        "ichehe",
+        "Soon afterwards when she not my path, yesterday wear many who would ever harm me. Their way each one moment all being a, surrounded by drop by teachers is divine."
     );
 
 replace into `blog`.`SECTION`
@@ -60,8 +60,8 @@ replace into `blog`.`SECTION`
     values
     (
         1,
-        "Jaakkola",
-        "jaakkola"
+        "Cesaratto",
+        "cesaratto"
     );
 
 replace into `blog`.`SECTION`
@@ -71,8 +71,8 @@ replace into `blog`.`SECTION`
     values
     (
         2,
-        "Lavorata",
-        "lavorata"
+        "Dipierro",
+        "dipierro"
     );
 
 replace into `blog`.`SECTION`
@@ -82,8 +82,8 @@ replace into `blog`.`SECTION`
     values
     (
         3,
-        "Leiwe",
-        "leiwe"
+        "Kee",
+        "kee"
     );
 
 replace into `blog`.`ARTICLE`
@@ -93,12 +93,12 @@ replace into `blog`.`ARTICLE`
     values
     (
         1,
-        "They've become empty rumours.",
-        "they-ve-become-empty-rumours",
-        "Afterwards insight but eternal not-finding. Wisdom cannot deny my willingness my wife's funeral pile.",
-        "palm_tree.jpg",
+        "How distrustful and there.",
+        "how-distrustful-and-there",
+        "Heard his stakes that with dice, offerings to convince his way said tiredly.",
+        "surfer.jpg",
         "train.mp4",
-        "leiwe"
+        "kee"
     );
 
 replace into `blog`.`ARTICLE`
@@ -108,12 +108,12 @@ replace into `blog`.`ARTICLE`
     values
     (
         2,
-        "Speaking which have teachers and called upon.",
-        "speaking-which-have-teachers-and-called-upon",
-        "Wondrous teachings he alone like good things are smiling oneness, I'll also learn that I've found, near perfection I praise you. Smile quiet a frightening emptiness was knowledgeable one dwells.",
+        "Stared into its surface the manner laughed.",
+        "stared-into-its-surface-the-manner-laughed",
+        "Should also went the self, another loan welcome my teacher.",
         "beach.jpg",
         "train.mp4",
-        "jaakkola"
+        "dipierro"
     );
 
 replace into `blog`.`ARTICLE`
@@ -123,12 +123,12 @@ replace into `blog`.`ARTICLE`
     values
     (
         3,
-        "Until it'll becomes old childlike face.",
-        "until-it-ll-becomes-old-childlike-face",
-        "If you're saying something dying quiet smile, body like holiness to emit like sadly he used to. Arrow-fast he stood not this we must praise you, wheel once twice the woman whom is good sir.",
-        "surfer.jpg",
-        "bus.mp4",
-        "jaakkola"
+        "Eternal entity which one hour when was left.",
+        "eternal-entity-which-one-hour-when-was-left",
+        "Him brightly out devoured up in it, time I've already ascended many so I praise from him, truly I'm seeing images appeared to death.",
+        "palm_tree.jpg",
+        "train.mp4",
+        "kee"
     );
 
 replace into `blog`.`ARTICLE`
@@ -138,12 +138,12 @@ replace into `blog`.`ARTICLE`
     values
     (
         4,
-        "Who petitioned him when left him.",
-        "who-petitioned-him-when-left-him",
-        "Mouth is fading now which the multitude of offerings. Arrow-fast he pleased he should also have I followed him. Still on and remained as such hair.",
+        "Walking swiftly smoothly moving water.",
+        "walking-swiftly-smoothly-moving-water",
+        "Perhaps reciprocate it sucked up impetuously hunting, time kissed with each one the, waiting thinking of physical forms.",
         "palm_tree.jpg",
         "train.mp4",
-        "leiwe"
+        "dipierro"
     );
 
 replace into `blog`.`ARTICLE`
@@ -153,12 +153,12 @@ replace into `blog`.`ARTICLE`
     values
     (
         5,
-        "Wisdom actually something he read for you.",
-        "wisdom-actually-something-he-read-for-you",
-        "Want me go this been sitting on hers, willingness delights my best thought of patience. Even more on that teachings. Apparently he demanded him with words.",
-        "surfer.jpg",
+        "Behold here on account of grass.",
+        "behold-here-on-account-of-grass",
+        "These you well ordered well tested sequence a saint, would he bend slightly weak at my friend. Having had noticed that aside and obedience.",
+        "palm_tree.jpg",
         "train.mp4",
-        "lavorata"
+        "dipierro"
     );
 
 replace into `blog`.`ARTICLE`
@@ -168,12 +168,12 @@ replace into `blog`.`ARTICLE`
     values
     (
         6,
-        "Perhaps enjoyable to understand spoke.",
-        "perhaps-enjoyable-to-understand-spoke",
-        "Body full the rig-veda being without reason why, sounded strange may I am standing here twenty paces away, got some time a teaching you are awaiting him.",
-        "palm_tree.jpg",
+        "Near to capture it.",
+        "near-to-capture-it",
+        "Haven't learned this so that servant prepared to friend, soul to work did you always picked them just consider. Offerings were discussing how once at every touch this birth, bowed touching the book of passion of it.",
+        "beach.jpg",
         "bus.mp4",
-        "leiwe"
+        "cesaratto"
     );
 
 replace into `blog`.`ARTICLE`
@@ -183,12 +183,12 @@ replace into `blog`.`ARTICLE`
     values
     (
         7,
-        "You'll see his bowl of expertise.",
-        "you-ll-see-his-bowl-of-expertise",
-        "Most people wearing a thousand other hand, want back for much between the houses leaving monk. Pilgrims you he belong to.",
+        "Yes he lost to salvation.",
+        "yes-he-lost-to-salvation",
+        "Glance at you entirely sinful, speaking she wanted for knowledge which you'll hear more. Sounded new thirst felt as `learning', teachings to remember something else were water into face.",
         "beach.jpg",
-        "bus.mp4",
-        "lavorata"
+        "train.mp4",
+        "cesaratto"
     );
 
 replace into `blog`.`ARTICLE`
@@ -198,12 +198,12 @@ replace into `blog`.`ARTICLE`
     values
     (
         8,
-        "Look did and princes hunting for himself.",
-        "look-did-and-princes-hunting-for-himself",
-        "Sounded new face watched them the arrangement of unsatisfiable desire. Close to life full breast when my pilgrimage, stood up and long before on their travels. Exalted one suffering on loaned money.",
-        "palm_tree.jpg",
-        "bus.mp4",
-        "lavorata"
+        "Simply believed in memory.",
+        "simply-believed-in-memory",
+        "Occasionally they played with respect. How clear as defeated as possible for joy.",
+        "beach.jpg",
+        "train.mp4",
+        "dipierro"
     );
 
 replace into `blog`.`ARTICLE`
@@ -213,12 +213,12 @@ replace into `blog`.`ARTICLE`
     values
     (
         9,
-        "Scent of your house for yourself.",
-        "scent-of-your-house-for-yourself",
-        "I'll continue travelling by teachers without being indestructible the path, was happy and bad whether the bodies of people own, though she called name is divine grace to side.",
-        "surfer.jpg",
-        "train.mp4",
-        "lavorata"
+        "Indignation is waiting opened the test.",
+        "indignation-is-waiting-opened-the-test",
+        "Pointed him between thoughts this area, understood him came forcefully out to devour him any longer. Over by his enlarged eyes glistening, ran and up here yellow cloak presenting his error.",
+        "palm_tree.jpg",
+        "bus.mp4",
+        "dipierro"
     );
 
 replace into `blog`.`ARTICLE`
@@ -228,12 +228,12 @@ replace into `blog`.`ARTICLE`
     values
     (
         10,
-        "Has lived among carters and kissed with words.",
-        "has-lived-among-carters-and-kissed-with-words",
-        "Lost jewelry and carefully he knows just to enlightenment, for two friendly ferryman yes. Truly wanted to friend unstoppable like it fly.",
+        "An eternal thirst they commanded.",
+        "an-eternal-thirst-they-commanded",
+        "River on loaned money lost jewelry and passion. Bold is why don't dare, body and into it already. Exalted has eaten and assumed a dead bird.",
         "beach.jpg",
-        "bus.mp4",
-        "jaakkola"
+        "train.mp4",
+        "dipierro"
     );
 
 replace into `blog`.`CONTACT`
@@ -243,10 +243,10 @@ replace into `blog`.`CONTACT`
     values
     (
         1,
-        "Klaudt",
-        "nhut.benschop@yahoo.com",
-        "Inspahata",
-        "2010-08-15 12:28:40"
+        "Pell",
+        "halley.torrens@outlook.com",
+        "Anumol",
+        "2008-04-25 19:07:08"
     );
 
 replace into `blog`.`CONTACT`
@@ -256,10 +256,10 @@ replace into `blog`.`CONTACT`
     values
     (
         2,
-        "Pickens",
-        "keven.singh@outlook.com",
-        "Dunalbraj",
-        "2011-11-07 09:13:12"
+        "Moyce",
+        "juozas.skuce@outlook.com",
+        "Donawo",
+        "2004-06-14 14:33:10"
     );
 
 replace into `blog`.`CONTACT`
@@ -269,10 +269,10 @@ replace into `blog`.`CONTACT`
     values
     (
         3,
-        "Dinsmore",
-        "carlen.negandhi@mail.com",
-        "Dovassoduloh",
-        "2011-04-25 17:36:35"
+        "Salb",
+        "bertie.cooney@gmail.com",
+        "Ordurkeyu",
+        "2009-06-15 07:21:58"
     );
 
 replace into `blog`.`CONTACT`
@@ -282,10 +282,10 @@ replace into `blog`.`CONTACT`
     values
     (
         4,
-        "Pulcher",
-        "rafaelita.powney@yahoo.com",
-        "Ergarrirnig",
-        "2013-11-16 13:24:12"
+        "Sztein",
+        "joletta.pagliarulo@mail.com",
+        "Ailrakstoder",
+        "2014-10-07 07:07:45"
     );
 
 replace into `blog`.`CONTACT`
@@ -295,10 +295,10 @@ replace into `blog`.`CONTACT`
     values
     (
         5,
-        "Caviness",
-        "coursey.setterfield@yahoo.com",
-        "Zenkevicius",
-        "2007-10-16 02:20:12"
+        "Cronk",
+        "joan.latella@live.com",
+        "Ulancas",
+        "2006-07-24 09:48:42"
     );
 
 replace into `blog`.`USER`
@@ -321,10 +321,10 @@ replace into `blog`.`USER`
     values
     (
         2,
-        "manuel.litz@mail.com",
-        "manuellitz",
-        "m8anW;ilki",
-        1
+        "claudine.vahary@live.com",
+        "claudinevahary",
+        "s8en#aPssy",
+        0
     );
 
 replace into `blog`.`USER`
@@ -334,9 +334,9 @@ replace into `blog`.`USER`
     values
     (
         3,
-        "cezary.disalvo@hotmail.com",
-        "cezarydisalvo",
-        "rO?9adop",
+        "narinder.wieland@gmail.com",
+        "narinderwieland",
+        "3arka.balL",
         1
     );
 
@@ -347,9 +347,9 @@ replace into `blog`.`USER`
     values
     (
         4,
-        "gertie.juhan@gmail.com",
-        "gertiejuhan",
-        "Ukas/3o",
+        "evangelia.donak@gmail.com",
+        "evangeliadonak",
+        "liHc1a:",
         1
     );
 
@@ -360,9 +360,9 @@ replace into `blog`.`USER`
     values
     (
         5,
-        "jaquelin.tieu@hotmail.com",
-        "jaquelintieu",
-        "&otHsa0do",
+        "martijn.seegobin@outlook.com",
+        "martijnseegobin",
+        "na6di:Pr",
         1
     );
 
