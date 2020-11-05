@@ -70,3 +70,19 @@ function GetDatabaseObjectArray(
 
     return object_array;
 }
+
+// ~~
+
+function GetDatabaseTableObjectArray(
+    string table_name
+    )
+{
+    var statement = GetDatabaseStatement( 'select * from ' .. table_name );
+
+    if ( !statement.execute() )
+    {
+        var_dump( statement.errorInfo() );
+    }
+
+    return GetDatabaseObjectArray( statement );
+}
