@@ -179,7 +179,7 @@ class VIEW_{#type#}_CONTROLLER extends CONTROLLER
 // -- STATEMENTS
 
 var view_{#variable#}_controller = new VIEW_{#type#}_CONTROLLER( var {#variable#}_id );
-%%PHX/ADMINISTRATION/CONTROLLER/view_{#variable#}s_controller.phx
+%%PHX/ADMINISTRATION/CONTROLLER/view_<~Plural<>{#variable#}~>_controller.phx
 // -- IMPORTS
 
 import 'controller.php';
@@ -205,7 +205,7 @@ class VIEW_{#type#}S_CONTROLLER extends CONTROLLER
 
 // -- STATEMENTS
 
-var view_{#variable#}s_controller = new VIEW_{#type#}S_CONTROLLER();
+var view_{#variable#}s_controller = new VIEW_<~Plural<>{#type#}~>_CONTROLLER();
 %%PHX/ADMINISTRATION/VIEW/add_{#variable#}_view.pht
 <? include 'BLOCK/page_header_block.php' ?>
 <script>
@@ -392,7 +392,7 @@ $>
     </div>
 </div>
 <? include 'BLOCK/page_footer_block.php' ?>
-%%PHX/ADMINISTRATION/VIEW/view_{#variable#}s_view.pht
+%%PHX/ADMINISTRATION/VIEW/view_<~Plural<>{#variable#}~>_view.pht
 <? include 'BLOCK/page_header_block.php' ?>
 <div>
     <div class="page-section form-section">

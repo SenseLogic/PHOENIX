@@ -160,7 +160,7 @@ function Route(
             if ( it_is_get_request
                  && path_value_count === 2 )
             {
-                import 'ADMINISTRATION/CONTROLLER/view_{#variable#}s_controller.php';
+                import 'ADMINISTRATION/CONTROLLER/view_<~Plural<>{#variable#}~>_controller.php';
             }
             else if ( it_is_get_request
                       && path_value_count === 3
