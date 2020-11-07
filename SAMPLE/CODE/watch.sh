@@ -1,3 +1,3 @@
 #!/bin/sh
 set -x
-../../phoenix --create --watch ./ PUBLIC/
+../../phoenix --create --watch ./ www/

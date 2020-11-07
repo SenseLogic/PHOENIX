@@ -1048,4 +1048,5 @@ function Route(
 // -- STATEMENTS
 
 ShowErrors();
+PrintRequest();
 Route( GetPath() );

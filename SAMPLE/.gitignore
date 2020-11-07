@@ -1,3 +1,5 @@
-CODE/STYLE/VISTA/vista*.*
-CODE/php.log
-PUBLIC/static/script/vista*.*
+/CODE/FRAMEWORK/*.ph?
+/CODE/STYLE/VISTA/vista*.*
+/www/php.log
+/www/FRAMEWORK/*.*
+/www/static/script/vista*.*
