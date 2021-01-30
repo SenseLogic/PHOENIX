@@ -15,7 +15,7 @@
         </style>
     </head>
     <body class="container">
-        <script type="text/javascript" src="/static/script/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="/static/script/jquery-3.5.1.min.js"></script>
         <script type="text/javascript" src="/static/script/materialize.min.js"></script>
         <div class="row">
             <nav class="col m12">

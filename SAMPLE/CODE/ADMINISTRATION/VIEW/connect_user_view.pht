@@ -5,7 +5,7 @@
             <div class="form-field-name">
                 Pseudonym :
             </div>
-            <input class="form-input" name="Pseudonym" type="pseudonym"/>
+            <input class="form-input" name="Pseudonym" type="text"/>
             <div class="form-field-name">
                 Password :
             </div>
