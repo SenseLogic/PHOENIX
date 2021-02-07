@@ -16,7 +16,14 @@ It automatically watches file modifications for instant compilation, and the gen
 <html>
     <head>
          <meta charset="utf8"/>
+        <link rel="stylesheet" href="style.css">
     </head>
+    <style file="style.styl">
+        .text-color-blue
+        {
+            color: #000088;
+        }
+    </style>
     <body>
         <?
             local
@@ -127,30 +134,31 @@ It automatically watches file modifications for instant compilation, and the gen
 
             dwarf_name_array = array( 'Balin', 'Dwalin', 'Oin', 'Gloin' );
         ?>
+        <div class="text-color-blue">
+            <p>
+                There is <% hobbit_count %> hobbit.
+            </p>
+            <p>
+                <% hobbit.FirstName .. ' ' .. hobbit.LastName %> has <% hobbit.RingCount %> ring.
+            </p>
+            <p>
+                <% message %>
+            </p>
+            <p>
+                <# bold #>
+            </p>
+            <p>
+                There are <% count( dwarf_name_array ) %> dwarves :
+            </p>
 
-        <p>
-            There is <% hobbit_count %> hobbit.
-        </p>
-        <p>
-            <% hobbit.FirstName .. ' ' .. hobbit.LastName %> has <% hobbit.RingCount %> ring.
-        </p>
-        <p>
-            <% message %>
-        </p>
-        <p>
-            <# bold #>
-        </p>
-        <p>
-            There are <% count( dwarf_name_array ) %> dwarves :
-        </p>
-
-        <ul>
-            <? foreach ( var dwarf_name; dwarf_name_array ) { ?>
-                <li>
-                    <% dwarf_name %>
-                </li>
-            <? } ?>
-        </ul>
+            <ul>
+                <? foreach ( var dwarf_name; dwarf_name_array ) { ?>
+                    <li>
+                        <% dwarf_name %>
+                    </li>
+                <? } ?>
+            </ul>
+        </div>
     </body>
 </html>
 ```

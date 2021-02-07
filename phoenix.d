@@ -112,7 +112,7 @@ class TOKEN
         PriorSpaceCount = 0;
     }
 
-    // -- OPERATIONS
+    // -- INQUIRIES
 
     bool IsReservedKeyword(
         )
@@ -230,6 +230,18 @@ class TOKEN
                  || Text == "static" );
     }
 
+    // -- OPERATIONS
+
+    void Clear(
+        )
+    {
+        Text = "";
+        Type = TOKEN_TYPE.None;
+        LineIndex = 0;
+        ColumnIndex = 0;
+        PriorSpaceCount = 0;
+    }
+
     // ~~
 
     void SetMinimumPriorSpaceCount(
@@ -341,7 +353,7 @@ class CODE
         ScopeArray ~= Scope;
     }
 
-    // ~~
+    // -- INQUIRIES
 
     bool IsAlphabeticalCharacter(
         char character
@@ -453,6 +465,64 @@ class CODE
     }
 
     // ~~
+
+    string GetText(
+        long first_line_index,
+        long first_token_index,
+        long post_token_index
+        )
+    {
+        long
+            line_index,
+            token_index;
+        string
+            text;
+        TOKEN
+            token;
+
+        line_index = first_line_index;
+
+        for ( token_index = first_token_index;
+              token_index < post_token_index;
+              ++token_index )
+        {
+            token = TokenArray[ token_index ];
+
+            while ( token.LineIndex > line_index )
+            {
+                text ~= "\n";
+                ++line_index;
+            }
+
+            foreach ( space_index; 0 .. token.PriorSpaceCount )
+            {
+                text ~= " ";
+            }
+
+            text ~= token.Text;
+        }
+
+        text ~= "\n";
+
+        return text;
+    }
+
+    // ~~
+
+    string GetText(
+        )
+    {
+        if ( IsTemplate )
+        {
+            return GetText( 0, 0, TokenArray.length );
+        }
+        else
+        {
+            return "<?php " ~ GetText( 0, 0, TokenArray.length );
+        }
+    }
+
+    // -- OPERATIONS
 
     void AddToken()
     {
@@ -1565,7 +1635,117 @@ class CODE
 
     // ~~
 
+    void WriteSnippetFile(
+        long first_token_index,
+        long post_token_index,
+        string input_file_path,
+        string output_file_path
+        )
+    {
+        string
+            file_path,
+            file_text;
+
+        file_text = GetText( TokenArray[ first_token_index ].LineIndex, first_token_index + 8, post_token_index - 3 );
+        file_path = input_file_path.dirName() ~ "/" ~ output_file_path;
+        file_path.WriteText( file_text );
+    }
+
+    // ~~
+
+    void ClearSnippet(
+        long first_token_index,
+        long post_token_index
+        )
+    {
+        long
+            token_index;
+
+        for ( token_index = first_token_index;
+              token_index < post_token_index;
+              ++token_index )
+        {
+            TokenArray[ token_index ].Clear();
+        }
+    }
+
+    // ~~
+
+    bool ProcessSnippet(
+        long first_token_index,
+        string opening_tag_name,
+        string input_file_path,
+        string output_file_path
+        )
+    {
+        long
+            post_token_index,
+            token_index;
+        string
+            text;
+
+        for ( token_index = first_token_index + 8;
+              token_index + 3 < TokenArray.length;
+              ++token_index )
+        {
+            if ( TokenArray[ token_index ].Type == TOKEN_TYPE.BeginClosingTag
+                 && TokenArray[ token_index + 1 ].Type == TOKEN_TYPE.Identifier
+                 && TokenArray[ token_index + 1 ].Text == opening_tag_name
+                 && TokenArray[ token_index + 2 ].Type == TOKEN_TYPE.EndClosingTag )
+            {
+                post_token_index = token_index + 3;
+                WriteSnippetFile( first_token_index, post_token_index, input_file_path, output_file_path );
+                ClearSnippet( first_token_index, post_token_index );
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    // ~~
+
+    void ProcessSnippets(
+        string input_file_path
+        )
+    {
+        long
+            token_index;
+        string
+            opening_tag_name,
+            output_file_path;
+
+        for ( token_index = 0;
+              token_index + 7 < TokenArray.length;
+              ++token_index )
+        {
+            if ( TokenArray[ token_index ].Type == TOKEN_TYPE.BeginOpeningTag
+                 && TokenArray[ token_index + 1 ].Type == TOKEN_TYPE.Identifier
+                 && TokenArray[ token_index + 2 ].Type == TOKEN_TYPE.Identifier
+                 && TokenArray[ token_index + 2 ].Text == "file"
+                 && TokenArray[ token_index + 3 ].Type == TOKEN_TYPE.Operator
+                 && TokenArray[ token_index + 3 ].Text == "="
+                 && TokenArray[ token_index + 4 ].Type == TOKEN_TYPE.BeginStringLiteral
+                 && TokenArray[ token_index + 5 ].Type == TOKEN_TYPE.StringLiteral
+                 && TokenArray[ token_index + 6 ].Type == TOKEN_TYPE.EndStringLiteral
+                 && TokenArray[ token_index + 7 ].Type == TOKEN_TYPE.EndOpeningTag )
+            {
+                opening_tag_name = TokenArray[ token_index + 1 ].Text;
+                output_file_path = TokenArray[ token_index + 5 ].Text;
+
+                if ( ProcessSnippet( token_index, opening_tag_name, input_file_path, output_file_path ) )
+                {
+                    --token_index;
+                }
+            }
+        }
+    }
+
+    // ~~
+
     void Process(
+        string input_file_path
         )
     {
         long
@@ -1577,48 +1757,8 @@ class CODE
         {
             ProcessToken( token_index );
         }
-    }
 
-    // ~~
-
-    string GetText(
-        )
-    {
-        long
-            line_index;
-        string
-            file_text;
-
-        if ( IsTemplate )
-        {
-            file_text = "";
-        }
-        else
-        {
-            file_text = "<?php ";
-        }
-
-        line_index = 0;
-
-        foreach ( ref token; TokenArray )
-        {
-            while ( token.LineIndex > line_index )
-            {
-                file_text ~= "\n";
-                ++line_index;
-            }
-
-            foreach ( space_index; 0 .. token.PriorSpaceCount )
-            {
-                file_text ~= " ";
-            }
-
-            file_text ~= token.Text;
-        }
-
-        file_text ~= "\n";
-
-        return file_text;
+        ProcessSnippets( input_file_path );
     }
 }
 
@@ -1649,51 +1789,7 @@ class FILE
     string ReadInputFile(
         )
     {
-        string
-            input_file_text;
-
-        writeln( "Reading file : ", InputPath );
-
-        try
-        {
-            input_file_text = InputPath.readText();
-        }
-        catch ( FileException file_exception )
-        {
-            Abort( "Can't read file : " ~ InputPath, file_exception );
-        }
-
-        return input_file_text;
-    }
-
-    // ~~
-
-    void CreateOutputFolder(
-        )
-    {
-        string
-            output_folder_path;
-
-        output_folder_path = OutputPath.dirName();
-
-        if ( !output_folder_path.exists() )
-        {
-            writeln( "Creating folder : ", output_folder_path );
-
-            try
-            {
-                if ( output_folder_path != ""
-                     && output_folder_path != "/"
-                     && !output_folder_path.exists() )
-                {
-                    output_folder_path.mkdirRecurse();
-                }
-            }
-            catch ( FileException file_exception )
-            {
-                Abort( "Can't create folder : " ~ output_folder_path, file_exception );
-            }
-        }
+        return InputPath.ReadText();
     }
 
     // ~~
@@ -1702,20 +1798,7 @@ class FILE
         string output_file_text
         )
     {
-        writeln( "Writing file : ", OutputPath );
-
-        try
-        {
-            if ( !OutputPath.exists()
-                 || OutputPath.readText() != output_file_text )
-            {
-                OutputPath.write( output_file_text );
-            }
-        }
-        catch ( FileException file_exception )
-        {
-            Abort( "Can't write file : " ~ OutputPath, file_exception );
-        }
+        return OutputPath.WriteText( output_file_text );
     }
 
     // ~~
@@ -1739,16 +1822,9 @@ class FILE
 
             code = new CODE( IsTemplate );
             code.Tokenize( input_file_text );
-            code.Process();
+            code.Process( InputPath );
 
-            output_file_text = code.GetText();
-
-            if ( CreateOptionIsEnabled )
-            {
-                CreateOutputFolder();
-            }
-
-            WriteOutputFile( output_file_text );
+            WriteOutputFile( code.GetText() );
         }
     }
 }
@@ -1797,6 +1873,80 @@ void Abort(
     PrintError( file_exception.msg );
 
     exit( -1 );
+}
+
+// ~~
+
+void CreateFolder(
+    string folder_path
+    )
+{
+    if ( folder_path != ""
+         && folder_path != "/"
+         && !folder_path.exists() )
+    {
+        writeln( "Creating folder : ", folder_path );
+
+        try
+        {
+            folder_path.mkdirRecurse();
+        }
+        catch ( FileException file_exception )
+        {
+            Abort( "Can't create folder : " ~ folder_path, file_exception );
+        }
+    }
+}
+
+// ~~
+
+void WriteText(
+    string file_path,
+    string file_text
+    )
+{
+    if ( CreateOptionIsEnabled )
+    {
+        CreateFolder( file_path.dirName() );
+    }
+
+    writeln( "Writing file : ", file_path );
+
+    try
+    {
+        if ( !file_path.exists()
+             || file_path.readText() != file_text )
+        {
+            file_path.write( file_text );
+        }
+    }
+    catch ( FileException file_exception )
+    {
+        Abort( "Can't write file : " ~ file_path, file_exception );
+    }
+}
+
+// ~~
+
+string ReadText(
+    string file_path
+    )
+{
+    string
+        file_text;
+
+    writeln( "Reading file : ", file_path );
+
+    try
+    {
+        file_text = file_path.readText();
+    }
+    catch ( FileException file_exception )
+    {
+        Abort( "Can't read file : " ~ file_path, file_exception );
+    }
+
+    return file_text;
 }
 
 // ~~

@@ -1,7 +1,14 @@
 <html>
     <head>
          <meta charset="utf8"/>
+        <link rel="stylesheet" href="style.css">
     </head>
+
+
+
+
+
+
     <body>
         <?php
             
@@ -112,29 +119,30 @@
 
             $dwarf_name_array = array( 'Balin', 'Dwalin', 'Oin', 'Gloin' );
         ?>
+        <div class="text-color-blue">
+            <p>
+                There is <?php echo htmlspecialchars( $hobbit_count ); ?> hobbit.
+            </p>
+            <p>
+                <?php echo htmlspecialchars( $hobbit->FirstName . ' ' . $hobbit->LastName ); ?> has <?php echo htmlspecialchars( $hobbit->RingCount ); ?> ring.
+            </p>
+            <p>
+                <?php echo htmlspecialchars( $message ); ?>
+            </p>
+            <p>
+                <?php echo $bold; ?>
+            </p>
+            <p>
+                There are <?php echo htmlspecialchars( count( $dwarf_name_array ) ); ?> dwarves :
+            </p>
 
-        <p>
-            There is <?php echo htmlspecialchars( $hobbit_count ); ?> hobbit.
-        </p>
-        <p>
-            <?php echo htmlspecialchars( $hobbit->FirstName . ' ' . $hobbit->LastName ); ?> has <?php echo htmlspecialchars( $hobbit->RingCount ); ?> ring.
-        </p>
-        <p>
-            <?php echo htmlspecialchars( $message ); ?>
-        </p>
-        <p>
-            <?php echo $bold; ?>
-        </p>
-        <p>
-            There are <?php echo htmlspecialchars( count( $dwarf_name_array ) ); ?> dwarves :
-        </p>
-
-        <ul>
-            <?php foreach ( $dwarf_name_array as  $dwarf_name ) { ?>
-                <li>
-                    <?php echo htmlspecialchars( $dwarf_name ); ?>
-                </li>
-            <?php } ?>
-        </ul>
+            <ul>
+                <?php foreach ( $dwarf_name_array as  $dwarf_name ) { ?>
+                    <li>
+                        <?php echo htmlspecialchars( $dwarf_name ); ?>
+                    </li>
+                <?php } ?>
+            </ul>
+        </div>
     </body>
 </html>
