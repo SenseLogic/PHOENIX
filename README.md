@@ -10,11 +10,11 @@ Phoenix is a lightweight language and template engine which allows to program PH
 
 ## Features
 
-* Keeps line numbers unchanged;
-* Extracts preprocessed styling into external Stylus/SCSS/Less files;
-* Generates readable code, completely identical to handcrafted code;
-* Integrates easily and seamlessly with existing code;
-* Automatically watches file modifications for instant recompilation.
+* Keeps line numbers unchanged to ease development and debugging
+* Extracts preprocessed styling into external Stylus/SCSS/Less files
+* Generates readable code, completely identical to handcrafted code
+* Integrates easily and seamlessly with existing code
+* Automatically watches file modifications for instant recompilation
 
 ## Sample
 
