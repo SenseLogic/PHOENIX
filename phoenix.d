@@ -25,9 +25,8 @@ import core.thread;
 import std.conv : to;
 import std.datetime : Clock, SysTime;
 import std.file : dirEntries, exists, mkdirRecurse, readText, timeLastModified, write, FileException, SpanMode;
-import std.path : dirName;
 import std.stdio : writeln;
-import std.string : endsWith, indexOf, replace, startsWith, toUpper;
+import std.string : endsWith, indexOf, lastIndexOf, replace, startsWith, toUpper;
 
 // -- TYPES
 
@@ -1647,7 +1646,7 @@ class CODE
             file_text;
 
         file_text = GetText( TokenArray[ first_token_index ].LineIndex, first_token_index + 8, post_token_index - 3 );
-        file_path = input_file_path.dirName() ~ "/" ~ output_file_path;
+        file_path = input_file_path.GetFolderPath() ~ output_file_path;
         file_path.WriteText( file_text );
     }
 
@@ -1877,6 +1876,36 @@ void Abort(
 
 // ~~
 
+string GetLogicalPath(
+    string path
+    )
+{
+    return path.replace( "\\", "/" );
+}
+
+// ~~
+
+string GetFolderPath(
+    string file_path
+    )
+{
+    long
+        slash_character_index;
+
+    slash_character_index = file_path.lastIndexOf( '/' );
+
+    if ( slash_character_index >= 0 )
+    {
+        return file_path[ 0 .. slash_character_index + 1 ];
+    }
+    else
+    {
+        return "";
+    }
+}
+
+// ~~
+
 void CreateFolder(
     string folder_path
     )
@@ -1907,7 +1936,7 @@ void WriteText(
 {
     if ( CreateOptionIsEnabled )
     {
-        CreateFolder( file_path.dirName() );
+        CreateFolder( file_path.GetFolderPath() );
     }
 
     writeln( "Writing file : ", file_path );
@@ -1971,7 +2000,7 @@ void FindFiles(
     {
         if ( input_folder_entry.isFile )
         {
-            input_file_path = input_folder_entry.name;
+            input_file_path = input_folder_entry.name.GetLogicalPath();
 
             if ( input_file_path.startsWith( input_folder_path )
                  && ( input_file_path.endsWith( ".phx" )
@@ -2039,7 +2068,9 @@ void main(
     )
 {
     string
-        option;
+        input_folder_path,
+        option,
+        output_folder_path;
 
     argument_array = argument_array[ 1 .. $ ];
 
@@ -2076,16 +2107,19 @@ void main(
     }
 
     if ( argument_array.length == 2
-         && argument_array[ 0 ].endsWith( '/' )
-         && argument_array[ 1 ].endsWith( '/' ) )
+         && argument_array[ 0 ].GetLogicalPath().endsWith( '/' )
+         && argument_array[ 1 ].GetLogicalPath().endsWith( '/' ) )
     {
+        input_folder_path = argument_array[ 0 ].GetLogicalPath();
+        output_folder_path = argument_array[ 1 ].GetLogicalPath();
+
         if ( WatchOptionIsEnabled )
         {
-            WatchFiles( argument_array[ 0 ], argument_array[ 1 ] );
+            WatchFiles( input_folder_path, output_folder_path );
         }
         else
         {
-            ProcessFiles( argument_array[ 0 ], argument_array[ 1 ], false );
+            ProcessFiles( input_folder_path, output_folder_path, false );
         }
     }
     else
