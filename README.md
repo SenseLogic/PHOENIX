@@ -25,9 +25,9 @@ Phoenix is a lightweight language and template engine which allows to program PH
         <link rel="stylesheet" href="style.css">
     </head>
     <style file="style.styl">
-        .text-color-bermuda
+        .text-color-green
         {
-            color: #84D5B9 - 10%;
+            color: #84D5B9 - 50%;
         }
     </style>
     <body>
@@ -140,7 +140,7 @@ Phoenix is a lightweight language and template engine which allows to program PH
 
             dwarf_name_array = array( 'Balin', 'Dwalin', 'Oin', 'Gloin' );
         ?>
-        <div class="text-color-bermuda">
+        <div class="text-color-green">
             <p>
                 There is <% hobbit_count %> hobbit.
             </p>

@@ -9,6 +9,11 @@
 
 
 
+
+
+
+
+
     <body>
         <?php
             
@@ -119,7 +124,7 @@
 
             $dwarf_name_array = array( 'Balin', 'Dwalin', 'Oin', 'Gloin' );
         ?>
-        <div class="text-color-blue">
+        <div>
             <p>
                 There is <?php echo htmlspecialchars( $hobbit_count ); ?> hobbit.
             </p>
@@ -132,13 +137,13 @@
             <p>
                 <?php echo $bold; ?>
             </p>
-            <p>
+            <p class="text-color-green">
                 There are <?php echo htmlspecialchars( count( $dwarf_name_array ) ); ?> dwarves :
             </p>
 
             <ul>
                 <?php foreach ( $dwarf_name_array as  $dwarf_name ) { ?>
-                    <li>
+                    <li class="text-color-gold">
                         <?php echo htmlspecialchars( $dwarf_name ); ?>
                     </li>
                 <?php } ?>

@@ -4,9 +4,14 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <style file="style.styl">
-        .text-color-bermuda
+        .text-color-gold
         {
-            color: #84D5B9 - 10%;
+            color: #C226D5 + 120deg - 20%;
+        }
+
+        .text-color-green
+        {
+            color: #84D5B9 - 50%;
         }
     </style>
     <body>
@@ -119,7 +124,7 @@
 
             dwarf_name_array = array( 'Balin', 'Dwalin', 'Oin', 'Gloin' );
         ?>
-        <div class="text-color-bermuda">
+        <div>
             <p>
                 There is <% hobbit_count %> hobbit.
             </p>
@@ -132,13 +137,13 @@
             <p>
                 <# bold #>
             </p>
-            <p>
+            <p class="text-color-green">
                 There are <% count( dwarf_name_array ) %> dwarves :
             </p>
 
             <ul>
                 <? foreach ( var dwarf_name; dwarf_name_array ) { ?>
-                    <li>
+                    <li class="text-color-gold">
                         <% dwarf_name %>
                     </li>
                 <? } ?>
