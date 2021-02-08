@@ -27,7 +27,7 @@ Phoenix is a lightweight language and template engine which allows to program PH
     <style file="style.styl">
         .text-color-blue
         {
-            color: #000088;
+            color: #84D5B9 - 10%;
         }
     </style>
     <body>
