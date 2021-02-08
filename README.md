@@ -22,7 +22,7 @@ Phoenix is a lightweight language and template engine which allows to program PH
 <html>
     <head>
          <meta charset="utf8"/>
-        <link rel="stylesheet" href="style.css">
+         <link rel="stylesheet" href="style.css">
     </head>
     <style file="style.styl">
         .text-color-gold

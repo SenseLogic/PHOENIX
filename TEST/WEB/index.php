@@ -1,7 +1,7 @@
 <html>
     <head>
          <meta charset="utf8"/>
-        <link rel="stylesheet" href="style.css">
+         <link rel="stylesheet" href="style.css">
     </head>
 
 
