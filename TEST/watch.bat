@@ -1,1 +1,1 @@
-..\phoenix --create --watch CODE/ WEB/
+..\phoenix --extract --trim --create --watch CODE/ WEB/

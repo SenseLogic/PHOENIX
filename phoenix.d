@@ -26,7 +26,7 @@ import std.conv : to;
 import std.datetime : Clock, SysTime;
 import std.file : dirEntries, exists, mkdirRecurse, readText, timeLastModified, write, FileException, SpanMode;
 import std.stdio : writeln;
-import std.string : endsWith, indexOf, lastIndexOf, replace, startsWith, toUpper;
+import std.string : endsWith, indexOf, join, lastIndexOf, replace, split, startsWith, stripRight, toUpper;
 
 // -- TYPES
 
@@ -1634,7 +1634,7 @@ class CODE
 
     // ~~
 
-    void WriteSnippetFile(
+    void WriteFragmentFile(
         long first_token_index,
         long post_token_index,
         string input_file_path,
@@ -1646,13 +1646,19 @@ class CODE
             file_text;
 
         file_text = GetText( TokenArray[ first_token_index ].LineIndex, first_token_index + 8, post_token_index - 3 );
+
+        if ( TrimOptionIsEnabled )
+        {
+            file_text = file_text.GetTrimmedText() ~ '\n';
+        }
+
         file_path = input_file_path.GetFolderPath() ~ output_file_path;
         file_path.WriteText( file_text );
     }
 
     // ~~
 
-    void ClearSnippet(
+    void ClearFragment(
         long first_token_index,
         long post_token_index
         )
@@ -1670,7 +1676,7 @@ class CODE
 
     // ~~
 
-    bool ProcessSnippet(
+    bool ExtractFragment(
         long first_token_index,
         string opening_tag_name,
         string input_file_path,
@@ -1693,8 +1699,8 @@ class CODE
                  && TokenArray[ token_index + 2 ].Type == TOKEN_TYPE.EndClosingTag )
             {
                 post_token_index = token_index + 3;
-                WriteSnippetFile( first_token_index, post_token_index, input_file_path, output_file_path );
-                ClearSnippet( first_token_index, post_token_index );
+                WriteFragmentFile( first_token_index, post_token_index, input_file_path, output_file_path );
+                ClearFragment( first_token_index, post_token_index );
 
                 return true;
             }
@@ -1705,7 +1711,7 @@ class CODE
 
     // ~~
 
-    void ProcessSnippets(
+    void ExtractFragments(
         string input_file_path
         )
     {
@@ -1733,7 +1739,7 @@ class CODE
                 opening_tag_name = TokenArray[ token_index + 1 ].Text;
                 output_file_path = TokenArray[ token_index + 5 ].Text;
 
-                if ( ProcessSnippet( token_index, opening_tag_name, input_file_path, output_file_path ) )
+                if ( ExtractFragment( token_index, opening_tag_name, input_file_path, output_file_path ) )
                 {
                     --token_index;
                 }
@@ -1757,7 +1763,10 @@ class CODE
             ProcessToken( token_index );
         }
 
-        ProcessSnippets( input_file_path );
+        if ( ExtractOptionIsEnabled )
+        {
+            ExtractFragments( input_file_path );
+        }
     }
 }
 
@@ -1832,6 +1841,8 @@ class FILE
 
 bool
     CreateOptionIsEnabled,
+    ExtractOptionIsEnabled,
+    TrimOptionIsEnabled,
     WatchOptionIsEnabled;
 long
     PauseDuration;
@@ -1872,6 +1883,72 @@ void Abort(
     PrintError( file_exception.msg );
 
     exit( -1 );
+}
+
+// ~~
+
+string GetTrimmedText(
+    string text
+    )
+{
+    long
+        first_line_index,
+        line_indentation,
+        last_line_index,
+        minimum_line_indentation;
+    string[]
+        line_array;
+
+    line_array = text.split( '\n' );
+
+    first_line_index = -1;
+    last_line_index = -1;
+    minimum_line_indentation = -1;
+
+    foreach ( line_index, ref line; line_array )
+    {
+        line = line.stripRight();
+        line_indentation = 0;
+
+        while ( line_indentation < line.length
+                && line[ line_indentation ] == ' ' )
+        {
+            ++line_indentation;
+        }
+
+        if ( line_indentation > 0 )
+        {
+            if ( first_line_index < 0 )
+            {
+                first_line_index = line_index;
+            }
+
+            last_line_index = line_index;
+
+            if ( minimum_line_indentation < 0
+                 || line_indentation < minimum_line_indentation )
+            {
+                minimum_line_indentation = line_indentation;
+            }
+        }
+    }
+
+    if ( minimum_line_indentation < 0 )
+    {
+        return "";
+    }
+    else
+    {
+        foreach ( ref line; line_array )
+        {
+            if ( line.length > 0 )
+            {
+                line = line[ minimum_line_indentation .. $ ];
+            }
+        }
+
+        return line_array[ first_line_index .. last_line_index + 1 ].join( '\n' );
+    }
 }
 
 // ~~
@@ -2074,6 +2151,8 @@ void main(
 
     argument_array = argument_array[ 1 .. $ ];
 
+    ExtractOptionIsEnabled = false;
+    TrimOptionIsEnabled = false;
     CreateOptionIsEnabled = false;
     WatchOptionIsEnabled = false;
     PauseDuration = 500;
@@ -2085,7 +2164,15 @@ void main(
 
         argument_array = argument_array[ 1 .. $ ];
 
-        if ( option == "--create" )
+        if ( option == "--extract" )
+        {
+            ExtractOptionIsEnabled = true;
+        }
+        else if ( option == "--trim" )
+        {
+            TrimOptionIsEnabled = true;
+        }
+        else if ( option == "--create" )
         {
             CreateOptionIsEnabled = true;
         }
@@ -2127,13 +2214,14 @@ void main(
         writeln( "Usage :" );
         writeln( "    phoenix [options] INPUT_FOLDER/ OUTPUT_FOLDER/" );
         writeln( "Options :" );
+        writeln( "    --extract" );
+        writeln( "    --trim" );
         writeln( "    --create" );
         writeln( "    --watch" );
         writeln( "    --pause 500" );
         writeln( "Examples :" );
-        writeln( "    phoenix PHX/ PHP/" );
-        writeln( "    phoenix --create PHX/ PHP/" );
-        writeln( "    phoenix --create --watch PHX/ PHP/" );
+        writeln( "    phoenix --extract --trim --create PHX/ PHP/" );
+        writeln( "    phoenix --extract --trim --create --watch PHX/ PHP/" );
 
         PrintError( "Invalid arguments : " ~ argument_array.to!string() );
     }
