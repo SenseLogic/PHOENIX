@@ -11,7 +11,7 @@ Phoenix is a lightweight language and template engine which allows to program PH
 ## Features
 
 * Keeps line numbers unchanged to ease development and debugging.
-* Extracts Stylus/SCSS/Less stylesheets into external files.
+* Extracts Stylus/SCSS/Less style sheets into external files.
 * Generates readable code, completely identical to handcrafted code.
 * Integrates easily and seamlessly with existing code.
 * Automatically watches file modifications for instant recompilation.
@@ -22,7 +22,7 @@ Phoenix is a lightweight language and template engine which allows to program PH
 <html>
     <head>
          <meta charset="utf8"/>
-         <link rel="stylesheet" href="style.css">
+         <link rel="style sheet" href="style.css">
     </head>
     <style file="style.styl">
         .text-color-gold
@@ -223,8 +223,8 @@ phoenix [options] INPUT_FOLDER/ OUTPUT_FOLDER/
 ### Options
 
 ```
---extract STYLE_FOLDER/ : extract stylesheets into this folder
---trim : trim stylesheets
+--extract STYLE_FOLDER/ : extract style sheets into this folder
+--trim : trim style sheets
 --create : create the PHP folders if needed
 --watch : watch the Phoenix files for modifications
 --pause 500 : time to wait before checking the Phoenix files again
@@ -236,13 +236,13 @@ phoenix [options] INPUT_FOLDER/ OUTPUT_FOLDER/
 phoenix --extract STYLE/ --trim --create PHX/ PHP/
 ```
 
-Converts the Phoenix files of the `PHX/` folder into matching PHP files in the `PHP/` folder, extracting  stylesheets into the `STYLE/` folder and creating the output folders if needed.
+Converts the Phoenix files of the `PHX/` folder into matching PHP files in the `PHP/` folder, extracting trimmed style sheets into the `STYLE/` folder and creating the output folders if needed.
 
 ```bash
 phoenix --extract STYLE/ --trim --create --watch PHX/ PHP/
 ```
 
-Converts the Phoenix files of the `PHX/` folder into matching PHP files in the `PHP/` folder, extracting trimmed style files into the `STYLE/` folder and creating the output folders if needed, then watches the Phoenix files for modifications.
+Converts the Phoenix files of the `PHX/` folder into matching PHP files in the `PHP/` folder, extracting trimmed style sheets into the `STYLE/` folder and creating the output folders if needed, then watches the Phoenix files for modifications.
 
 ## Version
 
