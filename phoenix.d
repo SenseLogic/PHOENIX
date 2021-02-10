@@ -1637,8 +1637,7 @@ class CODE
     void WriteFragmentFile(
         long first_token_index,
         long post_token_index,
-        string input_file_path,
-        string output_file_path
+        string fragment_file_path
         )
     {
         string
@@ -1652,7 +1651,7 @@ class CODE
             file_text = file_text.GetTrimmedText() ~ '\n';
         }
 
-        file_path = input_file_path.GetFolderPath() ~ output_file_path;
+        file_path = FragmentFolderPath ~ fragment_file_path;
         file_path.WriteText( file_text );
     }
 
@@ -1679,8 +1678,7 @@ class CODE
     bool ExtractFragment(
         long first_token_index,
         string opening_tag_name,
-        string input_file_path,
-        string output_file_path
+        string fragment_file_path
         )
     {
         long
@@ -1699,7 +1697,7 @@ class CODE
                  && TokenArray[ token_index + 2 ].Type == TOKEN_TYPE.EndClosingTag )
             {
                 post_token_index = token_index + 3;
-                WriteFragmentFile( first_token_index, post_token_index, input_file_path, output_file_path );
+                WriteFragmentFile( first_token_index, post_token_index, fragment_file_path );
                 ClearFragment( first_token_index, post_token_index );
 
                 return true;
@@ -1719,7 +1717,7 @@ class CODE
             token_index;
         string
             opening_tag_name,
-            output_file_path;
+            fragment_file_path;
 
         for ( token_index = 0;
               token_index + 7 < TokenArray.length;
@@ -1737,9 +1735,9 @@ class CODE
                  && TokenArray[ token_index + 7 ].Type == TOKEN_TYPE.EndOpeningTag )
             {
                 opening_tag_name = TokenArray[ token_index + 1 ].Text;
-                output_file_path = TokenArray[ token_index + 5 ].Text;
+                fragment_file_path = TokenArray[ token_index + 5 ].Text;
 
-                if ( ExtractFragment( token_index, opening_tag_name, input_file_path, output_file_path ) )
+                if ( ExtractFragment( token_index, opening_tag_name, fragment_file_path ) )
                 {
                     --token_index;
                 }
@@ -1847,6 +1845,7 @@ bool
 long
     PauseDuration;
 string
+    FragmentFolderPath,
     InputFolderPath,
     OutputFolderPath;
 FILE[ string ]
@@ -2152,6 +2151,7 @@ void main(
     argument_array = argument_array[ 1 .. $ ];
 
     ExtractOptionIsEnabled = false;
+    FragmentFolderPath = "";
     TrimOptionIsEnabled = false;
     CreateOptionIsEnabled = false;
     WatchOptionIsEnabled = false;
@@ -2164,9 +2164,13 @@ void main(
 
         argument_array = argument_array[ 1 .. $ ];
 
-        if ( option == "--extract" )
+        if ( option == "--extract"
+             && argument_array.length >= 1 )
         {
             ExtractOptionIsEnabled = true;
+            FragmentFolderPath = argument_array[ 0 ];
+
+            argument_array = argument_array[ 1 .. $ ];
         }
         else if ( option == "--trim" )
         {
@@ -2214,14 +2218,14 @@ void main(
         writeln( "Usage :" );
         writeln( "    phoenix [options] INPUT_FOLDER/ OUTPUT_FOLDER/" );
         writeln( "Options :" );
-        writeln( "    --extract" );
+        writeln( "    --extract FRAGMENT_FOLDER/" );
         writeln( "    --trim" );
         writeln( "    --create" );
         writeln( "    --watch" );
         writeln( "    --pause 500" );
         writeln( "Examples :" );
-        writeln( "    phoenix --extract --trim --create PHX/ PHP/" );
-        writeln( "    phoenix --extract --trim --create --watch PHX/ PHP/" );
+        writeln( "    phoenix --extract STYLUS/ --trim --create PHX/ PHP/" );
+        writeln( "    phoenix --extract STYLUS/ --trim --create --watch PHX/ PHP/" );
 
         PrintError( "Invalid arguments : " ~ argument_array.to!string() );
     }

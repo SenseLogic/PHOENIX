@@ -1,3 +1,3 @@
 #!/bin/sh
 set -x
-../../phoenix --extract --trim --create --watch ./ www/
+../../phoenix --extract STYLE/ --trim --create --watch ./ www/

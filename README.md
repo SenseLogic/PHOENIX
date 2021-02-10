@@ -223,8 +223,8 @@ phoenix [options] INPUT_FOLDER/ OUTPUT_FOLDER/
 ### Options
 
 ```
---extract : extract styling files
---trim : trim styling files
+--extract STYLE_FOLDER/ : extract style files
+--trim : trim style files
 --create : create the PHP folders if needed
 --watch : watch the Phoenix files for modifications
 --pause 500 : time to wait before checking the Phoenix files again
@@ -236,13 +236,13 @@ phoenix [options] INPUT_FOLDER/ OUTPUT_FOLDER/
 phoenix --extract --trim --create PHX/ PHP/
 ```
 
-Converts the Phoenix files of the input folder into matching PHP files in the output folder, extracting trimmed styling files and creating the output folders if needed.
+Converts the Phoenix files of the input folder into matching PHP files in the output folder, extracting trimmed style files and creating the output folders if needed.
 
 ```bash
 phoenix --extract --trim --create --watch PHX/ PHP/
 ```
 
-Converts the Phoenix files of the input folder into matching PHP files in the output folder, extracting trimmed styling files and creating the output folders if needed, then watches the Phoenix files for modifications.
+Converts the Phoenix files of the input folder into matching PHP files in the output folder, extracting trimmed style files and creating the output folders if needed, then watches the Phoenix files for modifications.
 
 ## Version
 

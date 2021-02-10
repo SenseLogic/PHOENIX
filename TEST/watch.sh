@@ -1,3 +1,3 @@
-#!/bin/sh
+n#!/bin/sh
 set -x
-../phoenix --extract --trim --create --watch CODE/ WEB/
+../phoenix --extract CODE/ --trim --create --watch CODE/ WEB/
