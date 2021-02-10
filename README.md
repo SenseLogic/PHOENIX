@@ -11,7 +11,7 @@ Phoenix is a lightweight language and template engine which allows to program PH
 ## Features
 
 * Keeps line numbers unchanged to ease development and debugging.
-* Extracts preprocessed styling into external Stylus/SCSS/Less files.
+* Extracts Stylus/SCSS/Less stylesheets into external files.
 * Generates readable code, completely identical to handcrafted code.
 * Integrates easily and seamlessly with existing code.
 * Automatically watches file modifications for instant recompilation.
@@ -223,8 +223,8 @@ phoenix [options] INPUT_FOLDER/ OUTPUT_FOLDER/
 ### Options
 
 ```
---extract STYLE_FOLDER/ : extract styling files
---trim : trim styling files
+--extract STYLE_FOLDER/ : extract stylesheets into this folder
+--trim : trim stylesheets
 --create : create the PHP folders if needed
 --watch : watch the Phoenix files for modifications
 --pause 500 : time to wait before checking the Phoenix files again
@@ -233,16 +233,16 @@ phoenix [options] INPUT_FOLDER/ OUTPUT_FOLDER/
 ### Examples
 
 ```bash
-phoenix --extract --trim --create PHX/ PHP/
+phoenix --extract STYLE/ --trim --create PHX/ PHP/
 ```
 
-Converts the Phoenix files of the input folder into matching PHP files in the output folder, extracting trimmed style files and creating the output folders if needed.
+Converts the Phoenix files of the `PHX/` folder into matching PHP files in the `PHP/` folder, extracting  stylesheets into the `STYLE/` folder and creating the output folders if needed.
 
 ```bash
-phoenix --extract --trim --create --watch PHX/ PHP/
+phoenix --extract STYLE/ --trim --create --watch PHX/ PHP/
 ```
 
-Converts the Phoenix files of the input folder into matching PHP files in the output folder, extracting trimmed style files and creating the output folders if needed, then watches the Phoenix files for modifications.
+Converts the Phoenix files of the `PHX/` folder into matching PHP files in the `PHP/` folder, extracting trimmed style files into the `STYLE/` folder and creating the output folders if needed, then watches the Phoenix files for modifications.
 
 ## Version
 
