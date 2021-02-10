@@ -223,8 +223,8 @@ phoenix [options] INPUT_FOLDER/ OUTPUT_FOLDER/
 ### Options
 
 ```
---extract STYLE_FOLDER/ : extract style files
---trim : trim style files
+--extract STYLE_FOLDER/ : extract styling files
+--trim : trim styling files
 --create : create the PHP folders if needed
 --watch : watch the Phoenix files for modifications
 --pause 500 : time to wait before checking the Phoenix files again
