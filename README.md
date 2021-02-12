@@ -11,7 +11,7 @@ Phoenix is a lightweight language and template engine which allows to program PH
 ## Features
 
 * Keeps line numbers unchanged to ease development and debugging.
-* Extracts Stylus/SCSS/Less style sheets into external files.
+* Extracts inline scripts and style sheets into external files.
 * Generates readable code, completely identical to handcrafted code.
 * Integrates easily and seamlessly with existing code.
 * Automatically watches file modifications for instant recompilation.
@@ -223,8 +223,8 @@ phoenix [options] INPUT_FOLDER/ OUTPUT_FOLDER/
 ### Options
 
 ```
---extract STYLE_FOLDER/ : extract style sheets into this folder
---trim : trim style sheets
+--extract <tag> STYLE_FOLDER/ : extract inline files using this tag into this folder
+--trim : trim inline files
 --create : create the PHP folders if needed
 --watch : watch the Phoenix files for modifications
 --pause 500 : time to wait before checking the Phoenix files again
@@ -233,16 +233,19 @@ phoenix [options] INPUT_FOLDER/ OUTPUT_FOLDER/
 ### Examples
 
 ```bash
-phoenix --extract STYLE/ --trim --create PHX/ PHP/
+phoenix --extract style STYLE/ --trim --create PHX/ PHP/
 ```
 
-Converts the Phoenix files of the `PHX/` folder into matching PHP files in the `PHP/` folder, extracting trimmed style sheets into the `STYLE/` folder and creating the output folders if needed.
+Converts the Phoenix files of the `PHX/` folder into matching PHP files in the `PHP/` folder,
+extracting inline files into the `STYLE/` folder and creating the output folders if needed.
 
 ```bash
-phoenix --extract STYLE/ --trim --create --watch PHX/ PHP/
+phoenix --extract style STYLE/ --trim --create --watch PHX/ PHP/
 ```
 
-Converts the Phoenix files of the `PHX/` folder into matching PHP files in the `PHP/` folder, extracting trimmed style sheets into the `STYLE/` folder and creating the output folders if needed, then watches the Phoenix files for modifications.
+Converts the Phoenix files of the `PHX/` folder into matching PHP files in the `PHP/` folder,
+extracting inline files into the `STYLE/` folder and creating the output folders if needed,
+then watches the Phoenix files for modifications.
 
 ## Version
 

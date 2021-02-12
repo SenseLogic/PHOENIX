@@ -1634,30 +1634,28 @@ class CODE
 
     // ~~
 
-    void WriteStyleFile(
+    void WriteFragmentFile(
         long first_token_index,
         long post_token_index,
         string fragment_file_path
         )
     {
         string
-            file_path,
-            file_text;
+            fragment_file_text;
 
-        file_text = GetText( TokenArray[ first_token_index ].LineIndex, first_token_index + 8, post_token_index - 3 );
+        fragment_file_text = GetText( TokenArray[ first_token_index ].LineIndex, first_token_index + 8, post_token_index - 3 );
 
         if ( TrimOptionIsEnabled )
         {
-            file_text = file_text.GetTrimmedText() ~ '\n';
+            fragment_file_text = fragment_file_text.GetTrimmedText() ~ '\n';
         }
 
-        file_path = StyleFolderPath ~ fragment_file_path;
-        file_path.WriteText( file_text );
+        fragment_file_path.WriteText( fragment_file_text );
     }
 
     // ~~
 
-    void ClearStyle(
+    void ClearFragment(
         long first_token_index,
         long post_token_index
         )
@@ -1675,9 +1673,10 @@ class CODE
 
     // ~~
 
-    bool ExtractStyle(
+    bool ExtractFragment(
         long first_token_index,
         string opening_tag_name,
+        string fragment_folder_path,
         string fragment_file_path
         )
     {
@@ -1697,8 +1696,8 @@ class CODE
                  && TokenArray[ token_index + 2 ].Type == TOKEN_TYPE.EndClosingTag )
             {
                 post_token_index = token_index + 3;
-                WriteStyleFile( first_token_index, post_token_index, fragment_file_path );
-                ClearStyle( first_token_index, post_token_index );
+                WriteFragmentFile( first_token_index, post_token_index, fragment_folder_path ~ fragment_file_path );
+                ClearFragment( first_token_index, post_token_index );
 
                 return true;
             }
@@ -1709,8 +1708,7 @@ class CODE
 
     // ~~
 
-    void ExtractStyles(
-        string input_file_path
+    void ExtractFragments(
         )
     {
         long
@@ -1718,6 +1716,8 @@ class CODE
         string
             opening_tag_name,
             fragment_file_path;
+        string *
+            fragment_folder_path;
 
         for ( token_index = 0;
               token_index + 7 < TokenArray.length;
@@ -1735,9 +1735,11 @@ class CODE
                  && TokenArray[ token_index + 7 ].Type == TOKEN_TYPE.EndOpeningTag )
             {
                 opening_tag_name = TokenArray[ token_index + 1 ].Text;
+                fragment_folder_path = opening_tag_name in FragmentFolderPathMap;
                 fragment_file_path = TokenArray[ token_index + 5 ].Text;
 
-                if ( ExtractStyle( token_index, opening_tag_name, fragment_file_path ) )
+                if ( fragment_folder_path !is null
+                     && ExtractFragment( token_index, opening_tag_name, *fragment_folder_path, fragment_file_path ) )
                 {
                     --token_index;
                 }
@@ -1748,7 +1750,6 @@ class CODE
     // ~~
 
     void Process(
-        string input_file_path
         )
     {
         long
@@ -1763,7 +1764,7 @@ class CODE
 
         if ( ExtractOptionIsEnabled )
         {
-            ExtractStyles( input_file_path );
+            ExtractFragments();
         }
     }
 }
@@ -1828,7 +1829,7 @@ class FILE
 
             code = new CODE( IsTemplate );
             code.Tokenize( input_file_text );
-            code.Process( InputPath );
+            code.Process();
 
             WriteOutputFile( code.GetText() );
         }
@@ -1846,8 +1847,9 @@ long
     PauseDuration;
 string
     InputFolderPath,
-    OutputFolderPath,
-    StyleFolderPath;
+    OutputFolderPath;
+string[ string ]
+    FragmentFolderPathMap;
 FILE[ string ]
     FileMap;
 
@@ -2151,7 +2153,6 @@ void main(
     argument_array = argument_array[ 1 .. $ ];
 
     ExtractOptionIsEnabled = false;
-    StyleFolderPath = "";
     TrimOptionIsEnabled = false;
     CreateOptionIsEnabled = false;
     WatchOptionIsEnabled = false;
@@ -2165,12 +2166,13 @@ void main(
         argument_array = argument_array[ 1 .. $ ];
 
         if ( option == "--extract"
-             && argument_array.length >= 1 )
+             && argument_array.length >= 2
+             && argument_array[ 1 ].GetLogicalPath().endsWith( '/' ) )
         {
             ExtractOptionIsEnabled = true;
-            StyleFolderPath = argument_array[ 0 ];
+            FragmentFolderPathMap[ argument_array[ 0 ] ] = argument_array[ 1 ].GetLogicalPath();
 
-            argument_array = argument_array[ 1 .. $ ];
+            argument_array = argument_array[ 2 .. $ ];
         }
         else if ( option == "--trim" )
         {
@@ -2224,8 +2226,8 @@ void main(
         writeln( "    --watch" );
         writeln( "    --pause 500" );
         writeln( "Examples :" );
-        writeln( "    phoenix --extract STYLE/ --trim --create PHX/ PHP/" );
-        writeln( "    phoenix --extract STYLE/ --trim --create --watch PHX/ PHP/" );
+        writeln( "    phoenix --extract style STYLE/ --trim --create PHX/ PHP/" );
+        writeln( "    phoenix --extract style STYLE/ --trim --create --watch PHX/ PHP/" );
 
         PrintError( "Invalid arguments : " ~ argument_array.to!string() );
     }

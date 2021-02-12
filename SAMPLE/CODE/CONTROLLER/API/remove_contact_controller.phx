@@ -1,9 +1,0 @@
-// -- IMPORTS
-
-import '../../MODEL/contact_model.php';
-
-// -- STATEMENTS
-
-RemoveDatabaseContactByUuid( contact_uuid );
-
-SetStatus( 204 );

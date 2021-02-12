@@ -1,9 +1,0 @@
-// -- IMPORTS
-
-import '../../MODEL/section_model.php';
-
-// -- STATEMENTS
-
-RemoveDatabaseSectionByUuid( section_uuid );
-
-SetStatus( 204 );
