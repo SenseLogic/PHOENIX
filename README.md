@@ -237,14 +237,14 @@ phoenix --extract style STYLE/ --trim --create PHX/ PHP/
 ```
 
 Converts the Phoenix files of the `PHX/` folder into matching PHP files in the `PHP/` folder,
-extracting inline files into the `STYLE/` folder and creating the output folders if needed.
+extracting inline style files into the `STYLE/` folder and creating the output folders if needed.
 
 ```bash
 phoenix --extract style STYLE/ --trim --create --watch PHX/ PHP/
 ```
 
 Converts the Phoenix files of the `PHX/` folder into matching PHP files in the `PHP/` folder,
-extracting inline files into the `STYLE/` folder and creating the output folders if needed,
+extracting inline style files into the `STYLE/` folder and creating the output folders if needed,
 then watches the Phoenix files for modifications.
 
 ## Version
