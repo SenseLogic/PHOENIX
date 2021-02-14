@@ -217,14 +217,14 @@ dmd -m64 phoenix.d
 ## Command line
 
 ```
-phoenix [options] INPUT_FOLDER/ OUTPUT_FOLDER/
+phoenix [options] <input folder> <output_folder>
 ```
 
 ### Options
 
 ```
---extract <tag> STYLE_FOLDER/ : extract inline files using this tag into this folder
---trim : trim inline files
+--extract <tag> <script folder> : extract scripts inside of this tag if they have a `file` attribute
+--trim : trim extracted scripts
 --create : create the PHP folders if needed
 --watch : watch the Phoenix files for modifications
 --pause 500 : time to wait before checking the Phoenix files again
@@ -237,14 +237,14 @@ phoenix --extract style STYLE/ --trim --create PHX/ PHP/
 ```
 
 Converts the Phoenix files of the `PHX/` folder into matching PHP files in the `PHP/` folder,
-extracting inline style files into the `STYLE/` folder and creating the output folders if needed.
+extracting style scripts into the `STYLE/` folder and creating the output folders if needed.
 
 ```bash
 phoenix --extract style STYLE/ --trim --create --watch PHX/ PHP/
 ```
 
 Converts the Phoenix files of the `PHX/` folder into matching PHP files in the `PHP/` folder,
-extracting inline style files into the `STYLE/` folder and creating the output folders if needed,
+extracting style scripts into the `STYLE/` folder and creating the output folders if needed,
 then watches the Phoenix files for modifications.
 
 ## Version

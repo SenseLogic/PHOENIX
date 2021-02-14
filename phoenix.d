@@ -1634,28 +1634,28 @@ class CODE
 
     // ~~
 
-    void WriteFragmentFile(
+    void WriteScriptFile(
         long first_token_index,
         long post_token_index,
-        string fragment_file_path
+        string script_file_path
         )
     {
         string
-            fragment_file_text;
+            script_file_text;
 
-        fragment_file_text = GetText( TokenArray[ first_token_index ].LineIndex, first_token_index + 8, post_token_index - 3 );
+        script_file_text = GetText( TokenArray[ first_token_index ].LineIndex, first_token_index + 8, post_token_index - 3 );
 
         if ( TrimOptionIsEnabled )
         {
-            fragment_file_text = fragment_file_text.GetTrimmedText() ~ '\n';
+            script_file_text = script_file_text.GetTrimmedText() ~ '\n';
         }
 
-        fragment_file_path.WriteText( fragment_file_text );
+        script_file_path.WriteText( script_file_text );
     }
 
     // ~~
 
-    void ClearFragment(
+    void ClearScript(
         long first_token_index,
         long post_token_index
         )
@@ -1673,11 +1673,11 @@ class CODE
 
     // ~~
 
-    bool ExtractFragment(
+    bool ExtractScript(
         long first_token_index,
         string opening_tag_name,
-        string fragment_folder_path,
-        string fragment_file_path
+        string script_folder_path,
+        string script_file_path
         )
     {
         long
@@ -1696,8 +1696,8 @@ class CODE
                  && TokenArray[ token_index + 2 ].Type == TOKEN_TYPE.EndClosingTag )
             {
                 post_token_index = token_index + 3;
-                WriteFragmentFile( first_token_index, post_token_index, fragment_folder_path ~ fragment_file_path );
-                ClearFragment( first_token_index, post_token_index );
+                WriteScriptFile( first_token_index, post_token_index, script_folder_path ~ script_file_path );
+                ClearScript( first_token_index, post_token_index );
 
                 return true;
             }
@@ -1708,16 +1708,16 @@ class CODE
 
     // ~~
 
-    void ExtractFragments(
+    void ExtractScripts(
         )
     {
         long
             token_index;
         string
             opening_tag_name,
-            fragment_file_path;
+            script_file_path;
         string *
-            fragment_folder_path;
+            script_folder_path;
 
         for ( token_index = 0;
               token_index + 7 < TokenArray.length;
@@ -1735,11 +1735,11 @@ class CODE
                  && TokenArray[ token_index + 7 ].Type == TOKEN_TYPE.EndOpeningTag )
             {
                 opening_tag_name = TokenArray[ token_index + 1 ].Text;
-                fragment_folder_path = opening_tag_name in FragmentFolderPathMap;
-                fragment_file_path = TokenArray[ token_index + 5 ].Text;
+                script_folder_path = opening_tag_name in ScriptFolderPathMap;
+                script_file_path = TokenArray[ token_index + 5 ].Text;
 
-                if ( fragment_folder_path !is null
-                     && ExtractFragment( token_index, opening_tag_name, *fragment_folder_path, fragment_file_path ) )
+                if ( script_folder_path !is null
+                     && ExtractScript( token_index, opening_tag_name, *script_folder_path, script_file_path ) )
                 {
                     --token_index;
                 }
@@ -1764,7 +1764,7 @@ class CODE
 
         if ( ExtractOptionIsEnabled )
         {
-            ExtractFragments();
+            ExtractScripts();
         }
     }
 }
@@ -1849,7 +1849,7 @@ string
     InputFolderPath,
     OutputFolderPath;
 string[ string ]
-    FragmentFolderPathMap;
+    ScriptFolderPathMap;
 FILE[ string ]
     FileMap;
 
@@ -2170,7 +2170,7 @@ void main(
              && argument_array[ 1 ].GetLogicalPath().endsWith( '/' ) )
         {
             ExtractOptionIsEnabled = true;
-            FragmentFolderPathMap[ argument_array[ 0 ] ] = argument_array[ 1 ].GetLogicalPath();
+            ScriptFolderPathMap[ argument_array[ 0 ] ] = argument_array[ 1 ].GetLogicalPath();
 
             argument_array = argument_array[ 2 .. $ ];
         }
@@ -2218,9 +2218,9 @@ void main(
     else
     {
         writeln( "Usage :" );
-        writeln( "    phoenix [options] INPUT_FOLDER/ OUTPUT_FOLDER/" );
+        writeln( "    phoenix [options] <INPUT_FOLDER> <OUTPUT_FOLDER>" );
         writeln( "Options :" );
-        writeln( "    --extract STYLE_FOLDER/" );
+        writeln( "    --extract <tag> <SCRIPT_FOLDER>" );
         writeln( "    --trim" );
         writeln( "    --create" );
         writeln( "    --watch" );
