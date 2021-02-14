@@ -223,7 +223,7 @@ phoenix [options] <input folder> <output_folder>
 ### Options
 
 ```
---extract <tag> <script folder> : extract scripts inside of this tag if they have a `file` attribute
+--extract <tag> <script folder> : extract scripts inside this tag if they have a `file` attribute
 --trim : trim extracted scripts
 --create : create the PHP folders if needed
 --watch : watch the Phoenix files for modifications
