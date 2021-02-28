@@ -24,7 +24,7 @@ import core.stdc.stdlib : exit;
 import core.thread;
 import std.conv : to;
 import std.datetime : Clock, SysTime;
-import std.file : dirEntries, exists, mkdirRecurse, readText, timeLastModified, write, FileException, SpanMode;
+import std.file : dirEntries, exists, mkdirRecurse, readText, timeLastModified, write, SpanMode;
 import std.stdio : writeln;
 import std.string : endsWith, indexOf, join, lastIndexOf, replace, split, startsWith, stripRight, toUpper;
 
@@ -1877,11 +1877,11 @@ void Abort(
 
 void Abort(
     string message,
-    FileException file_exception
+    Exception exception
     )
 {
     PrintError( message );
-    PrintError( file_exception.msg );
+    PrintError( exception.msg );
 
     exit( -1 );
 }
@@ -1958,7 +1958,7 @@ string GetLogicalPath(
     string path
     )
 {
-    return path.replace( "\\", "/" );
+    return path.replace( '\\', '/' );
 }
 
 // ~~
@@ -1998,9 +1998,9 @@ void CreateFolder(
         {
             folder_path.mkdirRecurse();
         }
-        catch ( FileException file_exception )
+        catch ( Exception exception )
         {
-            Abort( "Can't create folder : " ~ folder_path, file_exception );
+            Abort( "Can't create folder : " ~ folder_path, exception );
         }
     }
 }
@@ -2027,9 +2027,9 @@ void WriteText(
             file_path.write( file_text );
         }
     }
-    catch ( FileException file_exception )
+    catch ( Exception exception )
     {
-        Abort( "Can't write file : " ~ file_path, file_exception );
+        Abort( "Can't write file : " ~ file_path, exception );
     }
 }
 
@@ -2048,9 +2048,9 @@ string ReadText(
     {
         file_text = file_path.readText();
     }
-    catch ( FileException file_exception )
+    catch ( Exception exception )
     {
-        Abort( "Can't read file : " ~ file_path, file_exception );
+        Abort( "Can't read file : " ~ file_path, exception );
     }
 
     return file_text;
