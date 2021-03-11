@@ -1687,7 +1687,7 @@ class CODE
             text;
 
         for ( token_index = first_token_index + 8;
-              token_index + 3 < TokenArray.length;
+              token_index + 2 < TokenArray.length;
               ++token_index )
         {
             if ( TokenArray[ token_index ].Type == TOKEN_TYPE.BeginClosingTag
