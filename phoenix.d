@@ -1909,16 +1909,17 @@ string GetTrimmedText(
     foreach ( line_index, ref line; line_array )
     {
         line = line.stripRight();
-        line_indentation = 0;
 
-        while ( line_indentation < line.length
-                && line[ line_indentation ] == ' ' )
+        if ( line != "" )
         {
-            ++line_indentation;
-        }
+            line_indentation = 0;
 
-        if ( line_indentation > 0 )
-        {
+            while ( line_indentation < line.length
+                    && line[ line_indentation ] == ' ' )
+            {
+                ++line_indentation;
+            }
+            
             if ( first_line_index < 0 )
             {
                 first_line_index = line_index;
