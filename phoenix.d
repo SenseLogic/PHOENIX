@@ -1919,7 +1919,7 @@ string GetTrimmedText(
             {
                 ++line_indentation;
             }
-            
+
             if ( first_line_index < 0 )
             {
                 first_line_index = line_index;
@@ -2019,6 +2019,14 @@ void WriteText(
     }
 
     writeln( "Writing file : ", file_path );
+
+    file_text = file_text.stripRight();
+
+    if ( file_text != ""
+         && !file_text.endsWith( '\n' ) )
+    {
+        file_text ~= '\n';
+    }
 
     try
     {
