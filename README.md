@@ -224,7 +224,8 @@ phoenix [options] <input folder> <output_folder>
 
 ```
 --extract <tag> <script folder> : extract scripts inside this tag if they have a `file` attribute
---trim : trim extracted scripts
+--compress : compress lines
+--trim : trim lines
 --create : create the PHP folders if needed
 --watch : watch the Phoenix files for modifications
 --pause 500 : time to wait before checking the Phoenix files again
@@ -233,14 +234,14 @@ phoenix [options] <input folder> <output_folder>
 ### Examples
 
 ```bash
-phoenix --extract style STYLE/ --trim --create PHX/ PHP/
+phoenix --extract style STYLE/ --compress --trim --create PHX/ PHP/
 ```
 
 Converts the Phoenix files of the `PHX/` folder into matching PHP files in the `PHP/` folder,
 extracting style sheets into the `STYLE/` folder and creating the output folders if needed.
 
 ```bash
-phoenix --extract style STYLE/ --trim --create --watch PHX/ PHP/
+phoenix --extract style STYLE/ --compress --trim --create --watch PHX/ PHP/
 ```
 
 Converts the Phoenix files of the `PHX/` folder into matching PHP files in the `PHP/` folder,

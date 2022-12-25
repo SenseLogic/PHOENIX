@@ -1655,6 +1655,34 @@ class CODE
 
     // ~~
 
+    void CompressScript(
+        long first_token_index,
+        long post_token_index
+        )
+    {
+        long
+            line_index_offset,
+            token_index;
+
+        if ( post_token_index < TokenArray.length )
+        {
+            line_index_offset
+                = TokenArray[ post_token_index ].LineIndex
+                  - TokenArray[ first_token_index ].LineIndex;
+
+            for ( token_index = post_token_index;
+                  token_index < TokenArray.length;
+                  ++token_index )
+            {
+                TokenArray[ token_index ].LineIndex -= line_index_offset;
+            }
+        }
+
+        TokenArray = TokenArray[ 0 .. first_token_index ] ~ TokenArray[ post_token_index .. $ ];
+    }
+
+    // ~~
+
     void ClearScript(
         long first_token_index,
         long post_token_index
@@ -1697,7 +1725,15 @@ class CODE
             {
                 post_token_index = token_index + 3;
                 WriteScriptFile( first_token_index, post_token_index, script_folder_path ~ script_file_path );
-                ClearScript( first_token_index, post_token_index );
+
+                if ( CompressOptionIsEnabled )
+                {
+                    CompressScript( first_token_index, post_token_index );
+                }
+                else
+                {
+                    ClearScript( first_token_index, post_token_index );
+                }
 
                 return true;
             }
@@ -1712,6 +1748,7 @@ class CODE
         )
     {
         long
+            post_token_index,
             token_index;
         string
             opening_tag_name,
@@ -1841,6 +1878,7 @@ class FILE
 bool
     CreateOptionIsEnabled,
     ExtractOptionIsEnabled,
+    CompressOptionIsEnabled,
     TrimOptionIsEnabled,
     WatchOptionIsEnabled;
 long
@@ -2162,6 +2200,7 @@ void main(
     argument_array = argument_array[ 1 .. $ ];
 
     ExtractOptionIsEnabled = false;
+    CompressOptionIsEnabled = false;
     TrimOptionIsEnabled = false;
     CreateOptionIsEnabled = false;
     WatchOptionIsEnabled = false;
@@ -2182,6 +2221,10 @@ void main(
             ScriptFolderPathMap[ argument_array[ 0 ] ] = argument_array[ 1 ].GetLogicalPath();
 
             argument_array = argument_array[ 2 .. $ ];
+        }
+        else if ( option == "--compress" )
+        {
+            CompressOptionIsEnabled = true;
         }
         else if ( option == "--trim" )
         {
@@ -2230,13 +2273,14 @@ void main(
         writeln( "    phoenix [options] <INPUT_FOLDER> <OUTPUT_FOLDER>" );
         writeln( "Options :" );
         writeln( "    --extract <tag> <SCRIPT_FOLDER>" );
+        writeln( "    --compress" );
         writeln( "    --trim" );
         writeln( "    --create" );
         writeln( "    --watch" );
         writeln( "    --pause 500" );
         writeln( "Examples :" );
-        writeln( "    phoenix --extract style STYLE/ --trim --create PHX/ PHP/" );
-        writeln( "    phoenix --extract style STYLE/ --trim --create --watch PHX/ PHP/" );
+        writeln( "    phoenix --extract style STYLE/ --compress --trim --create PHX/ PHP/" );
+        writeln( "    phoenix --extract style STYLE/ --compress --trim --create --watch PHX/ PHP/" );
 
         PrintError( "Invalid arguments : " ~ argument_array.to!string() );
     }
