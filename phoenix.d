@@ -688,6 +688,11 @@ class CODE
                     ++LineIndex;
                     LineCharacterIndex = TokenCharacterIndex;
                 }
+                else if ( character == ' '
+                          && Context.TokenType == TOKEN_TYPE.Identifier )
+                {
+                    EndToken();
+                }
 
                 TokenIsSplit = true;
             }
